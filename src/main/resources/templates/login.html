@@ -121,13 +121,32 @@
             document.getElementById("fm").submit();
         }
 
-        window.onload = function () {
-            var successLogin = [[${successLogin}]];
-            if (successLogin == false) {
-                alert("验证码不正确,请重新输入!!");
+        function checkCode(imageCode) {
+            if (imageCode == "") {
+                $("#checkCodeIsSuccess").html("验证码不能为空！");
+                $("#imageCode").focus();
+                return;
             }
-            successLogin = true;
+            $.post("/checkCodeIsSuccess", {imageCode: imageCode},
+                function (result) {
+                    if (result.success) {
+                        $("#checkCodeIsSuccess").html("");
+                        $('#loginBtn').attr("disabled",false);
+                    } else {
+                        $("#checkCodeIsSuccess").html("验证码输入错误!");
+                        $("#imageCode").focus();
+                    }
+                }
+            );
         }
+
+        if (window.name != "refresh") {
+            location.reload();
+            window.name = "refresh";
+        } else {
+            window.name = "";
+        }
+
     </script>
 </head>
 <body>
@@ -145,16 +164,16 @@
         </dd>
         <dd class="val_icon">
             <div class="checkcode">
-                <input type="hidden" id="sessionCheckCode" th:value="${session.checkCode}">
-                <input type="text" id="imageCode" name="imageCode" placeholder="验证码" maxlength="4" class="login_txtbx">
+                <input type="text" id="imageCode" name="imageCode" placeholder="验证码" maxlength="4" class="login_txtbx" onblur="checkCode(this.value)">
                 <img id="imgObj" title="看不清，换一张" src="/drawImage" onclick="changeImg()"/>
             </div>
         </dd>
         <dd>
-            <a href="javascript:submitData()"><input type="button" id="loginBtn" value="立即登陆" class="submit_btn"/></a>
+            <a href="javascript:submitData()"><input type="button" id="loginBtn" disabled="disabled" value="立即登陆" class="submit_btn"/></a>
         </dd>
         <dd>
             <p>© 1500330333ztl 版权所有</p>
+            <span id="checkCodeIsSuccess" style="color: white"></span>
         </dd>
     </dl>
 </form>

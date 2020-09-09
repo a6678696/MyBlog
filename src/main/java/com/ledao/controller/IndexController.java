@@ -4,6 +4,7 @@ import com.ledao.util.StringUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -47,7 +48,7 @@ public class IndexController {
         if (StringUtil.isNotEmpty(checkCode)) {
             if (!checkCode.equals(imageCode)) {
                 resultMap.put("successLogin", false);
-                resultMap.put("errorInfo", "验证码不正确,请重新输入!!");
+                resultMap.put("errorInfo", "验证码不正确,请重新输入!");
                 return resultMap;
             }
         }
@@ -62,5 +63,21 @@ public class IndexController {
     @RequestMapping("/admin")
     public String toAdmin() {
         return "/admin/main";
+    }
+
+    @ResponseBody
+    @RequestMapping("/checkCodeIsSuccess")
+    public Map<String, Object> checkCodeIsSuccess(String imageCode,HttpSession session) {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        String checkCode = (String) session.getAttribute("checkCode");
+        resultMap.put("checkCode", checkCode);
+        if (StringUtil.isNotEmpty(checkCode)) {
+            if (imageCode.equals(checkCode)) {
+                resultMap.put("success", true);
+            } else {
+                resultMap.put("success", false);
+            }
+        }
+        return resultMap;
     }
 }

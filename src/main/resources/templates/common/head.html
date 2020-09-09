@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="h">
+    <div class="header">
+        <div class="header_resize">
+            <div class="logo"><a href="" style="text-decoration: none"><h2 style="color:ghostwhite;">LeDao的博客</h2></a></div>
+            <div class="clr"></div>
+            <div class="menu_nav">
+                <div class="searchform">
+                    <form id="formsearch" name="formsearch" method="post" action="">
+                        <span><input name="editbox_search"  class="editbox_search" id="editbox_search" maxlength="80" placeholder="在这里输入搜索关键词..." type="text" /></span>
+                        <input name="button_search" th:src="@{/static/images/search_btn.gif}" class="button_search" type="image" />
+                    </form>
+                </div>
+                <ul>
+                    <li class="active"><a href="/">主页</a></li>
+                    <li><a href="support.html">源码下载</a></li>
+                </ul>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

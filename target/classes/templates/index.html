@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="short icon" href="static/images/favicon.ico">
+    <link rel="stylesheet" th:href="@{/static/css/style.css}">
+</head>
+<body>
+<div class="main">
+    <div th:include="common/head::#h"></div>
+    <div th:include="${mainPage}::${mainPageKey}"></div>
+    <div th:include="common/foot::#f"></div>
+</div>
+</body>
+</html>

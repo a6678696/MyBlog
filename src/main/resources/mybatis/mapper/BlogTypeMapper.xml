@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--suppress ALL-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ledao.mapper.BlogTypeMapper">
+    <resultMap id="BlogTypeResult" type="BlogType">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sortNum" column="sortNum"/>
+    </resultMap>
+    <select id="list" parameterType="map" resultMap="BlogTypeResult">
+        select * from t_blogtype
+        <where>
+            <if test="name!=null and name!=''">
+                and name like #{name}
+            </if>
+        </where>
+        order by sortNum asc
+        <if test="start!=null and size!=null">
+            limit #{start},#{size}
+        </if>
+    </select>
+    <select id="getCount" parameterType="map" resultType="java.lang.Long">
+        select count(*) from t_blogtype
+        <where>
+            <if test="name!=null and name!=''">
+                and name like #{name}
+            </if>
+        </where>
+    </select>
+    <insert id="add" parameterType="BlogType">
+        insert into t_blogtype (name, sortNum) values (#{name},#{sortNum});
+    </insert>
+    <update id="update" parameterType="BlogType">
+        update t_blogtype
+        <set>
+            <if test="name != null and name != ''">
+                name=#{name},
+            </if>
+            <if test="sortNum != null">
+                sortNum=#{sortNum},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <delete id="delete" parameterType="integer">
+        delete from t_blogtype where id=#{id}
+    </delete>
+</mapper>

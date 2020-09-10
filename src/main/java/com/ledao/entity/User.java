@@ -1,6 +1,8 @@
 package com.ledao.entity;
 
 /**
+ * 用户实体类
+ *
  * @author LeDao
  * @company
  * @create 2020-09-08 20:23
@@ -20,7 +22,7 @@ public class User {
      */
     private String password;
     /**
-     *昵称
+     * 昵称
      */
     private String nickName;
 

@@ -48,7 +48,7 @@
                 <img alt="logo" src="/static/images/logo.png" style="height: 65px"/>
             </td>
             <td valign="bottom" align="right" width="50%">
-                <span style="font-size: 20px">&nbsp;&nbsp;<strong>欢迎：</strong><span th:text="${#httpServletRequest.remoteUser}" style="color: red"></span></span>
+                <span style="font-size: 20px">&nbsp;&nbsp;<strong>欢迎：</strong><span th:text="${session.currentUserNickName}" style="color: blue"></span></span>
             </td>
         </tr>
     </table>
@@ -57,18 +57,16 @@
 <div region="center">
     <div class="easyui-tabs" fit="true" border="false" id="tabs">
         <div title="首页" data-options="iconCls:'icon-home'">
-            <div align="center" style="padding-top: 100px"><span style="font-size: 50px;color: red">欢迎使用</span></div>
+            <div align="center" style="padding-top: 160px"><span style="font-size: 40px;color: orangered">LeDao博客系统后台首页</span></div>
         </div>
     </div>
 </div>
 
 <div region="west" style="width: 200px" title="导航菜单" split="true">
     <div style="padding-top: 10px;padding-left: 10px;">
-        <a href="javascript:openTab('添加电影信息','addFilm.html','icon-addFilm')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-addFilm'" style="width: 150px;">添加电影信息</a>
-        <a href="javascript:openTab('电影动态管理','infoManage.html','icon-dynamic')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-dynamic'" style="width: 150px;">电影动态管理</a>
-        <a href="javascript:openTab('电影信息管理','filmManage.html','icon-film')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-film'" style="width: 150px;">电影信息管理</a>
-        <a href="javascript:openTab('网址信息管理','webSiteManage.html','icon-website')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-website'" style="width: 150px;">网址信息管理</a>
-        <a href="javascript:openTab('友情链接管理','linkManage.html','icon-link')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-link'" style="width: 150px;">友情链接管理</a>
+        <a href="javascript:openTab('写博客','writeBlog.html','icon-writeBlog')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-writeBlog'" style="width: 150px;">写博客</a>
+        <a href="javascript:openTab('博客类别管理','blogTypeManage.html','icon-blogTypeManage')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-blogTypeManage'" style="width: 150px;">博客类别管理</a>
+        <a href="javascript:openTab('博客管理','blogManege.html','icon-blogManage')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-blogManage'" style="width: 150px;">博客管理</a>
         <a href="javascript:logout()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-exit'" style="width: 150px;float: left">安全退出</a>
     </div>
 </div>

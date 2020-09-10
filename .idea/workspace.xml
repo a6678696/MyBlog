@@ -2,16 +2,88 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fec843a-29ca-4ceb-a0fc-1724b3e235ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/admin/BlogTypeAdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/entity/Blog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/entity/BlogType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/entity/PageBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/mapper/BlogMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/mapper/BlogTypeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/service/BlogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/service/BlogTypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/service/impl/BlogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/service/impl/BlogTypeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/BlogMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/BlogTypeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/blogTypeManage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/blogManage.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/blogTypeManage.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/exit.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/writeBlog.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a0406a24-2d27-4a88-918c-73b18291ea82.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a0406a24-2d27-4a88-918c-73b18291ea82.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/conf/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/conf/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ledao/conf/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ledao/conf/WebSecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/icon.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-11.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-12.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-13.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-15.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-31.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-32.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-33.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-4.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-41.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-45.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-5.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-51.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-5100.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-5101.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-5102.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-53.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-54.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-55.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-56.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-57.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-58.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-59.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-591.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-592.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-593.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-594.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-595.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-596.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-597.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-598.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-599.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-6.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-61.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-62.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-63.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-64.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-65.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-7.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-71.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-72.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-73.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-74.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-744.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-75.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-76.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-77.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-78.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-9.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-91.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-92.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-93.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-94.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/menu-95.gif" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ledao/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ledao/controller/IndexController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ledao/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ledao/entity/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,16 +111,29 @@
         <item name="db_myblog@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="db_myblog@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="db_myblog: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="db_myblog@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="db_myblog: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="t_blog: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="mybatis" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -63,7 +148,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1hEBYkZIC9SWBbjz52LzjmkfUHP" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -82,23 +169,26 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/static/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/static" />
     <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.24252874" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\admin" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.ledao.util" />
       <recent name="com.ledao.conf" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\page" />
+      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\static\jquery-easyui-1.7.0\themes\usericons" />
       <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\static\images" />
       <recent name="F:\idea workspase for Actual combat\MyBlog" />
       <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\static" />
-      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\resources\templates\admin" />
-      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\static\js" />
     </key>
   </component>
   <component name="RunManager">
@@ -137,7 +227,9 @@
       <updated>1599566420104</updated>
       <workItem from="1599566424034" duration="6897000" />
       <workItem from="1599615477386" duration="18672000" />
-      <workItem from="1599654908406" duration="7124000" />
+      <workItem from="1599654908406" duration="7740000" />
+      <workItem from="1599741959444" duration="11485000" />
+      <workItem from="1599755150751" duration="625000" />
     </task>
     <task id="LOCAL-00001" summary="MyBlog">
       <created>1599655527421</created>
@@ -153,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599659298573</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="MyBlog">
+      <created>1599665295184</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1599665295184</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,85 +267,89 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1599572416733" />
-    <state x="563" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1599621172947">
+    <state x="563" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1599755706735">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="563" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1599621172947" />
+    <state x="563" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1599755706735" />
     <state x="557" y="319" key="#com.intellij.javaee.module.view.web.EditWebRootDialog" timestamp="1599571358629">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="557" y="319" key="#com.intellij.javaee.module.view.web.EditWebRootDialog/0.0.1536.824@0.0.1536.824" timestamp="1599571358629" />
-    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1599659296975">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1599742809662">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1599659296975" />
-    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1599661615438">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1599742809662" />
+    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1599665293474">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1599661615438" />
-    <state width="1493" height="225" key="GridCell.Tab.0.bottom" timestamp="1599665265568">
+    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1599665293474" />
+    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1599755580822">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599665265568" />
-    <state width="1493" height="225" key="GridCell.Tab.0.center" timestamp="1599665265568">
+    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1599755580822" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1599755124705">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1599665265568" />
-    <state width="1493" height="225" key="GridCell.Tab.0.left" timestamp="1599665265568">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599755124705" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1599755124705">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1599665265568" />
-    <state width="1493" height="225" key="GridCell.Tab.0.right" timestamp="1599665265568">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1599755124705" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1599755124705">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1599665265568" />
-    <state width="1493" height="225" key="GridCell.Tab.1.bottom" timestamp="1599665265578">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1599755124705" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1599755124705">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599665265578" />
-    <state width="1493" height="225" key="GridCell.Tab.1.center" timestamp="1599665265568">
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1599755124705" />
+    <state width="1493" height="210" key="GridCell.Tab.1.bottom" timestamp="1599755124705">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1599665265568" />
-    <state width="1493" height="225" key="GridCell.Tab.1.left" timestamp="1599665265568">
+    <state width="1493" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599755124705" />
+    <state width="1493" height="210" key="GridCell.Tab.1.center" timestamp="1599755124705">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1599665265568" />
-    <state width="1493" height="225" key="GridCell.Tab.1.right" timestamp="1599665265578">
+    <state width="1493" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1599755124705" />
+    <state width="1493" height="210" key="GridCell.Tab.1.left" timestamp="1599755124705">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1599665265578" />
-    <state width="1493" height="225" key="GridCell.Tab.2.bottom" timestamp="1599665265578">
+    <state width="1493" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1599755124705" />
+    <state width="1493" height="210" key="GridCell.Tab.1.right" timestamp="1599755124705">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599665265578" />
-    <state width="1493" height="225" key="GridCell.Tab.2.center" timestamp="1599665265578">
+    <state width="1493" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1599755124705" />
+    <state width="1493" height="225" key="GridCell.Tab.2.bottom" timestamp="1599755124705">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1599665265578" />
-    <state width="1493" height="225" key="GridCell.Tab.2.left" timestamp="1599665265578">
+    <state width="1493" height="225" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599755124705" />
+    <state width="1493" height="225" key="GridCell.Tab.2.center" timestamp="1599755124705">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1599665265578" />
-    <state width="1493" height="225" key="GridCell.Tab.2.right" timestamp="1599665265578">
+    <state width="1493" height="225" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1599755124705" />
+    <state width="1493" height="225" key="GridCell.Tab.2.left" timestamp="1599755124705">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1599665265578" />
+    <state width="1493" height="225" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1599755124705" />
+    <state width="1493" height="225" key="GridCell.Tab.2.right" timestamp="1599755124705">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="225" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1599755124705" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1599655901254">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1599655901254" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1599659300088">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1599665296594">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1599659300088" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1599665296594" />
     <state x="447" y="145" width="642" height="534" key="find.popup" timestamp="1599571866312">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="447" y="145" width="642" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1599571866312" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1599664949263">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1599750456364">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1599664949263" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1599750456364" />
   </component>
 </project>

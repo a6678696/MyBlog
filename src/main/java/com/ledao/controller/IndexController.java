@@ -1,5 +1,7 @@
 package com.ledao.controller;
 
+import com.ledao.entity.User;
+import com.ledao.service.UserService;
 import com.ledao.util.StringUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,6 +23,9 @@ import java.util.Map;
  */
 @Controller
 public class IndexController {
+
+    @Resource
+    private UserService userService;
 
     /**
      * 首页地址
@@ -42,16 +48,9 @@ public class IndexController {
      * @return
      */
     @RequestMapping("/login")
-    public Object login(String imageCode, HttpSession session) {
-        Map<String, Object> resultMap = new HashMap<>(16);
-        String checkCode = (String) session.getAttribute("checkCode");
-        if (StringUtil.isNotEmpty(checkCode)) {
-            if (!checkCode.equals(imageCode)) {
-                resultMap.put("successLogin", false);
-                resultMap.put("errorInfo", "验证码不正确,请重新输入!");
-                return resultMap;
-            }
-        }
+    public Object login(HttpSession session) {
+        User user = userService.findByUserName("admin");
+        session.setAttribute("currentUserNickName",user.getNickName());
         return "/login";
     }
 

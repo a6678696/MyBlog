@@ -47,4 +47,8 @@ public class BlogTypeServiceImpl implements BlogTypeService {
         return blogTypeMapper.delete(id);
     }
 
+    @Override
+    public List<BlogType> findByName(String name) {
+        return blogTypeMapper.findByName(name);
+    }
 }

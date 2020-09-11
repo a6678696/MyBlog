@@ -129,5 +129,6 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-security:2.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:5.2.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.8.3" level="project" />
   </component>
 </module>

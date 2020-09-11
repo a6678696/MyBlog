@@ -53,4 +53,12 @@ public interface BlogTypeService {
      * @return
      */
     Integer delete(Integer id);
+
+    /**
+     * 根据名称查找博客类别
+     *
+     * @param name
+     * @return
+     */
+    List<BlogType> findByName(String name);
 }

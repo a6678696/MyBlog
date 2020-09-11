@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress ALL-->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -9,39 +10,41 @@
     <div class="content">
         <div class="content_resize">
             <div class="mainbar">
-                <div class="article">
-                    <h3>第一个Java程序</h3><div class="clr"></div>
-                    <p class="infopost"> <span class="date"> 发布日期: 2020-8-23 13:16:22</span>&nbsp;|&nbsp; 阅读次数: 1 &nbsp;|&nbsp; 所属类别: Java基础 </p>
-                    <img th:src="@{/static/images/img1.jpg}" width="201" height="146" alt="image" class="fl" />
-                    <p>This is a free CSS website template by CoolWebTemplates. This
-                        work is distributed under the Creative Commons Attribution 3.0 License,
-                        which means that you are free to use it for any personal or commercial purpose provided you credit me in the form of a link back to <a href="https://www.webmoban.net" title="网站模板">网站模板</a>.</p>
-                    <p>Aenean consequat porttitor adipiscing. Nam pellentesque justo ut tortor congue lobortis. Donec venenatis sagittis fringilla. Etiam nec libero magna, et dictum velit. Proin mauris mauris, mattis eu elementum eget, commodo in nulla. Mauris posuere venenatis pretium. Maecenas a dui sed lorem aliquam dictum. Nunc urna leo, imperdiet eu bibendum ac, pretium ac massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisi. Quisque condimentum luctus ullamcorper.</p>
-                    <p class="spec"><a href="#" class="com">查看详情 &raquo;</a></p>
+                <div class="article" th:each="blog:${blogList}">
+                    <h3 th:text="${blog.title}"></h3>
+                    <div class="clr"></div>
+                    <p class="infopost"><span class="date"
+                                              th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span>&nbsp;|&nbsp;<span
+                            th:text="' 阅读次数: '+${blog.click}+' '"></span>&nbsp;|&nbsp; 所属类别: Java基础 </p>
+                    <img th:src="@{${blog.imageName}}" th:if="${blog.imageName!=null}" width="201" height="146" alt="image" class="fl"/>
+                    <p th:text="${blog.summary}"></p>
+                    <p class="spec" style="clear: both;"><a href="#" class="com">查看详情 &raquo;</a></p>
                 </div>
-                <p class="pages" style="text-align: center"><a href="#">&laquo;</a> <span>1</span> <a href="#">2</a><a href="#">&raquo;</a></p>
+                <p class="pages" style="text-align: center"><a href="#">&laquo;</a> <span>1</span> <a href="#">2</a><a
+                        href="#">&raquo;</a></p>
             </div>
             <div class="sidebar">
                 <div class="gadget">
-                    <h3 class="star"><span>按类别分类</span></h3><div class="clr"></div>
-                    <ul class="sb_menu">
-                        <li><a href="#">java基础(2)</a></li>
-                        <li><a href="#">TemplateInfo</a></li>
-                        <li><a href="#">Style Demo</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Archives</a></li>
-                        <li><a href="#">Web Templates</a></li>
+                    <h3 class="star"><span>按类别分类</span></h3>
+                    <div class="clr"></div>
+                    <ul class="sb_menu" th:each="blogType:${blogTypeList}">
+                        <li><a href="#" th:text="${blogType.name}"></a></li>
                     </ul>
                 </div>
                 <div class="gadget">
-                    <h3 class="star"><span>按日期分类</span></h3><div class="clr"></div>
+                    <h3 class="star"><span>按日期分类</span></h3>
+                    <div class="clr"></div>
                     <ul class="ex_menu">
-                        <li><a href="#" title="Website Templates">DreamTemplate</a><br />Over 6,000+ Premium Web Templates</li>
-                        <li><a href="#">TemplateSOLD</a><br />Premium WordPress &amp; Joomla Themes</li>
-                        <li><a href="#" title="Affordable Hosting">ImHosted.com</a><br />Affordable Web Hosting Provider</li>
-                        <li><a href="#" title="Stock Icons">MyVectorStore</a><br />Royalty Free Stock Icons</li>
-                        <li><a href="#" title="Website Builder">Evrsoft</a><br />Website Builder Software &amp; Tools</li>
-                        <li><a href="#" title="CSS Templates">CSS Hub</a><br />Premium CSS Templates</li>
+                        <li><a href="#" title="Website Templates">DreamTemplate</a><br/>Over 6,000+ Premium Web
+                            Templates
+                        </li>
+                        <li><a href="#">TemplateSOLD</a><br/>Premium WordPress &amp; Joomla Themes</li>
+                        <li><a href="#" title="Affordable Hosting">ImHosted.com</a><br/>Affordable Web Hosting Provider
+                        </li>
+                        <li><a href="#" title="Stock Icons">MyVectorStore</a><br/>Royalty Free Stock Icons</li>
+                        <li><a href="#" title="Website Builder">Evrsoft</a><br/>Website Builder Software &amp; Tools
+                        </li>
+                        <li><a href="#" title="CSS Templates">CSS Hub</a><br/>Premium CSS Templates</li>
                     </ul>
                 </div>
             </div>

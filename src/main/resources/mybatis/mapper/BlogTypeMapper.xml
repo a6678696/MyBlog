@@ -45,4 +45,12 @@
     <delete id="delete" parameterType="integer">
         delete from t_blogtype where id=#{id}
     </delete>
+    <select id="findByName" parameterType="string" resultMap="BlogTypeResult">
+        select * from t_blogtype
+        <where>
+            <if test="_parameter != null and _parameter != ''">
+                and name like #{name}
+            </if>
+        </where>
+    </select>
 </mapper>

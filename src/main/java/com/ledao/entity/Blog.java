@@ -1,6 +1,8 @@
 package com.ledao.entity;
 
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 博客实体
@@ -39,6 +41,10 @@ public class Blog {
      * 博客类别id
      */
     private Integer blogTypeId;
+    /**
+     * 博客里存在的第一张图片，主要用于列表展示的缩略图
+     */
+    private String imageName;
 
     public Integer getId() {
         return id;
@@ -96,6 +102,14 @@ public class Blog {
         this.blogTypeId = blogTypeId;
     }
 
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
     @Override
     public String toString() {
         return "Blog{" +
@@ -106,6 +120,7 @@ public class Blog {
                 ", releaseDate=" + releaseDate +
                 ", click=" + click +
                 ", blogTypeId=" + blogTypeId +
+                ", imageName='" + imageName + '\'' +
                 '}';
     }
 }

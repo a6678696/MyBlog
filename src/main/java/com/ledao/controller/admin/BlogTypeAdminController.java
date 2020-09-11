@@ -28,6 +28,20 @@ public class BlogTypeAdminController {
     private BlogTypeService blogTypeService;
 
     /**
+     * 下拉框模糊查询
+     *
+     * @param q
+     * @return
+     */
+    @RequestMapping("/comboList")
+    public List<BlogType> comboList(String q) {
+        if (q == null) {
+            q = "";
+        }
+        return blogTypeService.findByName(StringUtil.formatLike(q));
+    }
+
+    /**
      * 分页分条件查询博客类别
      *
      * @param blogType

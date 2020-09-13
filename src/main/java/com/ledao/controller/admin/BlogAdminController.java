@@ -70,7 +70,7 @@ public class BlogAdminController {
         int key;
         if (blog.getId() == null) {
             String summary=StripHT(blog.getContent());
-            blog.setSummary(summary);
+            blog.setSummary(summary.substring(0,600));
             key = blogService.add(blog);
         } else {
             String summary=StripHT(blog.getContent());

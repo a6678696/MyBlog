@@ -61,4 +61,10 @@
     <select id="findById" parameterType="integer" resultMap="BlogResult">
         select * from t_blog where id=#{id}
     </select>
+    <select id="countList" resultMap="BlogResult">
+        select date_format(releaseDate, '%Y年%m月') as releaseDateStr, count(*) as blogCount
+        from t_blog
+        group by date_format(releaseDate, '%Y年%m月')
+        order by date_format(releaseDate, '%Y年%m月') desc
+    </select>
 </mapper>

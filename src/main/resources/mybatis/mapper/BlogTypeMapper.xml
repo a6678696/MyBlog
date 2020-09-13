@@ -53,4 +53,10 @@
             </if>
         </where>
     </select>
+    <select id="findById" parameterType="integer" resultMap="BlogTypeResult">
+        select * from t_blogtype where id=#{id}
+    </select>
+    <select id="getBlogNumThisType" parameterType="integer" resultType="java.lang.Long">
+        select count(*) from t_blog where blogTypeId=#{id}
+    </select>
 </mapper>

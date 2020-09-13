@@ -51,4 +51,9 @@ public class BlogServiceImpl implements BlogService {
     public Blog findById(Integer id) {
         return blogMapper.findById(id);
     }
+
+    @Override
+    public List<Blog> countList() {
+        return blogMapper.countList();
+    }
 }

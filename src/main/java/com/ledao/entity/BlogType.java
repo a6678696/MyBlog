@@ -21,6 +21,10 @@ public class BlogType {
      * 排列数字
      */
     private Integer sortNum;
+    /**
+     * 该类别的博客数量
+     */
+    private Long blogNum;
 
     public Integer getId() {
         return id;
@@ -46,12 +50,21 @@ public class BlogType {
         this.sortNum = sortNum;
     }
 
+    public Long getBlogNum() {
+        return blogNum;
+    }
+
+    public void setBlogNum(Long blogNum) {
+        this.blogNum = blogNum;
+    }
+
     @Override
     public String toString() {
         return "BlogType{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", sortNum=" + sortNum +
+                ", blogNum=" + blogNum +
                 '}';
     }
 }

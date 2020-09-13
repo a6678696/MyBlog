@@ -61,4 +61,11 @@ public interface BlogService {
      * @return
      */
     Blog findById(Integer id);
+
+    /**
+     * 根据日期分月分组查询
+     *
+     * @return
+     */
+    List<Blog> countList();
 }

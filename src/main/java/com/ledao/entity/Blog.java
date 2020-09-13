@@ -42,9 +42,21 @@ public class Blog {
      */
     private Integer blogTypeId;
     /**
+     * 博客类别
+     */
+    private BlogType blogType;
+    /**
      * 博客里存在的第一张图片，主要用于列表展示的缩略图
      */
     private String imageName;
+    /**
+     * 博客数量 非博客实际属性 主要是 根据发布日期归档查询数量用到
+     */
+    private Integer blogCount;
+    /**
+     * 发布日期的字符串 只取年和月
+     */
+    private String releaseDateStr;
 
     public Integer getId() {
         return id;
@@ -110,6 +122,30 @@ public class Blog {
         this.imageName = imageName;
     }
 
+    public BlogType getBlogType() {
+        return blogType;
+    }
+
+    public void setBlogType(BlogType blogType) {
+        this.blogType = blogType;
+    }
+
+    public Integer getBlogCount() {
+        return blogCount;
+    }
+
+    public void setBlogCount(Integer blogCount) {
+        this.blogCount = blogCount;
+    }
+
+    public String getReleaseDateStr() {
+        return releaseDateStr;
+    }
+
+    public void setReleaseDateStr(String releaseDateStr) {
+        this.releaseDateStr = releaseDateStr;
+    }
+
     @Override
     public String toString() {
         return "Blog{" +
@@ -120,7 +156,10 @@ public class Blog {
                 ", releaseDate=" + releaseDate +
                 ", click=" + click +
                 ", blogTypeId=" + blogTypeId +
+                ", blogType=" + blogType +
                 ", imageName='" + imageName + '\'' +
+                ", blogCount=" + blogCount +
+                ", releaseDateStr='" + releaseDateStr + '\'' +
                 '}';
     }
 }

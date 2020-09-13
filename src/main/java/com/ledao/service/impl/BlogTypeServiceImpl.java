@@ -2,6 +2,7 @@ package com.ledao.service.impl;
 
 import com.ledao.entity.BlogType;
 import com.ledao.mapper.BlogTypeMapper;
+import com.ledao.service.BlogService;
 import com.ledao.service.BlogTypeService;
 import org.springframework.stereotype.Service;
 
@@ -50,5 +51,15 @@ public class BlogTypeServiceImpl implements BlogTypeService {
     @Override
     public List<BlogType> findByName(String name) {
         return blogTypeMapper.findByName(name);
+    }
+
+    @Override
+    public BlogType findById(Integer id) {
+        return blogTypeMapper.findById(id);
+    }
+
+    @Override
+    public Long getBlogNumThisType(Integer id) {
+        return blogTypeMapper.getBlogNumThisType(id);
     }
 }

@@ -58,7 +58,7 @@ public class IndexController {
             Document document = Jsoup.parse(blogInfo);
             //提出.jpg图片
             Elements jpgs = document.select("img[src$=.jpg]");
-            //提取一个博客里的三张图片
+            //提取一个博客里的一张图片
             if (jpgs.size()!=0) {
                 for (int i = 0; i < 1; i++) {
                     Element jpg = jpgs.get(i);
@@ -69,10 +69,18 @@ public class IndexController {
                 int last = blog.getImageName().indexOf(".jpg");
                 blog.setImageName( blog.getImageName().substring(begin, last) + ".jpg");
             }
+            blog.setSummary(blog.getSummary().replace("&quot;","\""));
+            blog.setSummary(blog.getSummary().replace("&#39;","\'"));
+            blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
         }
         List<BlogType> blogTypeList = blogTypeService.list(null);
+        for (BlogType blogType : blogTypeList) {
+            blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
+        }
+        List<Blog> blogCountList=blogService.countList();
         mav.addObject("blogList", blogList);
         mav.addObject("blogTypeList", blogTypeList);
+        mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "首页--LeDao的博客");
         mav.addObject("mainPage", "page/indexFirst");
         mav.addObject("mainPageKey", "#b");

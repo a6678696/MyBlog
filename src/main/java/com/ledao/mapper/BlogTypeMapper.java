@@ -61,4 +61,20 @@ public interface BlogTypeMapper {
      * @return
      */
     List<BlogType> findByName(String name);
+
+    /**
+     * 根据id查找博客类别
+     *
+     * @param id
+     * @return
+     */
+    BlogType findById(Integer id);
+
+    /**
+     * 根据id获取该类别的博客数量
+     *
+     * @param id
+     * @return
+     */
+    Long getBlogNumThisType(Integer id);
 }

@@ -69,11 +69,10 @@ public class BlogAdminController {
         Map<String, Object> resultMap = new HashMap<>(16);
         int key;
         if (blog.getId() == null) {
-            String summary=StripHT(blog.getContent());
-            blog.setSummary(summary.substring(0,600));
+            blog.setSummary(StripHT(blog.getContent()).substring(0, 600));
             key = blogService.add(blog);
         } else {
-            String summary=StripHT(blog.getContent());
+            String summary = StripHT(blog.getContent());
             blog.setSummary(summary);
             key = blogService.update(blog);
         }
@@ -111,6 +110,12 @@ public class BlogAdminController {
         return sb.toString();
     }
 
+    /**
+     * 获得纯文本
+     *
+     * @param strHtml
+     * @return
+     */
     public static String StripHT(String strHtml) {
         //剔出<html>的标签
         String txtcontent = strHtml.replaceAll("</?[^>]+>", "");

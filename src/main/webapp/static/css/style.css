@@ -3,6 +3,11 @@
 Design by http://www.templateaccess.com
 Released for free under a Creative Commons Attribution 3.0 License
 */
+img {
+    max-width: 90%;
+    height: auto;
+}
+
 body {
     margin: 0;
     padding: 0;

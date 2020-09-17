@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="b">
+    <div class="main">
+        <div class="content">
+            <div class="content_resize">
+                <div class="mainbar">
+                    <h2 style="text-align: center">源码下载地址</h2>
+                    <p style="margin-left: 10%">GitHub地址:<a href="https://github.com/a6678696/MyBlog">https://github.com/a6678696/MyBlog</a></p>
+                </div>
+                <div class="sidebar">
+                    <div class="gadget">
+                        <h3 class="star"><span>按类别分类</span></h3>
+                        <div class="clr"></div>
+                        <ul class="sb_menu" th:each="blogType:${blogTypeList}">
+                            <li><a th:href="${'/list/1?blogTypeId='+blogType.id}" th:text="${blogType.name}+'('+${blogType.blogNum}+')'"></a></li>
+                        </ul>
+                    </div>
+                    <div class="gadget">
+                        <h3 class="star"><span>按日期分类</span></h3>
+                        <div class="clr"></div>
+                        <ul class="ex_menu" th:each="blogCount:${blogCountList}">
+                            <li><a th:href="${'/list/1?releaseDateStr='+blogCount.releaseDateStr}" th:text="${blogCount.releaseDateStr+'('+blogCount.blogCount+')'}"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clr"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

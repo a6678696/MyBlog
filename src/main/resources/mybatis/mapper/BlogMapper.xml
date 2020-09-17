@@ -17,6 +17,12 @@
             <if test="title!=null and title!=''">
                 and title like #{title}
             </if>
+            <if test="blogTypeId!=null and blogTypeId!=''">
+                and blogTypeId=#{blogTypeId}
+            </if>
+            <if test="releaseDateStr!=null and releaseDateStr!=''">
+                and date_format(releaseDate,'%Y年%m月')=#{releaseDateStr}
+            </if>
         </where>
         order by releaseDate desc
         <if test="start!=null and size!=null">
@@ -28,6 +34,12 @@
         <where>
             <if test="title!=null and title!=''">
                 and title like #{title}
+            </if>
+            <if test="blogTypeId!=null and blogTypeId!=''">
+                and blogTypeId=#{blogTypeId}
+            </if>
+            <if test="releaseDateStr!=null and releaseDateStr!=''">
+                and date_format(releaseDate,'%Y年%m月')=#{releaseDateStr}
             </if>
         </where>
     </select>

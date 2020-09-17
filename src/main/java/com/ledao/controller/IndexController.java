@@ -6,6 +6,7 @@ import com.ledao.entity.User;
 import com.ledao.service.BlogService;
 import com.ledao.service.BlogTypeService;
 import com.ledao.service.UserService;
+import com.ledao.util.PageUtil;
 import com.ledao.util.StringUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,7 +14,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -47,10 +50,17 @@ public class IndexController {
      *
      * @return
      */
-    @RequestMapping("/")
-    public ModelAndView root() {
+    @RequestMapping("/list/{id}")
+    public ModelAndView root(@PathVariable(value = "id", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr) {
         ModelAndView mav = new ModelAndView();
-        List<Blog> blogList = blogService.list(null);
+        Map<String,Object> map=new HashMap<>(16);
+        int pageSize = 6;
+        map.put("start", (page - 1) * pageSize);
+        map.put("size", pageSize);
+        map.put("blogTypeId", blogTypeId);
+        map.put("releaseDateStr", releaseDateStr);
+        Long total = blogService.getCount(map);
+        List<Blog> blogList = blogService.list(map);
         for (Blog blog : blogList) {
             //博客里的内容
             String blogInfo = blog.getContent();
@@ -82,8 +92,31 @@ public class IndexController {
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "首页--LeDao的博客");
+        mav.addObject("pageCode", PageUtil.genPagination("/list", total, page, pageSize));
         mav.addObject("mainPage", "page/indexFirst");
         mav.addObject("mainPageKey", "#b");
+        mav.setViewName("index");
+        return mav;
+    }
+
+    /**
+     * 源码下载
+     *
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/download")
+    public ModelAndView download() throws Exception {
+        ModelAndView mav = new ModelAndView();
+        List<BlogType> blogTypeList = blogTypeService.list(null);
+        for (BlogType blogType : blogTypeList) {
+            blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
+        }
+        List<Blog> blogCountList=blogService.countList();
+        mav.addObject("blogTypeList", blogTypeList);
+        mav.addObject("blogCountList", blogCountList);
+        mav.addObject("title", "本站源码下载");
+        mav.addObject("mainPage", "page/download");
         mav.setViewName("index");
         return mav;
     }

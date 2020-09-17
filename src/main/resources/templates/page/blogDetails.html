@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="b">
+    <div class="main">
+        <div class="content">
+            <div class="content_resize">
+                <div class="mainbar">
+                    <div class="article">
+                        <h2 th:text="${blog.title}" style="text-align: center"></h2><div class="clr"></div>
+                        <p class="infopost" style="text-align: center"><span class="date"
+                                                  th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span>&nbsp;|&nbsp;<span
+                                th:text="' 阅读次数: '+${blog.click}+' '"></span>&nbsp;|&nbsp; 所属类别: <span th:text="${blog.blogType.name}"></span> </p>
+                        <span style="color: black" th:utext="${blog.content}"></span>
+                    </div>
+                </div>
+                <div class="sidebar">
+                    <div class="gadget">
+                        <h3 class="star"><span>按类别分类</span></h3>
+                        <div class="clr"></div>
+                        <ul class="sb_menu" th:each="blogType:${blogTypeList}">
+                            <li><a th:href="${'/list/1?blogTypeId='+blogType.id}" th:text="${blogType.name}+'('+${blogType.blogNum}+')'"></a></li>
+                        </ul>
+                    </div>
+                    <div class="gadget">
+                        <h3 class="star"><span>按日期分类</span></h3>
+                        <div class="clr"></div>
+                        <ul class="ex_menu" th:each="blogCount:${blogCountList}">
+                            <li><a th:href="${'/list/1?releaseDateStr='+blogCount.releaseDateStr}" th:text="${blogCount.releaseDateStr+'('+blogCount.blogCount+')'}"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clr"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

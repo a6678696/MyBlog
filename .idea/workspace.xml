@@ -2,23 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fec843a-29ca-4ceb-a0fc-1724b3e235ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20200913232443.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/BlogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/util/PageUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/page/blogDetails.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/page/download.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/conf/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/conf/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/admin/BlogAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/admin/BlogAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/entity/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/entity/Blog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/entity/BlogType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/entity/BlogType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/mapper/BlogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/mapper/BlogMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/mapper/BlogTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/mapper/BlogTypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/service/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/service/BlogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/service/BlogTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/service/BlogTypeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/service/impl/BlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/service/impl/BlogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/service/impl/BlogTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/service/impl/BlogTypeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/BlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/BlogMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/BlogTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/BlogTypeMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/common/head.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page/indexFirst.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page/indexFirst.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ledao/conf/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ledao/conf/WebSecurityConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ledao/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ledao/controller/IndexController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/common/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/common/head.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/page/indexFirst.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/page/indexFirst.html" afterDir="false" />
     </list>
@@ -67,10 +66,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="mybatis" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -114,19 +113,19 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\admin" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.ledao.util" />
-      <recent name="com.ledao.conf" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\admin" />
       <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\static" />
       <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\page" />
       <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\static\jquery-easyui-1.7.0\themes\usericons" />
       <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\static\images" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ledao.util" />
+      <recent name="com.ledao.conf" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\admin" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.MyblogApplication">
@@ -172,7 +171,7 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:db_myblog@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@7fae263" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@33f832dc" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
             <select />
@@ -198,7 +197,8 @@
       <workItem from="1599755150751" duration="765000" />
       <workItem from="1599755935858" duration="278000" />
       <workItem from="1599833628505" duration="10502000" />
-      <workItem from="1600005115559" duration="7824000" />
+      <workItem from="1600005115559" duration="8347000" />
+      <workItem from="1600343043173" duration="12375000" />
     </task>
     <task id="LOCAL-00001" summary="MyBlog">
       <created>1599655527421</created>
@@ -235,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599844204862</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="LeDao的博客">
+      <created>1600013370749</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1600013370749</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,81 +271,81 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1599742809662" />
-    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1599844194342">
+    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1600013367889">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1599844194342" />
+    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1600013367889" />
     <state width="635" height="438" key="DebuggerActiveHint" timestamp="1599840779929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="635" height="438" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1599840779929" />
-    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1600007498084">
+    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1600344452693">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1600007498084" />
-    <state width="1024" height="210" key="GridCell.Tab.0.bottom" timestamp="1600012103715">
+    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1600344452693" />
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1600360299929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600012103715" />
-    <state width="1024" height="210" key="GridCell.Tab.0.center" timestamp="1600012103715">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600360299929" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1600360299929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1600012103715" />
-    <state width="1024" height="210" key="GridCell.Tab.0.left" timestamp="1600012103715">
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1600360299929" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1600360299929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1600012103715" />
-    <state width="1024" height="210" key="GridCell.Tab.0.right" timestamp="1600012103715">
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1600360299929" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1600360299929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1600012103715" />
-    <state width="1493" height="224" key="GridCell.Tab.1.bottom" timestamp="1600011095843">
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1600360299929" />
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1600360299929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="224" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600011095843" />
-    <state width="1493" height="224" key="GridCell.Tab.1.center" timestamp="1600011095843">
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600360299929" />
+    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1600360299929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="224" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1600011095843" />
-    <state width="1493" height="224" key="GridCell.Tab.1.left" timestamp="1600011095843">
+    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1600360299929" />
+    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1600360299929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="224" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1600011095843" />
-    <state width="1493" height="224" key="GridCell.Tab.1.right" timestamp="1600011095843">
+    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1600360299929" />
+    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1600360299929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="224" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1600011095843" />
-    <state width="1493" height="224" key="GridCell.Tab.2.bottom" timestamp="1600011095843">
+    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1600360299929" />
+    <state width="1493" height="223" key="GridCell.Tab.2.bottom" timestamp="1600360299929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="224" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600011095843" />
-    <state width="1493" height="224" key="GridCell.Tab.2.center" timestamp="1600011095843">
+    <state width="1493" height="223" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600360299929" />
+    <state width="1493" height="223" key="GridCell.Tab.2.center" timestamp="1600360299929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="224" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1600011095843" />
-    <state width="1493" height="224" key="GridCell.Tab.2.left" timestamp="1600011095843">
+    <state width="1493" height="223" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1600360299929" />
+    <state width="1493" height="223" key="GridCell.Tab.2.left" timestamp="1600360299929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="224" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1600011095843" />
-    <state width="1493" height="224" key="GridCell.Tab.2.right" timestamp="1600011095843">
+    <state width="1493" height="223" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1600360299929" />
+    <state width="1493" height="223" key="GridCell.Tab.2.right" timestamp="1600360299929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="224" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1600011095843" />
+    <state width="1493" height="223" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1600360299929" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1599836162122">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1599836162122" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1599844298907">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1600013840229">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1599844298907" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1600013840229" />
     <state x="447" y="145" width="642" height="534" key="find.popup" timestamp="1600012102206">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="447" y="145" width="642" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1600012102206" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1600012111961">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1600358913491">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600012111961" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600358913491" />
   </component>
 </project>

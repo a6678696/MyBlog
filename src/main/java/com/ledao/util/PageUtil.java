@@ -18,7 +18,7 @@ public class PageUtil {
      * @param pageSize    每页大小
      * @return
      */
-    public static String genPagination(String targetUrl, long totalNum, int currentPage, int pageSize) {
+    public static String genPagination(String targetUrl, long totalNum, int currentPage, int pageSize, String param) {
         //当前页前后页的显示数量
         int pageTotal = 2;
         long totalPage = totalNum % pageSize == 0 ? totalNum / pageSize : totalNum / pageSize + 1;
@@ -26,9 +26,9 @@ public class PageUtil {
             return "未查询到数据";
         } else {
             StringBuffer pageCode = new StringBuffer();
-            pageCode.append("<a href='" + targetUrl + "/1'>首页</a>");
+            pageCode.append("<a href='" + targetUrl + "?page=1" + param + "'>首页</a>");
             if (currentPage > 1) {
-                pageCode.append("<a href='" + targetUrl + "/" + (currentPage - 1) + "'>«</a>");
+                pageCode.append("<a href='" + targetUrl + "?page=" + (currentPage - 1) + param + "'>«</a>");
             } else {
                 pageCode.append("<a>«</a>");
             }
@@ -39,15 +39,15 @@ public class PageUtil {
                 if (i == currentPage) {
                     pageCode.append("<span>" + i + "</span>");
                 } else {
-                    pageCode.append("<a href='" + targetUrl + "/" + i + "'>" + i + "</a>");
+                    pageCode.append("<a href='" + targetUrl + "?page=" + i + param + "'>" + i + "</a>");
                 }
             }
             if (currentPage < totalPage) {
-                pageCode.append("<a href='" + targetUrl + "/" + (currentPage + 1) + "'>»</a>");
+                pageCode.append("<a href='" + targetUrl + "?page=" + (currentPage + 1) + param + "'>»</a>");
             } else {
                 pageCode.append("<a>»</a>");
             }
-            pageCode.append("<a href='" + targetUrl + "/" + totalPage + "'>尾页</a>");
+            pageCode.append("<a href='" + targetUrl + "?page=" + totalPage + param + "'>尾页</a>");
             return pageCode.toString();
         }
     }

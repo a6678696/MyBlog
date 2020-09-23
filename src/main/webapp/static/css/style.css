@@ -3,6 +3,14 @@
 Design by http://www.templateaccess.com
 Released for free under a Creative Commons Attribution 3.0 License
 */
+
+ul li {
+
+    display: inline;
+    list-style-type: none;
+    padding: 5px 5px;
+}
+
 img {
     max-width: 90%;
     height: auto;

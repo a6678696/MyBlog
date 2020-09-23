@@ -50,11 +50,14 @@ public class IndexController {
      *
      * @return
      */
-    @RequestMapping("/list/{id}")
-    public ModelAndView root(@PathVariable(value = "id", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr) {
+    @RequestMapping("/index")
+    public ModelAndView root(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr) {
         ModelAndView mav = new ModelAndView();
         Map<String,Object> map=new HashMap<>(16);
-        int pageSize = 6;
+        if (page == null) {
+            page = 1;
+        }
+        int pageSize = 3;
         map.put("start", (page - 1) * pageSize);
         map.put("size", pageSize);
         map.put("blogTypeId", blogTypeId);
@@ -88,11 +91,18 @@ public class IndexController {
             blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
         }
         List<Blog> blogCountList=blogService.countList();
+        StringBuffer param = new StringBuffer();
+        if (StringUtil.isNotEmpty(blogTypeId)) {
+            param.append("&blogTypeId=" + blogTypeId);
+        }
+        if (StringUtil.isNotEmpty(releaseDateStr)) {
+            param.append("&releaseDateStr=" + releaseDateStr);
+        }
         mav.addObject("blogList", blogList);
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "首页--LeDao的博客");
-        mav.addObject("pageCode", PageUtil.genPagination("/list", total, page, pageSize));
+        mav.addObject("pageCode", PageUtil.genPagination("/index", total, page, pageSize,param.toString()));
         mav.addObject("mainPage", "page/indexFirst");
         mav.addObject("mainPageKey", "#b");
         mav.setViewName("index");

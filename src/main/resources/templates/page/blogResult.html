@@ -10,19 +10,18 @@
     <div class="content">
         <div class="content_resize">
             <div class="mainbar">
-                <div class="article" th:each="blog:${blogList}">
+                <span style="margin-left: 6%">搜索&nbsp;<span style="color:red;" th:text="${q}"></span>&nbsp;的结果&nbsp;(总共搜到&nbsp;<span
+                        style="color: red" th:text="${resultTotal}"></span>&nbsp;条记录)</span>
+                <div class="article" th:each="blog:${blogList}" th:if="${resultTotal>0}">
                     <span>-------------------------------------------------------------------------------------------------------------------------------------------------------</span>
                     <a th:href="'/blog/'+${blog.getId()}" style="text-decoration: none"><h3
-                            th:text="${blog.title}"></h3></a>
+                            th:utext="${blog.title}"></h3></a>
                     <div class="clr"></div>
                     <p class="infopost"><span class="date"
                                               th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span>&nbsp;|&nbsp;<span
                             th:text="' 阅读次数: '+${blog.click}+' '"></span>&nbsp;|&nbsp; 所属类别: <span
                             th:text="${blog.blogType.name}"></span></p>
-                    <a th:href="'/blog/'+${blog.getId()}"><img th:src="@{${blog.imageName}}"
-                                                               th:if="${blog.imageName!=null}" width="201" height="146"
-                                                               alt="image" class="fl"/></a>
-                    <p th:text="${#strings.abbreviate(blog.summary,600)}"></p>
+                    <p th:utext="${#strings.abbreviate(blog.content,600)}"></p>
                     <p class="spec" style="clear: both;"><a th:href="'/blog/'+${blog.getId()}" class="com">查看详情
                         &raquo;</a></p>
                 </div>

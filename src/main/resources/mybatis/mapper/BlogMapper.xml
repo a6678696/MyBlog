@@ -17,7 +17,7 @@
             <if test="title!=null and title!=''">
                 and title like #{title}
             </if>
-            <if test="blogTypeId!=null and blogTypeId!=''">
+            <if test="blogTypeId!=null">
                 and blogTypeId=#{blogTypeId}
             </if>
             <if test="releaseDateStr!=null and releaseDateStr!=''">
@@ -35,7 +35,7 @@
             <if test="title!=null and title!=''">
                 and title like #{title}
             </if>
-            <if test="blogTypeId!=null and blogTypeId!=''">
+            <if test="blogTypeId!=null">
                 and blogTypeId=#{blogTypeId}
             </if>
             <if test="releaseDateStr!=null and releaseDateStr!=''">

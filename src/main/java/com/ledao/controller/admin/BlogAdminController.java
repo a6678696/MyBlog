@@ -2,7 +2,9 @@ package com.ledao.controller.admin;
 
 import com.ledao.entity.Blog;
 import com.ledao.entity.PageBean;
+import com.ledao.lecenu.BlogIndex;
 import com.ledao.service.BlogService;
+import com.ledao.service.BlogTypeService;
 import com.ledao.util.DateUtil;
 import com.ledao.util.StringUtil;
 import org.apache.commons.io.FileUtils;
@@ -35,6 +37,11 @@ public class BlogAdminController {
     @Resource
     private BlogService blogService;
 
+    @Resource
+    private BlogTypeService blogTypeService;
+
+    private BlogIndex blogIndex = new BlogIndex();
+
     /**
      * 分页分条件查询博客
      *
@@ -48,10 +55,14 @@ public class BlogAdminController {
         PageBean pageBean = new PageBean(page, rows);
         Map<String, Object> resultMap = new HashMap<>(16);
         Map<String, Object> map = new HashMap<>(16);
-        resultMap.put("title", StringUtil.formatLike(blog.getTitle()));
-        resultMap.put("start", pageBean.getStart());
-        resultMap.put("size", pageBean.getPageSize());
+        map.put("title", StringUtil.formatLike(blog.getTitle()));
+        map.put("blogTypeId", blog.getBlogTypeId());
+        map.put("start", pageBean.getStart());
+        map.put("size", pageBean.getPageSize());
         List<Blog> blogList = blogService.list(map);
+        for (Blog blog1 : blogList) {
+            blog1.setBlogType(blogTypeService.findById(blog1.getBlogTypeId()));
+        }
         Long total = blogService.getCount(map);
         resultMap.put("rows", blogList);
         resultMap.put("total", total);
@@ -65,16 +76,44 @@ public class BlogAdminController {
      * @return
      */
     @RequestMapping("/save")
-    public Map<String, Object> save(Blog blog) {
+    public Map<String, Object> save(Blog blog) throws Exception {
         Map<String, Object> resultMap = new HashMap<>(16);
         int key;
         if (blog.getId() == null) {
-            blog.setSummary(StripHT(blog.getContent()).substring(0, 600));
+            blog.setSummary(StripHT(blog.getContent()));
             key = blogService.add(blog);
+            List<Blog> blogList = blogService.list(null);
+            blogIndex.addIndex(blogList.get(0));
         } else {
             String summary = StripHT(blog.getContent());
             blog.setSummary(summary);
             key = blogService.update(blog);
+            blogIndex.updateIndex(blog);
+        }
+        if (key > 0) {
+            resultMap.put("success", true);
+        } else {
+            resultMap.put("success", false);
+        }
+        return resultMap;
+    }
+
+    /**
+     * 根据id串删除博客(可批量删除)
+     *
+     * @param ids
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/delete")
+    public Map<String, Object> delete(String ids) throws Exception {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        int key = 0;
+        String[] idsStr = ids.split(",");
+        for (int i = 0; i < idsStr.length; i++) {
+            int id = Integer.parseInt(idsStr[i]);
+            blogIndex.deleteIndex(String.valueOf(id));
+            key = blogService.delete(id);
         }
         if (key > 0) {
             resultMap.put("success", true);

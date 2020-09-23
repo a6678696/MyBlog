@@ -12,17 +12,22 @@
             <div class="mainbar">
                 <div class="article" th:each="blog:${blogList}">
                     <span>-------------------------------------------------------------------------------------------------------------------------------------------------------</span>
-                    <a th:href="'/blog/'+${blog.getId()}" style="text-decoration: none"><h3 th:text="${blog.title}"></h3></a>
+                    <a th:href="'/blog/'+${blog.getId()}" style="text-decoration: none"><h3
+                            th:text="${blog.title}"></h3></a>
                     <div class="clr"></div>
                     <p class="infopost"><span class="date"
                                               th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span>&nbsp;|&nbsp;<span
-                            th:text="' 阅读次数: '+${blog.click}+' '"></span>&nbsp;|&nbsp; 所属类别: <span th:text="${blog.blogType.name}"></span> </p>
-                    <a th:href="'/blog/'+${blog.getId()}"><img th:src="@{${blog.imageName}}" th:if="${blog.imageName!=null}" width="201" height="146" alt="image" class="fl"/></a>
+                            th:text="' 阅读次数: '+${blog.click}+' '"></span>&nbsp;|&nbsp; 所属类别: <span
+                            th:text="${blog.blogType.name}"></span></p>
+                    <a th:href="'/blog/'+${blog.getId()}"><img th:src="@{${blog.imageName}}"
+                                                               th:if="${blog.imageName!=null}" width="201" height="146"
+                                                               alt="image" class="fl"/></a>
                     <p th:text="${#strings.abbreviate(blog.summary,600)}"></p>
-                    <p class="spec" style="clear: both;"><a th:href="'/blog/'+${blog.getId()}" class="com">查看详情 &raquo;</a></p>
+                    <p class="spec" style="clear: both;"><a th:href="'/blog/'+${blog.getId()}" class="com">查看详情
+                        &raquo;</a></p>
                 </div>
                 <p class="pages" style="text-align: center">
-                <font th:utext="${pageCode}"></font>
+                    <font th:utext="${pageCode}"></font>
                 </p>
             </div>
             <div class="sidebar">
@@ -30,14 +35,16 @@
                     <h3 class="star"><span>按类别分类</span></h3>
                     <div class="clr"></div>
                     <ul class="sb_menu" th:each="blogType:${blogTypeList}">
-                        <li><a th:href="${'/list/1?blogTypeId='+blogType.id}" th:text="${blogType.name}+'('+${blogType.blogNum}+')'"></a></li>
+                        <li><a th:href="${'/index?blogTypeId='+blogType.id}"
+                               th:text="${blogType.name}+'('+${blogType.blogNum}+')'"></a></li>
                     </ul>
                 </div>
                 <div class="gadget">
                     <h3 class="star"><span>按日期分类</span></h3>
                     <div class="clr"></div>
                     <ul class="ex_menu" th:each="blogCount:${blogCountList}">
-                        <li><a th:href="${'/list/1?releaseDateStr='+blogCount.releaseDateStr}" th:text="${blogCount.releaseDateStr+'('+blogCount.blogCount+')'}"></a>
+                        <li><a th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}"
+                               th:text="${blogCount.releaseDateStr+'('+blogCount.blogCount+')'}"></a>
                         </li>
                     </ul>
                 </div>

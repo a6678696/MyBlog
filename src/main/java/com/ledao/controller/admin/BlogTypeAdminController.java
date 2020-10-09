@@ -1,7 +1,9 @@
 package com.ledao.controller.admin;
 
+import com.ledao.entity.Blog;
 import com.ledao.entity.BlogType;
 import com.ledao.entity.PageBean;
+import com.ledao.service.BlogService;
 import com.ledao.service.BlogTypeService;
 import com.ledao.util.StringUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +28,9 @@ public class BlogTypeAdminController {
 
     @Resource
     private BlogTypeService blogTypeService;
+
+    @Resource
+    private BlogService blogService;
 
     /**
      * 下拉框模糊查询
@@ -58,6 +63,9 @@ public class BlogTypeAdminController {
         map.put("start", pageBean.getStart());
         map.put("size", pageBean.getPageSize());
         List<BlogType> blogTypeList = blogTypeService.list(map);
+        for (BlogType type : blogTypeList) {
+            type.setBlogNum(Long.valueOf(blogService.findByBlogTypeId(type.getId()).size()));
+        }
         Long total = blogTypeService.getCount(map);
         resultMap.put("rows", blogTypeList);
         resultMap.put("total", total);
@@ -96,8 +104,14 @@ public class BlogTypeAdminController {
         int deleteKey=0;
         for (int i = 0; i < idsStr.length; i++) {
             int id = Integer.parseInt(idsStr[i]);
-            blogTypeService.delete(id);
-            deleteKey++;
+            List<Blog> blogList = blogService.findByBlogTypeId(id);
+            if (blogList.size() > 0) {
+                resultMap.put("errorInfo", "你要删除的博客类型下有<span style='color:red'>" + blogList.size() + "</span>篇博客,不能删除!");
+                return resultMap;
+            } else {
+                blogTypeService.delete(id);
+                deleteKey++;
+            }
         }
         if (deleteKey>0) {
             resultMap.put("success", true);

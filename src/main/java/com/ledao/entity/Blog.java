@@ -57,6 +57,10 @@ public class Blog {
      * 发布日期的字符串 只取年和月
      */
     private String releaseDateStr;
+    /**
+     * 该类型的博客数量
+     */
+    private Integer blogNum;
 
     public Integer getId() {
         return id;
@@ -146,6 +150,14 @@ public class Blog {
         this.releaseDateStr = releaseDateStr;
     }
 
+    public Integer getBlogNum() {
+        return blogNum;
+    }
+
+    public void setBlogNum(Integer blogNum) {
+        this.blogNum = blogNum;
+    }
+
     @Override
     public String toString() {
         return "Blog{" +
@@ -160,6 +172,7 @@ public class Blog {
                 ", imageName='" + imageName + '\'' +
                 ", blogCount=" + blogCount +
                 ", releaseDateStr='" + releaseDateStr + '\'' +
+                ", blogNum=" + blogNum +
                 '}';
     }
 }

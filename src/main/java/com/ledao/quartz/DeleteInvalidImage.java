@@ -15,7 +15,7 @@ import java.io.File;
 import java.util.*;
 
 /**
- * 每周自动删除已被删除文章中的图片
+ * 每天23点自动删除已被删除文章中的图片
  *
  * @author LeDao
  * @company
@@ -28,7 +28,7 @@ public class DeleteInvalidImage {
     @Resource
     private BlogService blogService;
 
-    @Scheduled(cron = "*/15 * * * * ?")
+    @Scheduled(cron = " 0 0 23 * * ?")
     public void work() {
         List<Blog> blogList = blogService.list(null);
         //博客中引用的图片名称集合

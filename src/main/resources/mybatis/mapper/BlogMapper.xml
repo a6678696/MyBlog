@@ -79,4 +79,7 @@
         group by date_format(releaseDate, '%Y年%m月')
         order by date_format(releaseDate, '%Y年%m月') desc
     </select>
+    <select id="findByBlogTypeId" parameterType="integer" resultMap="BlogResult">
+        select * from t_blog where blogTypeId=#{blogTypeId} order by releaseDate desc
+    </select>
 </mapper>

@@ -23,9 +23,6 @@ import javax.annotation.Resource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource
-    private UserDetailsService customUserService;
-
-    @Resource
     private UserService userService;
 
     /**
@@ -55,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().cors().disable().headers().disable()
                 .authorizeRequests()
                 // 配置不需要身份认证的请求地址
-                .antMatchers("/index","/download","/checkCodeIsSuccess", "/static/**", "/blog/**", "/drawImage", "/webSiteInfo/**", "/aboutMe").permitAll()
+                .antMatchers("/index","/download","/checkCodeIsSuccess", "/static/**", "/blog/**", "/drawImage").permitAll()
                 // 其他所有访问路径需要身份认证
                 .anyRequest().authenticated()
                 .and()

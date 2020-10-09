@@ -79,14 +79,22 @@ public class BlogAdminController {
     public Map<String, Object> save(Blog blog) throws Exception {
         Map<String, Object> resultMap = new HashMap<>(16);
         int key;
+        int maxStringLength=600;
         if (blog.getId() == null) {
             blog.setSummary(StripHT(blog.getContent()));
+            if (blog.getSummary().length()>=maxStringLength) {
+                blog.setSummary(blog.getSummary().substring(0,600));
+            }
             key = blogService.add(blog);
             List<Blog> blogList = blogService.list(null);
             blogIndex.addIndex(blogList.get(0));
         } else {
             String summary = StripHT(blog.getContent());
-            blog.setSummary(summary);
+            if (summary.length() >= maxStringLength) {
+                blog.setSummary(summary.substring(0, 600));
+            } else {
+                blog.setSummary(summary);
+            }
             key = blogService.update(blog);
             blogIndex.updateIndex(blog);
         }
@@ -140,7 +148,6 @@ public class BlogAdminController {
         //拼接新的文件名
         String newFileName = DateUtil.getCurrentDateStr2() + ".jpg";
         FileUtils.copyInputStreamToFile(file.getInputStream(), new File(blogImageFilePath + newFileName));
-
         StringBuffer sb = new StringBuffer();
         sb.append("<script type=\"text/javascript\">");
         sb.append("window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ",'" + "/static/images/blogImage/" + newFileName + "','')");

@@ -11,12 +11,12 @@
         <div class="content">
             <div class="content_resize">
                 <div class="mainbar">
-                    <div class="article">
+                    <div class="article" style="width: 100%">
                         <h2 th:text="${blog.title}" style="text-align: center"></h2><div class="clr"></div>
                         <p class="infopost" style="text-align: center"><span class="date"
                                                   th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span>&nbsp;|&nbsp;<span
                                 th:text="' 阅读次数: '+${blog.click}+' '"></span>&nbsp;|&nbsp; 所属类别: <span th:text="${blog.blogType.name}"></span> </p>
-                        <span style="color: black" th:utext="${blog.content}"></span>
+                        <span style="color: black;width: 3  0%" th:utext="${blog.content}"></span>
                     </div>
                 </div>
                 <div class="sidebar">

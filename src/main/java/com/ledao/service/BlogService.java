@@ -68,4 +68,12 @@ public interface BlogService {
      * @return
      */
     List<Blog> countList();
+
+    /**
+     * 根据博客类型查询博客
+     *
+     * @param blogTypeId
+     * @return
+     */
+    List<Blog> findByBlogTypeId(Integer blogTypeId);
 }

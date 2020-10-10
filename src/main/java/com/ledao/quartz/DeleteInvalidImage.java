@@ -50,6 +50,7 @@ public class DeleteInvalidImage {
             }
         }
         File file = new File("F:\\idea workspase for Actual combat\\MyBlog\\src\\main\\webapp\\static\\images\\blogImage");
+        //文件夹内的图片名称集合
         List<String> dirImageList = new ArrayList<>();
         //仅为了获取文件名
         for (String s : file.list()) {

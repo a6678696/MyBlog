@@ -46,11 +46,11 @@ public class IndexController {
     private BlogTypeService blogTypeService;
 
     /**
-     * 首页地址
+     * 首页地址(为了直接输入首地址就能访问网站)
      *
      * @return
      */
-    @RequestMapping("/index")
+    @RequestMapping("/")
     public ModelAndView root(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr) {
         ModelAndView mav = new ModelAndView();
         Map<String,Object> map=new HashMap<>(16);
@@ -83,6 +83,72 @@ public class IndexController {
                 blog.setImageName( blog.getImageName().substring(begin, last) + ".jpg");
             }
             blog.setSummary(blog.getSummary().replace("&quot;","\""));
+            blog.setSummary(blog.getSummary().replace("&nbsp;"," "));
+            blog.setSummary(blog.getSummary().replace("&#39;","\'"));
+            blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
+        }
+        List<BlogType> blogTypeList = blogTypeService.list(null);
+        for (BlogType blogType : blogTypeList) {
+            blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
+        }
+        List<Blog> blogCountList=blogService.countList();
+        StringBuffer param = new StringBuffer();
+        if (StringUtil.isNotEmpty(blogTypeId)) {
+            param.append("&blogTypeId=" + blogTypeId);
+        }
+        if (StringUtil.isNotEmpty(releaseDateStr)) {
+            param.append("&releaseDateStr=" + releaseDateStr);
+        }
+        mav.addObject("blogList", blogList);
+        mav.addObject("blogTypeList", blogTypeList);
+        mav.addObject("blogCountList", blogCountList);
+        mav.addObject("title", "首页--LeDao的博客");
+        mav.addObject("pageCode", PageUtil.genPagination("/index", total, page, pageSize,param.toString()));
+        mav.addObject("mainPage", "page/indexFirst");
+        mav.addObject("mainPageKey", "#b");
+        mav.setViewName("index");
+        return mav;
+    }
+
+    /**
+     * 首页地址(分页,分类使用)
+     *
+     * @return
+     */
+    @RequestMapping("/index")
+    public ModelAndView root2(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr) {
+        ModelAndView mav = new ModelAndView();
+        Map<String,Object> map=new HashMap<>(16);
+        if (page == null) {
+            page = 1;
+        }
+        int pageSize = 3;
+        map.put("start", (page - 1) * pageSize);
+        map.put("size", pageSize);
+        map.put("blogTypeId", blogTypeId);
+        map.put("releaseDateStr", releaseDateStr);
+        Long total = blogService.getCount(map);
+        List<Blog> blogList = blogService.list(map);
+        for (Blog blog : blogList) {
+            //博客里的内容
+            String blogInfo = blog.getContent();
+            //抓取出博客里的内容
+            Document document = Jsoup.parse(blogInfo);
+            //提出.jpg图片
+            Elements jpgs = document.select("img[src$=.jpg]");
+            //提取一个博客里的一张图片
+            if (jpgs.size()!=0) {
+                for (int i = 0; i < 1; i++) {
+                    Element jpg = jpgs.get(i);
+                    blog.setImageName(jpg.toString());
+
+                }
+                int begin = blog.getImageName().indexOf("/static");
+                int last = blog.getImageName().indexOf(".jpg");
+                blog.setImageName( blog.getImageName().substring(begin, last) + ".jpg");
+            }
+            blog.setSummary(blog.getSummary().replace("&quot;","\""));
+            blog.setSummary(blog.getSummary().replace("&nbsp;"," "));
             blog.setSummary(blog.getSummary().replace("&#39;","\'"));
             blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
         }

@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 
 /**
+ * 实现自定义404页面渲染
+ *
  * @author LeDao
  * @company
  * @create 2020-10-11 00:27

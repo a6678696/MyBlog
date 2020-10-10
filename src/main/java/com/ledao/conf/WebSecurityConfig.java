@@ -53,8 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // 配置不需要身份认证的请求地址
                 .antMatchers("/","/index","/download","/checkCodeIsSuccess", "/static/**", "/blog/**", "/drawImage").permitAll()
-                // 其他所有访问路径需要身份认证
-                .anyRequest().authenticated()
+                .antMatchers("/admin","/admin/**").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 // 指定登录请求地址

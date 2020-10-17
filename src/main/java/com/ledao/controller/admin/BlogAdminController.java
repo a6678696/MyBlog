@@ -2,7 +2,7 @@ package com.ledao.controller.admin;
 
 import com.ledao.entity.Blog;
 import com.ledao.entity.PageBean;
-import com.ledao.lecenu.BlogIndex;
+import com.ledao.lucene.BlogIndex;
 import com.ledao.service.BlogService;
 import com.ledao.service.BlogTypeService;
 import com.ledao.util.DateUtil;

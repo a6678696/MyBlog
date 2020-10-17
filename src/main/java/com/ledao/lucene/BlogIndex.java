@@ -1,4 +1,4 @@
-package com.ledao.lecenu;
+package com.ledao.lucene;
 
 import com.ledao.entity.Blog;
 import com.ledao.util.DateUtil;

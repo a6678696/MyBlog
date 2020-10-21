@@ -17,6 +17,84 @@
             window.name = "";
         }
 
+        $(document).ready(function () {
+            // 监听右键事件，创建右键菜单
+            $('#tabs').tabs({
+                onContextMenu: function (e, title, index) {
+                    e.preventDefault();
+                    if (index > 0) {
+                        $('#menu').menu('show', {
+                            left: e.pageX,
+                            top: e.pageY
+                        }).data("tabTitle", title);
+                    }
+                }
+            });
+
+            // 右键菜单click
+            $("#menu").menu({
+                onClick: function (item) {
+                    closeTab(this, item.name);
+                }
+            });
+
+            function closeTab(menu, type) {
+                var allTabs = $("#tabs").tabs('tabs');
+                var allTabtitle = [];
+                $.each(allTabs, function (i, n) {
+                    var opt = $(n).panel('options');
+                    if (opt.closable)
+                        allTabtitle.push(opt.title);
+                });
+                var curTabTitle = $(menu).data("tabTitle");
+                var curTabIndex = $("#tabs").tabs("getTabIndex", $("#tabs").tabs("getTab", curTabTitle));
+                switch (type) {
+                    case "1": // 刷新当前标签页
+                        var currentTab = $('#tabs').tabs('getSelected');
+                        var url = $(currentTab.panel('options')).attr('href');
+                        $('#tabs').tabs('update', {
+                            tab: currentTab,
+                            options: {
+                                href: url
+                            }
+                        });
+                        currentTab.panel('refresh');
+                        // var panel = $("#tabs").tabs("getTab", curTabTitle).panel("refresh");
+                        break;
+                    case "2": // 关闭当前标签页
+                        $("#tabs").tabs("close", curTabIndex);
+                        return false;
+                        break;
+                    case "3": // 关闭全部标签页
+                        for (var i = 0; i < allTabtitle.length; i++) {
+                            $('#tabs').tabs('close', allTabtitle[i]);
+                        }
+                        break;
+                    case "4": // 关闭其他标签页
+                        for (var i = 0; i < allTabtitle.length; i++) {
+                            if (curTabTitle != allTabtitle[i])
+                                $('#tabs').tabs('close', allTabtitle[i]);
+                        }
+                        $('#tabs').tabs('select', curTabTitle);
+                        break;
+                    case "5": // 关闭右侧标签页
+                        for (var i = curTabIndex; i < allTabtitle.length; i++) {
+                            $('#tabs').tabs('close', allTabtitle[i]);
+                        }
+                        $('#tabs').tabs('select', curTabTitle);
+                        break;
+                    case "6": // 关闭左侧标签页
+                        for (var i = 0; i < curTabIndex - 1; i++) {
+                            $('#tabs').tabs('close', allTabtitle[i]);
+                        }
+                        $('#tabs').tabs('select', curTabTitle);
+                        break;
+
+                }
+
+            }
+        });
+
         function logout() {
             $.messager.confirm("系统提示", "您确定要退出系统吗?", function (r) {
                 if (r) {
@@ -67,10 +145,19 @@
         <a href="javascript:openTab('写博客','writeBlog.html','icon-writeBlog')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-writeBlog'" style="width: 150px;">写博客</a>
         <a href="javascript:openTab('博客类别管理','blogTypeManage.html','icon-blogTypeManage')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-blogTypeManage'" style="width: 150px;">博客类别管理</a>
         <a href="javascript:openTab('博客管理','blogManage.html','icon-blogManage')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-blogManage'" style="width: 150px;">博客管理</a>
+        <a href="javascript:openTab('查看访问记录','interviewRecordManage.html','icon-interviewRecordManage')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-interviewRecordManage'" style="width: 150px;">查看访问记录</a>
         <a href="javascript:logout()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-exit'" style="width: 150px;float: left">安全退出</a>
     </div>
 </div>
-
+<div id="menu" class="easyui-menu">
+    <div id="mm-tabrefresh" data-options="name:'1',iconCls:'icon-refresh'"> 刷新当前标签页</div>
+    <div class="menu-sep"></div>
+    <div id="mm-tabclose" data-options="name:'2',iconCls:'icon-closetab'">关闭当前标签页</div>
+    <div id="mm-tabcloseall" data-options="name:'3',iconCls:'icon-closealltab'">关闭全部标签页</div>
+    <div id="mm-tabcloseother" data-options="name:'4',iconCls:'icon-closeothertab'">关闭其他标签页</div>
+    <div id="mm-tabcloseright" data-options="name:'5',iconCls:'icon-closerighttab'">关闭右侧标签页</div>
+    <div id="mm-tabcloseleft" data-options="name:'6',iconCls:'icon-closelefttab'">关闭左侧标签页</div>
+</div>
 <div region="south" style="height: 30px;padding: 5px" align="center">
     Copyright © 1500330333ztl
 </div>

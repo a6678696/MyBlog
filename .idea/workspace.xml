@@ -7,7 +7,147 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fec843a-29ca-4ceb-a0fc-1724b3e235ce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/admin/InterviewRecordAdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/entity/InterviewRecord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/mapper/InterviewRecordMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/service/InterviewRecordService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/service/impl/InterviewRecordServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/InterviewRecordMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/interviewRecordManage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010123055.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010123126.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010124737.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010124749.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010124800.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010130141.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010133723.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010141136.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010141148.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010181120.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194039.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194507.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194540.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194603.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194641.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194739.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194810.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194845.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194904.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010202543.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010202743.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010202946.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113340.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113454.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113526.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113610.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113829.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113901.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113932.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114014.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114108.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114146.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114235.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114320.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114402.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114442.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011181925.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011182614.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011182732.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011182912.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011183047.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013120220.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013120335.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013120418.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013132701.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013134023.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015024805.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015024834.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015024918.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025019.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025056.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025127.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025210.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025246.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025323.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025402.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025434.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025516.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025550.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015031019.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015115645.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015134809.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201016002833.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001151.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001236.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001310.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001352.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001428.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001525.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001613.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001654.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001744.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001853.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001927.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001959.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002119.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002200.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002233.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002317.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002357.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002442.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002526.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002628.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002654.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002735.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002807.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002905.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017003134.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017003233.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017003317.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017003349.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017011409.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017011640.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017011751.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017235309.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017235822.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017235941.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018000110.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018003753.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018004005.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018010656.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018010910.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018011035.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018011406.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018011449.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018015701.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018015828.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018020137.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018020738.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018021257.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018045208.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018045239.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201019131852.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020142626.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020162940.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020163050.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020165415.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020165551.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020230001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201021223225.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/interviewRecordManege.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a0406a24-2d27-4a88-918c-73b18291ea82.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a0406a24-2d27-4a88-918c-73b18291ea82.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/BlogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/blogManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/blogManage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201009200432.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201009202305.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/icon.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ledao/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ledao/controller/IndexController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/main.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +196,8 @@
       <list>
         <option value="mybatis" />
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -101,30 +241,30 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.24252874" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp" />
-      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\resources\static" />
-      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\WEB-INF" />
-      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\static\images" />
-      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\admin" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.ledao.util" />
-      <recent name="com.ledao.conf" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp" />
       <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\static" />
       <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\resources\static" />
       <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\resources\templates\static" />
       <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\resources\templates" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ledao.util" />
+      <recent name="com.ledao.conf" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\static\jquery-easyui-1.7.0\themes\usericons" />
+      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp" />
+      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\resources\static" />
+      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\WEB-INF" />
+      <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp\static\images" />
     </key>
   </component>
   <component name="RestServicesNavigator">
@@ -410,7 +550,17 @@
         <serviceView>
           <option name="contentProportion" value="0.12363388" />
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:db_myblog@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:db_myblog@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@2101a9a5" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -455,6 +605,7 @@
       <workItem from="1602734268740" duration="2374000" />
       <workItem from="1602950624849" duration="2508000" />
       <workItem from="1602956857313" duration="249000" />
+      <workItem from="1603276428774" duration="16315000" />
     </task>
     <task id="LOCAL-00001" summary="MyBlog">
       <created>1599655527421</created>
@@ -622,10 +773,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" width="1089" height="721" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1602236323068" />
-    <state x="563" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1602347325815">
+    <state x="563" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1603292770577">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="563" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1602347325815" />
+    <state x="563" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1603292770577" />
     <state x="498" y="90" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1602236276218">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -634,6 +785,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="557" y="319" key="#com.intellij.javaee.module.view.web.EditWebRootDialog/0.0.1536.824@0.0.1536.824" timestamp="1599571358629" />
+    <state x="263" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1603281721841">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="263" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1603281721841" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1599742809662">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -646,66 +801,66 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="358" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1602957104814" />
-    <state width="635" height="438" key="DebuggerActiveHint" timestamp="1600780344211">
+    <state width="635" height="438" key="DebuggerActiveHint" timestamp="1603290530368">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="635" height="438" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1600780344211" />
+    <state width="635" height="438" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1603290530368" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1602957101994">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1602957101994" />
-    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1602386189527">
+    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1603281048111">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1602386189527" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1602353166903">
+    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603281048111" />
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1603295203786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602353166903" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1602353166903">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1603295203786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1602353166903" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1602353166903">
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1603295203786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1602353166903" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1602353166903">
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1603295203786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1602353166903" />
-    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1602353166903">
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1603295203786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602353166903" />
-    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1602353166903">
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
+    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1603295203786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1602353166903" />
-    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1602353166893">
+    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
+    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1603295203786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1602353166893" />
-    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1602353166903">
+    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
+    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1603295203786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1602353166903" />
-    <state width="1493" height="223" key="GridCell.Tab.2.bottom" timestamp="1602353166903">
+    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
+    <state width="1493" height="223" key="GridCell.Tab.2.bottom" timestamp="1603295203786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602353166903" />
-    <state width="1493" height="223" key="GridCell.Tab.2.center" timestamp="1602353166903">
+    <state width="1493" height="223" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
+    <state width="1493" height="223" key="GridCell.Tab.2.center" timestamp="1603295203786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1602353166903" />
-    <state width="1493" height="223" key="GridCell.Tab.2.left" timestamp="1602353166903">
+    <state width="1493" height="223" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
+    <state width="1493" height="223" key="GridCell.Tab.2.left" timestamp="1603295203786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1602353166903" />
-    <state width="1493" height="223" key="GridCell.Tab.2.right" timestamp="1602353166903">
+    <state width="1493" height="223" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
+    <state width="1493" height="223" key="GridCell.Tab.2.right" timestamp="1603295203786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1602353166903" />
+    <state width="1493" height="223" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
     <state width="1282" height="243" key="GridCell.Tab.3.bottom" timestamp="1602253563624">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -734,17 +889,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="562" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1600850244320" />
-    <state x="447" y="145" width="642" height="534" key="find.popup" timestamp="1602259799677">
+    <state x="447" y="145" width="642" height="534" key="find.popup" timestamp="1603294292886">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="447" y="145" width="642" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1602259799677" />
-    <state x="544" y="306" key="git4idea.ui.GitResetDialog" timestamp="1602958403144">
+    <state x="447" y="145" width="642" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1603294292886" />
+    <state x="544" y="306" key="git4idea.ui.GitResetDialog" timestamp="1603204996457">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="544" y="306" key="git4idea.ui.GitResetDialog/0.0.1536.824@0.0.1536.824" timestamp="1602958403144" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1602734278988">
+    <state x="544" y="306" key="git4idea.ui.GitResetDialog/0.0.1536.824@0.0.1536.824" timestamp="1603204996457" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1603293347777">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1602734278988" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603293347777" />
   </component>
 </project>

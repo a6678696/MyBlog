@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>访问记录管理</title>
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.7.0/themes/metro-blue/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.7.0/themes/icon.css">
+    <script type="text/javascript" src="/static/jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        var url;
+
+        function searchInterviewRecord() {
+            $("#dg").datagrid('load', {
+                "interviewerIp": $("#s_interviewerIp").val(),
+                "interviewContent": $("#s_interviewContent").val(),
+                "bTime": $("#s_btime").datetimebox("getValue"),
+                "eTime": $("#s_etime").datetimebox("getValue")
+            });
+        }
+
+        function resetValue() {
+            $("#s_interviewerIp").val("");
+            $("#s_interviewContent").val("");
+            $("#s_btime").datetimebox("setValue", "");
+            $("#s_etime").datetimebox("setValue", "");
+        }
+
+        function deleteInterviewRecord() {
+            var selectedRows = $("#dg").datagrid("getSelections");
+            if (selectedRows.length == 0) {
+                $.messager.alert("系统提示", "请选择要删除的博客!");
+                return;
+            }
+            var strIds = [];
+            for (var i = 0; i < selectedRows.length; i++) {
+                strIds.push(selectedRows[i].id);
+            }
+            var ids = strIds.join(",");
+            $.messager.confirm("系统提示", "你确定要删除这<span style='color: red'>" + selectedRows.length + "</span>个访问记录吗?", function (r) {
+                if (r) {
+                    $.post("/admin/interviewRecord/delete", {ids: ids}, function (result) {
+                        if (result.success) {
+                            $.messager.alert("系统提示", "数据已成功删除！");
+                            $("#dg").datagrid("reload");
+                        } else {
+                            $.messager.alert("系统提示", "数据删除失败！");
+                        }
+                    }, "json");
+                }
+            });
+        }
+
+        $(document).ready(function () {
+
+            $.post("/admin/interviewRecord/getCountInterviewFirstPageNum",function (result) {
+                if (result.success) {
+                    $("#getCountInterviewFirstPageNum").html(result.getCountInterviewFirstPageNum);
+                }
+            }, "json");
+            $.post("/admin/interviewRecord/getCountInterviewIpNum",function (result) {
+                if (result.success) {
+                    $("#getCountInterviewIpNum").html(result.getCountInterviewIpNum);
+                }
+            }, "json");
+            $.post("/admin/interviewRecord/getCountTodayInterviewFirstPageNum",function (result) {
+                if (result.success) {
+                    $("#getCountTodayInterviewFirstPageNum").html(result.getCountTodayInterviewFirstPageNum);
+                }
+            }, "json");
+            $.post("/admin/interviewRecord/getCountTodayInterviewIpNum",function (result) {
+                if (result.success) {
+                    $("#getCountTodayInterviewIpNum").html(result.getCountTodayInterviewIpNum);
+                }
+            }, "json");
+        });
+    </script>
+</head>
+<body style="margin: 1px">
+<table id="dg" title="查看访问记录" class="easyui-datagrid"
+       fitColumns="true" pagination="true" rownumbers="true"
+       url="/admin/interviewRecord/list" fit="true" pageSize="50" toolbar="#tb">
+    <thead>
+    <th field="cb" checkbox="true" align="center"></th>
+    <th field="id" width="20" hidden="true" align="center">编号</th>
+    <th field="interviewerIp" width="10" align="center">访问者ip地址</th>
+    <th field="interviewerIpAppearNum" width="6" align="center">ip地址出现次数</th>
+    <th field="interviewContent" width="30" align="center">访问内容</th>
+    <th field="interviewDate" width="12" align="center">访问时间</th>
+    </thead>
+</table>
+
+<div id="tb">
+    <fieldset style="border-color: #E7F0FF">
+        <legend>查询设置(今天首页被访问&nbsp;<span id="getCountTodayInterviewFirstPageNum" style="color: red"></span>&nbsp;次,今天有&nbsp;<span id="getCountTodayInterviewIpNum" style="color: red"></span>&nbsp;个不同的ip访问,首页总共被访问&nbsp;<span id="getCountInterviewFirstPageNum" style="color: red"></span>&nbsp;次,总共有&nbsp;<span id="getCountInterviewIpNum" style="color: red"></span>&nbsp;个不同的ip访问)</legend>
+        &nbsp;&nbsp;&nbsp;访问者ip地址：&nbsp;
+        <input type="text" id="s_interviewerIp" size="20" onkeydown="if(event.keyCode==13) searchInterviewRecord()"/>
+        &nbsp;&nbsp;&nbsp;访问内容：&nbsp;
+        <input type="text" id="s_interviewContent" size="20" onkeydown="if(event.keyCode==13) searchInterviewRecord()"/>
+        &nbsp;&nbsp;&nbsp;访问时间：&nbsp;
+        <input id="s_btime" class="easyui-datetimebox" editable=false style="width:170px"/>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        <input id="s_etime" class="easyui-datetimebox" editable=false style="width:170px"/>
+        &nbsp;&nbsp;<a href="javascript:searchInterviewRecord()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
+        &nbsp;&nbsp;<a href="javascript:resetValue()" class="easyui-linkbutton" iconCls="icon-reset" plain="true">重置</a>
+        &nbsp;&nbsp;<a href="javascript:deleteInterviewRecord()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+    </fieldset>
+</div>
+</body>
+</html>

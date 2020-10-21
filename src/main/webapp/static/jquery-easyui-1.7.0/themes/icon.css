@@ -172,6 +172,10 @@
 	background:url('usericons/blogManage.gif') no-repeat center center;
 }
 
+.icon-interviewRecordManage{
+	background:url('usericons/interviewRecordManege.gif') no-repeat center center;
+}
+
 .icon-exit{
 	background:url('usericons/exit.gif') no-repeat center center;
 }

@@ -2,9 +2,11 @@ package com.ledao.controller;
 
 import com.ledao.entity.Blog;
 import com.ledao.entity.BlogType;
+import com.ledao.entity.InterviewRecord;
 import com.ledao.lucene.BlogIndex;
 import com.ledao.service.BlogService;
 import com.ledao.service.BlogTypeService;
+import com.ledao.service.InterviewRecordService;
 import com.ledao.util.StringUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,10 +33,13 @@ public class BlogController {
     @Resource
     private BlogTypeService blogTypeService;
 
+    @Resource
+    private InterviewRecordService interviewRecordService;
+
     private BlogIndex blogIndex = new BlogIndex();
 
     @RequestMapping("/{id}")
-    public ModelAndView details(@PathVariable("id")Integer id) {
+    public ModelAndView details(@PathVariable("id")Integer id,HttpServletRequest request) {
         ModelAndView mav = new ModelAndView();
         Blog blog = blogService.findById(id);
         blog.setClick(blog.getClick()+1);
@@ -52,6 +57,8 @@ public class BlogController {
         mav.addObject("mainPage", "page/blogDetails");
         mav.addObject("mainPageKey", "#b");
         mav.setViewName("index");
+        InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(),"查看博客："+blog.getTitle());
+        interviewRecordService.add(interviewRecord);
         return mav;
     }
 
@@ -94,6 +101,8 @@ public class BlogController {
         mav.addObject("q", q);
         mav.addObject("resultTotal", blogList.size());
         mav.setViewName("index");
+        InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(),"搜索了博客："+q);
+        interviewRecordService.add(interviewRecord);
         return mav;
     }
 

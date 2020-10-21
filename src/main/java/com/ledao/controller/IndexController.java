@@ -2,9 +2,11 @@ package com.ledao.controller;
 
 import com.ledao.entity.Blog;
 import com.ledao.entity.BlogType;
+import com.ledao.entity.InterviewRecord;
 import com.ledao.entity.User;
 import com.ledao.service.BlogService;
 import com.ledao.service.BlogTypeService;
+import com.ledao.service.InterviewRecordService;
 import com.ledao.service.UserService;
 import com.ledao.util.PageUtil;
 import com.ledao.util.StringUtil;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -45,15 +48,24 @@ public class IndexController {
     @Resource
     private BlogTypeService blogTypeService;
 
+    @Resource
+    private InterviewRecordService interviewRecordService;
+
     /**
      * 首页地址(为了直接输入首地址就能访问网站)
      *
      * @return
      */
     @RequestMapping("/")
-    public ModelAndView root(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr) {
+    public ModelAndView root(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr, HttpServletRequest request) {
         ModelAndView mav = new ModelAndView();
-        Map<String,Object> map=new HashMap<>(16);
+        String localIp = "0:0:0:0:0:0:0:1";
+        InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "访问博客首页");
+        if (interviewRecord.getInterviewerIp().equals(localIp)) {
+            interviewRecord.setInterviewerIp("127.0.0.1");
+        }
+        interviewRecordService.add(interviewRecord);
+        Map<String, Object> map = new HashMap<>(16);
         if (page == null) {
             page = 1;
         }
@@ -72,7 +84,7 @@ public class IndexController {
             //提出.jpg图片
             Elements jpgs = document.select("img[src$=.jpg]");
             //提取一个博客里的一张图片
-            if (jpgs.size()!=0) {
+            if (jpgs.size() != 0) {
                 for (int i = 0; i < 1; i++) {
                     Element jpg = jpgs.get(i);
                     blog.setImageName(jpg.toString());
@@ -80,18 +92,18 @@ public class IndexController {
                 }
                 int begin = blog.getImageName().indexOf("/static");
                 int last = blog.getImageName().indexOf(".jpg");
-                blog.setImageName( blog.getImageName().substring(begin, last) + ".jpg");
+                blog.setImageName(blog.getImageName().substring(begin, last) + ".jpg");
             }
-            blog.setSummary(blog.getSummary().replace("&quot;","\""));
-            blog.setSummary(blog.getSummary().replace("&nbsp;"," "));
-            blog.setSummary(blog.getSummary().replace("&#39;","\'"));
+            blog.setSummary(blog.getSummary().replace("&quot;", "\""));
+            blog.setSummary(blog.getSummary().replace("&nbsp;", " "));
+            blog.setSummary(blog.getSummary().replace("&#39;", "\'"));
             blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
         }
         List<BlogType> blogTypeList = blogTypeService.list(null);
         for (BlogType blogType : blogTypeList) {
             blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
         }
-        List<Blog> blogCountList=blogService.countList();
+        List<Blog> blogCountList = blogService.countList();
         StringBuffer param = new StringBuffer();
         if (StringUtil.isNotEmpty(blogTypeId)) {
             param.append("&blogTypeId=" + blogTypeId);
@@ -103,7 +115,7 @@ public class IndexController {
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "首页--LeDao的博客");
-        mav.addObject("pageCode", PageUtil.genPagination("/index", total, page, pageSize,param.toString()));
+        mav.addObject("pageCode", PageUtil.genPagination("/index", total, page, pageSize, param.toString()));
         mav.addObject("mainPage", "page/indexFirst");
         mav.addObject("mainPageKey", "#b");
         mav.setViewName("index");
@@ -116,9 +128,10 @@ public class IndexController {
      * @return
      */
     @RequestMapping("/index")
-    public ModelAndView root2(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr) {
+    public ModelAndView root2(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr, HttpServletRequest request) {
         ModelAndView mav = new ModelAndView();
-        Map<String,Object> map=new HashMap<>(16);
+        String localIp = "0:0:0:0:0:0:0:1";
+        Map<String, Object> map = new HashMap<>(16);
         if (page == null) {
             page = 1;
         }
@@ -137,7 +150,7 @@ public class IndexController {
             //提出.jpg图片
             Elements jpgs = document.select("img[src$=.jpg]");
             //提取一个博客里的一张图片
-            if (jpgs.size()!=0) {
+            if (jpgs.size() != 0) {
                 for (int i = 0; i < 1; i++) {
                     Element jpg = jpgs.get(i);
                     blog.setImageName(jpg.toString());
@@ -145,30 +158,40 @@ public class IndexController {
                 }
                 int begin = blog.getImageName().indexOf("/static");
                 int last = blog.getImageName().indexOf(".jpg");
-                blog.setImageName( blog.getImageName().substring(begin, last) + ".jpg");
+                blog.setImageName(blog.getImageName().substring(begin, last) + ".jpg");
             }
-            blog.setSummary(blog.getSummary().replace("&quot;","\""));
-            blog.setSummary(blog.getSummary().replace("&nbsp;"," "));
-            blog.setSummary(blog.getSummary().replace("&#39;","\'"));
+            blog.setSummary(blog.getSummary().replace("&quot;", "\""));
+            blog.setSummary(blog.getSummary().replace("&nbsp;", " "));
+            blog.setSummary(blog.getSummary().replace("&#39;", "\'"));
             blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
         }
         List<BlogType> blogTypeList = blogTypeService.list(null);
         for (BlogType blogType : blogTypeList) {
             blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
         }
-        List<Blog> blogCountList=blogService.countList();
+        List<Blog> blogCountList = blogService.countList();
         StringBuffer param = new StringBuffer();
         if (StringUtil.isNotEmpty(blogTypeId)) {
             param.append("&blogTypeId=" + blogTypeId);
+            InterviewRecord interviewRecord2 = new InterviewRecord(request.getRemoteAddr(), "查看分类：" + blogTypeService.findById(Integer.valueOf(blogTypeId)).getName() + "(按博客类别分类)");
+            if (interviewRecord2.getInterviewerIp().equals(localIp)) {
+                interviewRecord2.setInterviewerIp("127.0.0.1");
+            }
+            interviewRecordService.add(interviewRecord2);
         }
         if (StringUtil.isNotEmpty(releaseDateStr)) {
             param.append("&releaseDateStr=" + releaseDateStr);
+            InterviewRecord interviewRecord3 = new InterviewRecord(request.getRemoteAddr(), "查看分类：" + releaseDateStr + "(按日期分类)");
+            if (interviewRecord3.getInterviewerIp().equals(localIp)) {
+                interviewRecord3.setInterviewerIp("127.0.0.1");
+            }
+            interviewRecordService.add(interviewRecord3);
         }
         mav.addObject("blogList", blogList);
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "首页--LeDao的博客");
-        mav.addObject("pageCode", PageUtil.genPagination("/index", total, page, pageSize,param.toString()));
+        mav.addObject("pageCode", PageUtil.genPagination("/index", total, page, pageSize, param.toString()));
         mav.addObject("mainPage", "page/indexFirst");
         mav.addObject("mainPageKey", "#b");
         mav.setViewName("index");
@@ -188,7 +211,7 @@ public class IndexController {
         for (BlogType blogType : blogTypeList) {
             blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
         }
-        List<Blog> blogCountList=blogService.countList();
+        List<Blog> blogCountList = blogService.countList();
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "本站源码下载");

@@ -49,7 +49,7 @@ public class DeleteInvalidImage {
                 }
             }
         }
-        File file = new File("F:\\idea workspase for Actual combat\\MyBlog\\src\\main\\webapp\\static\\images\\blogImage");
+        File file = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\images\\blogImage");
         //文件夹内的图片名称集合
         List<String> dirImageList = new ArrayList<>();
         //仅为了获取文件名
@@ -67,7 +67,7 @@ public class DeleteInvalidImage {
             }
             List<String> invalidImageList = dirImageList;
             for (String s : invalidImageList) {
-                File file1 = new File("F:\\idea workspase for Actual combat\\MyBlog\\src\\main\\webapp\\static\\images\\blogImage\\"+s);
+                File file1 = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\images\\blogImage\\"+s);
                 file1.delete();
             }
         }

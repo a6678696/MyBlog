@@ -7,147 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fec843a-29ca-4ceb-a0fc-1724b3e235ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/admin/InterviewRecordAdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/entity/InterviewRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/mapper/InterviewRecordMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/service/InterviewRecordService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/service/impl/InterviewRecordServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/InterviewRecordMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/interviewRecordManage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010123055.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010123126.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010124737.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010124749.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010124800.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010130141.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010133723.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010141136.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010141148.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010181120.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194039.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194507.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194540.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194603.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194641.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194739.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194810.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194845.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194904.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010202543.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010202743.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010202946.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113340.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113454.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113526.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113610.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113829.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113901.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113932.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114014.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114108.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114146.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114235.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114320.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114402.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114442.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011181925.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011182614.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011182732.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011182912.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011183047.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013120220.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013120335.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013120418.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013132701.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013134023.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015024805.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015024834.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015024918.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025019.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025056.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025127.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025210.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025246.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025323.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025402.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025434.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025516.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025550.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015031019.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015115645.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015134809.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201016002833.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001151.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001236.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001310.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001352.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001428.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001525.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001613.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001654.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001744.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001853.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001927.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001959.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002119.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002200.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002233.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002317.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002357.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002442.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002526.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002628.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002654.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002735.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002807.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002905.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017003134.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017003233.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017003317.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017003349.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017011409.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017011640.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017011751.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017235309.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017235822.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017235941.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018000110.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018003753.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018004005.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018010656.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018010910.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018011035.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018011406.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018011449.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018015701.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018015828.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018020137.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018020738.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018021257.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018045208.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018045239.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201019131852.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020142626.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020162940.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020163050.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020165415.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020165551.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020230001.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201021223225.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons/interviewRecordManege.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a0406a24-2d27-4a88-918c-73b18291ea82.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a0406a24-2d27-4a88-918c-73b18291ea82.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/BlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/blogManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/blogManage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201009200432.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201009202305.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/icon.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ledao/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ledao/controller/IndexController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/quartz/DeleteInvalidImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/quartz/DeleteInvalidImage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -605,7 +465,7 @@
       <workItem from="1602734268740" duration="2374000" />
       <workItem from="1602950624849" duration="2508000" />
       <workItem from="1602956857313" duration="249000" />
-      <workItem from="1603276428774" duration="16315000" />
+      <workItem from="1603276428774" duration="16571000" />
     </task>
     <task id="LOCAL-00001" summary="MyBlog">
       <created>1599655527421</created>
@@ -712,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602951475647</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="LeDao的博客">
+      <created>1603295497396</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1603295497396</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -797,10 +664,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.824@0.0.1536.824" timestamp="1600740829061" />
-    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1602957104814">
+    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1603295493976">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1602957104814" />
+    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1603295493976" />
     <state width="635" height="438" key="DebuggerActiveHint" timestamp="1603290530368">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -881,10 +748,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1602952213342" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1602349946397">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603295501281">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1602349946397" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603295501281" />
     <state x="562" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600850244320">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -16,7 +16,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/db_myblog?serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/db_myblog?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
     username: root
     password: 123456
   jackson:
@@ -26,7 +26,7 @@ spring:
     cache: false
 
 #博客正文图片存储地址
-blogImageFilePath: C://Java/apache-tomcat-9.0.22-windows-x64/apache-tomcat-9.0.22-windows-x64/apache-tomcat-9.0.22/webapps/MyBlog/static/images/blogImage/
+blogImageFilePath: E://IdeaProjects/ActualCombat/MyBlog/src/main/webapp/static/images/blogImage/
 
 #mybatis的相关配置
 mybatis:

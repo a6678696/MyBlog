@@ -5,9 +5,162 @@
       <artifact name="MyBlog:war exploded" />
     </artifacts-to-build>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6fec843a-29ca-4ceb-a0fc-1724b3e235ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/quartz/DeleteInvalidImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/quartz/DeleteInvalidImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a0406a24-2d27-4a88-918c-73b18291ea82.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a0406a24-2d27-4a88-918c-73b18291ea82/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyBlog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MyBlog.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/BlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/BlogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/blogManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/blogManage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010123055.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010123126.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010124737.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010124749.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010124800.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010130141.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010133723.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010141136.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010141148.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010181120.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194039.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194507.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194540.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194603.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194641.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194739.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194810.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194845.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010194904.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010202543.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010202743.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201010202946.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113340.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113454.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113526.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113610.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113829.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113901.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011113932.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114014.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114108.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114146.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114235.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114320.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114402.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011114442.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011181925.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011182614.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011182732.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011182912.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201011183047.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013120220.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013120335.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013120418.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013132701.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201013134023.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015024805.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015024834.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015024918.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025019.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025056.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025127.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025210.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025246.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025323.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025402.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025434.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025516.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015025550.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015031019.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015115645.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201015134809.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201016002833.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001151.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001236.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001310.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001352.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001428.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001525.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001613.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001654.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001744.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001853.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001927.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017001959.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002119.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002200.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002233.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002317.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002357.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002442.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002526.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002628.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002654.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002735.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002807.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017002905.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017003134.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017003233.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017003317.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017003349.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017011409.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017011640.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017011751.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017235309.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017235822.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201017235941.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018000110.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018003753.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018004005.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018010656.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018010910.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018011035.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018011406.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018011449.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018015701.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018015828.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018020137.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018020738.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018021257.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018045208.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201018045239.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201019131852.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020142626.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020162940.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020163050.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020165415.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020165551.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201020230001.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/blogImage/20201021223225.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,15 +194,11 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="db_myblog: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db_myblog@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="db_myblog: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="t_blog: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
     </expand>
     <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="MyBlog" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -72,6 +221,11 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/Java/maven/apache-maven-3.6.3" />
+      </MavenGeneralSettings>
+    </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
@@ -85,7 +239,6 @@
   <component name="ProjectViewState">
     <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
     <option name="sortByType" value="true" />
@@ -98,14 +251,15 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/static/jquery-easyui-1.7.0/themes/usericons" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.24252874" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="SQL Dialects" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -142,7 +296,7 @@
     </treeState>
   </component>
   <component name="RunManager" selected="Spring Boot.MyblogApplication">
-    <configuration name="HelloWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="HelloWorld" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ledao.conf.HelloWorld" />
       <module name="MyBlog" />
       <extension name="coverage">
@@ -178,80 +332,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 8.5.43" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.43" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="BROWSER_ID" value="b2a9dca7-9d0b-4e1e-98a8-afb19c1328d2" />
-      <option name="UPDATING_POLICY" value="restart-server" />
-      <deployment>
-        <artifact name="MyBlog:war exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="/" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Tomcat_9_0_22_(1)_MyBlog" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="9351" />
-      </RunnerSettings>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="MyBlog:war exploded" />
-        </option>
-      </method>
-    </configuration>
-    <configuration name="Tomcat 9.0.22" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.43" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="Tomcat 9.0.39" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.39" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:80/index" />
       <option name="BROWSER_ID" value="b2a9dca7-9d0b-4e1e-98a8-afb19c1328d2" />
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
@@ -394,39 +475,15 @@
       <item itemvalue="Application.HelloWorld" />
       <item itemvalue="Application.Test" />
       <item itemvalue="Spring Boot.MyblogApplication" />
-      <item itemvalue="Tomcat Server.Tomcat 8.5.43" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.22" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.39" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Test" />
-        <item itemvalue="Application.HelloWorld" />
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <option name="contentProportion" value="0.12363388" />
-          <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:db_myblog@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:db_myblog@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@2101a9a5" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-            </expand>
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -465,7 +522,23 @@
       <workItem from="1602734268740" duration="2374000" />
       <workItem from="1602950624849" duration="2508000" />
       <workItem from="1602956857313" duration="249000" />
-      <workItem from="1603276428774" duration="16571000" />
+      <workItem from="1603276428774" duration="18822000" />
+      <workItem from="1603334580373" duration="823000" />
+      <workItem from="1603381549441" duration="1367000" />
+      <workItem from="1603471544464" duration="148000" />
+      <workItem from="1603471764416" duration="602000" />
+      <workItem from="1603679395837" duration="22000" />
+      <workItem from="1604500534622" duration="38000" />
+      <workItem from="1604500740657" duration="82000" />
+      <workItem from="1604501580961" duration="11000" />
+      <workItem from="1604501800712" duration="544000" />
+      <workItem from="1604504505723" duration="3384000" />
+      <workItem from="1604510261393" duration="213000" />
+      <workItem from="1604510486365" duration="835000" />
+      <workItem from="1604511338631" duration="94000" />
+      <workItem from="1604511444222" duration="530000" />
+      <workItem from="1604511989893" duration="386000" />
+      <workItem from="1604512390117" duration="456000" />
     </task>
     <task id="LOCAL-00001" summary="MyBlog">
       <created>1599655527421</created>
@@ -579,7 +652,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603295497396</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="LeDao的博客">
+      <created>1603295694686</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1603295694686</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,12 +693,14 @@
             </State>
           </value>
         </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
       </map>
-    </option>
-    <option name="OPEN_TABS">
-      <set>
-        <option value="1" />
-      </set>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
@@ -628,25 +710,40 @@
     <option name="LAST_COMMIT_MESSAGE" value="LeDao的博客" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="498" y="90" key="#Tomcat_Server" timestamp="1602236107129">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="233" y="38" key="#Inspections" timestamp="1604511541641">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
+    <state x="233" y="38" key="#Inspections/0.0.1280.760@0.0.1280.760" timestamp="1604511541641" />
+    <state x="233" y="38" key="#Notifications" timestamp="1604504563972">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="233" y="38" key="#Notifications/0.0.1280.760@0.0.1280.760" timestamp="1604504563972" />
+    <state x="415" y="78" key="#Tomcat_Server" timestamp="1604504676081">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="415" y="78" key="#Tomcat_Server/0.0.1280.760@0.0.1280.760" timestamp="1604504676081" />
     <state x="498" y="90" key="#Tomcat_Server/0.0.1536.824@0.0.1536.824" timestamp="1602236107129" />
     <state x="498" y="89" key="#Web_Browsers" timestamp="1600840362003">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="89" key="#Web_Browsers/0.0.1536.824@0.0.1536.824" timestamp="1600840362003" />
-    <state x="361" y="71" width="1089" height="721" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602236323068">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="301" y="65" width="942" height="665" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604512354547">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
+    <state x="301" y="65" width="942" height="665" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.760@0.0.1280.760" timestamp="1604512354547" />
     <state x="361" y="71" width="1089" height="721" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1602236323068" />
     <state x="563" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1603292770577">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="563" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1603292770577" />
-    <state x="498" y="90" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1602236276218">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="491" y="269" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1604504723750">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
+    <state x="491" y="269" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.760@0.0.1280.760" timestamp="1604504723750" />
+    <state x="415" y="78" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1604504693104">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="415" y="78" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.0.1280.760@0.0.1280.760" timestamp="1604504693104" />
     <state x="498" y="90" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.0.1536.824@0.0.1536.824" timestamp="1602236276218" />
     <state x="557" y="319" key="#com.intellij.javaee.module.view.web.EditWebRootDialog" timestamp="1599571358629">
       <screen x="0" y="0" width="1536" height="824" />
@@ -664,10 +761,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.824@0.0.1536.824" timestamp="1600740829061" />
-    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1603295493976">
+    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1603295693636">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1603295493976" />
+    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1603295693636" />
     <state width="635" height="438" key="DebuggerActiveHint" timestamp="1603290530368">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -676,58 +773,67 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1602957101994" />
-    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1603281048111">
+    <state x="458" y="141" key="FileChooserDialogImpl" timestamp="1604511426054">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="458" y="141" key="FileChooserDialogImpl/0.0.1280.760@0.0.1280.760" timestamp="1604511426054" />
+    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603679415959" />
+    <state width="1238" height="246" key="GridCell.Tab.0.bottom" timestamp="1604507955149">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1604507955149" />
+    <state width="1493" height="198" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603472368339" />
+    <state width="1238" height="246" key="GridCell.Tab.0.center" timestamp="1604507955149">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1604507955149" />
+    <state width="1493" height="198" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603472368339" />
+    <state width="1238" height="246" key="GridCell.Tab.0.left" timestamp="1604507955149">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1604507955149" />
+    <state width="1493" height="198" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603472368339" />
+    <state width="1238" height="246" key="GridCell.Tab.0.right" timestamp="1604507955149">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1604507955149" />
+    <state width="1493" height="198" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603472368339" />
+    <state width="1238" height="246" key="GridCell.Tab.1.bottom" timestamp="1604507955149">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.1.bottom/0.0.1280.760@0.0.1280.760" timestamp="1604507955149" />
+    <state width="1493" height="198" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603472368339" />
+    <state width="1238" height="246" key="GridCell.Tab.1.center" timestamp="1604507955149">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.1.center/0.0.1280.760@0.0.1280.760" timestamp="1604507955149" />
+    <state width="1493" height="198" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1603472368339" />
+    <state width="1238" height="246" key="GridCell.Tab.1.left" timestamp="1604507955149">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.1.left/0.0.1280.760@0.0.1280.760" timestamp="1604507955149" />
+    <state width="1493" height="198" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1603472368339" />
+    <state width="1238" height="246" key="GridCell.Tab.1.right" timestamp="1604507955149">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.1.right/0.0.1280.760@0.0.1280.760" timestamp="1604507955149" />
+    <state width="1493" height="198" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1603472368339" />
+    <state width="1493" height="198" key="GridCell.Tab.2.bottom" timestamp="1603472368339">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603281048111" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1603295203786">
+    <state width="1493" height="198" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603472368339" />
+    <state width="1493" height="198" key="GridCell.Tab.2.center" timestamp="1603472368339">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1603295203786">
+    <state width="1493" height="198" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1603472368339" />
+    <state width="1493" height="198" key="GridCell.Tab.2.left" timestamp="1603472368339">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1603295203786">
+    <state width="1493" height="198" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1603472368339" />
+    <state width="1493" height="198" key="GridCell.Tab.2.right" timestamp="1603472368339">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1603295203786">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
-    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1603295203786">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
-    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1603295203786">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
-    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1603295203786">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
-    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1603295203786">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
-    <state width="1493" height="223" key="GridCell.Tab.2.bottom" timestamp="1603295203786">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="223" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
-    <state width="1493" height="223" key="GridCell.Tab.2.center" timestamp="1603295203786">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="223" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
-    <state width="1493" height="223" key="GridCell.Tab.2.left" timestamp="1603295203786">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="223" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
-    <state width="1493" height="223" key="GridCell.Tab.2.right" timestamp="1603295203786">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="223" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1603295203786" />
+    <state width="1493" height="198" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1603472368339" />
     <state width="1282" height="243" key="GridCell.Tab.3.bottom" timestamp="1602253563624">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -744,14 +850,23 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1282" height="243" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1602253563624" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1602952213342">
+    <state width="358" height="477" key="HiddenNamespacesPopup" timestamp="1604506808702">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="358" height="477" key="HiddenNamespacesPopup/0.0.1280.760@0.0.1280.760" timestamp="1604506808702" />
+    <state x="208" y="0" width="1004" height="706" key="SettingsEditor" timestamp="1604512849244">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="208" y="0" width="1004" height="706" key="SettingsEditor/0.0.1280.760@0.0.1280.760" timestamp="1604512849244" />
+    <state x="249" y="0" width="1204" height="715" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1603471684405" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603295795446">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1602952213342" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603295501281">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603295795446" />
+    <state x="330" y="204" key="com.intellij.ide.util.TipDialog" timestamp="1604504509640">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603295501281" />
+    <state x="330" y="204" key="com.intellij.ide.util.TipDialog/0.0.1280.760@0.0.1280.760" timestamp="1604504509640" />
     <state x="562" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600850244320">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -764,9 +879,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="544" y="306" key="git4idea.ui.GitResetDialog/0.0.1536.824@0.0.1536.824" timestamp="1603204996457" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1603293347777">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="6" y="0" key="new project wizard" timestamp="1604502349223">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603293347777" />
+    <state x="6" y="0" key="new project wizard/0.0.1280.760@0.0.1280.760" timestamp="1604502349223" />
+    <state x="320" y="226" width="711" height="306" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1604510573557">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="320" y="226" width="711" height="306" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1280.760@0.0.1280.760" timestamp="1604510573557" />
+    <state x="361" y="136" width="672" height="626" key="search.everywhere.popup" timestamp="1604510567457">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="361" y="136" width="672" height="626" key="search.everywhere.popup/0.0.1280.760@0.0.1280.760" timestamp="1604510567457" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603471570635" />
   </component>
 </project>

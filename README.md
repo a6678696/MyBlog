@@ -1,7 +1,9 @@
 # MyBlog
-1.项目演示地址：
+1.项目地址：
 
-http://www.zoutl.cn/
+介绍地址:http://www.zoutl.cn/blog/21
+
+演示地址:http://www.zoutl.cn/
 
 2.使用的技术:
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="h">
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/index"><img th:src="@{/static/images/logo2.png}" id="img1" style="height: 70px" alt=""></a>
+            <iframe style="width: 400px;height: 60px;float: right" frameborder="0" scrolling="no" hspace="0"
+                    src="https://i.tianqi.com/?c=code&a=getcode&id=35&site=34&icon=1"></iframe>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div>
+                        <a href="/index" class="navbar-text ahead" style="text-decoration: none">首页</a>
+                        <a href="/download" class="navbar-text ahead" style="text-decoration: none">源码下载</a>
+                        <!--向右对齐-->
+                        <form class="navbar-form navbar-right" role="search" method="post" action="/blog/q">
+                            <div class="input-group">
+                                <input id="q" name="q" required="required" th:value="${q}" type="text" class="form-control" placeholder="输入关键词...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+</body>
+</html>

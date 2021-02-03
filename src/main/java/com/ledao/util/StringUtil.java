@@ -1,5 +1,7 @@
 package com.ledao.util;
 
+import java.io.*;
+
 /**
  * 字符串工具类
  *
@@ -66,5 +68,44 @@ public class StringUtil {
             codeNum.insert(0, "0");
         }
         return codeNum.toString();
+    }
+
+    /**
+     * 读取皮肤配置
+     *
+     * @return
+     */
+    public static int readSkin() throws IOException {
+        FileInputStream fis = new FileInputStream("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\mySkin.txt");
+        int skin = fis.read();
+        fis.close();
+        if (skin == 49) {
+            skin = 1;
+        } else if (skin == 50) {
+            skin = 2;
+        }
+        return skin;
+    }
+
+    /**
+     * 修改皮肤配置
+     *
+     * @param status
+     * @throws IOException
+     */
+    public static void updateSkin(int status) throws IOException {
+        FileOutputStream fos = new FileOutputStream("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\mySkin.txt");
+        if (status == 1) {
+            status = 49;
+        } else if (status == 2) {
+            status = 50;
+        }
+        fos.write(status);
+        fos.close();
+    }
+
+    public static void main(String[] args) throws IOException {
+        updateSkin(2);
+        System.out.println(readSkin());
     }
 }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="b">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        博客详情
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <h3 th:text="${blog.title}" style="text-align: center"></h3>
+                    <p style="color: gray;text-align: center"><span th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span> | <span th:text="' 阅读次数: '+${blog.click}+' '"></span> | 所属类别: <span  th:text="${blog.blogType.name}"></span></p>
+                    <p th:utext="${blog.content}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        按类别分类
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div th:each="blogType:${blogTypeList}">
+                        <p><a th:href="${'/index?blogTypeId='+blogType.id}"
+                              th:text="${blogType.name}+'('+${blogType.blogNum}+')'" style="text-decoration: none"
+                              class="test"></a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        按日期分类
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div th:each="blogCount:${blogCountList}">
+                        <p><a th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}"
+                              th:text="${blogCount.releaseDateStr+'('+blogCount.blogCount+')'}"
+                              style="text-decoration: none" class="test"></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

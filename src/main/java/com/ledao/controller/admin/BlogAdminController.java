@@ -152,7 +152,6 @@ public class BlogAdminController {
         sb.append("<script type=\"text/javascript\">");
         sb.append("window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ",'" + "/static/images/blogImage/" + newFileName + "','')");
         sb.append("</script>");
-
         return sb.toString();
     }
 

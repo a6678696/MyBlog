@@ -8,6 +8,7 @@ import com.ledao.service.BlogService;
 import com.ledao.service.BlogTypeService;
 import com.ledao.service.InterviewRecordService;
 import com.ledao.util.StringUtil;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -26,6 +28,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/blog")
 public class BlogController {
+
+    @Value("${skin}")
+    private String skin;
 
     @Resource
     private BlogService blogService;
@@ -39,25 +44,25 @@ public class BlogController {
     private BlogIndex blogIndex = new BlogIndex();
 
     @RequestMapping("/{id}")
-    public ModelAndView details(@PathVariable("id")Integer id,HttpServletRequest request) {
+    public ModelAndView details(@PathVariable("id") Integer id, HttpServletRequest request) throws IOException {
         ModelAndView mav = new ModelAndView();
         Blog blog = blogService.findById(id);
-        blog.setClick(blog.getClick()+1);
+        blog.setClick(blog.getClick() + 1);
         blogService.update(blog);
         blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
         List<BlogType> blogTypeList = blogTypeService.list(null);
         for (BlogType blogType : blogTypeList) {
             blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
         }
-        List<Blog> blogCountList=blogService.countList();
+        List<Blog> blogCountList = blogService.countList();
         mav.addObject("blog", blog);
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
-        mav.addObject("title", blog.getTitle()+"--LeDao的博客");
-        mav.addObject("mainPage", "page/blogDetails");
+        mav.addObject("title", blog.getTitle() + "--LeDao的博客");
+        mav.addObject("mainPage", "page/blogDetails" + StringUtil.readSkin());
         mav.addObject("mainPageKey", "#b");
-        mav.setViewName("index");
-        InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(),"查看博客："+blog.getTitle());
+        mav.setViewName("index" + StringUtil.readSkin());
+        InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "查看博客：" + blog.getTitle());
         interviewRecordService.add(interviewRecord);
         return mav;
     }
@@ -72,6 +77,10 @@ public class BlogController {
     @RequestMapping("/q")
     public ModelAndView search(@RequestParam(value = "q", required = false) String q, @RequestParam(value = "page", required = false) String page, HttpServletRequest request) throws Exception {
         int pageSize = 3;
+        if (page == null) {
+            InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "搜索了博客：" + q);
+            interviewRecordService.add(interviewRecord);
+        }
         if (StringUtil.isEmpty(page)) {
             page = "1";
         }
@@ -79,12 +88,12 @@ public class BlogController {
         for (BlogType blogType : blogTypeList) {
             blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
         }
-        List<Blog> blogCountList=blogService.countList();
+        List<Blog> blogCountList = blogService.countList();
         ModelAndView mav = new ModelAndView();
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "搜索关键字'" + q + "'结果页面--LeDao博客系统");
-        mav.addObject("mainPage", "page/blogResult");
+        mav.addObject("mainPage", "page/blogResult" + StringUtil.readSkin());
         mav.addObject("mainPageKey", "#b");
         List<Blog> blogList = blogIndex.searchBlog(q);
         for (Blog blog : blogList) {
@@ -97,12 +106,14 @@ public class BlogController {
         //算出第一页到当前页的总记录条数
         Integer toIndex = blogList.size() >= Integer.parseInt(page) * pageSize ? Integer.parseInt(page) * pageSize : blogList.size();
         mav.addObject("blogList", blogList.subList((Integer.parseInt(page) - 1) * pageSize, toIndex));
-        mav.addObject("pageCode", this.genUpAndDownPageCode(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
+        if (1 == StringUtil.readSkin()) {
+            mav.addObject("pageCode", this.genUpAndDownPageCode(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
+        } else if (2 == StringUtil.readSkin()) {
+            mav.addObject("pageCode", this.genUpAndDownPageCode2(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
+        }
         mav.addObject("q", q);
         mav.addObject("resultTotal", blogList.size());
-        mav.setViewName("index");
-        InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(),"搜索了博客："+q);
-        interviewRecordService.add(interviewRecord);
+        mav.setViewName("index" + StringUtil.readSkin());
         return mav;
     }
 
@@ -137,6 +148,37 @@ public class BlogController {
             }
             pageCode.append("</ul>");
             pageCode.append("</nav>");
+        }
+        return pageCode.toString();
+    }
+
+    /**
+     * 获取上一页，下一页代码
+     *
+     * @param page           当前页
+     * @param totalNum       总记录数
+     * @param q              查询条件
+     * @param pageSize       每页记录数
+     * @param projectContext url地址
+     * @return
+     */
+    private String genUpAndDownPageCode2(Integer page, Integer totalNum, String q, Integer pageSize, String projectContext) {
+        //数据总页数
+        long totalPage = totalNum % pageSize == 0 ? totalNum / pageSize : totalNum / pageSize + 1;
+        StringBuffer pageCode = new StringBuffer();
+        if (totalPage == 0) {
+            return null;
+        } else {
+            if (page > 1) {
+                pageCode.append("<a href='" + projectContext + "/blog/q?page=" + (page - 1) + "&q=" + q + "' style='text-decoration: none' class='com'><button type='button' class='btn btn-primary btn-sm'>上一页</button></a>");
+            } else {
+                pageCode.append("<a href='#' style='text-decoration: none' class='com'><button type='button' class='btn btn-primary btn-sm'>上一页</button></a>");
+            }
+            if (page < totalPage) {
+                pageCode.append("<a href='" + projectContext + "/blog/q?page=" + (page + 1) + "&q=" + q + "' style='text-decoration: none;margin-left: 2px' class='com'><button type='button' class='btn btn-primary btn-sm'>下一页</button></a>");
+            } else {
+                pageCode.append("<a href='#' style='text-decoration: none;margin-left: 2px' class='com'><button type='button' class='btn btn-primary btn-sm'>下一页</button></a>");
+            }
         }
         return pageCode.toString();
     }

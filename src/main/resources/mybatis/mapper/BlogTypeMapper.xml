@@ -52,6 +52,7 @@
                 and name like #{name}
             </if>
         </where>
+        order by sortNum asc
     </select>
     <select id="findById" parameterType="integer" resultMap="BlogTypeResult">
         select * from t_blogtype where id=#{id}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="b">
+    <!--公告-->
+    <div class="row" th:if="${skin==null}">
+        <div class="col-md-12">
+            <div id="myAlert" class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong>公告:</strong>本站内容主要来源为个人总结以及整理互联网上技术博客的内容,搬运技术博客所得均已注明出处,本站内容仅供本人学习使用
+            </div>
+        </div>
+    </div>
+    <!--博客列表和右侧菜单-->
+    <div class="row">
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        博客列表
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div th:each="blog:${blogList}">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div>
+                                    <p><a th:href="'/blog/'+${blog.getId()}" style="text-decoration: none" class="blogTitleTest"><h4
+                                            th:text="${blog.title}"></h4></a></p>
+                                    <p style="color: gray"><span
+                                            th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span>
+                                        | <span th:text="' 阅读次数: '+${blog.click}+' '"></span> | 所属类别: <span
+                                                th:text="${blog.blogType.name}"></span></p>
+                                    <div>
+                                        <div style="float:left; clear: both;" align="center">
+                                            <a th:href="'/blog/'+${blog.getId()}"><img th:src="@{${blog.imageName}}"
+                                                                                       th:if="${blog.imageName!=null}"
+                                                                                       width="222" alt=""
+                                                                                       hspace="8"></a>
+                                        </div>
+                                        <span style="color: gray"
+                                              th:text="${#strings.abbreviate(blog.summary,600)}"></span>
+                                    </div>
+                                </div>
+                                <div style="clear: both">
+                                    <br>
+                                    <a th:href="'/blog/'+${blog.getId()}">
+                                        <button type="button" class="btn btn-primary btn-sm">查看详情</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center">
+                        <ul class="pagination">
+                            <p th:utext="${pageCode}"></p>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        按类别分类
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div th:each="blogType:${blogTypeList}">
+                        <p><a th:href="${'/index?blogTypeId='+blogType.id}"
+                              th:text="${blogType.name}+'('+${blogType.blogNum}+')'" style="text-decoration: none"
+                              class="test"></a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        按日期分类
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div th:each="blogCount:${blogCountList}">
+                        <p><a th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}"
+                              th:text="${blogCount.releaseDateStr+'('+blogCount.blogCount+')'}"
+                              style="text-decoration: none" class="test"></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--友情链接-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        友情链接
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <a href="http://share.zoutl.cn" target="_blank" style="text-decoration: none" class="test">LeDao资源分享平台</a>
+                    <a href="http://pethospital.zoutl.cn" target="_blank" style="text-decoration: none" class="test">宠物医院管理系统</a>
+                    <a href="http://jxc.zoutl.cn" target="_blank" style="text-decoration: none" class="test">进销存管理系统</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

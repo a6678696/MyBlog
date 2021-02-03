@@ -28,7 +28,7 @@ public class DeleteInvalidImage {
     @Resource
     private BlogService blogService;
 
-    @Scheduled(cron = " 0 0 23 * * ?")
+    @Scheduled(cron = "0 0 23 * * ?")
     public void work() {
         List<Blog> blogList = blogService.list(null);
         //博客中引用的图片名称集合

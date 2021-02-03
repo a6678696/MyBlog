@@ -1,5 +1,5 @@
 server:
-  port: 80
+  port: 8080
   servlet:
     context-path: /
   tomcat:
@@ -26,7 +26,9 @@ spring:
     cache: false
 
 #博客正文图片存储地址
-blogImageFilePath: E://IdeaProjects/ActualCombat/MyBlog/src/main/webapp/static/images/blogImage/
+blogImageFilePath: C://Java/apache-tomcat-9.0.22-windows-x64/apache-tomcat-9.0.22-windows-x64/apache-tomcat-9.0.22/webapps/MyBlog/static/images/blogImage/
+#本系统有两套前端模板,只能填1和2
+skin: 2
 
 #mybatis的相关配置
 mybatis:

@@ -14,9 +14,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +38,9 @@ import java.util.Map;
  */
 @Controller
 public class IndexController {
+
+    @Value("${skin}")
+    private String skin;
 
     @Resource
     private UserService userService;
@@ -57,13 +60,9 @@ public class IndexController {
      * @return
      */
     @RequestMapping("/")
-    public ModelAndView root(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr, HttpServletRequest request) {
+    public ModelAndView root(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr, HttpServletRequest request) throws IOException {
         ModelAndView mav = new ModelAndView();
-        String localIp = "0:0:0:0:0:0:0:1";
         InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "访问博客首页");
-        if (interviewRecord.getInterviewerIp().equals(localIp)) {
-            interviewRecord.setInterviewerIp("127.0.0.1");
-        }
         interviewRecordService.add(interviewRecord);
         Map<String, Object> map = new HashMap<>(16);
         if (page == null) {
@@ -115,10 +114,14 @@ public class IndexController {
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "首页--LeDao的博客");
-        mav.addObject("pageCode", PageUtil.genPagination("/index", total, page, pageSize, param.toString()));
-        mav.addObject("mainPage", "page/indexFirst");
+        if (1 == StringUtil.readSkin()) {
+            mav.addObject("pageCode", PageUtil.genPagination1("/index", total, page, pageSize, param.toString()));
+        } else if (2 == StringUtil.readSkin()) {
+            mav.addObject("pageCode", PageUtil.genPagination2("/index", total, page, pageSize, param.toString()));
+        }
+        mav.addObject("mainPage", "page/indexFirst" + StringUtil.readSkin());
         mav.addObject("mainPageKey", "#b");
-        mav.setViewName("index");
+        mav.setViewName("index" + StringUtil.readSkin());
         return mav;
     }
 
@@ -128,10 +131,24 @@ public class IndexController {
      * @return
      */
     @RequestMapping("/index")
-    public ModelAndView root2(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr, HttpServletRequest request) {
+    public ModelAndView root2(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr, HttpServletRequest request) throws IOException {
         ModelAndView mav = new ModelAndView();
-        String localIp = "0:0:0:0:0:0:0:1";
         Map<String, Object> map = new HashMap<>(16);
+        StringBuffer param = new StringBuffer();
+        if (StringUtil.isNotEmpty(blogTypeId)) {
+            param.append("&blogTypeId=" + blogTypeId);
+            if (page == null) {
+                InterviewRecord interviewRecord2 = new InterviewRecord(request.getRemoteAddr(), "查看分类：" + blogTypeService.findById(Integer.valueOf(blogTypeId)).getName() + "(按博客类别分类)");
+                interviewRecordService.add(interviewRecord2);
+            }
+        }
+        if (StringUtil.isNotEmpty(releaseDateStr)) {
+            param.append("&releaseDateStr=" + releaseDateStr);
+            if (page == null) {
+                InterviewRecord interviewRecord3 = new InterviewRecord(request.getRemoteAddr(), "查看分类：" + releaseDateStr + "(按日期分类)");
+                interviewRecordService.add(interviewRecord3);
+            }
+        }
         if (page == null) {
             page = 1;
         }
@@ -170,31 +187,19 @@ public class IndexController {
             blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
         }
         List<Blog> blogCountList = blogService.countList();
-        StringBuffer param = new StringBuffer();
-        if (StringUtil.isNotEmpty(blogTypeId)) {
-            param.append("&blogTypeId=" + blogTypeId);
-            InterviewRecord interviewRecord2 = new InterviewRecord(request.getRemoteAddr(), "查看分类：" + blogTypeService.findById(Integer.valueOf(blogTypeId)).getName() + "(按博客类别分类)");
-            if (interviewRecord2.getInterviewerIp().equals(localIp)) {
-                interviewRecord2.setInterviewerIp("127.0.0.1");
-            }
-            interviewRecordService.add(interviewRecord2);
-        }
-        if (StringUtil.isNotEmpty(releaseDateStr)) {
-            param.append("&releaseDateStr=" + releaseDateStr);
-            InterviewRecord interviewRecord3 = new InterviewRecord(request.getRemoteAddr(), "查看分类：" + releaseDateStr + "(按日期分类)");
-            if (interviewRecord3.getInterviewerIp().equals(localIp)) {
-                interviewRecord3.setInterviewerIp("127.0.0.1");
-            }
-            interviewRecordService.add(interviewRecord3);
-        }
+        mav.addObject("skin", 1);
         mav.addObject("blogList", blogList);
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "首页--LeDao的博客");
-        mav.addObject("pageCode", PageUtil.genPagination("/index", total, page, pageSize, param.toString()));
-        mav.addObject("mainPage", "page/indexFirst");
+        if (1 == StringUtil.readSkin()) {
+            mav.addObject("pageCode", PageUtil.genPagination1("/index", total, page, pageSize, param.toString()));
+        } else if (2 == StringUtil.readSkin()) {
+            mav.addObject("pageCode", PageUtil.genPagination2("/index", total, page, pageSize, param.toString()));
+        }
+        mav.addObject("mainPage", "page/indexFirst" + StringUtil.readSkin());
         mav.addObject("mainPageKey", "#b");
-        mav.setViewName("index");
+        mav.setViewName("index" + StringUtil.readSkin());
         return mav;
     }
 
@@ -215,8 +220,8 @@ public class IndexController {
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "本站源码下载");
-        mav.addObject("mainPage", "page/download");
-        mav.setViewName("index");
+        mav.addObject("mainPage", "page/download" + StringUtil.readSkin());
+        mav.setViewName("index" + StringUtil.readSkin());
         return mav;
     }
 
@@ -242,6 +247,13 @@ public class IndexController {
         return "/admin/main";
     }
 
+    /**
+     * 验证码是否正确
+     *
+     * @param imageCode
+     * @param session
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/checkCodeIsSuccess")
     public Map<String, Object> checkCodeIsSuccess(String imageCode, HttpSession session) {
@@ -254,6 +266,26 @@ public class IndexController {
             } else {
                 resultMap.put("success", false);
             }
+        }
+        return resultMap;
+    }
+
+    /**
+     * 切换前台皮肤
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/changeSkin")
+    public Map<String, Object> changeSkin() throws IOException {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        int skin = StringUtil.readSkin();
+        if (skin == 1) {
+            StringUtil.updateSkin(2);
+            resultMap.put("success", true);
+        } else if (skin == 2) {
+            StringUtil.updateSkin(1);
+            resultMap.put("success", true);
         }
         return resultMap;
     }

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/mystyle.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script th:src="@{/static/js/jquery.js}"></script>
+    <link rel="short icon" th:href="@{/static/images/favicon.ico}">
+    <style>
+        a.test:hover {
+            font-size: 15px;
+            color: red;
+            font-weight: bold;
+        }
+
+        a.blogTitleTest:hover {
+            color: red;
+        }
+
+        a.ahead:hover {
+            color: red;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("img").addClass("img-responsive");
+            $("img").addClass("pimg");
+            $("#img1").removeClass("img-responsive");
+            $("#img1").removeClass("pimg");
+            $("#img2").removeClass("img-responsive");
+            $("#img2").removeClass("pimg");
+        });
+
+        //图片放大
+        $(function () {
+
+            $(".pimg").click(function () {
+                var _this = $(this);//将当前的pimg元素作为_this传入函数
+                imgShow("#outerdiv", "#innerdiv", "#bigimg", _this);
+            });
+        });
+
+        function imgShow(outerdiv, innerdiv, bigimg, _this) {
+
+            var src = _this.attr("src");//获取当前点击的pimg元素中的src属性
+            $(bigimg).attr("src", src);//设置#bigimg元素的src属性
+            /*获取当前点击图片的真实大小，并显示弹出层及大图*/
+            $("<img/>").attr("src", src).load(function () {
+                var windowW = $(window).width(); //获取当前窗口宽度
+                var windowH = $(window).height(); //获取当前窗口高度
+                var realWidth = this.width; //获取图片真实宽度
+                var realHeight = this.height; //获取图片真实高度
+                var imgWidth, imgHeight;
+                var scale = 0.8; //缩放尺寸，当图片真实宽度和高度大于窗口宽度和高度时进行缩放
+                if (realHeight > windowH * scale) { //判断图片高度
+                    imgHeight = windowH * scale; //如大于窗口高度，图片高度进行缩放
+                    imgWidth = imgHeight / realHeight * realWidth; //等比例缩放宽度
+                    if (imgWidth > windowW * scale) { //如宽度扔大于窗口宽度
+                        imgWidth = windowW * scale; //再对宽度进行缩放
+                    }
+                } else if (realWidth > windowW * scale) { //如图片高度合适，判断图片宽度
+                    imgWidth = windowW * scale; //如大于窗口宽度，图片宽度进行缩放
+                    imgHeight = imgWidth / realWidth * realHeight; //等比例缩放高度
+                } else { //如果图片真实高度和宽度都符合要求，高宽不变
+                    imgWidth = realWidth;
+                    imgHeight = realHeight;
+                }
+                $(bigimg).css("width", imgWidth); //以最终的宽度对图片缩放
+                var w = (windowW - imgWidth) / 2; //计算图片与窗口左边距
+                var h = (windowH - imgHeight) / 2; //计算图片与窗口上边距
+                $(innerdiv).css({"top": h, "left": w}); //设置#innerdiv的top和left属性
+                $(outerdiv).fadeIn("fast"); //淡入显示#outerdiv及.pimg
+            });
+
+            $(outerdiv).click(function () {  //再次点击淡出消失弹出层
+                $(this).fadeOut("fast");
+            });
+        }
+    </script>
+</head>
+<body>
+<div style="width: 90%;margin-left: 5%">
+    <div th:include="common/head2::#h"></div>
+    <div th:include="${mainPage}::${mainPageKey}"></div>
+    <div th:include="common/foot2::#f"></div>
+    <div id="outerdiv"
+         style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;">
+        <div id="innerdiv" style="position:absolute;">
+            <img id="bigimg" style="border:5px solid #fff;" src=""/>
+        </div>
+        <h1 style="color: yellow;text-align: center"><span style="color: yellow">************************</span>点击图片外任何区域即可关闭图片<span
+                style="color: yellow">************************</span></h1>
+    </div>
+</div>
+</body>
+</html>

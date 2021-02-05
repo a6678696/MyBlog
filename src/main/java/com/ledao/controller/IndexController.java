@@ -4,17 +4,13 @@ import com.ledao.entity.Blog;
 import com.ledao.entity.BlogType;
 import com.ledao.entity.InterviewRecord;
 import com.ledao.entity.User;
-import com.ledao.service.BlogService;
-import com.ledao.service.BlogTypeService;
-import com.ledao.service.InterviewRecordService;
-import com.ledao.service.UserService;
+import com.ledao.service.*;
 import com.ledao.util.PageUtil;
 import com.ledao.util.StringUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,9 +35,6 @@ import java.util.Map;
 @Controller
 public class IndexController {
 
-    @Value("${skin}")
-    private String skin;
-
     @Resource
     private UserService userService;
 
@@ -53,6 +46,9 @@ public class IndexController {
 
     @Resource
     private InterviewRecordService interviewRecordService;
+
+    @Resource
+    private LinkService linkService;
 
     /**
      * 首页地址(为了直接输入首地址就能访问网站)
@@ -110,6 +106,9 @@ public class IndexController {
         if (StringUtil.isNotEmpty(releaseDateStr)) {
             param.append("&releaseDateStr=" + releaseDateStr);
         }
+        //用于判断是否是首页,是首页就显示公告
+        mav.addObject("isIndexFirst", 1);
+        mav.addObject("linkList", linkService.list(null));
         mav.addObject("blogList", blogList);
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
@@ -187,7 +186,7 @@ public class IndexController {
             blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
         }
         List<Blog> blogCountList = blogService.countList();
-        mav.addObject("skin", 1);
+        mav.addObject("linkList", linkService.list(null));
         mav.addObject("blogList", blogList);
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);

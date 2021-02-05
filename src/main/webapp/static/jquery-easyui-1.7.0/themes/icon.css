@@ -176,6 +176,10 @@
 	background:url('usericons/interviewRecordManege.gif') no-repeat center center;
 }
 
+.icon-linkManage{
+	background:url('usericons/linkManage.gif') no-repeat center center;
+}
+
 .icon-changeSkin{
 	background:url('usericons/changeSkin.gif') no-repeat center center;
 }

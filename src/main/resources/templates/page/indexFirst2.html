@@ -8,7 +8,7 @@
 <body>
 <div id="b">
     <!--公告-->
-    <div class="row" th:if="${skin==null}">
+    <div class="row" th:if="${isIndexFirst!=null}">
         <div class="col-md-12">
             <div id="myAlert" class="alert alert-danger">
                 <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -30,7 +30,8 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <div>
-                                    <p><a th:href="'/blog/'+${blog.getId()}" style="text-decoration: none" class="blogTitleTest"><h4
+                                    <p><a th:href="'/blog/'+${blog.getId()}" style="text-decoration: none"
+                                          class="blogTitleTest"><h4
                                             th:text="${blog.title}"></h4></a></p>
                                     <p style="color: gray"><span
                                             th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span>
@@ -41,6 +42,7 @@
                                             <a th:href="'/blog/'+${blog.getId()}"><img th:src="@{${blog.imageName}}"
                                                                                        th:if="${blog.imageName!=null}"
                                                                                        width="222" alt=""
+                                                                                       class="indexFirstImage"
                                                                                        hspace="8"></a>
                                         </div>
                                         <span style="color: gray"
@@ -105,9 +107,10 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <a href="http://share.zoutl.cn" target="_blank" style="text-decoration: none" class="test">LeDao资源分享平台</a>
-                    <a href="http://pethospital.zoutl.cn" target="_blank" style="text-decoration: none" class="test">宠物医院管理系统</a>
-                    <a href="http://jxc.zoutl.cn" target="_blank" style="text-decoration: none" class="test">进销存管理系统</a>
+                    <span th:each="link:${linkList}">
+                        <a th:href="${link.url}" target="_blank" style="text-decoration: none" class="test"
+                           th:text="${link.name}"></a>
+                    </span>
                 </div>
             </div>
         </div>

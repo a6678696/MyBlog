@@ -27,16 +27,35 @@
         a.ahead:hover {
             color: red;
         }
+
+        /*修改提示框*/
+        #mytitle {
+            position: absolute;
+            color: #ffffff;
+            max-width: 160px;
+            font-size: 14px;
+            padding: 4px;
+            background: rgba(40, 40, 40, 0.8);
+            border: solid 1px #e9f7f6;
+            border-radius: 5px;
+        }
+
     </style>
     <script type="text/javascript">
         $(document).ready(function () {
+            //全部图片
             $("img").addClass("img-responsive");
             $("img").addClass("pimg");
+            //首页图片
+            $(".indexFirstImage").removeClass("pimg");
+            //logo
             $("#img1").removeClass("img-responsive");
             $("#img1").removeClass("pimg");
+            //备案图片
             $("#img2").removeClass("img-responsive");
             $("#img2").removeClass("pimg");
         });
+
 
         //图片放大
         $(function () {
@@ -83,6 +102,75 @@
                 $(this).fadeOut("fast");
             });
         }
+
+        function afterClick1() {
+            $("#a1").attr("hidden", "true");
+            $("#a2").removeAttr("hidden");
+        }
+
+        function afterClick2() {
+            $("#a1").removeAttr("hidden");
+            $("#a2").attr("hidden", "true");
+        }
+
+        $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('span.mytooltip').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+    </script>
+    <!--其他-->
+    <script th:inline="javascript">
+        function submitComment() {
+            var content = $("#commentContent").val();
+            var blogId = $("#commentBlogId").val();
+            if (content == null || content == '') {
+                alert("请输入评论内容!!");
+                return false;
+            }
+            $.post("/comment/add", {content: content, blogId: blogId},
+                function (result) {
+                    if (result.success) {
+                        alert("评论成功,审核通过后方可在下方显示!!");
+                        $("#commentContent").val("");
+                    } else {
+                        alert("评论失败!!");
+                    }
+                }
+            );
+        }
+
+        function like() {
+            var blogId = $("#commentBlogId").val();
+            $.post("/like/add", { blogId: blogId},
+                function (result) {
+                    if (result.success) {
+                        alert("点赞成功!!");
+                        $("#like1").attr("hidden", "true");
+                        $("#like2").removeAttr("hidden");
+                    } else {
+                        alert("点赞失败!!");
+                    }
+                }
+            );
+        }
     </script>
 </head>
 <body>
@@ -95,8 +183,7 @@
         <div id="innerdiv" style="position:absolute;">
             <img id="bigimg" style="border:5px solid #fff;" src=""/>
         </div>
-        <h1 style="color: yellow;text-align: center"><span style="color: yellow">************************</span>点击图片外任何区域即可关闭图片<span
-                style="color: yellow">************************</span></h1>
+        <h1 style="color: yellow;text-align: center">点击图片外任何区域即可关闭图片</h1>
     </div>
 </div>
 </body>

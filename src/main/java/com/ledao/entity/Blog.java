@@ -1,8 +1,6 @@
 package com.ledao.entity;
 
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * 博客实体
@@ -61,6 +59,14 @@ public class Blog {
      * 该类型的博客数量
      */
     private Integer blogNum;
+    /**
+     * 用于判断当前IP是否点赞过这篇博客
+     */
+    private Integer isLike;
+    /**
+     * 点赞数
+     */
+    private Integer likeNum;
 
     public Integer getId() {
         return id;
@@ -158,21 +164,19 @@ public class Blog {
         this.blogNum = blogNum;
     }
 
-    @Override
-    public String toString() {
-        return "Blog{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", summary='" + summary + '\'' +
-                ", content='" + content + '\'' +
-                ", releaseDate=" + releaseDate +
-                ", click=" + click +
-                ", blogTypeId=" + blogTypeId +
-                ", blogType=" + blogType +
-                ", imageName='" + imageName + '\'' +
-                ", blogCount=" + blogCount +
-                ", releaseDateStr='" + releaseDateStr + '\'' +
-                ", blogNum=" + blogNum +
-                '}';
+    public Integer getIsLike() {
+        return isLike;
+    }
+
+    public void setIsLike(Integer isLike) {
+        this.isLike = isLike;
+    }
+
+    public Integer getLikeNum() {
+        return likeNum;
+    }
+
+    public void setLikeNum(Integer likeNum) {
+        this.likeNum = likeNum;
     }
 }

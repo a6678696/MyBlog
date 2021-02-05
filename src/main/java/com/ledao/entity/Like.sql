@@ -1,0 +1,10 @@
+-- auto Generated on 2021-02-05
+-- DROP TABLE IF EXISTS t_like;
+CREATE TABLE t_like(
+	id INT (11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+	`date` DATETIME NOT NULL COMMENT '点赞时间',
+	blogId INT (11) NOT NULL COMMENT '点赞博客id',
+	ip VARCHAR (50) NOT NULL COMMENT '点赞人IP地址',
+	INDEX(id),
+	PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT 't_like';

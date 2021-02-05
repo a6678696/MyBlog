@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ledao.mapper.CommentMapper">
+    <resultMap id="CommentResult" type="Comment">
+        <result column="id" property="id"/>
+        <result column="blogId" property="blogId"/>
+        <result column="date" property="date"/>
+        <result column="ip" property="ip"/>
+        <result column="content" property="content"/>
+        <result column="state" property="state"/>
+        <result column="imageName" property="imageName"/>
+        <result column="reply" property="reply"/>
+    </resultMap>
+
+    <select id="list" parameterType="map" resultMap="CommentResult">
+        select *
+        from t_comment
+        <where>
+            <if test="ip != null and ip != ''">
+                and ip like #{ip}
+            </if>
+            <if test="state != null">
+                and state = #{state}
+            </if>
+            <if test="blogId != null">
+                and blogId = #{blogId}
+            </if>
+        </where>
+        order by date desc
+        <if test="start != null and size != null">
+            limit #{start},#{size}
+        </if>
+    </select>
+
+    <select id="getTotal" parameterType="map" resultType="java.lang.Long">
+        select count(*)
+        from t_comment
+        <where>
+            <if test="ip != null and ip != ''">
+                and ip like #{ip}
+            </if>
+            <if test="state != null">
+                and state = #{state}
+            </if>
+            <if test="blogId != null">
+                and blogId = #{blogId}
+            </if>
+        </where>
+    </select>
+
+    <insert id="add" parameterType="Comment">
+        insert into t_comment (blogId, date, ip, content, state, imageName)
+        values (#{blogId}, now(), #{ip}, #{content}, 0, #{imageName});
+    </insert>
+
+    <update id="update" parameterType="Comment">
+        update t_comment
+        <set>
+            <if test="state != null">
+                state=#{state},
+            </if>
+            <if test="reply != null and reply != ''">
+                reply=#{reply},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById" parameterType="integer">
+        delete
+        from t_comment
+        where id = #{id}
+    </delete>
+
+    <select id="findByIp" parameterType="string" resultMap="CommentResult">
+        select *
+        from t_comment
+        where ip = #{ip}
+    </select>
+</mapper>

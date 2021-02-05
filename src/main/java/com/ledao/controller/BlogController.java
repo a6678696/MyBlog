@@ -1,14 +1,9 @@
 package com.ledao.controller;
 
-import com.ledao.entity.Blog;
-import com.ledao.entity.BlogType;
-import com.ledao.entity.InterviewRecord;
+import com.ledao.entity.*;
 import com.ledao.lucene.BlogIndex;
-import com.ledao.service.BlogService;
-import com.ledao.service.BlogTypeService;
-import com.ledao.service.InterviewRecordService;
+import com.ledao.service.*;
 import com.ledao.util.StringUtil;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author LeDao
@@ -29,9 +27,6 @@ import java.util.List;
 @RequestMapping("/blog")
 public class BlogController {
 
-    @Value("${skin}")
-    private String skin;
-
     @Resource
     private BlogService blogService;
 
@@ -40,6 +35,12 @@ public class BlogController {
 
     @Resource
     private InterviewRecordService interviewRecordService;
+
+    @Resource
+    private CommentService commentService;
+
+    @Resource
+    private LikeService likeService;
 
     private BlogIndex blogIndex = new BlogIndex();
 
@@ -55,9 +56,47 @@ public class BlogController {
             blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
         }
         List<Blog> blogCountList = blogService.countList();
+        Map<String, Object> map = new HashMap<>(16);
+        map.put("blogTypeId", blog.getBlogTypeId());
+        //根据当前博客类别推荐博客
+        List<Blog> recommendBlogList = blogService.list(map);
+        //去掉List中的当前文章(即当前正在查看的文章不推荐)
+        for (int i = 0; i < recommendBlogList.size(); i++) {
+            if (recommendBlogList.get(i).getId().equals(blog.getId())) {
+                recommendBlogList.remove(i);
+                i--;
+            }
+        }
+        //本来是按发布时间降序排列的,现在将其打乱实现随机推荐
+        Collections.shuffle(recommendBlogList);
+        //当前博客id
+        map.put("blogId", blog.getId());
+        //审核已通过的
+        map.put("state", 1);
+        List<Comment> commentList = commentService.list(map);
+        for (Comment comment : commentList) {
+            String[] ips = comment.getIp().split("\\.");
+            StringBuilder sb = new StringBuilder();
+            sb.append(ips[0]).append(".").append(ips[1]).append(".").append(ips[2]).append(".**");
+            comment.setIp(sb.toString());
+        }
+        //判断当前IP是否点赞过当前博客
+        List<Like> likeList = likeService.list(null);
+        for (Like like : likeList) {
+            if (like.getBlogId().equals(blog.getId()) && like.getIp().equals(request.getRemoteAddr().equals("0:0:0:0:0:0:0:1") ? "127.0.0.1" : request.getRemoteAddr())) {
+                blog.setIsLike(1);
+            }
+        }
+        //获取当前文章的点赞数
+        Map<String, Object> map1=new HashMap<>(16);
+        map1.put("blogId", blog.getId());
+        List<Like> likes = likeService.list(map1);
+        blog.setLikeNum(likes.size());
         mav.addObject("blog", blog);
+        mav.addObject("commentList", commentList);
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
+        mav.addObject("recommendBlogList", recommendBlogList);
         mav.addObject("title", blog.getTitle() + "--LeDao的博客");
         mav.addObject("mainPage", "page/blogDetails" + StringUtil.readSkin());
         mav.addObject("mainPageKey", "#b");

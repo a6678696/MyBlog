@@ -45,4 +45,12 @@ public interface LikeService {
      * @return
      */
     Integer deleteById(Integer id);
+
+    /**
+     * 根据博客id删除点赞记录
+     *
+     * @param blogId
+     * @return
+     */
+    Integer deleteByBlogId(Integer blogId);
 }

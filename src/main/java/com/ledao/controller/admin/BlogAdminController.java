@@ -5,6 +5,8 @@ import com.ledao.entity.PageBean;
 import com.ledao.lucene.BlogIndex;
 import com.ledao.service.BlogService;
 import com.ledao.service.BlogTypeService;
+import com.ledao.service.CommentService;
+import com.ledao.service.LikeService;
 import com.ledao.util.DateUtil;
 import com.ledao.util.StringUtil;
 import org.apache.commons.io.FileUtils;
@@ -39,6 +41,12 @@ public class BlogAdminController {
 
     @Resource
     private BlogTypeService blogTypeService;
+
+    @Resource
+    private LikeService likeService;
+
+    @Resource
+    private CommentService commentService;
 
     private BlogIndex blogIndex = new BlogIndex();
 
@@ -120,7 +128,12 @@ public class BlogAdminController {
         String[] idsStr = ids.split(",");
         for (int i = 0; i < idsStr.length; i++) {
             int id = Integer.parseInt(idsStr[i]);
+            //删除Lucene的索引
             blogIndex.deleteIndex(String.valueOf(id));
+            //删除该博客下的点赞记录
+            likeService.deleteByBlogId(id);
+            //删除该博客下的评论
+            commentService.deleteByBlogId(id);
             key = blogService.delete(id);
         }
         if (key > 0) {

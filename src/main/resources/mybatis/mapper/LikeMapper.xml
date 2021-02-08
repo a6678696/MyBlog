@@ -20,6 +20,7 @@
                 and blogId=#{blogId}
             </if>
         </where>
+        order by date desc
         <if test="start != null and size != null">
             limit #{start},#{size}
         </if>
@@ -45,5 +46,9 @@
 
     <delete id="deleteById" parameterType="integer">
         delete from t_like where id=#{id}
+    </delete>
+
+    <delete id="deleteByBlogId" parameterType="integer">
+        delete from t_like where blogId=#{blogId}
     </delete>
 </mapper>

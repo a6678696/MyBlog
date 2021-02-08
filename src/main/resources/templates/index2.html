@@ -54,6 +54,9 @@
             //备案图片
             $("#img2").removeClass("img-responsive");
             $("#img2").removeClass("pimg");
+            //返回顶部图片
+            $("#gotop").removeClass("img-responsive");
+            $("#gotop").removeClass("pimg");
         });
 
 
@@ -157,6 +160,7 @@
             );
         }
 
+        //用户点赞博客
         function like() {
             var blogId = $("#commentBlogId").val();
             $.post("/like/add", { blogId: blogId},
@@ -171,9 +175,30 @@
                 }
             );
         }
+
+        //返回顶部图标出现或者消失
+        $(function () {
+            $(function () {
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > 100) {
+                        $("#gotop").fadeIn(1000);//一秒渐入动画
+                    } else {
+                        $("#gotop").fadeOut(1000);//一秒渐隐动画
+                    }
+                });
+
+                $("#gotop").click(function () {
+                    $('body,html').animate({scrollTop: 0}, 1000);
+                });
+            });
+        });
     </script>
 </head>
 <body>
+<a href="#gotop" title="返回顶部">
+    <img th:src="@{/static/images/top2.png}" id="gotop" alt=""
+         style="position: fixed;bottom: 10%;display: none;height: 40px;margin-left: 96%">
+</a>
 <div style="width: 90%;margin-left: 5%">
     <div th:include="common/head2::#h"></div>
     <div th:include="${mainPage}::${mainPageKey}"></div>

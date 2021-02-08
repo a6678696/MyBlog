@@ -64,7 +64,7 @@ public class IndexController {
         if (page == null) {
             page = 1;
         }
-        int pageSize = 3;
+        int pageSize = 6;
         map.put("start", (page - 1) * pageSize);
         map.put("size", pageSize);
         map.put("blogTypeId", blogTypeId);
@@ -151,7 +151,7 @@ public class IndexController {
         if (page == null) {
             page = 1;
         }
-        int pageSize = 3;
+        int pageSize = 6;
         map.put("start", (page - 1) * pageSize);
         map.put("size", pageSize);
         map.put("blogTypeId", blogTypeId);

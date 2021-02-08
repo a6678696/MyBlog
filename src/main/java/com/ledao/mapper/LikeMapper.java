@@ -39,10 +39,18 @@ public interface LikeMapper {
     Integer add(Like like);
 
     /**
-     * 删除点赞记录
+     * 根据id删除点赞记录
      *
      * @param id
      * @return
      */
     Integer deleteById(Integer id);
+
+    /**
+     * 根据博客id删除点赞记录
+     *
+     * @param blogId
+     * @return
+     */
+    Integer deleteByBlogId(Integer blogId);
 }

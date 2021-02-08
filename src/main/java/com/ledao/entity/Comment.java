@@ -16,9 +16,13 @@ public class Comment {
      */
     private Integer id;
     /**
-     * 文章编号
+     * 博客id
      */
     private Integer blogId;
+    /**
+     * 博客实体
+     */
+    private Blog blog;
     /**
      * 评论时间
      */
@@ -107,5 +111,13 @@ public class Comment {
 
     public void setReply(String reply) {
         this.reply = reply;
+    }
+
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
     }
 }

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>评论管理</title>
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.7.0/themes/metro-blue/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.7.0/themes/icon.css">
+    <script type="text/javascript" src="/static/jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        var url;
+
+        function searchComment() {
+            $("#dg").datagrid('load', {
+                "ip": $("#s_ip").val()
+            });
+        }
+
+        function resetValue() {
+
+            $("#s_ip").val("");
+            $("#name").val("");
+            $("#sortNum").val("");
+        }
+
+        function closeCommentDialog() {
+            $("#dlg").dialog("close");
+            resetValue();
+        }
+
+        function saveComment() {
+            $("#fm").form("submit", {
+                url: url,
+                onSubmit: function () {
+                    return $(this).form("validate");
+                },
+                success: function (result) {
+                    var result = eval('(' + result + ')');
+                    if (result.success) {
+                        $.messager.alert("系统提示", "保存成功！");
+                        resetValue();
+                        $("#dlg").dialog("close");
+                        $("#dg").datagrid("reload");
+                    } else {
+                        $.messager.alert("系统提示", "保存失败!");
+                    }
+                }
+            });
+        }
+
+        function openCommentAddDialog() {
+            $("#dlg").dialog("open").dialog("setTitle", "添加评论信息");
+            url = "/admin/comment/save";
+        }
+
+        function openCommentModifyDialog() {
+            var selectedRows = $("#dg").datagrid("getSelections");
+            if (selectedRows.length != 1) {
+                $.messager.alert("系统提示", "请选择一条要回复的评论！");
+                return;
+            }
+            var row = selectedRows[0];
+            $("#dlg").dialog("open").dialog("setTitle", "回复评论");
+            $("#fm").form("load", row);
+            url = "/admin/comment/save?id=" + row.id;
+        }
+
+        function deleteComment() {
+            var selectedRows = $("#dg").datagrid("getSelections");
+            if (selectedRows.length == 0) {
+                $.messager.alert("系统提示", "请选择要删除的数据！");
+                return;
+            }
+            var strIds = [];
+            for (var i = 0; i < selectedRows.length; i++) {
+                strIds.push(selectedRows[i].id);
+            }
+            var ids = strIds.join(",");
+            $.messager.confirm("系统提示", "您确定要删除这<span style='color: red'>" + selectedRows.length + "</span>条数据吗?", function (r) {
+                if (r) {
+                    $.post("/admin/comment/delete", {ids: ids}, function (result) {
+                        if (result.success) {
+                            $.messager.alert("系统提示", "数据已成功删除！");
+                            $("#dg").datagrid("reload");
+                        } else {
+                            $.messager.alert("系统提示", result.errorInfo);
+                        }
+                    }, "json");
+                }
+            });
+        }
+
+        $(document).ready(function () {
+
+            $("#dg").datagrid({
+                onDblClickRow: function (index, row) {
+                    $("#dlg").dialog("open").dialog("setTitle", "回复评论");
+                    $("#fm").form("load", row);
+                    url = "/admin/comment/save?id=" + row.id;
+                }
+            });
+
+        });
+
+        function formatState(val, row) {
+            if (val == 0) {
+                return "<span style='color: blue'>未审核</span>";
+            } else if (val == 1) {
+                return "<span style='color: green'>审核通过</span>";
+            } else {
+                return "<span style='color: red'>审核不通过</span>";
+            }
+        }
+
+        function formatBlog(val, row) {
+            if (val.title.length > 11) {
+                return "<a href='/blog/" + val.id + "' target='_blank' title='" + val.title + "'>" + val.title.substring(0, 11) + "..." + "</a>";
+            } else {
+                return "<a href='/blog/" + val.id + "' target='_blank' title='" + val.title + "'>" + val.title + "</a>";
+            }
+        }
+
+        function formatContent(val, row) {
+            if (val.length > 11) {
+                return val.substring(0, 11) + "...";
+            } else {
+                return val;
+            }
+        }
+
+        function formatReply(val, row) {
+            if (val == null || val == '') {
+                return "<span style='color: red'>未回复</span>";
+            } else if (val.length > 11) {
+                return "<span style='color: green' title='"+val+"'>"+val.substring(0, 11) + "...</span>";
+            }else{
+                return "<span style='color: green' title='"+val+"'>"+val+"</span>";
+            }
+        }
+
+        function passComment() {
+            var selectedRows = $("#dg").datagrid("getSelections");
+            if (selectedRows.length != 1) {
+                $.messager.alert("系统提示", "请选择一个要审核通过的评论!");
+                return;
+            }
+            var id = selectedRows[0].id;
+            $.messager.confirm("系统提示", "确定将这个评论设置为<span style='color: red'>审核通过</span>吗?", function (r) {
+                if (r) {
+                    $.post("/admin/comment/passComment", {id: id}, function (result) {
+                        if (result.success) {
+                            $("#dg").datagrid("reload");
+                            $.messager.alert("系统提示", "该评论的状态已经设置为<span style='color: red'>审核通过</span>!");
+                        } else {
+                            $.messager.alert("系统提示", result.errorInfo);
+                        }
+                    })
+                }
+            });
+        }
+
+        function failComment() {
+            var selectedRows = $("#dg").datagrid("getSelections");
+            if (selectedRows.length != 1) {
+                $.messager.alert("系统提示", "请选择一个要审核不通过的评论!");
+                return;
+            }
+            var id = selectedRows[0].id;
+            $.messager.confirm("系统提示", "确定将这个评论设置为<span style='color: red'>审核不通过</span>吗?", function (r) {
+                if (r) {
+                    $.post("/admin/comment/failComment", {id: id}, function (result) {
+                        if (result.success) {
+                            $("#dg").datagrid("reload");
+                            $.messager.alert("系统提示", "该评论的状态已经设置为<span style='color: red'>审核不通过</span>!");
+                        } else {
+                            $.messager.alert("系统提示", result.errorInfo);
+                        }
+                    })
+                }
+            });
+        }
+    </script>
+</head>
+<body style="margin: 1px">
+<table id="dg" title="评论管理" class="easyui-datagrid" striped="true"
+       fitColumns="true" pagination="true" rownumbers="true"
+       url="/admin/comment/list" fit="true" toolbar="#tb">
+    <thead>
+    <th field="cb" checkbox="true" align="center"></th>
+    <th field="id" width="20" align="center" hidden="hidden">编号</th>
+    <th field="ip" width="40" align="center">评论人IP地址</th>
+    <th field="date" width="40" align="center">评论时间</th>
+    <th field="state" width="30" align="center" formatter="formatState">当前审核状态</th>
+    <th field="blog" width="50" align="center" formatter="formatBlog">评论的博客</th>
+    <th field="content" width="50" align="center" formatter="formatContent">评论内容</th>
+    <th field="reply" width="50" align="center" formatter="formatReply">回复</th>
+    </thead>
+</table>
+
+<div id="tb">
+    <div>
+        <a href="javascript:openCommentModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit"
+           plain="true">回复</a>
+        <a href="javascript:deleteComment()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+        <a href="javascript:passComment()" class="easyui-linkbutton" iconCls="icon-ok" plain="true">审核通过</a>
+        <a href="javascript:failComment()" class="easyui-linkbutton" iconCls="icon-cancel" plain="true">审核不通过</a>
+    </div>
+    <div>
+        &nbsp;评论人IP地址：&nbsp;<input type="text" id="s_ip" size="20" onkeydown="if(event.keyCode==13) searchComment()"/>
+        <a href="javascript:searchComment()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
+        <a href="javascript:resetValue()" class="easyui-linkbutton" iconCls="icon-reset" plain="true">重置</a>
+    </div>
+</div>
+
+
+<div id="dlg" class="easyui-dialog" style="width: 444px;height: 300px;padding: 10px 20px"
+     closed="true" buttons="#dlg-buttons" data-options="onClose:function(){resetValue()}">
+    <form id="fm" method="post">
+        <table cellspacing="8px">
+            <tr>
+                <td valign="top">评论内容:</td>
+                <td>
+                    <textarea rows="5" cols="40" id="content" name="content" readonly="readonly"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">回复:</td>
+                <td>
+                    <textarea rows="5" cols="40" id="reply" name="reply" class="easyui-validatebox" required="true"></textarea>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div id="dlg-buttons">
+    <a href="javascript:saveComment()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+    <a href="javascript:closeCommentDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+</div>
+</body>
+</html>

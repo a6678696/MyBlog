@@ -19,7 +19,7 @@
     <!--博客列表和右侧菜单-->
     <div class="row">
         <div class="col-md-9">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         博客列表
@@ -27,7 +27,7 @@
                 </div>
                 <div class="panel-body">
                     <div th:each="blog:${blogList}">
-                        <div class="panel panel-default">
+                        <div class="panel panel-primary">
                             <div class="panel-body">
                                 <div>
                                     <p><a th:href="'/blog/'+${blog.getId()}" style="text-decoration: none"
@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         按类别分类
@@ -76,12 +76,12 @@
                 <div class="panel-body">
                     <div th:each="blogType:${blogTypeList}">
                         <p><a th:href="${'/index?blogTypeId='+blogType.id}"
-                              th:text="${blogType.name}+'('+${blogType.blogNum}+')'" style="text-decoration: none"
-                              class="test"></a></p>
+                              th:text="${blogType.name}" style="text-decoration: none"
+                              class="test"></a><span class="label label-primary" th:text="${blogType.blogNum}"></span></p>
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         按日期分类
@@ -90,8 +90,8 @@
                 <div class="panel-body">
                     <div th:each="blogCount:${blogCountList}">
                         <p><a th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}"
-                              th:text="${blogCount.releaseDateStr+'('+blogCount.blogCount+')'}"
-                              style="text-decoration: none" class="test"></a></p>
+                              th:text="${blogCount.releaseDateStr}"
+                              style="text-decoration: none" class="test"></a><span class="label label-primary" th:text="${blogCount.blogCount}"></span></p>
                     </div>
                 </div>
             </div>
@@ -100,7 +100,7 @@
     <!--友情链接-->
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         友情链接

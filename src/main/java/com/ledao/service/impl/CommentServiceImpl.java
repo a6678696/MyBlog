@@ -51,4 +51,14 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> findByIp(String ip) {
         return commentMapper.findByIp(ip);
     }
+
+    @Override
+    public Comment findById(Integer id) {
+        return commentMapper.findById(id);
+    }
+
+    @Override
+    public Integer deleteByBlogId(Integer blogId) {
+        return commentMapper.deleteByBlogId(blogId);
+    }
 }

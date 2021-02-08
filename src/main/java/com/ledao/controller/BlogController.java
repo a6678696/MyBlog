@@ -60,7 +60,7 @@ public class BlogController {
         map.put("blogTypeId", blog.getBlogTypeId());
         //根据当前博客类别推荐博客
         List<Blog> recommendBlogList = blogService.list(map);
-        //去掉List中的当前文章(即当前正在查看的文章不推荐)
+        //去掉List中的当前博客(即当前正在查看的博客不推荐)
         for (int i = 0; i < recommendBlogList.size(); i++) {
             if (recommendBlogList.get(i).getId().equals(blog.getId())) {
                 recommendBlogList.remove(i);
@@ -87,7 +87,7 @@ public class BlogController {
                 blog.setIsLike(1);
             }
         }
-        //获取当前文章的点赞数
+        //获取当前博客的点赞数
         Map<String, Object> map1=new HashMap<>(16);
         map1.put("blogId", blog.getId());
         List<Like> likes = likeService.list(map1);
@@ -115,7 +115,7 @@ public class BlogController {
      */
     @RequestMapping("/q")
     public ModelAndView search(@RequestParam(value = "q", required = false) String q, @RequestParam(value = "page", required = false) String page, HttpServletRequest request) throws Exception {
-        int pageSize = 3;
+        int pageSize = 6;
         if (page == null) {
             InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "搜索了博客：" + q);
             interviewRecordService.add(interviewRecord);

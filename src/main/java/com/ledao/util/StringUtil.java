@@ -76,7 +76,7 @@ public class StringUtil {
      * @return
      */
     public static int readSkin() throws IOException {
-        FileInputStream fis = new FileInputStream("E:\\IdeaProjects\\ActualCombat\\MyBlog\\src\\main\\webapp\\static\\mySkin.txt");
+        FileInputStream fis = new FileInputStream("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\mySkin.txt");
         int skin = fis.read();
         fis.close();
         if (skin == 49) {
@@ -94,7 +94,7 @@ public class StringUtil {
      * @throws IOException
      */
     public static void updateSkin(int status) throws IOException {
-        FileOutputStream fos = new FileOutputStream("E:\\IdeaProjects\\ActualCombat\\MyBlog\\src\\main\\webapp\\static\\mySkin.txt");
+        FileOutputStream fos = new FileOutputStream("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\mySkin.txt");
         if (status == 1) {
             status = 49;
         } else if (status == 2) {

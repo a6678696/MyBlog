@@ -9,7 +9,7 @@
 <div id="b">
     <div class="row">
         <div class="col-md-9">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         博客详情
@@ -31,48 +31,65 @@
                     <h3 th:text="${blog.title}" style="text-align: center"></h3>
                     <p style="color: gray;text-align: center"><span
                             th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span> |
-                        <span th:text="' 阅读次数: '+${blog.click}+' '"></span> | 点赞数: <span th:text="${blog.likeNum}"></span> | 所属类别: <span
+                        <span th:text="' 阅读次数: '+${blog.click}+' '"></span> | 点赞数: <span
+                                th:text="${blog.likeNum}"></span> | 所属类别: <span
                                 th:text="${blog.blogType.name}"></span></p>
                     <p th:utext="${blog.content}"></p>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         评论信息
-                        <span style="float: right;color: #0f74a8">评论审核通过后方可在下方显示</span>
+                        <span style="float: right">评论审核通过后方可在下方显示</span>
                     </h3>
                 </div>
                 <div class="panel-body">
                     <form>
                         <fieldset>
-                            <textarea rows="4" class="form-control" id="commentContent" name="content" placeholder="请输入评论内容..."></textarea>
+                            <textarea rows="4" class="form-control" id="commentContent" name="content"
+                                      placeholder="请输入评论内容..."></textarea>
                             <input type="text" id="commentBlogId" hidden="hidden" th:value="${blog.id}">
-                            <a href="javascript:submitComment()"><button type="button" class="btn btn-primary" style="margin-top: 8px;">立即提交</button></a>
+                            <a href="javascript:submitComment()">
+                                <button type="button" class="btn btn-primary" style="margin-top: 8px;">立即提交</button>
+                            </a>
                         </fieldset>
                     </form>
                     <hr style="height:5px;border:none;border-top:2px dotted #1296db;" th:if="${commentList.size()>0}">
                     <div class="row" th:if="${commentList.size()>0}">
                         <div th:each="comment:${commentList}" th:if="${commentStat.count<=3}">
                             <div class="col-md-1">
-                                <img class="img-rounded" th:src="@{'/static/images/userImage/'+${comment.imageName}}" alt="11">
+                                <img class="img-rounded" th:src="@{'/static/images/userImage/'+${comment.imageName}}"
+                                     alt="11">
                             </div>
                             <div class="col-md-11">
-                                <p style="color: grey">评论时间: <span th:text="${#dates.format(comment.date,'yyyy-MM-dd HH:mm:ss')}"></span>&nbsp;&nbsp;&nbsp;&nbsp;评论人IP地址: <span th:text="${comment.ip}"></span></p>
+                                <p style="color: grey">评论时间: <span
+                                        th:text="${#dates.format(comment.date,'yyyy-MM-dd HH:mm:ss')}"></span>&nbsp;&nbsp;&nbsp;&nbsp;评论人IP地址:
+                                    <span th:text="${comment.ip}"></span></p>
                                 <p th:text="${comment.content}" style="color: blue"></p>
-                                <p th:if="${comment.reply!=null&&comment.reply!=''}"><span style="color: grey">回复:</span><span style="color: green" th:text="${comment.reply}" th:if="${comment.reply!=null}"></span></p>
+                                <p th:if="${comment.reply!=null&&comment.reply!=''}"><span
+                                        style="color: grey">回复:</span><span style="color: green"
+                                                                            th:text="${comment.reply}"
+                                                                            th:if="${comment.reply!=null}"></span></p>
                             </div>
                         </div>
                         <a id="a1" data-toggle="collapse" data-target="#demo" onclick="afterClick1()"><p
-                                style="text-align: center;font-size: 15px" th:if="${commentList.size()>3}">点击显示其余评论...</p></a>
+                                style="text-align: center;font-size: 15px" th:if="${commentList.size()>3}">
+                            点击显示其余评论...</p></a>
                         <div id="demo" class="collapse" th:each="comment:${commentList}" th:if="${commentStat.count>3}">
                             <div class="col-md-1">
-                                <img class="img-rounded" th:src="@{'/static/images/userImage/'+${comment.imageName}}" alt="11">
+                                <img class="img-rounded" th:src="@{'/static/images/userImage/'+${comment.imageName}}"
+                                     alt="11">
                             </div>
                             <div class="col-md-11">
-                                <p style="color: grey">评论时间: <span th:text="${#dates.format(comment.date,'yyyy-MM-dd HH:mm:ss')}"></span>&nbsp;&nbsp;&nbsp;&nbsp;评论人IP地址: <span th:text="${comment.ip}"></span></p>
+                                <p style="color: grey">评论时间: <span
+                                        th:text="${#dates.format(comment.date,'yyyy-MM-dd HH:mm:ss')}"></span>&nbsp;&nbsp;&nbsp;&nbsp;评论人IP地址:
+                                    <span th:text="${comment.ip}"></span></p>
                                 <p th:text="${comment.content}" style="color: blue"></p>
-                                <p th:if="${comment.reply!=null&&comment.reply!=''}"><span style="color: grey">回复:</span><span style="color: green" th:text="${comment.reply}" th:if="${comment.reply!=null}"></span></p>
+                                <p th:if="${comment.reply!=null&&comment.reply!=''}"><span
+                                        style="color: grey">回复:</span><span style="color: green"
+                                                                            th:text="${comment.reply}"
+                                                                            th:if="${comment.reply!=null}"></span></p>
                             </div>
                         </div>
                         <a id="a2" data-toggle="collapse" data-target="#demo" hidden="true" onclick="afterClick2()"><p
@@ -82,7 +99,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         博客推荐
@@ -96,7 +113,7 @@
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         按类别分类
@@ -105,12 +122,13 @@
                 <div class="panel-body">
                     <div th:each="blogType:${blogTypeList}">
                         <p><a th:href="${'/index?blogTypeId='+blogType.id}"
-                              th:text="${blogType.name}+'('+${blogType.blogNum}+')'" style="text-decoration: none"
-                              class="test"></a></p>
+                              th:text="${blogType.name}" style="text-decoration: none"
+                              class="test"></a><span class="label label-primary" th:text="${blogType.blogNum}"></span>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         按日期分类
@@ -119,8 +137,10 @@
                 <div class="panel-body">
                     <div th:each="blogCount:${blogCountList}">
                         <p><a th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}"
-                              th:text="${blogCount.releaseDateStr+'('+blogCount.blogCount+')'}"
-                              style="text-decoration: none" class="test"></a></p>
+                              th:text="${blogCount.releaseDateStr}"
+                              style="text-decoration: none" class="test"></a><span class="label label-primary"
+                                                                                   th:text="${blogCount.blogCount}"></span>
+                        </p>
                     </div>
                 </div>
             </div>

@@ -78,4 +78,14 @@
         from t_comment
         where ip = #{ip}
     </select>
+
+    <select id="findById" parameterType="integer" resultType="com.ledao.entity.Comment">
+        select *
+        from t_comment
+        where id = #{id}
+    </select>
+
+    <delete id="deleteByBlogId" parameterType="integer">
+        delete from t_comment where blogId=#{blogId}
+    </delete>
 </mapper>

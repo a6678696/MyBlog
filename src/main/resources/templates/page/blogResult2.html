@@ -9,7 +9,7 @@
 <div id="b">
     <div class="row">
         <div class="col-md-9">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         <span>搜索 <span style="color:red;" th:text="${q}"></span> 的结果 (总共搜到 <span style="color: red"
@@ -18,18 +18,22 @@
                 </div>
                 <div class="panel-body">
                     <div th:each="blog:${blogList}" th:if="${resultTotal>0}">
-                        <p><a th:href="'/blog/'+${blog.getId()}" style="text-decoration: none"><h4
-                                th:utext="${blog.title}">idea Debug循环跳到指定次数</h4></a></p>
-                        <p style="color: gray"><span
-                                th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span>
-                            | <span th:text="' 阅读次数: '+${blog.click}+' '"></span> | 所属类别: <span
-                                    th:text="${blog.blogType.name}"></span></p>
-                        <p th:utext="${#strings.abbreviate(blog.content,600)}"></p>
-                        <p>
-                            <a th:href="'/blog/'+${blog.getId()}">
-                                <button type="button" class="btn btn-primary btn-sm">查看详情</button>
-                            </a>
-                        </p>
+                        <div class="panel panel-primary">
+                            <div class="panel-body">
+                                <p><a th:href="'/blog/'+${blog.getId()}" style="text-decoration: none"><h4
+                                        th:utext="${blog.title}"></h4></a></p>
+                                <p style="color: gray"><span
+                                        th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span>
+                                    | <span th:text="' 阅读次数: '+${blog.click}+' '"></span> | 所属类别: <span
+                                            th:text="${blog.blogType.name}"></span></p>
+                                <p th:utext="${#strings.abbreviate(blog.content,600)}"></p>
+                                <p>
+                                    <a th:href="'/blog/'+${blog.getId()}">
+                                        <button type="button" class="btn btn-primary btn-sm">查看详情</button>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                     <p class="pages" style="text-align: center">
                         <font th:utext="${pageCode}"></font>
@@ -38,7 +42,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         按类别分类
@@ -47,12 +51,12 @@
                 <div class="panel-body">
                     <div th:each="blogType:${blogTypeList}">
                         <p><a th:href="${'/index?blogTypeId='+blogType.id}"
-                              th:text="${blogType.name}+'('+${blogType.blogNum}+')'" style="text-decoration: none"
-                              class="test"></a></p>
+                              th:text="${blogType.name}" style="text-decoration: none"
+                              class="test"></a><span class="label label-primary" th:text="${blogType.blogNum}"></span></p>
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         按日期分类
@@ -61,8 +65,8 @@
                 <div class="panel-body">
                     <div th:each="blogCount:${blogCountList}">
                         <p><a th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}"
-                              th:text="${blogCount.releaseDateStr+'('+blogCount.blogCount+')'}"
-                              style="text-decoration: none" class="test"></a></p>
+                              th:text="${blogCount.releaseDateStr}"
+                              style="text-decoration: none" class="test"></a><span class="label label-primary" th:text="${blogCount.blogCount}"></span></p>
                     </div>
                 </div>
             </div>

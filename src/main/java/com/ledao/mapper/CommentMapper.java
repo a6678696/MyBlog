@@ -61,4 +61,20 @@ public interface CommentMapper {
      * @return
      */
     List<Comment> findByIp(String ip);
+
+    /**
+     * 根据id查询评论
+     *
+     * @param id
+     * @return
+     */
+    Comment findById(Integer id);
+
+    /**
+     * 根据博客id删除评论
+     *
+     * @param blogId
+     * @return
+     */
+    Integer deleteByBlogId(Integer blogId);
 }

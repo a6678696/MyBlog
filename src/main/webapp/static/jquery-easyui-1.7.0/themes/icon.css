@@ -180,6 +180,14 @@
 	background:url('usericons/linkManage.gif') no-repeat center center;
 }
 
+.icon-commentManage{
+	background:url('usericons/commentManage.gif') no-repeat center center;
+}
+
+.icon-likeManage{
+	background:url('usericons/likeManage.gif') no-repeat center center;
+}
+
 .icon-changeSkin{
 	background:url('usericons/changeSkin.gif') no-repeat center center;
 }

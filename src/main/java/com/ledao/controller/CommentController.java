@@ -50,7 +50,7 @@ public class CommentController {
             Comment comment1 = commentService.findByIp(comment.getIp()).get(0);
             comment.setImageName(comment1.getImageName());
         } else {
-            comment.setImageName((int) (1 + Math.random() * (10 - 1 + 1)) + ".png");
+            comment.setImageName((int) (1 + Math.random() * 10) + ".png");
         }
         Integer key = commentService.add(comment);
         if (key > 0) {

@@ -6,29 +6,78 @@
     <title th:text="${title}"></title>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/mystyle.css">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script th:src="@{/static/js/jquery.js}"></script>
     <link rel="short icon" th:href="@{/static/images/favicon.ico}">
-    <style>
-        a.test:hover {
-            font-size: 15px;
-            color: red;
-            font-weight: bold;
+    <style type="text/css">
+        /*网站雪花特效*/
+        @-webkit-keyframes snow {
+            0% {
+                background-position: 0 0, 0 0
+            }
+            100% {
+                background-position: 500px 500px, 1000px 500px
+            }
         }
 
-        a.blogTitleTest:hover {
-            color: red;
+        @keyframes snow {
+            0% {
+                background-position: 0 0, 0 0
+            }
+            100% {
+                background-position: 500px 500px, 1000px 500px
+            }
         }
 
-        a.ahead:hover {
-            color: red;
+        .container {
+            box-shadow: 0 0 4px 3px rgba(0, 0, 0, .05);
         }
 
-        /*修改提示框*/
+        #snowMask {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: url(/static/images/snow1.png), url(/static/images/snow2.png);
+            -webkit-animation: 10s snow linear infinite;
+            animation: 10s snow linear infinite;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /*鼠标停在div上出现阴影*/
+        .shadow {
+            transition-duration: 1s; /*停留时间显示*/
+        }
+
+        .shadow:hover {
+            -webkit-box-shadow: #337ab7 0px 10px 10px;
+            -moz-box-shadow: #337ab7 0px 10px 10px;
+            box-shadow: #337ab7 0px 10px 10px;
+        }
+
+        /*博客列表图片略缩图放大*/
+        #div111 {
+            width: 333px;
+            height: 108px;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+
+        #div111 img {
+            cursor: pointer;
+            transition: all 0.6s;
+        }
+
+        #div111 img:hover {
+            transform: scale(1.05);
+        }
+
+        /*鼠标悬停提示框(点赞博客)*/
         #mytitle {
             position: absolute;
             color: #ffffff;
@@ -40,23 +89,166 @@
             border-radius: 5px;
         }
 
+        /*右侧菜单鼠标悬停链接变色和变大*/
+        a.test:hover {
+            font-size: 15px;
+            color: red;
+            font-weight: bold;
+        }
+
+        /*鼠标悬停链接变红色(博客列表的博客标题)*/
+        a.blogTitleTest:hover {
+            color: red;
+        }
+
+        /*鼠标悬停链接变红色(菜单)*/
+        a.ahead:hover {
+            color: red;
+        }
+
+        /*文字闪烁*/
+        .box1{
+            color:red;
+            animation: changeshadow 6s  ease-in  infinite ;
+            -webkit-animation: changeshadow 6s linear infinite;
+            -moz-animation: changeshadow 6s linear infinite;
+            -ms-animation: changeshadow 6s linear infinite;
+            -o-animation: changeshadow 6s linear infinite;
+        }
+        @keyframes changeshadow {
+            0%{ text-shadow: 0 0 4px red}
+            50%{ text-shadow: 0 0 40px red}
+            100%{ text-shadow: 0 0 4px red}
+        }
+        @-webkit-keyframes changeshadow {
+            0%{ text-shadow: 0 0 4px red}
+            50%{ text-shadow: 0 0 40px red}
+            100%{ text-shadow: 0 0 4px red}
+        }
+        @-moz-keyframes changeshadow {
+            0%{ text-shadow: 0 0 4px red}
+            50%{ text-shadow: 0 0 40px red}
+            100%{ text-shadow: 0 0 4px red}
+        }
+        @-ms-keyframes changeshadow {
+            0%{ text-shadow: 0 0 4px red}
+            50%{ text-shadow: 0 0 40px red}
+            100%{ text-shadow: 0 0 4px red}
+        }
+        @-o-keyframes changeshadow {
+            0%{ text-shadow: 0 0 4px red}
+            50%{ text-shadow: 0 0 40px red}
+            100%{ text-shadow: 0 0 4px red}
+        }
     </style>
-    <script type="text/javascript">
+    <!--其他-->
+    <script th:inline="javascript">
+        function submitComment() {
+            var content = $("#commentContent").val();
+            var blogId = $("#commentBlogId").val();
+            if (content == null || content == '') {
+                alert("请输入评论内容!!");
+                return false;
+            }
+            $.post("/comment/add", {content: content, blogId: blogId},
+                function (result) {
+                    if (result.success) {
+                        alert("评论成功,审核通过后方可在下方显示!!");
+                        $("#commentContent").val("");
+                    } else {
+                        alert("评论失败!!");
+                    }
+                }
+            );
+        }
+
+        //用户点赞博客
+        function like() {
+            var blogId = $("#commentBlogId").val();
+            $.post("/like/add", {blogId: blogId},
+                function (result) {
+                    if (result.success) {
+                        alert("点赞成功!!");
+                        $("#like1").attr("hidden", "true");
+                        $("#like2").removeAttr("hidden");
+                    } else {
+                        alert("点赞失败!!");
+                    }
+                }
+            );
+        }
+
+        //返回顶部图标出现或者消失
+        $(function () {
+            $(function () {
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > 100) {
+                        $("#gotop").fadeIn(1000);//一秒渐入动画
+                    } else {
+                        $("#gotop").fadeOut(1000);//一秒渐隐动画
+                    }
+                });
+
+                $("#gotop").click(function () {
+                    $('body,html').animate({scrollTop: 0}, 1000);
+                });
+            });
+        });
+
+        /* 鼠标特效 */
+        var a_idx = 0;
+        jQuery(document).ready(function ($) {
+            $("body").click(function (e) {
+                var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+                var $i = $("<span/>").text("👍"+a[a_idx]);
+                a_idx = (a_idx + 1) % a.length;
+                var x = e.pageX,
+                    y = e.pageY;
+                $i.css({
+                    "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+                    "top": y - 20,
+                    "left": x,
+                    "position": "absolute",
+                    "font-weight": "bold",
+                    "color": "#ff6651"
+                });
+                $("body").append($i);
+                $i.animate({
+                        "top": y - 400,
+                        "opacity": 0
+                    },
+                    1500,
+                    function () {
+                        $i.remove();
+                    });
+            });
+        });
+
         $(document).ready(function () {
             //全部图片
             $("img").addClass("img-responsive");
             $("img").addClass("pimg");
+            $("img").addClass("img-thumbnail");
             //首页图片
             $(".indexFirstImage").removeClass("pimg");
             //logo
             $("#img1").removeClass("img-responsive");
             $("#img1").removeClass("pimg");
+            $("#img1").removeClass("img-thumbnail");
             //备案图片
             $("#img2").removeClass("img-responsive");
             $("#img2").removeClass("pimg");
+            $("#img2").removeClass("img-thumbnail");
             //返回顶部图片
             $("#gotop").removeClass("img-responsive");
             $("#gotop").removeClass("pimg");
+            //鼠标悬停更换返回顶部图片
+            $(".imgdiv").mouseover(function () {
+                $(".imgsrc").attr("src", "/static/images/top4.png");
+            });
+            $(".imgdiv").mouseout(function () {
+                $(".imgsrc").attr("src", "/static/images/top2.png");
+            });
         });
 
 
@@ -106,16 +298,19 @@
             });
         }
 
+        //点击显示其余评论
         function afterClick1() {
             $("#a1").attr("hidden", "true");
             $("#a2").removeAttr("hidden");
         }
 
+        //点击收起评论
         function afterClick2() {
             $("#a1").removeAttr("hidden");
             $("#a2").attr("hidden", "true");
         }
 
+        //点赞博客按钮悬停提示
         $(function () {
             var x = 10;
             var y = 20;
@@ -139,64 +334,11 @@
             })
         });
     </script>
-    <!--其他-->
-    <script th:inline="javascript">
-        function submitComment() {
-            var content = $("#commentContent").val();
-            var blogId = $("#commentBlogId").val();
-            if (content == null || content == '') {
-                alert("请输入评论内容!!");
-                return false;
-            }
-            $.post("/comment/add", {content: content, blogId: blogId},
-                function (result) {
-                    if (result.success) {
-                        alert("评论成功,审核通过后方可在下方显示!!");
-                        $("#commentContent").val("");
-                    } else {
-                        alert("评论失败!!");
-                    }
-                }
-            );
-        }
-
-        //用户点赞博客
-        function like() {
-            var blogId = $("#commentBlogId").val();
-            $.post("/like/add", { blogId: blogId},
-                function (result) {
-                    if (result.success) {
-                        alert("点赞成功!!");
-                        $("#like1").attr("hidden", "true");
-                        $("#like2").removeAttr("hidden");
-                    } else {
-                        alert("点赞失败!!");
-                    }
-                }
-            );
-        }
-
-        //返回顶部图标出现或者消失
-        $(function () {
-            $(function () {
-                $(window).scroll(function () {
-                    if ($(window).scrollTop() > 100) {
-                        $("#gotop").fadeIn(1000);//一秒渐入动画
-                    } else {
-                        $("#gotop").fadeOut(1000);//一秒渐隐动画
-                    }
-                });
-
-                $("#gotop").click(function () {
-                    $('body,html').animate({scrollTop: 0}, 1000);
-                });
-            });
-        });
-    </script>
 </head>
-<body>
-<a href="#gotop" title="返回顶部">
-    <img th:src="@{/static/images/top2.png}" id="gotop" alt=""
+<div id="snowMask"></div>
+<body style="background-color: #a3d0e7">
+<a class="imgdiv" href="#gotop">
+    <img th:src="@{/static/images/top2.png}" id="gotop" alt="" class="imgsrc"
          style="position: fixed;bottom: 10%;display: none;height: 40px;margin-left: 96%">
 </a>
 <div style="width: 90%;margin-left: 5%">

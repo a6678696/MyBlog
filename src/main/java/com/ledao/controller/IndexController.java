@@ -1,5 +1,6 @@
 package com.ledao.controller;
 
+import cn.hutool.http.HtmlUtil;
 import com.ledao.entity.Blog;
 import com.ledao.entity.BlogType;
 import com.ledao.entity.InterviewRecord;
@@ -89,9 +90,7 @@ public class IndexController {
                 int last = blog.getImageName().indexOf(".jpg");
                 blog.setImageName(blog.getImageName().substring(begin, last) + ".jpg");
             }
-            blog.setSummary(blog.getSummary().replace("&quot;", "\""));
-            blog.setSummary(blog.getSummary().replace("&nbsp;", " "));
-            blog.setSummary(blog.getSummary().replace("&#39;", "\'"));
+            blog.setSummary(HtmlUtil.unescape(blog.getSummary()));
             blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
         }
         List<BlogType> blogTypeList = blogTypeService.list(null);
@@ -108,6 +107,7 @@ public class IndexController {
         }
         //用于判断是否是首页,是首页就显示公告
         mav.addObject("isIndexFirst", 1);
+        mav.addObject("isHome", 1);
         mav.addObject("linkList", linkService.list(null));
         mav.addObject("blogList", blogList);
         mav.addObject("blogTypeList", blogTypeList);
@@ -176,9 +176,7 @@ public class IndexController {
                 int last = blog.getImageName().indexOf(".jpg");
                 blog.setImageName(blog.getImageName().substring(begin, last) + ".jpg");
             }
-            blog.setSummary(blog.getSummary().replace("&quot;", "\""));
-            blog.setSummary(blog.getSummary().replace("&nbsp;", " "));
-            blog.setSummary(blog.getSummary().replace("&#39;", "\'"));
+            blog.setSummary(HtmlUtil.unescape(blog.getSummary()));
             blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
         }
         List<BlogType> blogTypeList = blogTypeService.list(null);
@@ -186,6 +184,9 @@ public class IndexController {
             blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
         }
         List<Blog> blogCountList = blogService.countList();
+        if (page == 1 || page == null) {
+            mav.addObject("isHome", 1);
+        }
         mav.addObject("linkList", linkService.list(null));
         mav.addObject("blogList", blogList);
         mav.addObject("blogTypeList", blogTypeList);
@@ -209,18 +210,21 @@ public class IndexController {
      * @throws Exception
      */
     @RequestMapping("/download")
-    public ModelAndView download() throws Exception {
+    public ModelAndView download(HttpServletRequest request) throws Exception {
         ModelAndView mav = new ModelAndView();
         List<BlogType> blogTypeList = blogTypeService.list(null);
         for (BlogType blogType : blogTypeList) {
             blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
         }
         List<Blog> blogCountList = blogService.countList();
+        mav.addObject("isDownload", 1);
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "本站源码下载");
         mav.addObject("mainPage", "page/download" + StringUtil.readSkin());
         mav.setViewName("index" + StringUtil.readSkin());
+        InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "查看源码下载");
+        interviewRecordService.add(interviewRecord);
         return mav;
     }
 

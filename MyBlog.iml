@@ -150,5 +150,6 @@
     <orderEntry type="library" name="Maven: org.apache.lucene:lucene-highlighter:5.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.lucene:lucene-join:5.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.lucene:lucene-memory:5.3.1" level="project" />
+    <orderEntry type="library" name="Maven: cn.hutool:hutool-all:5.5.9" level="project" />
   </component>
 </module>

@@ -39,6 +39,14 @@ public interface InterviewRecordService {
     Integer add(InterviewRecord interviewRecord);
 
     /**
+     * 更新访问记录(如果有真实地址为空的时候用到)
+     *
+     * @param interviewRecord
+     * @return
+     */
+    Integer update(InterviewRecord interviewRecord);
+
+    /**
      * 根据id删除访问记录
      *
      * @param id
@@ -81,4 +89,25 @@ public interface InterviewRecordService {
      * @return
      */
     Long getCountInterviewerInAppearNum(String interviewerIp);
+
+    /**
+     * 查出真实地址为空的访问记录(限制60条)
+     *
+     * @return
+     */
+    List<InterviewRecord> trueAddressIsNull();
+
+    /**
+     * 查出真实地址为空的访问记录(查出全部)
+     *
+     * @return
+     */
+    List<InterviewRecord> trueAddressIsNullNoLimit();
+
+    /**
+     * 查出真实地址不为空的访问记录
+     *
+     * @return
+     */
+    List<InterviewRecord> trueAddressIsNotNull();
 }

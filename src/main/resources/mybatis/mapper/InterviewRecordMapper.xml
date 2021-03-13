@@ -8,6 +8,7 @@
         <result property="interviewerIp" column="interviewerIp"/>
         <result property="interviewContent" column="interviewContent"/>
         <result property="interviewDate" column="interviewDate"/>
+        <result property="trueAddress" column="trueAddress"/>
     </resultMap>
     <select id="list" parameterType="map" resultMap="InterviewRecordResult">
         select * from t_interview_record t
@@ -48,7 +49,7 @@
         </where>
     </select>
     <insert id="add" parameterType="InterviewRecord">
-        insert into t_interview_record (interviewerIp, interviewContent, interviewDate) values (#{interviewerIp},#{interviewContent},now());
+        insert into t_interview_record (interviewerIp, interviewContent, interviewDate,trueAddress) values (#{interviewerIp},#{interviewContent},now(),#{trueAddress});
     </insert>
     <select id="getCountInterviewFirstPageNum" resultType="java.lang.Long">
         SELECT	COUNT(interviewerIp) FROM t_interview_record WHERE interviewContent='访问博客首页';
@@ -68,4 +69,26 @@
     <delete id="delete" parameterType="integer">
         delete from t_interview_record where id=#{id}
     </delete>
+
+    <update id="update" parameterType="InterviewRecord">
+        update t_interview_record
+        <set>
+            <if test="trueAddress != null and trueAddress != ''">
+                trueAddress=#{trueAddress},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <select id="trueAddressIsNull" resultMap="InterviewRecordResult">
+        SELECT * FROM t_interview_record WHERE trueAddress IS NULL order by t_interview_record.interviewDate desc limit 60;
+    </select>
+
+    <select id="trueAddressIsNotNull" resultMap="InterviewRecordResult">
+        SELECT * FROM t_interview_record WHERE trueAddress IS NOT NULL;
+    </select>
+
+    <select id="trueAddressIsNullNoLimit" resultMap="InterviewRecordResult">
+        SELECT * FROM t_interview_record WHERE trueAddress IS NULL;
+    </select>
 </mapper>

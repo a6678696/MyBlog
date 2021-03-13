@@ -38,6 +38,11 @@ public class InterviewRecordServiceImpl implements InterviewRecordService {
     }
 
     @Override
+    public Integer update(InterviewRecord interviewRecord) {
+        return interviewRecordMapper.update(interviewRecord);
+    }
+
+    @Override
     public Integer delete(Integer id) {
         return interviewRecordMapper.delete(id);
     }
@@ -65,5 +70,20 @@ public class InterviewRecordServiceImpl implements InterviewRecordService {
     @Override
     public Long getCountInterviewerInAppearNum(String interviewerIp) {
         return interviewRecordMapper.getCountInterviewerInAppearNum(interviewerIp);
+    }
+
+    @Override
+    public List<InterviewRecord> trueAddressIsNull() {
+        return interviewRecordMapper.trueAddressIsNull();
+    }
+
+    @Override
+    public List<InterviewRecord> trueAddressIsNullNoLimit() {
+        return interviewRecordMapper.trueAddressIsNullNoLimit();
+    }
+
+    @Override
+    public List<InterviewRecord> trueAddressIsNotNull() {
+        return interviewRecordMapper.trueAddressIsNotNull();
     }
 }

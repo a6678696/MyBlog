@@ -40,12 +40,12 @@ public class DeleteInvalidImage {
             Document document = Jsoup.parse(blogInfo);
             //提出.jpg图片
             Elements jpgs = document.select("img[src$=.jpg]");
-            if (jpgs.size()>0) {
+            if (jpgs.size() > 0) {
                 for (int i = 0; i < jpgs.size(); i++) {
                     Element jpg = jpgs.get(i);
                     int begin = jpg.toString().indexOf("/static/images/blogImage/");
                     int last = jpg.toString().indexOf(".jpg");
-                    blogImageList.add( (jpg.toString().substring(begin, last) + ".jpg").substring(25));
+                    blogImageList.add((jpg.toString().substring(begin, last) + ".jpg").substring(25));
                 }
             }
         }
@@ -56,20 +56,26 @@ public class DeleteInvalidImage {
         for (String s : file.list()) {
             dirImageList.add(s);
         }
-        if (dirImageList.size()>blogImageList.size()) {
+        if (dirImageList.size() > blogImageList.size()) {
             for (String s : blogImageList) {
-                Iterator iterator=dirImageList.iterator();
+                Iterator iterator = dirImageList.iterator();
                 while (iterator.hasNext()) {
                     if (iterator.next().equals(s)) {
                         iterator.remove();
                     }
                 }
             }
+            //无效的图片集合
             List<String> invalidImageList = dirImageList;
-            for (String s : invalidImageList) {
-                File file1 = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\images\\blogImage\\"+s);
-                file1.delete();
+            if (invalidImageList.size() > 0) {
+                for (String s : invalidImageList) {
+                    File file1 = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\images\\blogImage\\" + s);
+                    file1.delete();
+                }
+                System.out.println("无效的图片删除完毕!");
             }
+        } else {
+            System.out.println("没有无效的图片!");
         }
     }
 }

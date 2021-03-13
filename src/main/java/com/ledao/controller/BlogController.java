@@ -3,6 +3,7 @@ package com.ledao.controller;
 import com.ledao.entity.*;
 import com.ledao.lucene.BlogIndex;
 import com.ledao.service.*;
+import com.ledao.util.AddressUtil;
 import com.ledao.util.StringUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -102,6 +103,7 @@ public class BlogController {
         mav.addObject("mainPageKey", "#b");
         mav.setViewName("index" + StringUtil.readSkin());
         InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "查看博客：" + blog.getTitle());
+        interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
         interviewRecordService.add(interviewRecord);
         return mav;
     }
@@ -118,6 +120,7 @@ public class BlogController {
         int pageSize = 6;
         if (page == null) {
             InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "搜索了博客：" + q);
+            interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
             interviewRecordService.add(interviewRecord);
         }
         if (StringUtil.isEmpty(page)) {

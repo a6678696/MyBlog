@@ -32,6 +32,10 @@ public class InterviewRecord {
      */
     private Date interviewDate;
     /**
+     * 真实地址
+     */
+    private String trueAddress;
+    /**
      * 起始时间 搜索用到
      */
     private Date bTime;
@@ -102,5 +106,13 @@ public class InterviewRecord {
 
     public void seteTime(Date eTime) {
         this.eTime = eTime;
+    }
+
+    public String getTrueAddress() {
+        return trueAddress;
+    }
+
+    public void setTrueAddress(String trueAddress) {
+        this.trueAddress = trueAddress;
     }
 }

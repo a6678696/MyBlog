@@ -6,6 +6,7 @@ import com.ledao.entity.BlogType;
 import com.ledao.entity.InterviewRecord;
 import com.ledao.entity.User;
 import com.ledao.service.*;
+import com.ledao.util.AddressUtil;
 import com.ledao.util.PageUtil;
 import com.ledao.util.StringUtil;
 import org.jsoup.Jsoup;
@@ -60,7 +61,9 @@ public class IndexController {
     public ModelAndView root(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr, HttpServletRequest request) throws IOException {
         ModelAndView mav = new ModelAndView();
         InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "访问博客首页");
+        interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
         interviewRecordService.add(interviewRecord);
+
         Map<String, Object> map = new HashMap<>(16);
         if (page == null) {
             page = 1;
@@ -184,8 +187,12 @@ public class IndexController {
             blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
         }
         List<Blog> blogCountList = blogService.countList();
-        if (page == 1 || page == null) {
-            mav.addObject("isHome", 1);
+        //是第一页
+        if ((page == 1 || page == null)) {
+            //不是按类别和时间分类
+            if (blogTypeId == null && releaseDateStr == null) {
+                mav.addObject("isHome", 1);
+            }
         }
         mav.addObject("linkList", linkService.list(null));
         mav.addObject("blogList", blogList);
@@ -224,6 +231,7 @@ public class IndexController {
         mav.addObject("mainPage", "page/download" + StringUtil.readSkin());
         mav.setViewName("index" + StringUtil.readSkin());
         InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "查看源码下载");
+        interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
         interviewRecordService.add(interviewRecord);
         return mav;
     }

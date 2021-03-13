@@ -27,9 +27,9 @@ public class InsertInterviewRecordTrueAddress {
     private InterviewRecordService interviewRecordService;
 
     /**
-     * 每天23点执行一次
+     * 每一小时执行一次
      */
-    @Scheduled(cron = "0 0 23 * * ?")
+    @Scheduled(cron = "0 0 */1 * * ?")
     public void work() {
         List<InterviewRecord> interviewRecordList = interviewRecordService.trueAddressIsNull();
         if (interviewRecordList.size() > 0) {

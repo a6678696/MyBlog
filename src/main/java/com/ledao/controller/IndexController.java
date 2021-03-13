@@ -141,6 +141,7 @@ public class IndexController {
             param.append("&blogTypeId=" + blogTypeId);
             if (page == null) {
                 InterviewRecord interviewRecord2 = new InterviewRecord(request.getRemoteAddr(), "查看分类：" + blogTypeService.findById(Integer.valueOf(blogTypeId)).getName() + "(按博客类别分类)");
+                interviewRecord2.setTrueAddress(AddressUtil.getAddress2(interviewRecord2.getInterviewerIp()));
                 interviewRecordService.add(interviewRecord2);
             }
         }
@@ -148,6 +149,7 @@ public class IndexController {
             param.append("&releaseDateStr=" + releaseDateStr);
             if (page == null) {
                 InterviewRecord interviewRecord3 = new InterviewRecord(request.getRemoteAddr(), "查看分类：" + releaseDateStr + "(按日期分类)");
+                interviewRecord3.setTrueAddress(AddressUtil.getAddress2(interviewRecord3.getInterviewerIp()));
                 interviewRecordService.add(interviewRecord3);
             }
         }

@@ -34,7 +34,7 @@ public class AddressUtil {
     }
 
     public static void main(String[] args) {
-        String ip = "51.254.59.113";
+        String ip = "220.181.108.75";
         System.out.println(getAddress(ip));
         System.out.println(getAddress2(ip));
     }

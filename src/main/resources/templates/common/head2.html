@@ -19,16 +19,21 @@
             <nav class="navbar navbar-default" role="navigation">
                 <div class="container-fluid">
                     <div>
-                        <a href="/index" class="navbar-text ahead" style="text-decoration: none;font-size: 15px" th:if="${isHome==null}">首页</a>
-                        <a href="/index" class="navbar-text ahead" style="text-decoration: none;font-size: 15px;color: #337ab7" th:if="${isHome!=null}">首页</a>
-                        <a href="/download" class="navbar-text ahead" style="text-decoration: none;font-size: 15px" th:if="${isDownload==null}">源码下载</a>
-                        <a href="/download" class="navbar-text ahead" style="text-decoration: none;font-size: 15px;color: #337ab7" th:if="${isDownload!=null}">源码下载</a>
+                        <a href="/index" class="navbar-text ahead" style="text-decoration: none;font-size: 15px"
+                           th:if="${isHome==null}">首页</a>
+                        <a href="/index" class="navbar-text ahead"
+                           style="text-decoration: none;font-size: 15px;color: #337ab7" th:if="${isHome!=null}">首页</a>
+                        <div th:each="menuBlog:${menuBlogList}">
+                            <a th:href="'/blog/'+${menuBlog.getId()}" class="navbar-text ahead" style="text-decoration: none;font-size: 15px;color: #337ab7" th:text="${menuBlog.title}" th:if="${menuBlogId == menuBlog.getId()}"></a>
+                            <a th:href="'/blog/'+${menuBlog.getId()}" class="navbar-text ahead" style="text-decoration: none;font-size: 15px" th:text="${menuBlog.title}" th:if="${menuBlogId != menuBlog.getId()}"></a>
+                        </div>
                         <!--向右对齐-->
                         <form class="navbar-form navbar-right" role="search" method="post" action="/blog/q">
                             <div class="input-group">
-                                <input id="q" name="q" required="required" th:value="${q}" type="text" class="form-control" placeholder="输入关键词...">
+                                <input id="q" name="q" required="required" th:value="${q}" type="text"
+                                       class="form-control" placeholder="输入关键词...">
                                 <span class="input-group-btn">
-                                <button class="btn btn-primary" type="submit">
+                                <button class="btn btn-primary btn11" type="submit">
                                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                 </button>
                             </span>

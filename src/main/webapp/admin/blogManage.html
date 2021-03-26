@@ -15,14 +15,16 @@
         function searchBlog() {
             $("#dg").datagrid('load', {
                 "title": $("#s_title").val(),
-                "blogTypeId": $("#s_blogTypeId").val()
+                "blogTypeId": $("#s_blogTypeId").val(),
+                "isMenuBlog": $("#s_isMenuBlog").val()
             });
         }
 
         function resetValue() {
 
             $("#s_title").val("");
-            $("#s_blogTypeId").combobox("setValue","");
+            $("#s_blogTypeId").combobox("setValue", "");
+            $("#s_isMenuBlog").combobox("setValue", "");
         }
 
         function deleteBlog() {
@@ -88,8 +90,16 @@
             })
         }
 
-        function formatType(val,row) {
+        function formatType(val, row) {
             return val.name;
+        }
+
+        function formatTitle(val, row) {
+            if (row.isMenuBlog == 1) {
+                return "<span style='color: #0c9076' title='是导航条博客'>" + val + "</span>";
+            } else {
+                return val;
+            }
         }
 
         function closeBlogDialog() {
@@ -123,17 +133,54 @@
                 delay: 100
             });
         });
+
+        function setMenuBlog() {
+            var selectedRows = $("#dg").datagrid("getSelections");
+            if (selectedRows.length != 1) {
+                $.messager.alert("系统提示", "请选择一个博客!");
+                return;
+            }
+            var id = selectedRows[0].id;
+            //不是导航条博客
+            if (selectedRows[0].isMenuBlog != 1) {
+                $.messager.confirm("系统提示", "确定将这个博客设置为<span style='color: red'>导航条博客</span>吗?", function (r) {
+                    if (r) {
+                        $.post("/admin/blog/setMenuBlog", {id: id}, function (result) {
+                            if (result.success) {
+                                $("#dg").datagrid("reload");
+                                $.messager.alert("系统提示", "这个博客已经设置为<span style='color: red'>导航条博客</span>!");
+                            } else {
+                                $.messager.alert("系统提示", result.errorInfo);
+                            }
+                        })
+                    }
+                });
+            } else {//是导航条博客
+                $.messager.confirm("系统提示", "确定将这个博客设置为<span style='color: red'>非导航条博客</span>吗?", function (r) {
+                    if (r) {
+                        $.post("/admin/blog/setMenuBlog", {id: id}, function (result) {
+                            if (result.success) {
+                                $("#dg").datagrid("reload");
+                                $.messager.alert("系统提示", "这个博客已经设置为<span style='color: red'>非导航条博客</span>!");
+                            } else {
+                                $.messager.alert("系统提示", result.errorInfo);
+                            }
+                        })
+                    }
+                });
+            }
+        }
     </script>
 </head>
 <body style="margin: 1px">
-<table id="dg" title="博客管理" class="easyui-datagrid"  striped="true"
+<table id="dg" title="博客管理" class="easyui-datagrid" striped="true"
        fitColumns="true" pagination="true" rownumbers="true"
        url="/admin/blog/list" fit="true" toolbar="#tb">
     <thead>
     <tr>
         <th field="cb" checkbox="true" align="center"></th>
         <th field="id" width="20" align="center">编号</th>
-        <th field="title" width="200" align="center">标题</th>
+        <th field="title" width="200" align="center" formatter="formatTitle">标题</th>
         <th field="releaseDate" width="50" align="center">发布日期</th>
         <th field="blogType" width="50" align="center" formatter="formatType">博客类型</th>
     </tr>
@@ -143,11 +190,21 @@
     <div>
         <a href="javascript:openBlogModifyTab()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
         <a href="javascript:deleteBlog()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+        <a href="javascript:setMenuBlog()" class="easyui-linkbutton" iconCls="icon-setMenuBlog" plain="true">设置导航条博客与否</a>
+        <span style="color: #0c9076">(友情提示：标题为绿色的博客是导航条博客，按设置时间升序排列，即先设置的在前面)</span>
     </div>
     <div>
-        &nbsp;标题:&nbsp;<input type="text" id="s_title" size="20" onkeydown="if(window.event.keyCode===13) searchBlog()"/>
-        &nbsp;博客类型:&nbsp;<input class="easyui-combobox" id="s_blogTypeId" name="blogTypeId" style="width: 140px" editable="true"
-                    data-options="panelHeight:'auto',valueField:'id',textField:'name',url:'/admin/blogType/comboList'"/>
+        &nbsp;标题:&nbsp;<input type="text" id="s_title" size="20"
+                              onkeydown="if(window.event.keyCode===13) searchBlog()"/>
+        &nbsp;博客类型:&nbsp;<input class="easyui-combobox" id="s_blogTypeId" name="blogTypeId" style="width: 140px"
+                                editable="true"
+                                data-options="panelHeight:'auto',valueField:'id',textField:'name',url:'/admin/blogType/comboList'"/>
+        &nbsp;是否是导航条博客:&nbsp;
+        <select id="s_isMenuBlog" class="easyui-combobox" name="isMenuBlog" style="width:100px;" data-options="panelHeight:'auto'">
+            <option value="">请选择...</option>
+            <option value="1">是</option>
+            <option value="0">不是</option>
+        </select>
         <a href="javascript:searchBlog()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
         <a href="javascript:resetValue()" class="easyui-linkbutton" iconCls="icon-reset" plain="true">重置</a>
     </div>
@@ -159,7 +216,8 @@
             <tr>
                 <td width="80px">博客标题：</td>
                 <td>
-                    <input type="text" id="title" name="title" style="width: 400px" required="true"  class="easyui-validatebox"/>
+                    <input type="text" id="title" name="title" style="width: 400px" required="true"
+                           class="easyui-validatebox"/>
                 </td>
             </tr>
             <tr>

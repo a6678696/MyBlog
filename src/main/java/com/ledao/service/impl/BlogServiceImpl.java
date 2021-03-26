@@ -61,4 +61,19 @@ public class BlogServiceImpl implements BlogService {
     public List<Blog> findByBlogTypeId(Integer blogTypeId) {
         return blogMapper.findByBlogTypeId(blogTypeId);
     }
+
+    @Override
+    public Blog getPreviousBlog(Integer id) {
+        return blogMapper.getPreviousBlog(id);
+    }
+
+    @Override
+    public Blog getNextBlog(Integer id) {
+        return blogMapper.getNextBlog(id);
+    }
+
+    @Override
+    public List<Blog> getMenuBlogList() {
+        return blogMapper.getMenuBlogList();
+    }
 }

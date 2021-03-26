@@ -12,7 +12,11 @@
         <div class="col-md-12">
             <div id="myAlert" class="alert alert-danger box1">
                 <a href="#" class="close" data-dismiss="alert">&times;</a>
-                <span style="font-size: 15px"><strong>公告:</strong>本站内容主要来源为个人总结以及整理互联网上技术博客的内容,搬运技术博客所得均已注明出处,本站内容仅供本人学习使用</span>
+                <span style="font-size: 15px">
+                    <strong>公告:</strong>
+                    本站内容主要来源为个人总结以及整理互联网上技术博客的内容,
+                    搬运技术博客所得均已注明出处,本站内容仅供本人学习使用（建议使用Edge或Chrome浏览器访问本网站）
+                </span>
             </div>
         </div>
     </div>
@@ -30,29 +34,33 @@
                         <div class="panel panel-primary shadow">
                             <div class="panel-body">
                                 <div>
-                                    <a th:href="'/blog/'+${blog.getId()}" style="text-decoration: none"
-                                          class="blogTitleTest"><h4
-                                            th:text="${blog.title}"></h4></a>
+                                    <div id="div1">
+                                        <a id="div1" th:href="'/blog/'+${blog.getId()}" style="text-decoration: none"
+                                           class="blogTitleTest"><h4
+                                                th:text="${blog.title}"></h4></a>
+                                    </div>
                                     <p style="color: gray"><span
                                             th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span>
                                         | <span th:text="' 阅读次数: '+${blog.click}+' '"></span> | 所属类别: <span
                                                 th:text="${blog.blogType.name}"></span></p>
                                     <div>
                                         <div style="float:left; clear: both;" align="center">
-                                            <a id="div111" th:href="'/blog/'+${blog.getId()}"><img th:src="@{${blog.imageName}}"
-                                                                                       th:if="${blog.imageName!=null}"
-                                                                                       width="222" alt=""
-                                                                                       class="indexFirstImage"
-                                                                                       hspace="8"></a>
+                                            <a id="div111" th:href="'/blog/'+${blog.getId()}"><img
+                                                    th:src="@{${blog.imageName}}"
+                                                    th:if="${blog.imageName!=null}"
+                                                    width="222" alt=""
+                                                    class="indexFirstImage"
+                                                    hspace="8"></a>
                                         </div>
-                                        <span style="color: gray"
+                                        <span style="line-height: 25px"
                                               th:text="${#strings.abbreviate(blog.summary,600)}"></span>
                                     </div>
                                 </div>
                                 <div style="clear: both">
                                     <br>
                                     <a th:href="'/blog/'+${blog.getId()}">
-                                        <button type="button" class="btn btn-primary btn-sm">查看详情</button>
+                                        <button id="btn111" type="button" class="btn btn-primary btn-sm btn11">查看详情
+                                        </button>
                                     </a>
                                 </div>
                             </div>
@@ -77,7 +85,8 @@
                     <div th:each="blogType:${blogTypeList}">
                         <p><a th:href="${'/index?blogTypeId='+blogType.id}"
                               th:text="${blogType.name}" style="text-decoration: none"
-                              class="test"></a><span class="label label-primary" th:text="${blogType.blogNum}"></span></p>
+                              class="test"></a><span class="label label-primary" th:text="${blogType.blogNum}"></span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -91,7 +100,9 @@
                     <div th:each="blogCount:${blogCountList}">
                         <p><a th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}"
                               th:text="${blogCount.releaseDateStr}"
-                              style="text-decoration: none" class="test"></a><span class="label label-primary" th:text="${blogCount.blogCount}"></span></p>
+                              style="text-decoration: none" class="test"></a><span class="label label-primary"
+                                                                                   th:text="${blogCount.blogCount}"></span>
+                        </p>
                     </div>
                 </div>
             </div>

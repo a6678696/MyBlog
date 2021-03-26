@@ -58,6 +58,7 @@
             -webkit-box-shadow: #337ab7 0px 10px 10px;
             -moz-box-shadow: #337ab7 0px 10px 10px;
             box-shadow: #337ab7 0px 10px 10px;
+            background-color: #eaf6ff;
         }
 
         /*博客列表图片略缩图放大*/
@@ -107,38 +108,117 @@
         }
 
         /*文字闪烁*/
-        .box1{
-            color:red;
-            animation: changeshadow 6s  ease-in  infinite ;
+        .box1 {
+            color: red;
+            animation: changeshadow 6s ease-in infinite;
             -webkit-animation: changeshadow 6s linear infinite;
             -moz-animation: changeshadow 6s linear infinite;
             -ms-animation: changeshadow 6s linear infinite;
             -o-animation: changeshadow 6s linear infinite;
         }
+
         @keyframes changeshadow {
-            0%{ text-shadow: 0 0 4px red}
-            50%{ text-shadow: 0 0 40px red}
-            100%{ text-shadow: 0 0 4px red}
+            0% {
+                text-shadow: 0 0 4px red
+            }
+            50% {
+                text-shadow: 0 0 40px red
+            }
+            100% {
+                text-shadow: 0 0 4px red
+            }
         }
+
         @-webkit-keyframes changeshadow {
-            0%{ text-shadow: 0 0 4px red}
-            50%{ text-shadow: 0 0 40px red}
-            100%{ text-shadow: 0 0 4px red}
+            0% {
+                text-shadow: 0 0 4px red
+            }
+            50% {
+                text-shadow: 0 0 40px red
+            }
+            100% {
+                text-shadow: 0 0 4px red
+            }
         }
+
         @-moz-keyframes changeshadow {
-            0%{ text-shadow: 0 0 4px red}
-            50%{ text-shadow: 0 0 40px red}
-            100%{ text-shadow: 0 0 4px red}
+            0% {
+                text-shadow: 0 0 4px red
+            }
+            50% {
+                text-shadow: 0 0 40px red
+            }
+            100% {
+                text-shadow: 0 0 4px red
+            }
         }
+
         @-ms-keyframes changeshadow {
-            0%{ text-shadow: 0 0 4px red}
-            50%{ text-shadow: 0 0 40px red}
-            100%{ text-shadow: 0 0 4px red}
+            0% {
+                text-shadow: 0 0 4px red
+            }
+            50% {
+                text-shadow: 0 0 40px red
+            }
+            100% {
+                text-shadow: 0 0 4px red
+            }
         }
+
         @-o-keyframes changeshadow {
-            0%{ text-shadow: 0 0 4px red}
-            50%{ text-shadow: 0 0 40px red}
-            100%{ text-shadow: 0 0 4px red}
+            0% {
+                text-shadow: 0 0 4px red
+            }
+            50% {
+                text-shadow: 0 0 40px red
+            }
+            100% {
+                text-shadow: 0 0 4px red
+            }
+        }
+
+        /*鼠标移入文字向右移动*/
+        #div1 {
+            -webkit-transition: margin-left .8s;
+            -moz-transition: margin-left .8s;
+            -o-transition: margin-left .8s;
+
+        }
+
+        #div1:hover {
+            margin-left: 6px;
+        }
+
+        /*博客详情标题*/
+        .title3 {
+            width: 100%;
+            display: block;
+            line-height: 1.5em;
+            overflow: visible;
+            font-size: 22px;
+            text-shadow: #f3f3f3 1px 1px 0px, #b2b2b2 1px 2px 0
+        }
+
+        /*改变上一篇和下一篇博客代码样式*/
+        a.a11:hover {
+            background-color: #0c9c6e;
+        }
+
+        a.a12:hover {
+            background-color: #0c9c6e;
+        }
+
+        a.a13:hover {
+            background-color: red;
+        }
+
+        a.a14:hover {
+            background-color: red;
+        }
+
+        /*鼠标悬停按钮变色*/
+        button.btn11:hover {
+            background-color: #00B0E8;
         }
     </style>
     <!--其他-->
@@ -200,7 +280,7 @@
         jQuery(document).ready(function ($) {
             $("body").click(function (e) {
                 var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-                var $i = $("<span/>").text("👍"+a[a_idx]);
+                var $i = $("<span/>").text("👍" + a[a_idx]);
                 a_idx = (a_idx + 1) % a.length;
                 var x = e.pageX,
                     y = e.pageY;
@@ -250,8 +330,8 @@
                 $(".imgsrc").attr("src", "/static/images/top2.png");
             });
             $("table").addClass("table table-striped table-hover");
-            $("pre").css("font-size","15px");
-            $("pre").css("font-family","SimHei");
+            $("pre").css("font-size", "15px");
+            $("pre").css("font-family", "SimHei");
         });
 
 

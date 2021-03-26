@@ -27,9 +27,9 @@ public class InsertInterviewRecordTrueAddress {
     private InterviewRecordService interviewRecordService;
 
     /**
-     * 每一小时执行一次
+     * 每天晚上23点执行一次
      */
-    @Scheduled(cron = "0 0 */1 * * ?")
+    @Scheduled(cron = "0 0 23 * * ?")
     public void work() {
         List<InterviewRecord> interviewRecordList = interviewRecordService.trueAddressIsNull();
         if (interviewRecordList.size() > 0) {
@@ -40,10 +40,10 @@ public class InsertInterviewRecordTrueAddress {
                 interviewRecordService.update(interviewRecord);
             }
             System.out.println(simpleDateFormat.format(new Date()) + "全部访问记录的空真实地址已经自动填入完毕!");
+            checkNullAddressIpIsExist();
         } else {
             System.out.println("没有真实地址为空的访问记录!");
         }
-        checkNullAddressIpIsExist();
     }
 
     /**

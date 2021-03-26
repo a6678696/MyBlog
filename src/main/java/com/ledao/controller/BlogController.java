@@ -50,6 +50,7 @@ public class BlogController {
         ModelAndView mav = new ModelAndView();
         Blog blog = blogService.findById(id);
         blog.setClick(blog.getClick() + 1);
+        blog.setSetMenuBlogDate(null);
         blogService.update(blog);
         blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
         List<BlogType> blogTypeList = blogTypeService.list(null);
@@ -59,6 +60,7 @@ public class BlogController {
         List<Blog> blogCountList = blogService.countList();
         Map<String, Object> map = new HashMap<>(16);
         map.put("blogTypeId", blog.getBlogTypeId());
+        map.put("isMenuBlogKey", 1);
         //根据当前博客类别推荐博客
         List<Blog> recommendBlogList = blogService.list(map);
         //去掉List中的当前博客(即当前正在查看的博客不推荐)
@@ -89,11 +91,13 @@ public class BlogController {
             }
         }
         //获取当前博客的点赞数
-        Map<String, Object> map1=new HashMap<>(16);
+        Map<String, Object> map1 = new HashMap<>(16);
         map1.put("blogId", blog.getId());
         List<Like> likes = likeService.list(map1);
         blog.setLikeNum(likes.size());
         mav.addObject("blog", blog);
+        mav.addObject("menuBlogList", blogService.getMenuBlogList());
+        mav.addObject("menuBlogId", id);
         mav.addObject("commentList", commentList);
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
@@ -101,11 +105,34 @@ public class BlogController {
         mav.addObject("title", blog.getTitle() + "--LeDao的博客");
         mav.addObject("mainPage", "page/blogDetails" + StringUtil.readSkin());
         mav.addObject("mainPageKey", "#b");
+        mav.addObject("previousAndNextBlogCode", getPreviousAndNextBlogCode(blogService.getPreviousBlog(id), blogService.getNextBlog(id)));
         mav.setViewName("index" + StringUtil.readSkin());
         InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "查看博客：" + blog.getTitle());
         interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
         interviewRecordService.add(interviewRecord);
         return mav;
+    }
+
+    /**
+     * 获取上一篇博客和下一篇博客代码
+     *
+     * @param previousBlog
+     * @param nextBlog
+     * @return
+     */
+    private static StringBuilder getPreviousAndNextBlogCode(Blog previousBlog, Blog nextBlog) {
+        StringBuilder code = new StringBuilder();
+        if (previousBlog != null) {
+            code.append("<a href='/blog/"+previousBlog.getId()+"' style='float: left;text-decoration: none' class='btn-primary a11'>上一篇："+previousBlog.getTitle()+"</a>");
+        }else {
+            code.append("<a style='float: left;text-decoration: none' class='btn-primary a13'>上一篇：没有上一篇了</a>");
+        }
+        if (nextBlog != null) {
+            code.append("<a href='/blog/"+nextBlog.getId()+"' style='float: right;text-decoration: none' class='btn-primary a12'>下一篇："+nextBlog.getTitle()+"</a>");
+        }else {
+            code.append("<a style='float: right;text-decoration: none' class='btn-primary a14'>下一篇：没有下一篇了</a>");
+        }
+        return code;
     }
 
     /**
@@ -154,6 +181,7 @@ public class BlogController {
             mav.addObject("pageCode", this.genUpAndDownPageCode2(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
         }
         mav.addObject("q", q);
+        mav.addObject("menuBlogList", blogService.getMenuBlogList());
         mav.addObject("resultTotal", blogList.size());
         mav.setViewName("index" + StringUtil.readSkin());
         return mav;
@@ -212,14 +240,14 @@ public class BlogController {
             return null;
         } else {
             if (page > 1) {
-                pageCode.append("<a href='" + projectContext + "/blog/q?page=" + (page - 1) + "&q=" + q + "' style='text-decoration: none' class='com'><button type='button' class='btn btn-primary btn-sm'>上一页</button></a>");
+                pageCode.append("<a href='" + projectContext + "/blog/q?page=" + (page - 1) + "&q=" + q + "' style='text-decoration: none' class='com'><button type='button' class='btn btn-primary btn-sm btn11'>上一页</button></a>");
             } else {
-                pageCode.append("<a href='#' style='text-decoration: none' class='com'><button type='button' class='btn btn-primary btn-sm'>上一页</button></a>");
+                pageCode.append("<a style='text-decoration: none' class='com'><button type='button' class='btn btn-primary btn-sm btn11'>上一页</button></a>");
             }
             if (page < totalPage) {
-                pageCode.append("<a href='" + projectContext + "/blog/q?page=" + (page + 1) + "&q=" + q + "' style='text-decoration: none;margin-left: 2px' class='com'><button type='button' class='btn btn-primary btn-sm'>下一页</button></a>");
+                pageCode.append("<a href='" + projectContext + "/blog/q?page=" + (page + 1) + "&q=" + q + "' style='text-decoration: none;margin-left: 2px' class='com'><button type='button' class='btn btn-primary btn-sm btn11'>下一页</button></a>");
             } else {
-                pageCode.append("<a href='#' style='text-decoration: none;margin-left: 2px' class='com'><button type='button' class='btn btn-primary btn-sm'>下一页</button></a>");
+                pageCode.append("<a style='text-decoration: none;margin-left: 2px' class='com'><button type='button' class='btn btn-primary btn-sm btn11'>下一页</button></a>");
             }
         }
         return pageCode.toString();

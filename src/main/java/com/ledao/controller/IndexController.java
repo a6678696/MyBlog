@@ -63,7 +63,6 @@ public class IndexController {
         InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "访问博客首页");
         interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
         interviewRecordService.add(interviewRecord);
-
         Map<String, Object> map = new HashMap<>(16);
         if (page == null) {
             page = 1;
@@ -72,6 +71,7 @@ public class IndexController {
         map.put("start", (page - 1) * pageSize);
         map.put("size", pageSize);
         map.put("blogTypeId", blogTypeId);
+        map.put("isMenuBlogKey", 1);
         map.put("releaseDateStr", releaseDateStr);
         Long total = blogService.getCount(map);
         List<Blog> blogList = blogService.list(map);
@@ -110,6 +110,7 @@ public class IndexController {
         }
         //用于判断是否是首页,是首页就显示公告
         mav.addObject("isIndexFirst", 1);
+        mav.addObject("menuBlogList", blogService.getMenuBlogList());
         mav.addObject("isHome", 1);
         mav.addObject("linkList", linkService.list(null));
         mav.addObject("blogList", blogList);
@@ -159,6 +160,7 @@ public class IndexController {
         int pageSize = 6;
         map.put("start", (page - 1) * pageSize);
         map.put("size", pageSize);
+        map.put("isMenuBlogKey", 1);
         map.put("blogTypeId", blogTypeId);
         map.put("releaseDateStr", releaseDateStr);
         Long total = blogService.getCount(map);
@@ -196,6 +198,7 @@ public class IndexController {
                 mav.addObject("isHome", 1);
             }
         }
+        mav.addObject("menuBlogList", blogService.getMenuBlogList());
         mav.addObject("linkList", linkService.list(null));
         mav.addObject("blogList", blogList);
         mav.addObject("blogTypeList", blogTypeList);
@@ -209,32 +212,6 @@ public class IndexController {
         mav.addObject("mainPage", "page/indexFirst" + StringUtil.readSkin());
         mav.addObject("mainPageKey", "#b");
         mav.setViewName("index" + StringUtil.readSkin());
-        return mav;
-    }
-
-    /**
-     * 源码下载
-     *
-     * @return
-     * @throws Exception
-     */
-    @RequestMapping("/download")
-    public ModelAndView download(HttpServletRequest request) throws Exception {
-        ModelAndView mav = new ModelAndView();
-        List<BlogType> blogTypeList = blogTypeService.list(null);
-        for (BlogType blogType : blogTypeList) {
-            blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
-        }
-        List<Blog> blogCountList = blogService.countList();
-        mav.addObject("isDownload", 1);
-        mav.addObject("blogTypeList", blogTypeList);
-        mav.addObject("blogCountList", blogCountList);
-        mav.addObject("title", "本站源码下载");
-        mav.addObject("mainPage", "page/download" + StringUtil.readSkin());
-        mav.setViewName("index" + StringUtil.readSkin());
-        InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "查看源码下载");
-        interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
-        interviewRecordService.add(interviewRecord);
         return mav;
     }
 

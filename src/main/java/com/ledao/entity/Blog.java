@@ -67,6 +67,14 @@ public class Blog {
      * 点赞数
      */
     private Integer likeNum;
+    /**
+     * 是否是导航条文章（0或空代表不是，1代表是）
+     */
+    private Integer isMenuBlog;
+    /**
+     * 设置成为导航条文章的时间
+     */
+    private Date setMenuBlogDate;
 
     public Integer getId() {
         return id;
@@ -178,5 +186,21 @@ public class Blog {
 
     public void setLikeNum(Integer likeNum) {
         this.likeNum = likeNum;
+    }
+
+    public Integer getIsMenuBlog() {
+        return isMenuBlog;
+    }
+
+    public void setIsMenuBlog(Integer isMenuBlog) {
+        this.isMenuBlog = isMenuBlog;
+    }
+
+    public Date getSetMenuBlogDate() {
+        return setMenuBlogDate;
+    }
+
+    public void setSetMenuBlogDate(Date setMenuBlogDate) {
+        this.setMenuBlogDate = setMenuBlogDate;
     }
 }

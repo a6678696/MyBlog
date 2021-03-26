@@ -76,4 +76,27 @@ public interface BlogService {
      * @return
      */
     List<Blog> findByBlogTypeId(Integer blogTypeId);
+
+    /**
+     * 获取上一篇博客
+     *
+     * @param id
+     * @return
+     */
+    Blog getPreviousBlog(Integer id);
+
+    /**
+     * 获取下一篇博客
+     *
+     * @param id
+     * @return
+     */
+    Blog getNextBlog(Integer id);
+
+    /**
+     * 获取导航条文章（根据设置时间升序排列）
+     *
+     * @return
+     */
+    List<Blog> getMenuBlogList();
 }

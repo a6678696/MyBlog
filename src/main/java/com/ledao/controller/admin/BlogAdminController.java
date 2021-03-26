@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,6 +66,7 @@ public class BlogAdminController {
         Map<String, Object> map = new HashMap<>(16);
         map.put("title", StringUtil.formatLike(blog.getTitle()));
         map.put("blogTypeId", blog.getBlogTypeId());
+        map.put("isMenuBlog", blog.getIsMenuBlog());
         map.put("start", pageBean.getStart());
         map.put("size", pageBean.getPageSize());
         List<Blog> blogList = blogService.list(map);
@@ -87,11 +89,11 @@ public class BlogAdminController {
     public Map<String, Object> save(Blog blog) throws Exception {
         Map<String, Object> resultMap = new HashMap<>(16);
         int key;
-        int maxStringLength=600;
+        int maxStringLength = 600;
         if (blog.getId() == null) {
             blog.setSummary(StripHT(blog.getContent()));
-            if (blog.getSummary().length()>=maxStringLength) {
-                blog.setSummary(blog.getSummary().substring(0,600));
+            if (blog.getSummary().length() >= maxStringLength) {
+                blog.setSummary(blog.getSummary().substring(0, 600));
             }
             key = blogService.add(blog);
             List<Blog> blogList = blogService.list(null);
@@ -180,5 +182,26 @@ public class BlogAdminController {
         //去除字符串中的空格,回车,换行符,制表符
         txtcontent = txtcontent.replaceAll("<a>\\s*|\t|\r|\n</a>", "");
         return txtcontent;
+    }
+
+    /**
+     * 设置成为导航条文章与否
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("setMenuBlog")
+    public Map<String, Object> setMenuBlog(Integer id) {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        Blog blob = blogService.findById(id);
+        if (blob.getIsMenuBlog() == null || blob.getIsMenuBlog() != 1) {
+            blob.setIsMenuBlog(1);
+            blob.setSetMenuBlogDate(new Date());
+        } else {
+            blob.setIsMenuBlog(0);
+        }
+        blogService.update(blob);
+        resultMap.put("success", true);
+        return resultMap;
     }
 }

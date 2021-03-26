@@ -2,7 +2,8 @@
 SQLyog Ultimate v12.09 (64 bit)
 MySQL - 5.6.50-log : Database - db_myblog
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -148,7 +149,7 @@ CREATE TABLE `t_user` (
 
 /*Data for the table `t_user` */
 
-insert  into `t_user`(`id`,`userName`,`password`,`nickName`) values (1,'admin','BCDE7777233','乐道');
+insert  into `t_user`(`id`,`userName`,`password`,`nickName`) values (1,'admin','222222','乐道');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

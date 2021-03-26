@@ -25,7 +25,7 @@ package com.ledao.util;
 public class MyEncryption {
 
     public static void main(String[] args) {
-        String str = "abcd6666122";
+        String str = "BENJO";
         System.out.println(jiami(str));
     }
 

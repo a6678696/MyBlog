@@ -62,8 +62,8 @@
         </where>
     </select>
     <insert id="add" parameterType="Blog">
-        insert into t_blog (title, summary, content, releaseDate, click, blogTypeId)
-        values (#{title}, #{summary}, #{content}, now(), 0, #{blogTypeId});
+        insert into t_blog (title, summary, content, releaseDate, click, blogTypeId,isMenuBlog)
+        values (#{title}, #{summary}, #{content}, now(), 0, #{blogTypeId},0);
     </insert>
     <update id="update" parameterType="Blog">
         update t_blog

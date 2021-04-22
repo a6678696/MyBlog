@@ -58,7 +58,23 @@
                     </form>
                     <hr style="height:5px;border:none;border-top:2px dotted #1296db;" th:if="${commentList.size()>0}">
                     <div class="row" th:if="${commentList.size()>0}">
-                        <div th:each="comment:${commentList}" th:if="${commentStat.count<=3}">
+                        <div th:each="comment:${commentList}">
+                            <div class="col-md-1">
+                                <img class="img-rounded" th:src="@{'/static/images/userImage/'+${comment.imageName}}"
+                                     alt="11">
+                            </div>
+                            <div class="col-md-11">
+                                <p style="color: grey">评论时间: <span
+                                        th:text="${#dates.format(comment.date,'yyyy-MM-dd HH:mm:ss')}"></span>&nbsp;&nbsp;&nbsp;&nbsp;评论人IP地址:
+                                    <span th:text="${comment.ip}"></span></p>
+                                <p th:text="${comment.content}" style="color: blue"></p>
+                                <p th:if="${comment.reply!=null&&comment.reply!=''}"><span
+                                        style="color: grey">站长回复:</span><span style="color: green"
+                                                                              th:text="${comment.reply}"
+                                                                              th:if="${comment.reply!=null}"></span></p>
+                            </div>
+                        </div>
+                        <!--<div th:each="comment:${commentList}" th:if="${commentStat.count<=3}">
                             <div class="col-md-1">
                                 <img class="img-rounded" th:src="@{'/static/images/userImage/'+${comment.imageName}}"
                                      alt="11">
@@ -77,7 +93,7 @@
                         <a id="a1" data-toggle="collapse" data-target="#demo" onclick="afterClick1()"><p
                                 style="text-align: center;font-size: 15px" th:if="${commentList.size()>3}">
                             点击显示其余评论...</p></a>
-                        <div id="demo" class="collapse">
+                        <div id="demo" style="display: none">
                             <div th:each="comment:${commentList}" th:if="${commentStat.count>3}">
                                 <div class="col-md-1">
                                     <img class="img-rounded" th:src="@{'/static/images/userImage/'+${comment.imageName}}"
@@ -96,7 +112,7 @@
                             </div>
                         </div>
                         <a id="a2" data-toggle="collapse" data-target="#demo" hidden="true" onclick="afterClick2()"><p
-                                style="text-align: center;font-size: 15px">点击收起评论</p></a>
+                                style="text-align: center;font-size: 15px">点击收起评论</p></a>-->
                     </div>
                 </div>
             </div>

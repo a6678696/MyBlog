@@ -116,7 +116,7 @@ public class IndexController {
         mav.addObject("blogList", blogList);
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
-        mav.addObject("title", "首页--LeDao的博客");
+        mav.addObject("title", "LeDao的博客");
         if (1 == StringUtil.readSkin()) {
             mav.addObject("pageCode", PageUtil.genPagination1("/index", total, page, pageSize, param.toString()));
         } else if (2 == StringUtil.readSkin()) {
@@ -145,6 +145,11 @@ public class IndexController {
                 interviewRecord2.setTrueAddress(AddressUtil.getAddress2(interviewRecord2.getInterviewerIp()));
                 interviewRecordService.add(interviewRecord2);
             }
+            BlogType blogType = blogTypeService.findById(Integer.parseInt(blogTypeId));
+            System.out.println(blogType.getName());
+            mav.addObject("title", "当前分类:" + blogType.getName() + "--LeDao的博客");
+        } else if (StringUtil.isEmpty(releaseDateStr) && StringUtil.isEmpty(blogTypeId)) {
+            mav.addObject("title", "LeDao的博客");
         }
         if (StringUtil.isNotEmpty(releaseDateStr)) {
             param.append("&releaseDateStr=" + releaseDateStr);
@@ -153,6 +158,9 @@ public class IndexController {
                 interviewRecord3.setTrueAddress(AddressUtil.getAddress2(interviewRecord3.getInterviewerIp()));
                 interviewRecordService.add(interviewRecord3);
             }
+            mav.addObject("title", "当前分类:" + releaseDateStr + "--LeDao的博客");
+        } else if (StringUtil.isEmpty(releaseDateStr) && StringUtil.isEmpty(blogTypeId)) {
+            mav.addObject("title", "LeDao的博客");
         }
         if (page == null) {
             page = 1;
@@ -203,7 +211,6 @@ public class IndexController {
         mav.addObject("blogList", blogList);
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
-        mav.addObject("title", "首页--LeDao的博客");
         if (1 == StringUtil.readSkin()) {
             mav.addObject("pageCode", PageUtil.genPagination1("/index", total, page, pageSize, param.toString()));
         } else if (2 == StringUtil.readSkin()) {

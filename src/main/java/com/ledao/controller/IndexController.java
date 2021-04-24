@@ -6,9 +6,7 @@ import com.ledao.entity.BlogType;
 import com.ledao.entity.InterviewRecord;
 import com.ledao.entity.User;
 import com.ledao.service.*;
-import com.ledao.util.AddressUtil;
-import com.ledao.util.PageUtil;
-import com.ledao.util.StringUtil;
+import com.ledao.util.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -284,6 +282,24 @@ public class IndexController {
             StringUtil.updateSkin(1);
             resultMap.put("success", true);
         }
+        return resultMap;
+    }
+
+    /**
+     * 备份数据（数据库、Lucene索引、博客图片）
+     *
+     * @return
+     * @throws IOException
+     */
+    @ResponseBody
+    @RequestMapping("/backup")
+    public Map<String, Object> backup() throws IOException {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        CopyUtil.copyImage();
+        CopyUtil.copyLucene();
+        new BackupUtil("root", "123456", "db_myblog", null, "utf8",
+                "C:\\backup\\myblog\\db_myblog.sql").backup_run();
+        resultMap.put("success", true);
         return resultMap;
     }
 }

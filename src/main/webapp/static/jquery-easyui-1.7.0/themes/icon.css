@@ -188,6 +188,10 @@
 	background:url('usericons/likeManage.gif') no-repeat center center;
 }
 
+.icon-backup{
+	background:url('usericons/backup.gif') no-repeat center center;
+}
+
 .icon-changeSkin{
 	background:url('usericons/changeSkin.gif') no-repeat center center;
 }

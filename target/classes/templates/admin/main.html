@@ -110,6 +110,20 @@
             });
         }
 
+        function backup() {
+            $.messager.confirm("系统提示", "您确定要备份数据吗?", function (r) {
+                if (r) {
+                    $.post("/backup", {}, function (result) {
+                        if (result.success) {
+                            $.messager.alert("系统提示", "已经成功备份数据!!");
+                        } else {
+                            $.messager.alert("系统提示", "备份失败!!");
+                        }
+                    })
+                }
+            });
+        }
+
         function logout() {
             $.messager.confirm("系统提示", "您确定要退出系统吗?", function (r) {
                 if (r) {
@@ -176,6 +190,8 @@
            style="width: 150px;">查看访问记录</a>
         <a href="javascript:changeSkin()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-changeSkin'"
            style="width: 150px;float: left">切换前台皮肤</a>
+        <a href="javascript:backup()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-backup'"
+           style="width: 150px;float: left">一键备份数据</a>
         <a href="javascript:logout()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-exit'"
            style="width: 150px;float: left">安全退出</a>
     </div>

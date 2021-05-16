@@ -110,4 +110,12 @@ public interface InterviewRecordService {
      * @return
      */
     List<InterviewRecord> trueAddressIsNotNull();
+
+    /**
+     * 获取某ip 20秒钟内内访问本网站的次数，用于封禁爬虫ip
+     *
+     * @param ip
+     * @return
+     */
+    Long getCountInterviewInTwentySecond(String ip);
 }

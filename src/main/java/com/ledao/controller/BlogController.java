@@ -43,6 +43,9 @@ public class BlogController {
     @Resource
     private LikeService likeService;
 
+    @Resource
+    private IpForBannedService ipForBannedService;
+
     private BlogIndex blogIndex = new BlogIndex();
 
     @RequestMapping("/{id}")
@@ -109,7 +112,20 @@ public class BlogController {
         mav.setViewName("index" + StringUtil.readSkin());
         InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "查看博客：" + blog.getTitle());
         interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
-        interviewRecordService.add(interviewRecord);
+        //20秒钟内同一ip最大访问数
+        int maxInterviewTimesInOneMinute = 15;
+        if (interviewRecordService.getCountInterviewInTwentySecond(interviewRecord.getInterviewerIp()) >= maxInterviewTimesInOneMinute && ipForBannedService.findByIp(interviewRecord.getInterviewerIp()) == null) {
+            IpForBanned ipForBanned = new IpForBanned();
+            ipForBanned.setIp(interviewRecord.getInterviewerIp());
+            ipForBanned.setType("自动封禁");
+            ipForBannedService.add(ipForBanned);
+        }
+        if (ipForBannedService.findByIp(interviewRecord.getInterviewerIp()) != null) {
+            mav.addObject("mainPage", "page/ipForBanned" + StringUtil.readSkin());
+            mav.addObject("ipNow", request.getRemoteAddr());
+        } else {
+            interviewRecordService.add(interviewRecord);
+        }
         return mav;
     }
 
@@ -123,13 +139,13 @@ public class BlogController {
     private static StringBuilder getPreviousAndNextBlogCode(Blog previousBlog, Blog nextBlog) {
         StringBuilder code = new StringBuilder();
         if (previousBlog != null) {
-            code.append("<a href='/blog/"+previousBlog.getId()+"' style='float: left;text-decoration: none' class='btn-primary a11'>上一篇："+previousBlog.getTitle()+"</a>");
-        }else {
+            code.append("<a href='/blog/" + previousBlog.getId() + "' style='float: left;text-decoration: none' class='btn-primary a11'>上一篇：" + previousBlog.getTitle() + "</a>");
+        } else {
             code.append("<a style='float: left;text-decoration: none' class='btn-primary a13'>上一篇：没有上一篇了</a>");
         }
         if (nextBlog != null) {
-            code.append("<a href='/blog/"+nextBlog.getId()+"' style='float: right;text-decoration: none' class='btn-primary a12'>下一篇："+nextBlog.getTitle()+"</a>");
-        }else {
+            code.append("<a href='/blog/" + nextBlog.getId() + "' style='float: right;text-decoration: none' class='btn-primary a12'>下一篇：" + nextBlog.getTitle() + "</a>");
+        } else {
             code.append("<a style='float: right;text-decoration: none' class='btn-primary a14'>下一篇：没有下一篇了</a>");
         }
         return code;
@@ -144,11 +160,26 @@ public class BlogController {
      */
     @RequestMapping("/q")
     public ModelAndView search(@RequestParam(value = "q", required = false) String q, @RequestParam(value = "page", required = false) String page, HttpServletRequest request) throws Exception {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("mainPage", "page/blogResult" + StringUtil.readSkin());
         int pageSize = 6;
         if (page == null) {
             InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "搜索了博客：" + q);
             interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
-            interviewRecordService.add(interviewRecord);
+            //20秒钟内同一ip最大访问数
+            int maxInterviewTimesInOneMinute = 15;
+            if (interviewRecordService.getCountInterviewInTwentySecond(interviewRecord.getInterviewerIp()) >= maxInterviewTimesInOneMinute && ipForBannedService.findByIp(interviewRecord.getInterviewerIp()) == null) {
+                IpForBanned ipForBanned = new IpForBanned();
+                ipForBanned.setIp(interviewRecord.getInterviewerIp());
+                ipForBanned.setType("自动封禁");
+                ipForBannedService.add(ipForBanned);
+            }
+            if (ipForBannedService.findByIp(interviewRecord.getInterviewerIp()) != null) {
+                mav.addObject("mainPage", "page/ipForBanned" + StringUtil.readSkin());
+                mav.addObject("ipNow", request.getRemoteAddr());
+            } else {
+                interviewRecordService.add(interviewRecord);
+            }
         }
         if (StringUtil.isEmpty(page)) {
             page = "1";
@@ -158,11 +189,9 @@ public class BlogController {
             blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
         }
         List<Blog> blogCountList = blogService.countList();
-        ModelAndView mav = new ModelAndView();
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "搜索关键字'" + q + "'结果页面--LeDao博客系统");
-        mav.addObject("mainPage", "page/blogResult" + StringUtil.readSkin());
         mav.addObject("mainPageKey", "#b");
         List<Blog> blogList = blogIndex.searchBlog(q);
         for (Blog blog : blogList) {

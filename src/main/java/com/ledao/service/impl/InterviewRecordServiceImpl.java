@@ -86,4 +86,9 @@ public class InterviewRecordServiceImpl implements InterviewRecordService {
     public List<InterviewRecord> trueAddressIsNotNull() {
         return interviewRecordMapper.trueAddressIsNotNull();
     }
+
+    @Override
+    public Long getCountInterviewInTwentySecond(String ip) {
+        return interviewRecordMapper.getCountInterviewInTwentySecond(ip);
+    }
 }

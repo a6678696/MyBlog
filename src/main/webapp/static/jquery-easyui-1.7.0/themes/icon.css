@@ -220,6 +220,10 @@
     background: url('usericons/likeManage.gif') no-repeat center center;
 }
 
+.icon-ipBanManage {
+    background: url('usericons/ipBanManage.gif') no-repeat center center;
+}
+
 .icon-backup {
     background: url('usericons/backup.gif') no-repeat center center;
 }

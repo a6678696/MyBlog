@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ledao.mapper.IpForBannedMapper">
+    <resultMap id="IpForBannedResult" type="IpForBanned">
+        <result property="id" column="id"/>
+        <result property="ip" column="ip"/>
+        <result property="type" column="type"/>
+        <result property="date" column="date"/>
+    </resultMap>
+
+    <select id="list" parameterType="map" resultMap="IpForBannedResult">
+        select *
+        from t_ip_for_banned t
+        <where>
+            <if test="ip != null and ip != ''">
+                and t.ip like #{ip}
+            </if>
+            <if test="type != null and type != ''">
+                and t.type like #{type}
+            </if>
+        </where>
+        order by t.date desc
+        <if test="start != null and size != null">
+            limit #{start},#{size}
+        </if>
+    </select>
+
+    <select id="getCount" parameterType="map" resultType="java.lang.Long">
+        select count(*)
+        from t_ip_for_banned t
+        <where>
+            <if test="ip != null and ip != ''">
+                and ip like #{ip}
+            </if>
+            <if test="type != null and type != ''">
+                and t.type like #{type}
+            </if>
+        </where>
+    </select>
+
+    <insert id="add" parameterType="IpForBanned">
+        insert into t_ip_for_banned (ip, type, date)
+        values (#{ip}, #{type}, now());
+    </insert>
+
+    <delete id="delete" parameterType="integer">
+        delete
+        from t_ip_for_banned
+        where id = #{id}
+    </delete>
+
+    <select id="findByIp" parameterType="string" resultType="com.ledao.entity.IpForBanned">
+        select *
+        from t_ip_for_banned
+        where ip = #{ip}
+    </select>
+</mapper>

@@ -1,10 +1,7 @@
 package com.ledao.controller;
 
 import cn.hutool.http.HtmlUtil;
-import com.ledao.entity.Blog;
-import com.ledao.entity.BlogType;
-import com.ledao.entity.InterviewRecord;
-import com.ledao.entity.User;
+import com.ledao.entity.*;
 import com.ledao.service.*;
 import com.ledao.util.*;
 import org.jsoup.Jsoup;
@@ -48,6 +45,9 @@ public class IndexController {
     private InterviewRecordService interviewRecordService;
 
     @Resource
+    private IpForBannedService ipForBannedService;
+
+    @Resource
     private LinkService linkService;
 
     /**
@@ -58,9 +58,23 @@ public class IndexController {
     @RequestMapping("/")
     public ModelAndView root(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr, HttpServletRequest request) throws IOException {
         ModelAndView mav = new ModelAndView();
+        mav.addObject("mainPage", "page/indexFirst" + StringUtil.readSkin());
         InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "访问博客首页");
         interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
-        interviewRecordService.add(interviewRecord);
+        //20秒钟内同一ip最大访问数
+        int maxInterviewTimesInOneMinute = 15;
+        if (interviewRecordService.getCountInterviewInTwentySecond(interviewRecord.getInterviewerIp()) >= maxInterviewTimesInOneMinute && ipForBannedService.findByIp(interviewRecord.getInterviewerIp()) == null) {
+            IpForBanned ipForBanned = new IpForBanned();
+            ipForBanned.setIp(interviewRecord.getInterviewerIp());
+            ipForBanned.setType("自动封禁");
+            ipForBannedService.add(ipForBanned);
+        }
+        if (ipForBannedService.findByIp(interviewRecord.getInterviewerIp()) != null) {
+            mav.addObject("mainPage", "page/ipForBanned" + StringUtil.readSkin());
+            mav.addObject("ipNow", request.getRemoteAddr());
+        } else {
+            interviewRecordService.add(interviewRecord);
+        }
         Map<String, Object> map = new HashMap<>(16);
         if (page == null) {
             page = 1;
@@ -120,7 +134,6 @@ public class IndexController {
         } else if (2 == StringUtil.readSkin()) {
             mav.addObject("pageCode", PageUtil.genPagination2("/index", total, page, pageSize, param.toString()));
         }
-        mav.addObject("mainPage", "page/indexFirst" + StringUtil.readSkin());
         mav.addObject("mainPageKey", "#b");
         mav.setViewName("index" + StringUtil.readSkin());
         return mav;
@@ -214,6 +227,10 @@ public class IndexController {
             mav.addObject("pageCode", PageUtil.genPagination2("/index", total, page, pageSize, param.toString()));
         }
         mav.addObject("mainPage", "page/indexFirst" + StringUtil.readSkin());
+        if (ipForBannedService.findByIp(request.getRemoteAddr()) != null) {
+            mav.addObject("mainPage", "page/ipForBanned" + StringUtil.readSkin());
+            mav.addObject("ipNow", request.getRemoteAddr());
+        }
         mav.addObject("mainPageKey", "#b");
         mav.setViewName("index" + StringUtil.readSkin());
         return mav;

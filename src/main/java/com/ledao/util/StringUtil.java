@@ -1,5 +1,9 @@
 package com.ledao.util;
 
+import org.apache.commons.io.FileUtils;
+
+import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -106,8 +110,20 @@ public class StringUtil {
         fos.close();
     }
 
-    public static void main(String[] args) throws IOException {
-        updateSkin(2);
-        System.out.println(readSkin());
+    public static String readSendMail() throws IOException {
+        File file = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\sendMail.txt");
+        return FileUtils.readFileToString(file, "UTF-8");
+    }
+
+    public static void changeSendMail(String data, HttpSession session) throws IOException {
+        File file = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\sendMail.txt");
+        FileUtils.writeStringToFile(file, data, "UTF-8");
+        session.setAttribute("sendMailStatus", StringUtil.readSendMail().equals("0") ? "未设置" : "已设置");
+    }
+
+    public static void main(String[] args, HttpSession session) throws IOException {
+        System.out.println(readSendMail());
+        changeSendMail("0", session);
+        System.out.println(readSendMail());
     }
 }

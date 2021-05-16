@@ -77,4 +77,20 @@ public interface CommentService {
      * @return
      */
     Integer deleteByBlogId(Integer blogId);
+
+    /**
+     * 获取某ip今日评论数量
+     *
+     * @param ip
+     * @return
+     */
+    Long getTodayCommentCount(String ip);
+
+    /**
+     * 获取某ip最近5分钟评论数量
+     *
+     * @param ip
+     * @return
+     */
+    Long getLastFiveMinutesCommentCount(String ip);
 }

@@ -4,12 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${title}"></title>
-    <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script th:src="@{/static/js/jquery.js}"></script>
     <link rel="short icon" th:href="@{/static/images/favicon.ico}">
     <style type="text/css">
@@ -236,7 +233,7 @@
                         alert("评论成功,审核通过后方可在下方显示!!");
                         $("#commentContent").val("");
                     } else {
-                        alert("评论失败!!");
+                        alert(result.errorInfo);
                     }
                 }
             );
@@ -332,7 +329,7 @@
             $("table").addClass("table table-striped table-hover");
             $("pre").css("font-size", "15px");
             $("pre").css("font-family", "SimHei");
-            $("img").attr("alt", "请刷新本页面以查看图片，如果图片已失效请到公告下给我留言┭┮﹏┭┮");
+            $("img").attr("alt", "请刷新本页面以查看图片，如果图片已失效请到评论区下给我留言┭┮﹏┭┮");
         });
 
 

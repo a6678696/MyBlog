@@ -1,5 +1,5 @@
 server:
-  port: 80
+  port: 8080
   servlet:
     context-path: /
   tomcat:
@@ -24,6 +24,20 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
   thymeleaf:
     cache: false
+  mail:
+    host: smtp.qq.com
+    username: 3519577180@qq.com
+    password:
+    default-encoding: UTF-8
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+          ssl:
+            enable: true #一定要开启ssl,不然会503 验证失败的（开启加密验证）
 
 #博客正文图片存储地址
 blogImageFilePath: C://Java/apache-tomcat-9.0.22-windows-x64/apache-tomcat-9.0.22-windows-x64/apache-tomcat-9.0.22/webapps/MyBlog/static/images/blogImage/

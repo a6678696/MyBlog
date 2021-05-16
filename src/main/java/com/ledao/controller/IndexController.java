@@ -144,7 +144,6 @@ public class IndexController {
                 interviewRecordService.add(interviewRecord2);
             }
             BlogType blogType = blogTypeService.findById(Integer.parseInt(blogTypeId));
-            System.out.println(blogType.getName());
             mav.addObject("title", "当前分类:" + blogType.getName() + "--LeDao的博客");
         } else if (StringUtil.isEmpty(releaseDateStr) && StringUtil.isEmpty(blogTypeId)) {
             mav.addObject("title", "LeDao的博客");
@@ -226,9 +225,10 @@ public class IndexController {
      * @return
      */
     @RequestMapping("/login")
-    public Object login(HttpSession session) {
+    public Object login(HttpSession session) throws IOException {
         User user = userService.findByUserName("admin");
         session.setAttribute("currentUserNickName", user.getNickName());
+        session.setAttribute("sendMailStatus", StringUtil.readSendMail().equals("0") ? "未设置" : "已设置");
         return "/login";
     }
 
@@ -282,6 +282,44 @@ public class IndexController {
             StringUtil.updateSkin(1);
             resultMap.put("success", true);
         }
+        return resultMap;
+    }
+
+    /**
+     * 读取是否邮件提醒配置
+     *
+     * @return
+     * @throws IOException
+     */
+    @ResponseBody
+    @RequestMapping("/readSendMail")
+    public Map<String, Object> readSendMail() throws IOException {
+        String status = StringUtil.readSendMail();
+        Map<String, Object> resultMap = new HashMap<>(16);
+        resultMap.put("success", "true");
+        resultMap.put("status", status);
+        return resultMap;
+    }
+
+    /**
+     * 设置评论时提醒与否
+     *
+     * @return
+     * @throws IOException
+     */
+    @ResponseBody
+    @RequestMapping("/changeSendMail")
+    public Map<String, Object> changeSendMail(HttpSession session) throws IOException {
+        String status = StringUtil.readSendMail();
+        Map<String, Object> resultMap = new HashMap<>(16);
+        //有人评论时不提醒
+        String isSendMail = "0";
+        if (isSendMail.equals(status)) {
+            StringUtil.changeSendMail("1", session);
+        } else {
+            StringUtil.changeSendMail("0", session);
+        }
+        resultMap.put("success", "true");
         return resultMap;
     }
 

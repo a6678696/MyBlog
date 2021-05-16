@@ -61,4 +61,14 @@ public class CommentServiceImpl implements CommentService {
     public Integer deleteByBlogId(Integer blogId) {
         return commentMapper.deleteByBlogId(blogId);
     }
+
+    @Override
+    public Long getTodayCommentCount(String ip) {
+        return commentMapper.getTodayCommentCount(ip);
+    }
+
+    @Override
+    public Long getLastFiveMinutesCommentCount(String ip) {
+        return commentMapper.getLastFiveMinutesCommentCount(ip);
+    }
 }

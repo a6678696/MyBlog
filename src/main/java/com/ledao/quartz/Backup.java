@@ -27,6 +27,6 @@ public class Backup {
         CopyUtil.copyImage();
         CopyUtil.copyLucene();
         new BackupUtil("root", "123456", "db_myblog", null, "utf8",
-                "C:\\backup\\myblog\\db_myblog.sql").backup_run();
+                "C:\\backup2\\myblog\\db_myblog.sql").backup_run();
     }
 }

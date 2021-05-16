@@ -88,4 +88,12 @@
     <delete id="deleteByBlogId" parameterType="integer">
         delete from t_comment where blogId=#{blogId}
     </delete>
+
+    <select id="getTodayCommentCount" parameterType="string" resultType="java.lang.Long">
+        select count(*) from t_comment t where ip=#{ip} and to_days(t.date)=to_days(now())
+    </select>
+
+    <select id="getLastFiveMinutesCommentCount" parameterType="string" resultType="java.lang.Long">
+        select count(*) from t_comment t where ip=#{ip} and t.date>=now()-interval 5 minute
+    </select>
 </mapper>

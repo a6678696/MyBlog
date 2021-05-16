@@ -110,6 +110,42 @@
             });
         }
 
+        function changeSendMail() {
+            $.post("/readSendMail", {}, function (result) {
+                if (result.success) {
+                    if (result.status == "0") {
+                        $.messager.confirm("系统提示", "您确定要设置有人评论时邮件提醒吗?", function (r) {
+                            if (r) {
+                                $.post("/changeSendMail", {}, function (result) {
+                                    if (result.success) {
+                                        $.messager.alert("系统提示", "邮件提醒设置成功！！");
+                                        $("#sendMailStatus").html("已设置");
+                                        $("#sendMailStatus").css('color','blue');
+                                    } else {
+                                        $.messager.alert("系统提示", "邮件提醒设置失败！！");
+                                    }
+                                })
+                            }
+                        });
+                    }else if (result.status == "1") {
+                        $.messager.confirm("系统提示", "您确定要取消有人评论时邮件提醒吗?", function (r) {
+                            if (r) {
+                                $.post("/changeSendMail", {}, function (result) {
+                                    if (result.success) {
+                                        $.messager.alert("系统提示", "邮件提醒取消成功！！");
+                                        $("#sendMailStatus").html("未设置");
+                                        $("#sendMailStatus").css('color','red');
+                                    } else {
+                                        $.messager.alert("系统提示", "邮件提醒取消失败！！");
+                                    }
+                                })
+                            }
+                        });
+                    }
+                }
+            })
+        }
+
         function backup() {
             $.messager.confirm("系统提示", "您确定要备份数据吗?", function (r) {
                 if (r) {
@@ -155,8 +191,9 @@
                 <img alt="logo" src="/static/images/logo.png" style="height: 65px"/>
             </td>
             <td valign="bottom" align="right" width="50%">
-                <span style="font-size: 20px">&nbsp;&nbsp;<strong>欢迎：</strong><span
+                <span style="font-size: 18px">&nbsp;&nbsp;<strong>当前用户：</strong><span
                         th:text="${session.currentUserNickName}" style="color: blue"></span></span>
+                <span style="font-size: 18px">&nbsp;&nbsp;<strong>邮件提醒：</strong><span th:text="${session.sendMailStatus}" id="sendMailStatus" th:style="${session.sendMailStatus == '未设置'?'color:red':'color:blue'}"></span></span>
             </td>
         </tr>
     </table>
@@ -192,6 +229,8 @@
            style="width: 150px;float: left">切换前台皮肤</a>
         <a href="javascript:backup()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-backup'"
            style="width: 150px;float: left">一键备份数据</a>
+        <a href="javascript:changeSendMail()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-sendMail'"
+           style="width: 150px;float: left">是否邮件提醒</a>
         <a href="javascript:logout()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-exit'"
            style="width: 150px;float: left">安全退出</a>
     </div>
@@ -206,7 +245,7 @@
     <div id="mm-tabcloseleft" data-options="name:'6',iconCls:'icon-closelefttab'">关闭左侧标签页</div>
 </div>
 <div region="south" style="height: 30px;padding: 5px" align="center">
-    Copyright © 1500330333ztl
+    Copyright © www.zoutl.cn
 </div>
 </body>
 </html>

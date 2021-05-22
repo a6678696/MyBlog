@@ -8,6 +8,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 定时备份数据
@@ -33,5 +35,8 @@ public class Backup {
         CopyUtil.copyLucene(srcDir2,destDir2);
         new BackupUtil("root", "123456", "db_myblog", null, "utf8",
                 "C:\\backup2\\myblog\\db_myblog.sql").backup_run();
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(simpleDateFormat.format(date+"自动备份成功!!"));
     }
 }

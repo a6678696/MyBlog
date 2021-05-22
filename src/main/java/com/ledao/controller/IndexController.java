@@ -270,6 +270,7 @@ public class IndexController {
         mav.addObject("commentList", commentList);
         mav.addObject("ipForBannedList", ipForBannedList);
         mav.addObject("interviewRecordList", interviewRecordList);
+        mav.addObject("title", "一些数据--LeDao的博客");
         mav.addObject("mainPage", "show" + StringUtil.readSkin());
         if (ipForBannedService.findByIp(request.getRemoteAddr()) != null) {
             mav.addObject("mainPage", "page/ipForBanned" + StringUtil.readSkin());

@@ -27,13 +27,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6fec843a-29ca-4ceb-a0fc-1724b3e235ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/quartz/Backup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/quartz/Backup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/util/CopyUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/util/CopyUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ledao/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ledao/controller/IndexController.class" afterDir="false" />
-    </list>
+    <list default="true" id="6fec843a-29ca-4ceb-a0fc-1724b3e235ce" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -245,17 +239,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -605,7 +588,7 @@
       <workItem from="1621048187641" duration="5000" />
       <workItem from="1621076667040" duration="39217000" />
       <workItem from="1621510164662" duration="1319000" />
-      <workItem from="1621691880253" duration="7380000" />
+      <workItem from="1621691880253" duration="7736000" />
     </task>
     <task id="LOCAL-00001" summary="MyBlog">
       <created>1599655527421</created>
@@ -887,7 +870,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621710276740</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="LeDao的博客">
+      <created>1621711429405</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1621711429405</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

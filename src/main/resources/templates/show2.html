@@ -22,7 +22,6 @@
                             <thead>
                             <tr>
                                 <th style="text-align: center">序号</th>
-                                <th style="text-align: center">ip地址</th>
                                 <th style="text-align: center">评论时间</th>
                                 <th style="text-align: center">评论内容</th>
                             </tr>
@@ -30,7 +29,6 @@
                             <tbody>
                             <tr th:each="comment:${commentList}">
                                 <td style="text-align: center" th:text="${commentStat.count}"></td>
-                                <td style="text-align: center" th:text="${comment.ip}"></td>
                                 <td style="text-align: center" th:text="${#dates.format(comment.date,'yyyy-MM-dd HH:mm:ss')}"></td>
                                 <td style="text-align: center" th:text="${comment.content}"></td>
                             </tr>
@@ -43,7 +41,6 @@
                             <thead>
                             <tr>
                                 <th style="text-align: center">序号</th>
-                                <th style="text-align: center">ip地址</th>
                                 <th style="text-align: center">封禁时间</th>
                                 <th style="text-align: center">封禁类型</th>
                             </tr>
@@ -51,7 +48,6 @@
                             <tbody>
                             <tr th:each="ipForBanned:${ipForBannedList}">
                                 <td style="text-align: center" th:text="${ipForBannedStat.count}"></td>
-                                <td style="text-align: center" th:text="${ipForBanned.ip}"></td>
                                 <td style="text-align: center" th:text="${#dates.format(ipForBanned.date,'yyyy-MM-dd HH:mm:ss')}"></td>
                                 <td style="text-align: center" th:text="${ipForBanned.type}"></td>
                             </tr>
@@ -64,7 +60,6 @@
                             <thead>
                             <tr>
                                 <th style="text-align: center">序号</th>
-                                <th style="text-align: center">ip地址</th>
                                 <th style="text-align: center">点赞时间</th>
                                 <th style="text-align: center">点赞博客</th>
                             </tr>
@@ -72,7 +67,6 @@
                             <tbody>
                             <tr th:each="like:${likeList}">
                                 <td style="text-align: center" th:text="${likeStat.count}"></td>
-                                <td style="text-align: center" th:text="${like.ip}"></td>
                                 <td style="text-align: center" th:text="${#dates.format(like.date,'yyyy-MM-dd HH:mm:ss')}"></td>
                                 <td style="text-align: center" th:text="${like.blog.title}"></td>
                             </tr>

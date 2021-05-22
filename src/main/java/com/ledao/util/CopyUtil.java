@@ -4,6 +4,8 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 资源备份工具类
@@ -24,7 +26,9 @@ public class CopyUtil {
             FileUtils.deleteDirectory(destDir);
         }
         FileUtils.copyDirectory(srcDir, destDir);
-        System.out.println("博客图片已经备份成功！！");
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(simpleDateFormat.format(date+"博客图片已经备份成功！！"));
     }
 
     /**
@@ -37,7 +41,9 @@ public class CopyUtil {
             FileUtils.deleteDirectory(destDir);
         }
         FileUtils.copyDirectory(srcDir, destDir);
-        System.out.println("Lucene索引资源已经备份成功！！");
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(simpleDateFormat.format(date+"Lucene索引资源已经备份成功！！"));
     }
 
     public static void main(String[] args) throws IOException {

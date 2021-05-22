@@ -19,12 +19,9 @@ public class CopyUtil {
      *
      * @throws IOException
      */
-    public static void copyImage() throws IOException {
-        File srcDir = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\images\\blogImage");
-        File destDir = new File("C:\\backup\\myblog\\blogImage");
+    public static void copyImage(File srcDir,File destDir) throws IOException {
         if (destDir.exists()) {
             FileUtils.deleteDirectory(destDir);
-            System.out.println("目标文件夹(博客图片)已删除！！");
         }
         FileUtils.copyDirectory(srcDir, destDir);
         System.out.println("博客图片已经备份成功！！");
@@ -35,19 +32,20 @@ public class CopyUtil {
      *
      * @throws IOException
      */
-    public static void copyLucene() throws IOException {
-        File srcDir = new File("C:\\lucene\\MyBlog");
-        File destDir = new File("C:\\backup\\myblog\\Lucene\\MyBlog");
+    public static void copyLucene(File srcDir,File destDir) throws IOException {
         if (destDir.exists()) {
             FileUtils.deleteDirectory(destDir);
-            System.out.println("目标文件夹(Lucene索引资源)已删除！！");
         }
         FileUtils.copyDirectory(srcDir, destDir);
         System.out.println("Lucene索引资源已经备份成功！！");
     }
 
     public static void main(String[] args) throws IOException {
-        copyImage();
-        copyLucene();
+        File srcDir = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\images\\blogImage");
+        File destDir = new File("C:\\backup\\myblog\\blogImage");
+        File srcDir2 = new File("C:\\lucene\\MyBlog");
+        File destDir2 = new File("C:\\backup\\myblog\\Lucene\\MyBlog");
+        copyImage(srcDir,destDir);
+        copyLucene(srcDir2,destDir2);
     }
 }

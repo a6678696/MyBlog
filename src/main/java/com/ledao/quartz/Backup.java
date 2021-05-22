@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -24,8 +25,12 @@ public class Backup {
      */
     @Scheduled(cron = "0 0 23 * * ?")
     public void work() throws IOException {
-        CopyUtil.copyImage();
-        CopyUtil.copyLucene();
+        File srcDir = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\images\\blogImage");
+        File destDir = new File("C:\\backup2\\myblog\\blogImage");
+        File srcDir2 = new File("C:\\lucene\\MyBlog");
+        File destDir2 = new File("C:\\backup2\\myblog\\Lucene\\MyBlog");
+        CopyUtil.copyImage(srcDir,destDir);
+        CopyUtil.copyLucene(srcDir2,destDir2);
         new BackupUtil("root", "123456", "db_myblog", null, "utf8",
                 "C:\\backup2\\myblog\\db_myblog.sql").backup_run();
     }

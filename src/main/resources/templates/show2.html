@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="b">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        一些数据
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <h3 style="color: #0c9076">评论列表</h3>
+                    <div class="table-responsive">
+                        <table border="1">
+                            <thead>
+                            <tr>
+                                <th style="text-align: center">序号</th>
+                                <th style="text-align: center">ip地址</th>
+                                <th style="text-align: center">评论时间</th>
+                                <th style="text-align: center">评论内容</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="comment:${commentList}">
+                                <td style="text-align: center" th:text="${commentStat.count}"></td>
+                                <td style="text-align: center" th:text="${comment.ip}"></td>
+                                <td style="text-align: center" th:text="${#dates.format(comment.date,'yyyy-MM-dd HH:mm:ss')}"></td>
+                                <td style="text-align: center" th:text="${comment.content}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 style="color: #0c9076">被封禁ip列表</h3>
+                    <div class="table-responsive">
+                        <table border="1">
+                            <thead>
+                            <tr>
+                                <th style="text-align: center">序号</th>
+                                <th style="text-align: center">ip地址</th>
+                                <th style="text-align: center">封禁时间</th>
+                                <th style="text-align: center">封禁类型</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="ipForBanned:${ipForBannedList}">
+                                <td style="text-align: center" th:text="${ipForBannedStat.count}"></td>
+                                <td style="text-align: center" th:text="${ipForBanned.ip}"></td>
+                                <td style="text-align: center" th:text="${#dates.format(ipForBanned.date,'yyyy-MM-dd HH:mm:ss')}"></td>
+                                <td style="text-align: center" th:text="${ipForBanned.type}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 style="color: #0c9076">点赞列表</h3>
+                    <div class="table-responsive">
+                        <table border="1">
+                            <thead>
+                            <tr>
+                                <th style="text-align: center">序号</th>
+                                <th style="text-align: center">ip地址</th>
+                                <th style="text-align: center">点赞时间</th>
+                                <th style="text-align: center">点赞博客</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="like:${likeList}">
+                                <td style="text-align: center" th:text="${likeStat.count}"></td>
+                                <td style="text-align: center" th:text="${like.ip}"></td>
+                                <td style="text-align: center" th:text="${#dates.format(like.date,'yyyy-MM-dd HH:mm:ss')}"></td>
+                                <td style="text-align: center" th:text="${like.blog.title}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 style="color: #0c9076">访问记录列表</h3>
+                    <div class="table-responsive">
+                        <table border="1">
+                            <thead>
+                            <tr>
+                                <th style="text-align: center">序号</th>
+                                <th style="text-align: center">真实地址</th>
+                                <th style="text-align: center">评论时间</th>
+                                <th style="text-align: center">评论内容</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="interviewRecord:${interviewRecordList}">
+                                <td style="text-align: center" th:text="${interviewRecordStat.count}"></td>
+                                <td style="text-align: center" th:text="${interviewRecord.trueAddress}"></td>
+                                <td style="text-align: center" th:text="${#dates.format(interviewRecord.interviewDate,'yyyy-MM-dd HH:mm:ss')}"></td>
+                                <td style="text-align: center" th:text="${interviewRecord.interviewContent}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

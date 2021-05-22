@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -49,6 +50,12 @@ public class IndexController {
 
     @Resource
     private LinkService linkService;
+
+    @Resource
+    private CommentService commentService;
+
+    @Resource
+    private LikeService likeService;
 
     /**
      * 首页地址(为了直接输入首地址就能访问网站)
@@ -237,6 +244,43 @@ public class IndexController {
     }
 
     /**
+     * 无需进入后台,直接在前台看一些数据
+     *
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping("/show")
+    public ModelAndView show(HttpServletRequest request) throws IOException {
+        ModelAndView mav = new ModelAndView();
+        Map<String, Object> map = new HashMap<>(16);
+        List<Like> likeList = likeService.list(map);
+        for (Like like : likeList) {
+            Blog blog = blogService.findById(like.getBlogId());
+            like.setBlog(blog);
+        }
+        List<Comment> commentList = commentService.list(map);
+        List<IpForBanned> ipForBannedList = ipForBannedService.list(map);
+        InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(),"查看show");
+        interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
+        interviewRecordService.add(interviewRecord);
+        map.put("start", 0);
+        map.put("size", 50);
+        List<InterviewRecord> interviewRecordList = interviewRecordService.list(map);
+        mav.addObject("likeList", likeList);
+        mav.addObject("commentList", commentList);
+        mav.addObject("ipForBannedList", ipForBannedList);
+        mav.addObject("interviewRecordList", interviewRecordList);
+        mav.addObject("mainPage", "show" + StringUtil.readSkin());
+        if (ipForBannedService.findByIp(request.getRemoteAddr()) != null) {
+            mav.addObject("mainPage", "page/ipForBanned" + StringUtil.readSkin());
+            mav.addObject("ipNow", request.getRemoteAddr());
+        }
+        mav.addObject("mainPageKey", "#b");
+        mav.setViewName("index" + StringUtil.readSkin());
+        return mav;
+    }
+
+    /**
      * 登录请求
      *
      * @return
@@ -350,8 +394,12 @@ public class IndexController {
     @RequestMapping("/backup")
     public Map<String, Object> backup() throws IOException {
         Map<String, Object> resultMap = new HashMap<>(16);
-        CopyUtil.copyImage();
-        CopyUtil.copyLucene();
+        File srcDir = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\images\\blogImage");
+        File destDir = new File("C:\\backup\\myblog\\blogImage");
+        File srcDir2 = new File("C:\\lucene\\MyBlog");
+        File destDir2 = new File("C:\\backup\\myblog\\Lucene\\MyBlog");
+        CopyUtil.copyImage(srcDir,destDir);
+        CopyUtil.copyLucene(srcDir2,destDir2);
         new BackupUtil("root", "123456", "db_myblog", null, "utf8",
                 "C:\\backup\\myblog\\db_myblog.sql").backup_run();
         resultMap.put("success", true);

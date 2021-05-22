@@ -1,5 +1,7 @@
 package com.ledao.util;
 
+import cn.hutool.http.HttpUtil;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -113,5 +115,19 @@ public class DateUtil {
             months.add(formatDate(cb.getTime(), "yyyy-MM"));
         }
         return months;
+    }
+
+    public static void main(String[] args) {
+        Date date = new Date();
+        System.out.println("格式化前："+date);
+        System.out.println("格式化后：");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(simpleDateFormat.format(date));
+        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
+        System.out.println(simpleDateFormat2.format(date));
+        for (int i = 0; i < 20; i++) {
+            String result = HttpUtil.get("http://www.zoutl.cn/blog/128");
+            System.out.println(result);
+        }
     }
 }

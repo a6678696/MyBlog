@@ -37,6 +37,6 @@ public class Backup {
                 "C:\\backup2\\myblog\\db_myblog.sql").backup_run();
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(simpleDateFormat.format(date+"自动备份成功!!"));
+        System.out.println(simpleDateFormat.format(date)+"自动备份成功！！");
     }
 }

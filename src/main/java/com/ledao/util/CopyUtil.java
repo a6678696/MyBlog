@@ -28,7 +28,7 @@ public class CopyUtil {
         FileUtils.copyDirectory(srcDir, destDir);
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(simpleDateFormat.format(date+"博客图片已经备份成功！！"));
+        System.out.println(simpleDateFormat.format(date)+"：博客图片已经备份成功！！");
     }
 
     /**
@@ -43,7 +43,7 @@ public class CopyUtil {
         FileUtils.copyDirectory(srcDir, destDir);
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(simpleDateFormat.format(date+"Lucene索引资源已经备份成功！！"));
+        System.out.println(simpleDateFormat.format(date)+"：Lucene索引资源已经备份成功！！");
     }
 
     public static void main(String[] args) throws IOException {

@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -403,6 +405,9 @@ public class IndexController {
         CopyUtil.copyLucene(srcDir2,destDir2);
         new BackupUtil("root", "123456", "db_myblog", null, "utf8",
                 "C:\\backup\\myblog\\db_myblog.sql").backup_run();
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(simpleDateFormat.format(date)+"：数据库备份成功!!");
         resultMap.put("success", true);
         return resultMap;
     }

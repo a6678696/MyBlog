@@ -121,9 +121,17 @@ public class StringUtil {
         session.setAttribute("sendMailStatus", StringUtil.readSendMail().equals("0") ? "未设置" : "已设置");
     }
 
-    public static void main(String[] args, HttpSession session) throws IOException {
-        System.out.println(readSendMail());
-        changeSendMail("0", session);
-        System.out.println(readSendMail());
+    public static String readCodeStyle() throws IOException {
+        File file = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\codeStyle.txt");
+        return FileUtils.readFileToString(file, "UTF-8");
+    }
+
+    public static void changeCodeStyle(String data) throws IOException {
+        File file = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\codeStyle.txt");
+        FileUtils.writeStringToFile(file, data, "UTF-8");
+    }
+
+    public static void main(String[] args) throws IOException {
+        System.out.println(readCodeStyle());
     }
 }

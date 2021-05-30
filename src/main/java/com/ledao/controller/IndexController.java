@@ -262,7 +262,7 @@ public class IndexController {
         }
         List<Comment> commentList = commentService.list(map);
         List<IpForBanned> ipForBannedList = ipForBannedService.list(map);
-        InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(),"查看show");
+        InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "查看show");
         interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
         interviewRecordService.add(interviewRecord);
         map.put("start", 0);
@@ -401,14 +401,46 @@ public class IndexController {
         File destDir = new File("C:\\backup\\myblog\\blogImage");
         File srcDir2 = new File("C:\\lucene\\MyBlog");
         File destDir2 = new File("C:\\backup\\myblog\\Lucene\\MyBlog");
-        CopyUtil.copyImage(srcDir,destDir);
-        CopyUtil.copyLucene(srcDir2,destDir2);
+        CopyUtil.copyImage(srcDir, destDir);
+        CopyUtil.copyLucene(srcDir2, destDir2);
         new BackupUtil("root", "123456", "db_myblog", null, "utf8",
                 "C:\\backup\\myblog\\db_myblog.sql").backup_run();
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(simpleDateFormat.format(date)+"：数据库备份成功!!");
+        System.out.println(simpleDateFormat.format(date) + "：数据库备份成功!!");
         resultMap.put("success", true);
+        return resultMap;
+    }
+
+    /**
+     * 修改代码风格配置
+     *
+     * @param codeStyle
+     * @return
+     * @throws IOException
+     */
+    @ResponseBody
+    @RequestMapping("/changeCodeStyle")
+    public Map<String, Object> changeCodeStyle(String codeStyle) throws IOException {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        StringUtil.changeCodeStyle(codeStyle);
+        resultMap.put("success", true);
+        return resultMap;
+    }
+
+    /**
+     * 读取代码风格配置
+     *
+     * @return
+     * @throws IOException
+     */
+    @ResponseBody
+    @RequestMapping("/readCodeStyle")
+    public Map<String, Object> readCodeStyle() throws IOException {
+        String codeStyle = StringUtil.readCodeStyle();
+        Map<String, Object> resultMap = new HashMap<>(16);
+        resultMap.put("success", "true");
+        resultMap.put("codeStyle", codeStyle);
         return resultMap;
     }
 }

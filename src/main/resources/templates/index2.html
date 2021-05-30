@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${title}"></title>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/static/css/my.css}">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script th:src="@{/static/js/jquery.js}"></script>
+    <script th:src="@{/static/js/prism.js}"></script>
+    <link rel="stylesheet" th:href="@{/static/css/prism.css}">
     <link rel="short icon" th:href="@{/static/images/favicon.ico}">
+    <link rel="stylesheet"
+          th:href="@{'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/'+${codeStyle==null?'androidstudio':codeStyle}+'.min.css'}">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <style type="text/css">
         /*网站雪花特效*/
         @-webkit-keyframes snow {
@@ -217,6 +223,11 @@
         button.btn11:hover {
             background-color: #00B0E8;
         }
+
+        pre {
+            font-size: 15px;
+            display:inline;
+        }
     </style>
     <!--其他-->
     <script th:inline="javascript">
@@ -319,6 +330,8 @@
             //返回顶部图片
             $("#gotop").removeClass("img-responsive");
             $("#gotop").removeClass("pimg");
+            //评论人图片
+            $(".img-rounded").removeClass("pimg");
             //鼠标悬停更换返回顶部图片
             $(".imgdiv").mouseover(function () {
                 $(".imgsrc").attr("src", "/static/images/top4.png");
@@ -327,7 +340,6 @@
                 $(".imgsrc").attr("src", "/static/images/top2.png");
             });
             $("table").addClass("table table-striped table-hover");
-            $("pre").css("font-size", "15px");
             $("pre").css("font-family", "SimHei");
             $("img").attr("alt", "请刷新本页面以查看图片，如果图片已失效请到对应博客的评论区下给我留言┭┮﹏┭┮");
         });

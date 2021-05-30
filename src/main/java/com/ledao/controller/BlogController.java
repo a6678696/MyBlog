@@ -98,6 +98,7 @@ public class BlogController {
         map1.put("blogId", blog.getId());
         List<Like> likes = likeService.list(map1);
         blog.setLikeNum(likes.size());
+        mav.addObject("codeStyle", StringUtil.readCodeStyle());
         mav.addObject("blog", blog);
         mav.addObject("menuBlogList", blogService.getMenuBlogList());
         mav.addObject("menuBlogId", id);

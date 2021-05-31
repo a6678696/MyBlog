@@ -1,5 +1,5 @@
 server:
-  port: 80
+  port: 8080
   servlet:
     context-path: /
   tomcat:
@@ -26,8 +26,8 @@ spring:
     cache: false
   mail:
     host: smtp.qq.com
-    username: 351957@qq.com
-    password: lukoiope
+    username: 35@qq.com
+    password: lukoi
     default-encoding: UTF-8
     protocol: smtp
     properties:

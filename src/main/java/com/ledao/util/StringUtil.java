@@ -1,11 +1,8 @@
 package com.ledao.util;
 
-import org.apache.commons.io.FileUtils;
+import cn.hutool.setting.Setting;
 
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
@@ -16,6 +13,8 @@ import java.io.IOException;
  * @create 2020-01-16 20:33
  */
 public class StringUtil {
+
+    private static String mySettingLocation = "C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\myConfig.setting";
 
     /**
      * 判断是否是空
@@ -82,15 +81,8 @@ public class StringUtil {
      * @return
      */
     public static int readSkin() throws IOException {
-        FileInputStream fis = new FileInputStream("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\mySkin.txt");
-        int skin = fis.read();
-        fis.close();
-        if (skin == 49) {
-            skin = 1;
-        } else if (skin == 50) {
-            skin = 2;
-        }
-        return skin;
+        Setting setting = new Setting(mySettingLocation);
+        return setting.getInt("skin");
     }
 
     /**
@@ -100,38 +92,60 @@ public class StringUtil {
      * @throws IOException
      */
     public static void updateSkin(int status) throws IOException {
-        FileOutputStream fos = new FileOutputStream("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\mySkin.txt");
-        if (status == 1) {
-            status = 49;
-        } else if (status == 2) {
-            status = 50;
-        }
-        fos.write(status);
-        fos.close();
+        Setting setting = new Setting(mySettingLocation);
+        setting.set("skin", String.valueOf(status));
+        setting.store(mySettingLocation);
     }
 
+    /**
+     * 读取是否发送邮件配置
+     *
+     * @return
+     * @throws IOException
+     */
     public static String readSendMail() throws IOException {
-        File file = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\sendMail.txt");
-        return FileUtils.readFileToString(file, "UTF-8");
+        Setting setting = new Setting(mySettingLocation);
+        return setting.getStr("isSendMail");
     }
 
+    /**
+     * 修改是否发送邮件配置
+     *
+     * @param data
+     * @param session
+     * @throws IOException
+     */
     public static void changeSendMail(String data, HttpSession session) throws IOException {
-        File file = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\sendMail.txt");
-        FileUtils.writeStringToFile(file, data, "UTF-8");
+        Setting setting = new Setting(mySettingLocation);
+        setting.set("isSendMail", data);
+        setting.store(mySettingLocation);
         session.setAttribute("sendMailStatus", StringUtil.readSendMail().equals("0") ? "未设置" : "已设置");
     }
 
+    /**
+     * 读取代码风格配置
+     *
+     * @return
+     * @throws IOException
+     */
     public static String readCodeStyle() throws IOException {
-        File file = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\codeStyle.txt");
-        return FileUtils.readFileToString(file, "UTF-8");
+        Setting setting = new Setting(mySettingLocation);
+        return setting.getStr("codeStyle");
     }
 
+    /**
+     * 修改代码风格配置
+     *
+     * @param data
+     * @throws IOException
+     */
     public static void changeCodeStyle(String data) throws IOException {
-        File file = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\codeStyle.txt");
-        FileUtils.writeStringToFile(file, data, "UTF-8");
+        Setting setting = new Setting(mySettingLocation);
+        setting.set("codeStyle", data);
+        setting.store(mySettingLocation);
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(readCodeStyle());
+        System.out.println(readSkin());
     }
 }

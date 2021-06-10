@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" th:href="@{/static/css/my.css}">
+    <script th:src="@{/static/js/jquery.js}"></script>
+    <link rel="short icon" th:href="@{/static/images/favicon.ico}">
+    <!-- all plugins here -->
+    <script th:src="@{/static/js/vendor.js}"></script>
+    <script th:src="@{/static/js/jquery.magnific-popup.min.js}"></script>
+    <!-- main js  -->
+    <script th:src="@{/static/js/main.js}"></script>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" th:href="@{/static/css/vendor.css}">
+    <link rel="stylesheet" th:href="@{/static/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/static/css/style3.css}">
+    <link rel="stylesheet" th:href="@{/static/css/responsive.css}">
+    <!-- 代码高亮 -->
+    <link rel="stylesheet"
+          th:href="@{'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/'+${codeStyle==null?'androidstudio':codeStyle}+'.min.css'}">
+    <script th:src="@{/static/js/highlight.line-numbers.js}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();
+    hljsln.initLineNumbersOnLoad();</script>
+    <style type="text/css">
+        .hljsln {
+            position: relative;
+            display: block;
+            padding-left: 3em !important;
+        }
+
+        .hljsln .ln-bg {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 2.2em;
+            height: 100%;
+            border-right: 1px solid #555;
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .hljsln .ln-num {
+            position: relative;
+            display: inline-block;
+            height: 1em;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .hljsln .ln-num::before {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            right: 0;
+            margin-right: 1em;
+            color: #777;
+            font-style: normal;
+            font-weight: normal;
+            content: attr(data-num);
+        }
+        a{
+            color: #00B0E8;
+        }
+
+        /*改变上一篇和下一篇博客代码样式*/
+        a.a11:hover {
+            background-color: #0c9c6e;
+        }
+
+        a.a12:hover {
+            background-color: #0c9c6e;
+        }
+
+        a.a13:hover {
+            background-color: red;
+        }
+
+        a.a14:hover {
+            background-color: red;
+        }
+
+        /*鼠标悬停提示框(点赞博客)*/
+        #mytitle {
+            position: absolute;
+            color: #ffffff;
+            max-width: 160px;
+            font-size: 14px;
+            padding: 4px;
+            background: rgba(40, 40, 40, 0.8);
+            border: solid 1px #e9f7f6;
+            border-radius: 5px;
+        }
+
+        /*博客列表图片略缩图放大*/
+        #div111 {
+            width: 388px;
+            height: 108px;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+
+        #div111 img {
+            cursor: pointer;
+            transition: all 0.6s;
+        }
+
+        #div111 img:hover {
+            transform: scale(1.05);
+        }
+
+        /*鼠标停在div上出现阴影*/
+        .shadow {
+            transition-duration: 1s; /*停留时间显示*/
+        }
+
+        .shadow:hover {
+            background-color: #f5e5ea;
+        }
+    </style>
+    <script th:inline="javascript">
+        function submitComment() {
+            var content = $("#commentContent").val();
+            var blogId = $("#commentBlogId").val();
+            if (content == null || content == '') {
+                alert("请输入评论内容!!");
+                return false;
+            }
+            $.post("/comment/add", {content: content, blogId: blogId},
+                function (result) {
+                    if (result.success) {
+                        alert("评论成功,审核通过后方可在下方显示!!");
+                        $("#commentContent").val("");
+                    } else {
+                        alert(result.errorInfo);
+                    }
+                }
+            );
+        }
+
+        //用户点赞博客
+        function like() {
+            var blogId = $("#commentBlogId").val();
+            $.post("/like/add", {blogId: blogId},
+                function (result) {
+                    if (result.success) {
+                        alert("点赞成功!!");
+                        $("#like1").attr("hidden", "true");
+                        $("#like2").removeAttr("hidden");
+                    } else {
+                        alert("点赞失败!!");
+                    }
+                }
+            );
+        }
+
+        //点赞博客按钮悬停提示
+        $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('i.mytooltip').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+
+        $(document).on('click', '.back-to-top', function () {
+            $("html,body").animate({
+                scrollTop: 0
+            }, 2000);
+        });
+
+
+        $(document).ready(function () {
+            //全部图片
+            $("img").addClass("img-responsive");
+            $("img").addClass("img-thumbnail");
+            //首页图片
+            $(".indexFirstImage").removeClass("pimg");
+            //备案图片
+            $("#img2").removeClass("img-responsive");
+            $("#img2").removeClass("img-thumbnail");
+            //完字图片
+            $("#img3").removeClass("img-responsive");
+            $("#img3").removeClass("img-thumbnail");
+            $("table").addClass("table table-striped table-hover");
+            $('pre code').each(function(i,block){
+                hljs.highlightBlock(block);
+            });
+            $("pre").css("font-size", "16px");
+            $("img").attr("alt", "请刷新本页面以查看图片，如果图片已失效请到对应博客的评论区下给我留言┭┮﹏┭┮");
+        });
+    </script>
+</head>
+<body>
+<!-- back to top area start -->
+<div class="back-to-top">
+    <span class="back-top"><i class="fa fa-angle-double-up"></i></span>
+</div>
+<!-- back to top area end -->
+<div>
+    <div th:include="common/head3::#h"></div>
+    <div th:include="${mainPage}::${mainPageKey}"></div>
+    <div th:include="common/foot3::#f"></div>
+</div>
+</body>
+</html>

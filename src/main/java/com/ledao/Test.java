@@ -1,27 +1,28 @@
 package com.ledao;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.google.gson.Gson;
+import com.ledao.entity.Link;
 
 /**
  * @author LeDao
  * @company
- * @create 2021-01-14 16:28
+ * @create 2021-06-07 7:25
  */
 public class Test {
 
-    public static void main(String[] args) {
-        List<String> stringList = new ArrayList<>();
-        stringList.add("a");
-        stringList.add("v");
-        stringList.add("b");
-        stringList.add("c");
-        System.out.println("删除前:" + stringList);
-        for (String s : stringList) {
-            if (s.equals("a")) {
-                stringList.remove(s);
-            }
-        }
-        System.out.println("删除后:" + stringList);
+    public static void main(String[] args) throws JsonProcessingException {
+        Link link = new Link();
+        link.setId(1);
+        link.setName("LeDao的博客");
+        link.setUrl("http://www.zoutl.cn");
+        link.setSortNum(1);
+        //实体类转Json
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(link);
+        System.out.println(jsonString);
+        //Json转实体类
+        Link link2 = gson.fromJson(jsonString, Link.class);
+        System.out.println(link2.toString());
     }
 }

@@ -189,6 +189,12 @@
                     $("#nowCodeStyle").val(result.codeStyle);
                 }
             })
+            $("#codeStyle").get(0).focus();
+        }
+
+        function openChangeSkinDialog() {
+            $("#dlg2").dialog("open").dialog("setTitle", "修改皮肤");
+            $("#skin").get(0).focus();
         }
 
         function modifyCodeStyle() {
@@ -214,13 +220,45 @@
             });
         }
 
+        function modifySkin() {
+            $("#fm2").form("submit", {
+                onSubmit: function () {
+                    let skin = $("#skin").val();
+                    if (!$(this).form("validate")) {
+                        return false;
+                    }
+                    return true;
+                },
+                url: "/changeSkin?skin=" + $("#skin").val(),
+                success: function (result) {
+                    var result = eval('(' + result + ')');
+                    if (result.success) {
+                        $.messager.alert("系统提示", "皮肤修改成功");
+                        resetValue();
+                        $("#dlg2").dialog("close");
+                    } else {
+                        $.messager.alert("系统提示", "皮肤修改失败");
+                    }
+                }
+            });
+        }
+
         function closeChangeCodeStyleDialog() {
             resetValue();
             $("#dlg").dialog("close");
         }
 
+        function closeChangeSkinDialog() {
+            resetValue2();
+            $("#dlg2").dialog("close");
+        }
+
         function resetValue() {
             $("#codeStyle").val("");
+        }
+
+        function resetValue2() {
+            $("#skin").val("");
         }
     </script>
 </head>
@@ -270,7 +308,10 @@
         <a href="javascript:openTab('查看访问记录','interviewRecordManage.html','icon-interviewRecordManage')"
            class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-interviewRecordManage'"
            style="width: 150px;">查看访问记录</a>
-        <a href="javascript:changeSkin()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-changeSkin'"
+        <a href="javascript:openTab('每日访问ip个数','countIpNumByDay.html','icon-countIpNumByDay')"
+           class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-countIpNumByDay'"
+           style="width: 150px;">每日访问ip个数</a>
+        <a href="javascript:openChangeSkinDialog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-changeSkin'"
            style="width: 150px;float: left">切换前台皮肤</a>
         <a href="javascript:backup()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-backup'"
            style="width: 150px;float: left">一键备份数据</a>
@@ -301,7 +342,6 @@
                     <input type="text" id="codeStyle" class="easyui-validatebox"
                            required="true" style="width: 200px">
                 </td>
-
             </tr>
         </table>
     </form>
@@ -309,6 +349,24 @@
 <div id="dlg-buttons">
     <a href="javascript:modifyCodeStyle()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
     <a href="javascript:closeChangeCodeStyleDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+</div>
+<div id="dlg2" class="easyui-dialog" style="width: 400px;height: 144px;padding: 10px 20px" closed="true"
+     buttons="#dlg-buttons2" data-options="onClose:function(){resetValue2()}">
+    <form id="fm2" method="post">
+        <table cellspacing="8px">
+            <tr>
+                <td>皮肤名称:</td>
+                <td>
+                    <input type="text" id="skin" class="easyui-validatebox"
+                           required="true" style="width: 200px">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div id="dlg-buttons2">
+    <a href="javascript:modifySkin()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+    <a href="javascript:closeChangeSkinDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
 </div>
 <div id="menu" class="easyui-menu">
     <div id="mm-tabrefresh" data-options="name:'1',iconCls:'icon-refresh'"> 刷新当前标签页</div>

@@ -98,6 +98,7 @@ public class BlogController {
         map1.put("blogId", blog.getId());
         List<Like> likes = likeService.list(map1);
         blog.setLikeNum(likes.size());
+        mav.addObject("blogLastClickTime", interviewRecordService.blogLastClickTime(StringUtil.formatLike(blog.getTitle())));
         mav.addObject("codeStyle", StringUtil.readCodeStyle());
         mav.addObject("blog", blog);
         mav.addObject("menuBlogList", blogService.getMenuBlogList());
@@ -140,14 +141,14 @@ public class BlogController {
     private static StringBuilder getPreviousAndNextBlogCode(Blog previousBlog, Blog nextBlog) {
         StringBuilder code = new StringBuilder();
         if (previousBlog != null) {
-            code.append("<a href='/blog/" + previousBlog.getId() + "' style='float: left;text-decoration: none' class='btn-primary a11'>上一篇：" + previousBlog.getTitle() + "</a>");
+            code.append("<a href='/blog/" + previousBlog.getId() + "' style='float: left;text-decoration: none' class='btn-primary a11 status-icon  hint--top' aria-label='点击查看上一篇博客：" + previousBlog.getTitle() + "'>&nbsp;<i class='fa fa-arrow-circle-left'></i>&nbsp;上一篇：" + previousBlog.getTitle() + "</a>");
         } else {
-            code.append("<a style='float: left;text-decoration: none' class='btn-primary a13'>上一篇：没有上一篇了</a>");
+            code.append("<a style='float: left;text-decoration: none;color:white' class='btn-primary a13'>&nbsp;<i class='fa fa-arrow-circle-left'></i>&nbsp;上一篇：没有上一篇了</a>");
         }
         if (nextBlog != null) {
-            code.append("<a href='/blog/" + nextBlog.getId() + "' style='float: right;text-decoration: none' class='btn-primary a12'>下一篇：" + nextBlog.getTitle() + "</a>");
+            code.append("<a href='/blog/" + nextBlog.getId() + "' style='float: right;text-decoration: none' class='btn-primary a12 status-icon  hint--top' aria-label='点击查看下一篇博客：" + nextBlog.getTitle() + "'>下一篇：" + nextBlog.getTitle() + "&nbsp;<i class='fa fa-arrow-circle-right'></i>&nbsp;</a>");
         } else {
-            code.append("<a style='float: right;text-decoration: none' class='btn-primary a14'>下一篇：没有下一篇了</a>");
+            code.append("<a style='float: right;text-decoration: none;color:white' class='btn-primary a14'>下一篇：没有下一篇了&nbsp;<i class='fa fa-arrow-circle-right'></i>&nbsp;</a>");
         }
         return code;
     }
@@ -209,6 +210,8 @@ public class BlogController {
             mav.addObject("pageCode", this.genUpAndDownPageCode(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
         } else if (2 == StringUtil.readSkin()) {
             mav.addObject("pageCode", this.genUpAndDownPageCode2(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
+        } else if (3 == StringUtil.readSkin()) {
+            mav.addObject("pageCode", this.genUpAndDownPageCode3(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
         }
         mav.addObject("q", q);
         mav.addObject("menuBlogList", blogService.getMenuBlogList());
@@ -278,6 +281,27 @@ public class BlogController {
                 pageCode.append("<a href='" + projectContext + "/blog/q?page=" + (page + 1) + "&q=" + q + "' style='text-decoration: none;margin-left: 2px' class='com'><button type='button' class='btn btn-primary btn-sm btn11'>下一页</button></a>");
             } else {
                 pageCode.append("<a style='text-decoration: none;margin-left: 2px' class='com'><button type='button' class='btn btn-primary btn-sm btn11'>下一页</button></a>");
+            }
+        }
+        return pageCode.toString();
+    }
+
+    private String genUpAndDownPageCode3(Integer page, Integer totalNum, String q, Integer pageSize, String projectContext) {
+        //数据总页数
+        long totalPage = totalNum % pageSize == 0 ? totalNum / pageSize : totalNum / pageSize + 1;
+        StringBuffer pageCode = new StringBuffer();
+        if (totalPage == 0) {
+            return null;
+        } else {
+            if (page > 1) {
+                pageCode.append("<li class='page-item'><a href='" + projectContext + "/blog/q?page=" + (page - 1) + "&q=" + q + "' class='page-link'><</a></li>");
+            } else {
+                pageCode.append("<li class='page-item'><a class='page-link'><</a></li>");
+            }
+            if (page < totalPage) {
+                pageCode.append("<li class='page-item'><a href='" + projectContext + "/blog/q?page=" + (page + 1) + "&q=" + q + "' style='text-decoration: none;margin-left: 2px'  class='page-link'>></a></li>");
+            } else {
+                pageCode.append("<li class='page-item'><a style='text-decoration: none;margin-left: 2px' class='page-link'>></a></li>");
             }
         }
         return pageCode.toString();

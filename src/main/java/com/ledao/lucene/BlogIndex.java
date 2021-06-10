@@ -22,6 +22,8 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import static com.ledao.controller.admin.BlogAdminController.StripHT;
+
 /**
  * 博客索引类
  *
@@ -59,7 +61,7 @@ public class BlogIndex {
         doc.add(new StringField("id", String.valueOf(blog.getId()), Field.Store.YES));
         doc.add(new TextField("title", blog.getTitle(), Field.Store.YES));
         doc.add(new StringField("releaseDate", DateUtil.formatDate(new Date(), "yyyy-MM-dd"), Field.Store.YES));
-        doc.add(new TextField("content", blog.getSummary(), Field.Store.YES));
+        doc.add(new TextField("content", StripHT(blog.getContent()), Field.Store.YES));
         writer.addDocument(doc);
         writer.close();
     }
@@ -90,7 +92,7 @@ public class BlogIndex {
         doc.add(new StringField("id", String.valueOf(blog.getId()), Field.Store.YES));
         doc.add(new TextField("title", blog.getTitle(), Field.Store.YES));
         doc.add(new StringField("releaseDate", DateUtil.formatDate(new Date(), "yyyy-MM-dd"), Field.Store.YES));
-        doc.add(new TextField("content", blog.getSummary(), Field.Store.YES));
+        doc.add(new TextField("content", StripHT(blog.getContent()), Field.Store.YES));
         writer.updateDocument(new Term("id", String.valueOf(blog.getId())), doc);
         writer.close();
     }

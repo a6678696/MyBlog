@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>每日访问ip个数</title>
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.7.0/themes/metro-blue/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.7.0/themes/icon.css">
+    <script type="text/javascript" src="/static/jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/static/ckeditor/ckeditor.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript">
+
+        function countIpNumByDay() {
+            var days = $("#days").val();
+            if (days == null || days == '') {
+                $("#days").val(14);
+                days = 14;
+            }
+            var chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: "CountIpNumByDay",
+                    type: 'line',
+                    events: {
+                        load: function (event) {
+                            $.post("/countIpNumByDay?days="+days, function (result) {
+                                var rows = result.rows;
+                                var xArr = new Array();
+                                var yArr = new Array();
+                                for (var i = 0; i < rows.length; i++) {
+                                    xArr.push(rows[i].date);
+                                    yArr.push(rows[i].num);
+                                }
+                                chart.xAxis[0].categories = xArr;
+                                chart.series[0].setData(yArr);
+
+                            }, "json");
+                        }
+                    }
+                },
+                //标题
+                title: {
+                    text: '每日访问ip个数（近'+days+'天，折线图）'
+                },
+                //X轴的意义
+                xAxis: {
+                    title: '日期',
+                },
+                //Y轴的意义
+                yAxis: {
+                    title: {
+                        text: '数量'
+                    }
+                },
+                //数据列的意义
+                series: [{
+                    name: '数量',
+                }]
+            });
+        }
+
+        $(document).ready(function () {
+            countIpNumByDay();
+        });
+    </script>
+</head>
+<body style="margin: 10px">
+<div id="p" class="easyui-panel" title="每日访问ip个数" style="padding: 10px;width: 1150px">
+    <div id="CountIpNumByDay"></div>
+    <div style="text-align: center;background-color: #dbeef5">
+        输入天数&nbsp;:&nbsp;<input type="text" id="days" style="width: 166px;height: 28px" required="true" onkeydown="if(window.event.keyCode===13) countIpNumByDay()"/>&nbsp;<a href="javascript:countIpNumByDay()"
+                                                                   class="easyui-linkbutton" iconCls="icon-ok">确定</a>
+    </div>
+</div>
+</body>
+</html>

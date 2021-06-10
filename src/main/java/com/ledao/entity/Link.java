@@ -57,4 +57,14 @@ public class Link {
     public void setSortNum(Integer sortNum) {
         this.sortNum = sortNum;
     }
+
+    @Override
+    public String toString() {
+        return "Link{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", sortNum=" + sortNum +
+                '}';
+    }
 }

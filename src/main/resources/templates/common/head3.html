@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="h">
+    <!-- search popup area start -->
+    <div class="search-popup" id="search-popup">
+        <form class="search-form" method="post" action="/blog/q">
+            <div class="form-group">
+                <input id="q" name="q" required="required" th:value="${q}" type="text" class="form-control" placeholder="输入关键词.....">
+            </div>
+            <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <!-- //. search Popup -->
+    <div class="body-overlay" id="body-overlay"></div>
+    <!-- navbar start -->
+    <div class="navbar-area" style="margin-top: 10px">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container nav-container">
+                <div class="responsive-mobile-menu">
+                    <button class="menu toggle-btn d-block d-lg-none" data-target="#miralax_main_menu"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-left"></span>
+                        <span class="icon-right"></span>
+                    </button>
+                </div>
+                <div class="nav-right-part nav-right-part-mobile">
+                    <a class="search header-search" href="#"><i class="fa fa-search"></i></a>
+                </div>
+                <div class="collapse navbar-collapse" id="miralax_main_menu">
+                    <ul class="navbar-nav menu-open">
+                        <li><a href="/index" th:if="${isHome==null}">首页</a></li>
+                        <li><a href="#" th:if="${isHome!=null}">首页</a></li>
+                        <li th:each="menuBlog:${menuBlogList}">
+                           <a href="#" th:text="${menuBlog.title}" th:if="${menuBlogId == menuBlog.getId()}"></a>
+                           <a th:href="'/blog/'+${menuBlog.getId()}" th:text="${menuBlog.title}" th:if="${menuBlogId != menuBlog.getId()}"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-right-part nav-right-part-desktop">
+                    <a class="search header-search" href="#"><i class="fa fa-search"></i></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- navbar end -->
+</div>
+</body>
+</html>

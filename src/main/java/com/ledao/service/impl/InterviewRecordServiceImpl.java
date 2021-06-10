@@ -1,11 +1,13 @@
 package com.ledao.service.impl;
 
+import com.ledao.entity.CountIpNumByDay;
 import com.ledao.entity.InterviewRecord;
 import com.ledao.mapper.InterviewRecordMapper;
 import com.ledao.service.InterviewRecordService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -90,5 +92,20 @@ public class InterviewRecordServiceImpl implements InterviewRecordService {
     @Override
     public Long getCountInterviewInTwentySecond(String ip) {
         return interviewRecordMapper.getCountInterviewInTwentySecond(ip);
+    }
+
+    @Override
+    public Long getMyWebSitRunDays() {
+        return interviewRecordMapper.getMyWebSitRunDays();
+    }
+
+    @Override
+    public Date blogLastClickTime(String blogTitle) {
+        return interviewRecordMapper.blogLastClickTime(blogTitle);
+    }
+
+    @Override
+    public List<CountIpNumByDay> countIpNumByDay(Integer days) {
+        return interviewRecordMapper.countIpNumByDay(days);
     }
 }

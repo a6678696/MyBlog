@@ -117,4 +117,16 @@
     <select id="getCountInterviewInTwentySecond" parameterType="string" resultType="java.lang.Long">
         select count(*) from t_interview_record t where interviewerIp=#{ip} and t.interviewDate>=now()-interval 20 second
     </select>
+
+    <select id="getMyWebSitRunDays" resultType="java.lang.Long">
+        SELECT DATEDIFF(NOW(),(SELECT releaseDate FROM t_blog LIMIT 1)) AS days;
+    </select>
+
+    <select id="blogLastClickTime" parameterType="string" resultType="java.util.Date">
+        SELECT interviewDate FROM t_interview_record WHERE interviewContent LIKE #{blogTitle} ORDER BY interviewDate DESC LIMIT 1;
+    </select>
+
+    <select id="countIpNumByDay" parameterType="integer" resultType="com.ledao.entity.CountIpNumByDay">
+        SELECT DATE(interviewDate) AS date,COUNT(distinct interviewerIp) AS num FROM t_interview_record t WHERE interviewDate BETWEEN ADDDATE(DATE(NOW()),-#{days}) AND ADDDATE(DATE(NOW()),1) GROUP BY DATE(interviewDate);
+    </select>
 </mapper>

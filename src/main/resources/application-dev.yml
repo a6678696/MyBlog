@@ -26,8 +26,8 @@ spring:
     cache: false
   mail:
     host: smtp.qq.com
-    username: 35@qq.com
-    password: lukoi
+    username: @qq.com
+    password: luk
     default-encoding: UTF-8
     protocol: smtp
     properties:

@@ -88,7 +88,7 @@ public class IndexController {
         if (page == null) {
             page = 1;
         }
-        int pageSize = 6;
+        int pageSize = 8;
         map.put("start", (page - 1) * pageSize);
         map.put("size", pageSize);
         map.put("blogTypeId", blogTypeId);
@@ -129,6 +129,11 @@ public class IndexController {
         if (StringUtil.isNotEmpty(releaseDateStr)) {
             param.append("&releaseDateStr=" + releaseDateStr);
         }
+        mav.addObject("ipCount", interviewRecordService.getCountInterviewIpNum());
+        mav.addObject("thisIpCount", interviewRecordService.getCountInterviewerInAppearNum(request.getRemoteAddr()));
+        mav.addObject("myWebSitRunDays", interviewRecordService.getMyWebSitRunDays());
+        mav.addObject("thisIp", request.getRemoteAddr());
+        mav.addObject("interviewCount", interviewRecordService.getCount(null));
         //用于判断是否是首页,是首页就显示公告
         mav.addObject("isIndexFirst", 1);
         mav.addObject("menuBlogList", blogService.getMenuBlogList());
@@ -142,6 +147,8 @@ public class IndexController {
             mav.addObject("pageCode", PageUtil.genPagination1("/index", total, page, pageSize, param.toString()));
         } else if (2 == StringUtil.readSkin()) {
             mav.addObject("pageCode", PageUtil.genPagination2("/index", total, page, pageSize, param.toString()));
+        } else if (3 == StringUtil.readSkin()) {
+            mav.addObject("pageCode", PageUtil.genPagination3("/index", total, page, pageSize, param.toString()));
         }
         mav.addObject("mainPageKey", "#b");
         mav.setViewName("index" + StringUtil.readSkin());
@@ -184,7 +191,7 @@ public class IndexController {
         if (page == null) {
             page = 1;
         }
-        int pageSize = 6;
+        int pageSize = 8;
         map.put("start", (page - 1) * pageSize);
         map.put("size", pageSize);
         map.put("isMenuBlogKey", 1);
@@ -225,6 +232,10 @@ public class IndexController {
                 mav.addObject("isHome", 1);
             }
         }
+        mav.addObject("ipCount", interviewRecordService.getCountInterviewIpNum());
+        mav.addObject("myWebSitRunDays", interviewRecordService.getMyWebSitRunDays());
+        mav.addObject("thisIp", request.getRemoteAddr());
+        mav.addObject("interviewCount", interviewRecordService.getCount(null));
         mav.addObject("menuBlogList", blogService.getMenuBlogList());
         mav.addObject("linkList", linkService.list(null));
         mav.addObject("blogList", blogList);
@@ -234,12 +245,21 @@ public class IndexController {
             mav.addObject("pageCode", PageUtil.genPagination1("/index", total, page, pageSize, param.toString()));
         } else if (2 == StringUtil.readSkin()) {
             mav.addObject("pageCode", PageUtil.genPagination2("/index", total, page, pageSize, param.toString()));
+        } else if (3 == StringUtil.readSkin()) {
+            mav.addObject("pageCode", PageUtil.genPagination3("/index", total, page, pageSize, param.toString()));
         }
         mav.addObject("mainPage", "page/indexFirst" + StringUtil.readSkin());
         if (ipForBannedService.findByIp(request.getRemoteAddr()) != null) {
             mav.addObject("mainPage", "page/ipForBanned" + StringUtil.readSkin());
             mav.addObject("ipNow", request.getRemoteAddr());
+        } else {
+            if (page == 1 && StringUtil.isEmpty(blogTypeId) && StringUtil.isEmpty(releaseDateStr)) {
+                InterviewRecord interviewRecord4 = new InterviewRecord(request.getRemoteAddr(), "访问博客首页/index");
+                interviewRecord4.setTrueAddress(AddressUtil.getAddress2(interviewRecord4.getInterviewerIp()));
+                interviewRecordService.add(interviewRecord4);
+            }
         }
+        mav.addObject("thisIpCount", interviewRecordService.getCountInterviewerInAppearNum(request.getRemoteAddr()));
         mav.addObject("mainPageKey", "#b");
         mav.setViewName("index" + StringUtil.readSkin());
         return mav;
@@ -336,16 +356,13 @@ public class IndexController {
      */
     @ResponseBody
     @RequestMapping("/changeSkin")
-    public Map<String, Object> changeSkin() throws IOException {
+    public Map<String, Object> changeSkin(String skin) throws IOException {
         Map<String, Object> resultMap = new HashMap<>(16);
-        int skin = StringUtil.readSkin();
-        if (skin == 1) {
-            StringUtil.updateSkin(2);
-            resultMap.put("success", true);
-        } else if (skin == 2) {
-            StringUtil.updateSkin(1);
-            resultMap.put("success", true);
+        if (!skin.equals("1") && !skin.equals("2") && !skin.equals("3")) {
+            skin = "2";
         }
+        StringUtil.updateSkin(skin);
+        resultMap.put("success", true);
         return resultMap;
     }
 
@@ -441,6 +458,15 @@ public class IndexController {
         Map<String, Object> resultMap = new HashMap<>(16);
         resultMap.put("success", "true");
         resultMap.put("codeStyle", codeStyle);
+        return resultMap;
+    }
+
+    @ResponseBody
+    @RequestMapping("/countIpNumByDay")
+    public Map<String, Object> countIpNumByDay(String days) {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        List<CountIpNumByDay> countIpNumByDayList = interviewRecordService.countIpNumByDay(Integer.parseInt(days));
+        resultMap.put("rows", countIpNumByDayList);
         return resultMap;
     }
 }

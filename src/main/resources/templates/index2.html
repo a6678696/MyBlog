@@ -5,276 +5,21 @@
     <meta charset="UTF-8">
     <title th:text="${title}"></title>
     <link rel="stylesheet" th:href="@{/static/css/my.css}">
+    <link rel="stylesheet" th:href="@{/static/css/hint.css}">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <script th:src="@{/static/js/jquery.js}"></script>
-    <script th:src="@{/static/js/prism.js}"></script>
-    <link rel="stylesheet" th:href="@{/static/css/prism.css}">
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <link rel="stylesheet" th:href="@{/static/css/style2.css}">
     <link rel="short icon" th:href="@{/static/images/favicon.ico}">
     <link rel="stylesheet"
           th:href="@{'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/'+${codeStyle==null?'androidstudio':codeStyle}+'.min.css'}">
+    <script th:src="@{/static/js/highlight.line-numbers.js}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <style type="text/css">
-        /*网站雪花特效*/
-        @-webkit-keyframes snow {
-            0% {
-                background-position: 0 0, 0 0
-            }
-            100% {
-                background-position: 500px 500px, 1000px 500px
-            }
-        }
-
-        @keyframes snow {
-            0% {
-                background-position: 0 0, 0 0
-            }
-            100% {
-                background-position: 500px 500px, 1000px 500px
-            }
-        }
-
-        .container {
-            box-shadow: 0 0 4px 3px rgba(0, 0, 0, .05);
-        }
-
-        #snowMask {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: url(/static/images/snow1.png), url(/static/images/snow2.png);
-            -webkit-animation: 10s snow linear infinite;
-            animation: 10s snow linear infinite;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        /*鼠标停在div上出现阴影*/
-        .shadow {
-            transition-duration: 1s; /*停留时间显示*/
-        }
-
-        .shadow:hover {
-            -webkit-box-shadow: #337ab7 0px 10px 10px;
-            -moz-box-shadow: #337ab7 0px 10px 10px;
-            box-shadow: #337ab7 0px 10px 10px;
-            background-color: #eaf6ff;
-        }
-
-        /*博客列表图片略缩图放大*/
-        #div111 {
-            width: 333px;
-            height: 108px;
-            margin: 50px auto;
-            overflow: hidden;
-        }
-
-        #div111 img {
-            cursor: pointer;
-            transition: all 0.6s;
-        }
-
-        #div111 img:hover {
-            transform: scale(1.05);
-        }
-
-        /*鼠标悬停提示框(点赞博客)*/
-        #mytitle {
-            position: absolute;
-            color: #ffffff;
-            max-width: 160px;
-            font-size: 14px;
-            padding: 4px;
-            background: rgba(40, 40, 40, 0.8);
-            border: solid 1px #e9f7f6;
-            border-radius: 5px;
-        }
-
-        /*右侧菜单鼠标悬停链接变色和变大*/
-        a.test:hover {
-            font-size: 15px;
-            color: red;
-            font-weight: bold;
-        }
-
-        /*鼠标悬停链接变红色(博客列表的博客标题)*/
-        a.blogTitleTest:hover {
-            color: red;
-        }
-
-        /*鼠标悬停链接变红色(菜单)*/
-        a.ahead:hover {
-            color: red;
-        }
-
-        /*文字闪烁*/
-        .box1 {
-            color: red;
-            animation: changeshadow 6s ease-in infinite;
-            -webkit-animation: changeshadow 6s linear infinite;
-            -moz-animation: changeshadow 6s linear infinite;
-            -ms-animation: changeshadow 6s linear infinite;
-            -o-animation: changeshadow 6s linear infinite;
-        }
-
-        @keyframes changeshadow {
-            0% {
-                text-shadow: 0 0 4px red
-            }
-            50% {
-                text-shadow: 0 0 40px red
-            }
-            100% {
-                text-shadow: 0 0 4px red
-            }
-        }
-
-        @-webkit-keyframes changeshadow {
-            0% {
-                text-shadow: 0 0 4px red
-            }
-            50% {
-                text-shadow: 0 0 40px red
-            }
-            100% {
-                text-shadow: 0 0 4px red
-            }
-        }
-
-        @-moz-keyframes changeshadow {
-            0% {
-                text-shadow: 0 0 4px red
-            }
-            50% {
-                text-shadow: 0 0 40px red
-            }
-            100% {
-                text-shadow: 0 0 4px red
-            }
-        }
-
-        @-ms-keyframes changeshadow {
-            0% {
-                text-shadow: 0 0 4px red
-            }
-            50% {
-                text-shadow: 0 0 40px red
-            }
-            100% {
-                text-shadow: 0 0 4px red
-            }
-        }
-
-        @-o-keyframes changeshadow {
-            0% {
-                text-shadow: 0 0 4px red
-            }
-            50% {
-                text-shadow: 0 0 40px red
-            }
-            100% {
-                text-shadow: 0 0 4px red
-            }
-        }
-
-        /*鼠标移入文字向右移动*/
-        /*#div1 {
-            -webkit-transition: margin-left .8s;
-            -moz-transition: margin-left .8s;
-            -o-transition: margin-left .8s;
-
-        }
-
-        #div1:hover {
-            margin-left: 6px;
-        }*/
-
-        /*博客详情标题*/
-        .title3 {
-            width: 100%;
-            display: block;
-            line-height: 1.5em;
-            overflow: visible;
-            font-size: 22px;
-            text-shadow: #f3f3f3 1px 1px 0px, #b2b2b2 1px 2px 0
-        }
-
-        /*改变上一篇和下一篇博客代码样式*/
-        a.a11:hover {
-            background-color: #0c9c6e;
-        }
-
-        a.a12:hover {
-            background-color: #0c9c6e;
-        }
-
-        a.a13:hover {
-            background-color: red;
-        }
-
-        a.a14:hover {
-            background-color: red;
-        }
-
-        /*鼠标悬停按钮变色*/
-        button.btn11:hover {
-            background-color: #00B0E8;
-        }
-
-        pre {
-            font-size: 15px;
-            display:inline;
-        }
-    </style>
-    <!--其他-->
+    <script>hljs.initHighlightingOnLoad();
+    hljsln.initLineNumbersOnLoad();</script>
     <script th:inline="javascript">
-        // onload是等所有的资源文件加载完毕以后再绑定事件
-        window.onload = function(){
-            // 获取图片列表，即img标签列表
-            var imgs = document.querySelectorAll('img');
-
-            // 获取到浏览器顶部的距离
-            function getTop(e){
-                return e.offsetTop;
-            }
-
-            // 懒加载实现
-            function lazyload(imgs){
-                // 可视区域高度
-                var h = window.innerHeight;
-                //滚动区域高度
-                var s = document.documentElement.scrollTop || document.body.scrollTop;
-                for(var i=0;i<imgs.length;i++){
-                    //图片距离顶部的距离大于可视区域和滚动区域之和时懒加载
-                    if ((h+s)>getTop(imgs[i])) {
-                        // 真实情况是页面开始有2秒空白，所以使用setTimeout定时2s
-                        (function(i){
-                            setTimeout(function(){
-                                // 不加立即执行函数i会等于9
-                                // 隐形加载图片或其他资源，
-                                //创建一个临时图片，这个图片在内存中不会到页面上去。实现隐形加载
-                                var temp = new Image();
-                                temp.src = imgs[i].getAttribute('data-src');//只会请求一次
-                                // onload判断图片加载完毕，真是图片加载完毕，再赋值给dom节点
-                                temp.onload = function(){
-                                    // 获取自定义属性data-src，用真图片替换假图片
-                                    imgs[i].src = imgs[i].getAttribute('data-src')
-                                }
-                            },2000)
-                        })(i)
-                    }
-                }
-            }
-            lazyload(imgs);
-
-            // 滚屏函数
-            window.onscroll =function(){
-                lazyload(imgs);
-            }
-        }
         function submitComment() {
             var content = $("#commentContent").val();
             var blogId = $("#commentBlogId").val();
@@ -301,8 +46,14 @@
                 function (result) {
                     if (result.success) {
                         alert("点赞成功!!");
-                        $("#like1").attr("hidden", "true");
-                        $("#like2").removeAttr("hidden");
+                        $("#like1").removeAttr("href");
+                        $("#like1").attr("href", "#");
+                        $("#like1").removeAttr("aria-label");
+                        $("#like1").attr("aria-label", "你已经点赞过这篇博客");
+                        $("#like1").removeAttr("style");
+                        $("#like1").attr("style", "float: right;color: blue");
+                        $("#i1").removeAttr("class");
+                        $("#i1").attr("class", "fa fa-thumbs-up");
                     } else {
                         alert("点赞失败!!");
                     }
@@ -371,6 +122,10 @@
             $("#img2").removeClass("img-responsive");
             $("#img2").removeClass("pimg");
             $("#img2").removeClass("img-thumbnail");
+            //完字图片
+            $("#img3").removeClass("img-responsive");
+            $("#img3").removeClass("pimg");
+            $("#img3").removeClass("img-thumbnail");
             //返回顶部图片
             $("#gotop").removeClass("img-responsive");
             $("#gotop").removeClass("pimg");
@@ -386,6 +141,9 @@
             $("table").addClass("table table-striped table-hover");
             $("pre").css("font-family", "SimHei");
             $("img").attr("alt", "请刷新本页面以查看图片，如果图片已失效请到对应博客的评论区下给我留言┭┮﹏┭┮");
+            $('pre code').each(function (i, block) {
+                hljs.highlightBlock(block);
+            });
         });
 
 
@@ -452,7 +210,7 @@
             var x = 10;
             var y = 20;
             var newtitle = '';
-            $('span.mytooltip').mouseover(function (e) {
+            $('i.mytooltip').mouseover(function (e) {
                 newtitle = this.title;
                 this.title = '';
                 $('body').append('<div id="mytitle" >' + newtitle + '</div>');
@@ -470,15 +228,52 @@
                 }).show();
             })
         });
+        //获取当前时间
+        window.onload = function () {
+            window.requestAnimationFrame(getDate)
+        }
+
+        function getDate() {
+            window.setTimeout(function () {
+                window.requestAnimationFrame(getDate)
+            }, 1000 / 2)
+            var d = new Date();
+            var year = d.getFullYear()  //获取年
+            var month = d.getMonth() + 1;  //获取月，从 Date 对象返回月份 (0 ~ 11)，故在此处+1
+            var day = d.getDay()    //获取日
+            var days = d.getDate() //获取日期
+            var hour = d.getHours()   //获取小时
+            var minute = d.getMinutes()  //获取分钟
+            var second = d.getSeconds()   //获取秒
+
+            if (month < 10) month = "0" + month
+            if (days < 10) days = "0" + days
+            if (hour < 10) hour = "0" + hour
+            if (minute < 10) minute = "0" + minute
+            if (second < 10) second = "0" + second
+            if (hour >= 6 && hour < 12) {
+                $("#tipForTime").html("早上好!");
+            } else if (hour >= 12 && hour < 19) {
+                $("#tipForTime").html("下午好!");
+            } else if (hour >= 19 && hour < 23) {
+                $("#tipForTime").html("晚上好!");
+            } else {
+                $("#tipForTime").html("夜深了!请注意休息!!!");
+            }
+            var week = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")
+            var Tools = document.getElementById("time")
+            var time = year + "-" + month + "-" + days + " " + hour + ":" + minute + ":" + second + "  " + week[day]
+            $("#time").html(time);
+        }
     </script>
 </head>
 <div id="snowMask"></div>
 <body style="background-color: #a3d0e7">
 <a class="imgdiv" href="#gotop">
     <img th:src="@{/static/images/top2.png}" id="gotop" alt="" class="imgsrc"
-         style="position: fixed;bottom: 10%;display: none;height: 40px;margin-left: 96%">
+         style="position: fixed;bottom: 10%;display: none;height: 40px;margin-left: 96.5%">
 </a>
-<div style="width: 90%;margin-left: 5%">
+<div style="width: 92%;margin-left: 4%">
     <div th:include="common/head2::#h"></div>
     <div th:include="${mainPage}::${mainPageKey}"></div>
     <div th:include="common/foot2::#f"></div>

@@ -25,7 +25,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        博客列表
+                        <i class="fa fa-list"></i>&nbsp;博客列表
                     </h3>
                 </div>
                 <div class="panel-body">
@@ -35,13 +35,16 @@
                                 <div>
                                     <div id="div1">
                                         <a id="div1" th:href="'/blog/'+${blog.getId()}" style="text-decoration: none"
-                                           class="blogTitleTest"><h4
-                                                th:text="${blog.title}"></h4></a>
+                                           class="blogTitleTest status-icon  hint--top" th:aria-label="${blog.title}">
+                                            <h4
+                                                    th:text="${blog.title}"></h4></a>
                                     </div>
                                     <p style="color: gray"><span
                                             th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span>
-                                        | <span th:text="' 阅读次数: '+${blog.click}+' '"></span> | 所属类别: <span
-                                                th:text="${blog.blogType.name}"></span></p>
+                                        | <span th:text="' 阅读次数: '+${blog.click}+' '"></span> | 所属类别: <a
+                                                th:href="${'/index?blogTypeId='+blog.blogType.id}" style="color: grey"
+                                                class="status-icon hint--top" th:aria-label="${'查看分类：'+blog.blogType.name}"
+                                                th:text="${blog.blogType.name}"></a></p>
                                     <div>
                                         <div style="float:left; clear: both;" align="center">
                                             <a id="div111" th:href="'/blog/'+${blog.getId()}"><img
@@ -77,14 +80,33 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        按类别分类
+                        <i class="fa fa-television"></i>&nbsp;网站信息
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <p id="tipForTime" style="color: #00B0E8;text-align: center"></p>
+                        <p>当前时间:&nbsp;<span id="time" style="color: grey"></span></p>
+                        <p>本站运行总天数:&nbsp;<span th:text="${myWebSitRunDays}" style="color: grey"></span></p>
+                        <p>访问本站的ip总数:&nbsp;<span th:text="${ipCount}" style="color: grey"></span></p>
+                        <p>本站被访问总次数:&nbsp;<span th:text="${interviewCount}" style="color: grey"></span></p>
+                        <p>你当前的ip地址为:&nbsp;<span th:text="${thisIp}" style="color: grey"></span></p>
+                        <p>你的ip访问本站总次数:&nbsp;<span th:text="${thisIpCount}" style="color: grey"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <i class="fa fa-th-large"></i>&nbsp;按类别分类
                     </h3>
                 </div>
                 <div class="panel-body">
                     <div th:each="blogType:${blogTypeList}">
                         <p><a th:href="${'/index?blogTypeId='+blogType.id}"
-                              th:text="${blogType.name}" style="text-decoration: none"
-                              class="test"></a><span class="label label-primary" th:text="${blogType.blogNum}"></span>
+                              th:text="${blogType.name}" style="text-decoration: none" th:aria-label="${blogType.name}"
+                              class="test status-icon  hint--top"></a><span class="label label-primary"
+                                                                            th:text="${blogType.blogNum}"></span>
                         </p>
                     </div>
                 </div>
@@ -92,15 +114,16 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        按日期分类
+                        <i class="fa fa-calendar"></i>&nbsp;按日期分类
                     </h3>
                 </div>
                 <div class="panel-body">
                     <div th:each="blogCount:${blogCountList}">
                         <p><a th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}"
                               th:text="${blogCount.releaseDateStr}"
-                              style="text-decoration: none" class="test"></a><span class="label label-primary"
-                                                                                   th:text="${blogCount.blogCount}"></span>
+                              style="text-decoration: none" class="test status-icon  hint--top"
+                              th:aria-label="${blogCount.releaseDateStr}"></a><span class="label label-primary"
+                                                                                    th:text="${blogCount.blogCount}"></span>
                         </p>
                     </div>
                 </div>
@@ -113,12 +136,13 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        友情链接
+                        <i class="fa fa-send">&nbsp;友情链接</i>
                     </h3>
                 </div>
                 <div class="panel-body">
                     <span th:each="link:${linkList}">
-                        <a th:href="${link.url}" target="_blank" style="text-decoration: none" class="test"
+                        <a th:href="${link.url}" target="_blank" style="text-decoration: none"
+                           class="test status-icon  hint--top" th:aria-label="${link.name}"
                            th:text="${link.name}"></a>
                     </span>
                 </div>

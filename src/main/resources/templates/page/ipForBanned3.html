@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="b">
+    <!-- contact area Start -->
+    <div class="contact-area pd-top-50 pd-bottom-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="contact-area-wrap">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5 style="color: red" th:if="${ipNow!=null}">你的ip地址为：<span style="color: #0c9076" th:text="${ipNow}"></span></h5>
+                                <h5 style="color: red">看到此页面，说明你的ip被封禁了，被封禁原因：</h5>
+                                <h5 style="color: red">①你的ip短时间内高频率访问本站，被系统自动封禁</h5>
+                                <h5 style="color: red">②站长手动封禁</h5>
+                                <h5 style="color: blue">解决办法：</h5>
+                                <h5 style="color: blue">①更换你的ip地址</h5>
+                                <h5 style="color: blue">②给我发邮件去后台解除封禁（给我发送第一行文本的ip地址，绿色字体部分），邮箱地址：3519577180@qq.com</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- contact area End -->
+</div>
+</body>
+</html>

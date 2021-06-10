@@ -1,0 +1,251 @@
+.hljsln {
+    position: relative;
+    display: block;
+    padding-left: 3em !important;
+}
+
+.hljsln .ln-bg {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 2.2em;
+    height: 100%;
+    border-right: 1px solid #555;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.hljsln .ln-num {
+    position: relative;
+    display: inline-block;
+    height: 1em;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.hljsln .ln-num::before {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    margin-right: 1em;
+    color: #777;
+    font-style: normal;
+    font-weight: normal;
+    content: attr(data-num);
+}
+
+/*网站雪花特效*/
+@-webkit-keyframes snow {
+    0% {
+        background-position: 0 0, 0 0
+    }
+    100% {
+        background-position: 500px 500px, 1000px 500px
+    }
+}
+
+@keyframes snow {
+    0% {
+        background-position: 0 0, 0 0
+    }
+    100% {
+        background-position: 500px 500px, 1000px 500px
+    }
+}
+
+.container {
+    box-shadow: 0 0 4px 3px rgba(0, 0, 0, .05);
+}
+
+#snowMask {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(/static/images/snow1.png), url(/static/images/snow2.png);
+    -webkit-animation: 10s snow linear infinite;
+    animation: 10s snow linear infinite;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/*鼠标停在div上出现阴影*/
+.shadow {
+    transition-duration: 1s; /*停留时间显示*/
+}
+
+.shadow:hover {
+    -webkit-box-shadow: #337ab7 0px 10px 10px;
+    -moz-box-shadow: #337ab7 0px 10px 10px;
+    box-shadow: #337ab7 0px 10px 10px;
+    background-color: #eaf6ff;
+}
+
+/*博客列表图片略缩图放大*/
+#div111 {
+    width: 333px;
+    height: 108px;
+    margin: 50px auto;
+    overflow: hidden;
+}
+
+#div111 img {
+    cursor: pointer;
+    transition: all 0.6s;
+}
+
+#div111 img:hover {
+    transform: scale(1.05);
+}
+
+/*鼠标悬停提示框(点赞博客)*/
+#mytitle {
+    position: absolute;
+    color: #ffffff;
+    max-width: 160px;
+    font-size: 14px;
+    padding: 4px;
+    background: rgba(40, 40, 40, 0.8);
+    border: solid 1px #e9f7f6;
+    border-radius: 5px;
+}
+
+/*右侧菜单鼠标悬停链接变色和变大*/
+a.test:hover {
+    color: red;
+}
+
+/*鼠标悬停链接变红色(博客列表的博客标题)*/
+a.blogTitleTest:hover {
+    color: red;
+}
+
+/*鼠标悬停链接变红色(菜单)*/
+a.ahead:hover {
+    color: red;
+}
+
+/*文字闪烁*/
+.box1 {
+    color: red;
+    animation: changeshadow 6s ease-in infinite;
+    -webkit-animation: changeshadow 6s linear infinite;
+    -moz-animation: changeshadow 6s linear infinite;
+    -ms-animation: changeshadow 6s linear infinite;
+    -o-animation: changeshadow 6s linear infinite;
+}
+
+@keyframes changeshadow {
+    0% {
+        text-shadow: 0 0 4px red
+    }
+    50% {
+        text-shadow: 0 0 40px red
+    }
+    100% {
+        text-shadow: 0 0 4px red
+    }
+}
+
+@-webkit-keyframes changeshadow {
+    0% {
+        text-shadow: 0 0 4px red
+    }
+    50% {
+        text-shadow: 0 0 40px red
+    }
+    100% {
+        text-shadow: 0 0 4px red
+    }
+}
+
+@-moz-keyframes changeshadow {
+    0% {
+        text-shadow: 0 0 4px red
+    }
+    50% {
+        text-shadow: 0 0 40px red
+    }
+    100% {
+        text-shadow: 0 0 4px red
+    }
+}
+
+@-ms-keyframes changeshadow {
+    0% {
+        text-shadow: 0 0 4px red
+    }
+    50% {
+        text-shadow: 0 0 40px red
+    }
+    100% {
+        text-shadow: 0 0 4px red
+    }
+}
+
+@-o-keyframes changeshadow {
+    0% {
+        text-shadow: 0 0 4px red
+    }
+    50% {
+        text-shadow: 0 0 40px red
+    }
+    100% {
+        text-shadow: 0 0 4px red
+    }
+}
+
+/*鼠标移入文字向右移动*/
+/*#div1 {
+    -webkit-transition: margin-left .8s;
+    -moz-transition: margin-left .8s;
+    -o-transition: margin-left .8s;
+
+}
+
+#div1:hover {
+    margin-left: 6px;
+}*/
+
+/*博客详情标题*/
+.title3 {
+    width: 100%;
+    display: block;
+    line-height: 1.5em;
+    overflow: visible;
+    font-size: 22px;
+    text-shadow: #f3f3f3 1px 1px 0px, #b2b2b2 1px 2px 0
+}
+
+/*改变上一篇和下一篇博客代码样式*/
+a.a11:hover {
+    background-color: #0c9c6e;
+}
+
+a.a12:hover {
+    background-color: #0c9c6e;
+}
+
+a.a13:hover {
+    background-color: red;
+}
+
+a.a14:hover {
+    background-color: red;
+}
+
+/*鼠标悬停按钮变色*/
+button.btn11:hover {
+    background-color: #00B0E8;
+}
+
+pre {
+    font-size: 15px;
+    display: inline;
+}

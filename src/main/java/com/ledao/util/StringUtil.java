@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class StringUtil {
 
-    private static String mySettingLocation = "C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\myConfig.setting";
+    private static final String mySettingLocation = "C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\myConfig.setting";
 
     /**
      * 判断是否是空
@@ -88,12 +88,12 @@ public class StringUtil {
     /**
      * 修改皮肤配置
      *
-     * @param status
+     * @param skin
      * @throws IOException
      */
-    public static void updateSkin(int status) throws IOException {
+    public static void updateSkin(String skin) throws IOException {
         Setting setting = new Setting(mySettingLocation);
-        setting.set("skin", String.valueOf(status));
+        setting.set("skin", skin);
         setting.store(mySettingLocation);
     }
 

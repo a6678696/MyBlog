@@ -9,7 +9,8 @@
 <div id="h">
     <div class="row">
         <div class="col-md-12">
-            <a href="/index"><img th:src="@{/static/images/logo2.png}" id="img1" style="height: 70px" alt=""></a>
+            <a href="/index"><img th:src="@{/static/images/logo2.png}" id="img1" loading="lazy" style="height: 70px"
+                                  alt=""></a>
             <iframe style="width: 400px;height: 60px;float: right" frameborder="0" scrolling="no" hspace="0"
                     src="https://i.tianqi.com/?c=code&a=getcode&id=35&site=34&icon=1"></iframe>
         </div>
@@ -19,13 +20,17 @@
             <nav class="navbar navbar-default" role="navigation">
                 <div class="container-fluid">
                     <div>
-                        <a href="/index" class="navbar-text ahead" style="text-decoration: none;font-size: 15px"
+                        <a href="/index" class="navbar-text ahead status-icon  hint--top" aria-label="首页" style="text-decoration: none;font-size: 15px"
                            th:if="${isHome==null}">首页</a>
-                        <a href="/index" class="navbar-text ahead"
+                        <a href="#" class="navbar-text ahead status-icon  hint--top" aria-label="首页"
                            style="text-decoration: none;font-size: 15px;color: #337ab7" th:if="${isHome!=null}">首页</a>
                         <div th:each="menuBlog:${menuBlogList}">
-                            <a th:href="'/blog/'+${menuBlog.getId()}" class="navbar-text ahead" style="text-decoration: none;font-size: 15px;color: #337ab7" th:text="${menuBlog.title}" th:if="${menuBlogId == menuBlog.getId()}"></a>
-                            <a th:href="'/blog/'+${menuBlog.getId()}" class="navbar-text ahead" style="text-decoration: none;font-size: 15px" th:text="${menuBlog.title}" th:if="${menuBlogId != menuBlog.getId()}"></a>
+                            <a href="#" class="navbar-text ahead status-icon  hint--top" th:aria-label="${menuBlog.title}"
+                               style="text-decoration: none;font-size: 15px;color: #337ab7" th:text="${menuBlog.title}"
+                               th:if="${menuBlogId == menuBlog.getId()}"></a>
+                            <a th:href="'/blog/'+${menuBlog.getId()}" class="navbar-text ahead status-icon  hint--top" th:aria-label="${menuBlog.title}"
+                               style="text-decoration: none;font-size: 15px" th:text="${menuBlog.title}"
+                               th:if="${menuBlogId != menuBlog.getId()}"></a>
                         </div>
                         <!--向右对齐-->
                         <form class="navbar-form navbar-right" role="search" method="post" action="/blog/q">
@@ -34,7 +39,7 @@
                                        class="form-control" placeholder="输入关键词...">
                                 <span class="input-group-btn">
                                 <button class="btn btn-primary btn11" type="submit">
-                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    <i class="fa fa-search"></i>
                                 </button>
                             </span>
                             </div>

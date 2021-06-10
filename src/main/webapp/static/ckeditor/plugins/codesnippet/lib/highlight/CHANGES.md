@@ -454,9 +454,9 @@ Note that such modes often don't have `className` and hence won't generate a
 separate `<span>` in the resulting markup. This is similar in effect to
 `noMarkup: true`. All existing languages have been refactored accordingly.
 
-Test file test.html has at last become a real test. Now it not only puts the
+com.ledao.Test file test.html has at last become a real test. Now it not only puts the
 detected language name under the code snippet but also tests if it matches the
-expected one. Test summary is displayed right above all language snippets.
+expected one. com.ledao.Test summary is displayed right above all language snippets.
 
 
 ## CDN

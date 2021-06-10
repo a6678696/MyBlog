@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="b">
+    <!-- top-news area Start -->
+    <div class="top-news-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="recent-news-area">
+                                <div class="section-title section-title-3">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <h4 class="title">博客列表</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div th:each="blog:${blogList}">
+                                    <div class="media-post-wrap-2 media shadow">
+                                        <div class="thumb">
+                                            <a id="div111" th:href="'/blog/'+${blog.getId()}">
+                                                <img th:src="@{'/static/images/post/'+${#numbers.formatDecimal(T(java.lang.Math).floor(T(java.lang.Math).random()*3)+1,1,0)}+'.png'}" style="width: 255px"
+                                                     th:if="${blog.imageName==null}">
+                                                <img th:src="@{${blog.imageName}}" style="width: 255px;height: 177px"
+                                                     th:if="${blog.imageName!=null}">
+                                            </a>
+
+                                        </div>
+                                        <div class="media-body">
+                                            <h6><a th:href="'/blog/'+${blog.getId()}" th:text="${blog.title}"></a></h6>
+                                            <div class="meta">
+                                                <div class="date">
+                                                    <i class="fa fa-clock-o"></i>
+                                                    <span th:text="${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}"></span>
+                                                </div>
+                                                <div class="views">
+                                                    <span th:text="' 阅读次数: '+${blog.click}+' '"></span>
+                                                </div>&nbsp;&nbsp;&nbsp;
+                                                <div class="views">
+                                                     &nbsp;所属类别: <a th:text="${blog.blogType.name}+' '" th:href="${'/index?blogTypeId='+blog.blogType.id}" style="color: grey"></a>
+                                                </div>
+                                            </div>
+                                            <p th:text="${#strings.abbreviate(blog.summary,200)}"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <nav aria-label="Page navigation" style="text-align: center">
+                                    <ul class="pagination">
+                                        <p th:utext="${pageCode}"></p>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="sidebar-area">
+                        <div class="widget widget_tags">
+                            <h4 class="widget-title">按类别分类</h4>
+                            <ul>
+                                <div th:each="blogType:${blogTypeList}">
+                                    <a th:href="${'/index?blogTypeId='+blogType.id}"
+                                       th:text="${blogType.name+'('+blogType.blogNum+')'}"></a>
+                                </div>
+                            </ul>
+
+                        </div>
+                        <div class="widget widget_tags">
+                            <h4 class="widget-title">按时间分类</h4>
+                            <ul>
+                                <div th:each="blogCount:${blogCountList}">
+                                    <a th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}"
+                                       th:text="${blogCount.releaseDateStr+'('+blogCount.blogCount+')'}"></a>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- top-news area End -->
+</div>
+</body>
+</html>

@@ -1,7 +1,9 @@
 package com.ledao.mapper;
 
+import com.ledao.entity.CountIpNumByDay;
 import com.ledao.entity.InterviewRecord;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -118,4 +120,28 @@ public interface InterviewRecordMapper {
      * @return
      */
     Long getCountInterviewInTwentySecond(String ip);
+
+    /**
+     * 获取网站运行总天数
+     *
+     * @return
+     */
+    Long getMyWebSitRunDays();
+
+    /**
+     * 获取某博客上一次被查看的时间
+     *
+     * @param blogTitle
+     * @return
+     */
+    Date blogLastClickTime(String blogTitle);
+
+
+    /**
+     * 获取近14天的每日访问ip个数
+     *
+     * @param days
+     * @return
+     */
+    List<CountIpNumByDay> countIpNumByDay(Integer days);
 }

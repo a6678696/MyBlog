@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div id="snowMask"></div>
+<body>
+<div id="b">
+    <!-- blog-list area Start -->
+    <div class="blog-list-area pd-top-50 pd-bottom-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="row pb-1">
+                        <div class="col-sm-12">
+                            <h6 class="title">搜索 <span style="color:#ff1d5b;" th:text="${q}"></span> 的结果如下 (总共搜到 <span style="color: #ff1d5b"
+                                                                                                                         th:text="${resultTotal}"></span> 条记录)</span></h6>
+                        </div>
+                    </div>
+                    <div class="single-post-wrap" th:each="blog:${blogList}" th:if="${resultTotal>0}">
+                        <h5><a th:href="'/blog/'+${blog.getId()}" th:utext="${blog.title}"></a></h5>
+                        <p style="color: gray"><span
+                                th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span>
+                            | <span th:text="' 阅读次数: '+${blog.click}+' '"></span> | 所属类别: <span
+                                    th:text="${blog.blogType.name}"></span></p>
+                        <p id="p111" th:utext="${#strings.abbreviate(blog.content,600)}"></p>
+                    </div>
+                    <nav aria-label="Page navigation" style="text-align: center">
+                        <ul class="pagination">
+                            <p th:utext="${pageCode}"></p>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-2">
+                    <div class="sidebar-area">
+                        <div class="widget widget_tags">
+                            <h4 class="widget-title">按类别分类</h4>
+                            <ul>
+                                <div th:each="blogType:${blogTypeList}">
+                                    <a th:href="${'/index?blogTypeId='+blogType.id}"
+                                       th:text="${blogType.name+'('+blogType.blogNum+')'}"></a>
+                                </div>
+                            </ul>
+
+                        </div>
+                        <div class="widget widget_tags">
+                            <h4 class="widget-title">按时间分类</h4>
+                            <ul>
+                                <div th:each="blogCount:${blogCountList}">
+                                    <a th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}"
+                                       th:text="${blogCount.releaseDateStr+'('+blogCount.blogCount+')'}"></a>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- blog-list area End -->
+</div>
+</body>
+</html>

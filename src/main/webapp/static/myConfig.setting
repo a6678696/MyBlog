@@ -2,3 +2,5 @@
 skin = 2
 isSendMail = 0
 codeStyle = agate
+lucenePath = E://lucene/MyBlog
+mysqldumpPath = D://Java/mysql_5.6.24_winx64/mysql-5.6.24-winx64/bin/mysqldump

@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class StringUtil {
 
-    private static final String mySettingLocation = "C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\myConfig.setting";
+    private static final String mySettingLocation = "E://MyProject/IDEA/ActualCombat/MyBlog/src/main/webapp/static/myConfig.setting";
 
     /**
      * 判断是否是空
@@ -143,6 +143,27 @@ public class StringUtil {
         Setting setting = new Setting(mySettingLocation);
         setting.set("codeStyle", data);
         setting.store(mySettingLocation);
+    }
+
+    /**
+     * 读取Lucene路径
+     *
+     * @return
+     * @throws IOException
+     */
+    public static String readLucenePath() throws IOException {
+        Setting setting = new Setting(mySettingLocation);
+        return setting.getStr("lucenePath");
+    }
+
+    /**
+     * 读取mysqldumpPath路径
+     *
+     * @return
+     */
+    public static String readMysqldumpPath() {
+        Setting setting = new Setting(mySettingLocation);
+        return setting.getStr("mysqldumpPath");
     }
 
     public static void main(String[] args) throws IOException {

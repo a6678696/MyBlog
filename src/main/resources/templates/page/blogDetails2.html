@@ -74,7 +74,7 @@
                                     <span th:text="${comment.ip}"></span></p>
                                 <p th:text="${comment.content}" style="color: blue"></p>
                                 <p th:if="${comment.reply!=null&&comment.reply!=''}">
-                                    <img th:src="@{/static/images/userImage/me.png}" style="width: 5%" alt="">
+                                    <img class="img-rounded" th:src="@{/static/images/userImage/me.png}" style="width: 5%" alt="">
                                     <span style="color: grey">&nbsp;站长回复：</span><span style="color: green" th:text="${comment.reply}" th:if="${comment.reply!=null}"></span></p>
                                 <br>
                             </div>

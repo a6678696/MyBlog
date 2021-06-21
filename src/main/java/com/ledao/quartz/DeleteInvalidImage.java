@@ -6,16 +6,19 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.annotation.Resource;
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
- * 每天23点自动删除已被删除文章中的图片
+ * 每天12点自动删除失效图片(没有被引用的)
  *
  * @author LeDao
  * @company
@@ -25,10 +28,13 @@ import java.util.*;
 @EnableScheduling
 public class DeleteInvalidImage {
 
+    @Value("${blogImageFilePath}")
+    private String blogImageFilePath;
+
     @Resource
     private BlogService blogService;
 
-    @Scheduled(cron = "0 0 23 * * ?")
+    @Scheduled(cron = "0 0 12 * * ?")
     public void work() {
         List<Blog> blogList = blogService.list(null);
         //博客中引用的图片名称集合
@@ -49,14 +55,16 @@ public class DeleteInvalidImage {
                 }
             }
         }
-        File file = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\images\\blogImage");
+        File file = new File(blogImageFilePath);
         //文件夹内的图片名称集合
         List<String> dirImageList = new ArrayList<>();
         //仅为了获取文件名
         for (String s : file.list()) {
             dirImageList.add(s);
         }
+        //如果文件夹内的图片数量大于实际引用的图片数量
         if (dirImageList.size() > blogImageList.size()) {
+            //将有效的图片删除即可得到无效的图片集合
             for (String s : blogImageList) {
                 Iterator iterator = dirImageList.iterator();
                 while (iterator.hasNext()) {
@@ -67,9 +75,11 @@ public class DeleteInvalidImage {
             }
             //无效的图片集合
             List<String> invalidImageList = dirImageList;
+            //有无效的图片就将它从文件夹中删除
             if (invalidImageList.size() > 0) {
+                System.out.println("删除了" + invalidImageList.size() + "张图片");
                 for (String s : invalidImageList) {
-                    File file1 = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\images\\blogImage\\" + s);
+                    File file1 = new File(blogImageFilePath + s);
                     file1.delete();
                 }
                 System.out.println("无效的图片删除完毕!");

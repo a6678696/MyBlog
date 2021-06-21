@@ -162,7 +162,7 @@ public class BlogAdminController {
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         //拼接新的文件名
         String newFileName = DateUtil.getCurrentDateStr2() + ".jpg";
-        FileUtils.copyInputStreamToFile(file.getInputStream(), new File(blogImageFilePath + newFileName));
+        FileUtils.copyInputStreamToFile(file.getInputStream(), new File(blogImageFilePath + "/" + newFileName));
         StringBuffer sb = new StringBuffer();
         sb.append("<script type=\"text/javascript\">");
         sb.append("window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ",'" + "/static/images/blogImage/" + newFileName + "','')");

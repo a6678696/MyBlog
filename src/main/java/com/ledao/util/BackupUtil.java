@@ -56,7 +56,7 @@ public class BackupUtil {
             this.user_charset = " --default-character-set=" + user_charset;
         }
         this.backup_path = backup_path;
-        this.stmt = "C:\\Program Files\\MySQL\\MySQL Server 5.6\\bin\\mysqldump "
+        this.stmt = StringUtil.readMysqldumpPath()+" "
                 + this.db_name + " -h " + this.host_ip + " -u" + this.user_name
                 + " -p" + this.user_psw + this.user_charset + " --result-file="
                 + this.backup_path;

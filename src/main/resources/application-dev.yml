@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 80
   servlet:
     context-path: /
   tomcat:
@@ -26,8 +26,8 @@ spring:
     cache: false
   mail:
     host: smtp.qq.com
-    username: @qq.com
-    password: luk
+    username: 3519@qq.com
+    password: xdfywiklqachia
     default-encoding: UTF-8
     protocol: smtp
     properties:
@@ -38,10 +38,6 @@ spring:
           writetimeout: 5000
           ssl:
             enable: true #一定要开启ssl,不然会503 验证失败的（开启加密验证）
-
-#博客正文图片存储地址
-blogImageFilePath: C://Java/apache-tomcat-9.0.22-windows-x64/apache-tomcat-9.0.22-windows-x64/apache-tomcat-9.0.22/webapps/MyBlog/static/images/blogImage/
-
 #mybatis的相关配置
 mybatis:
   #mapper配置文件
@@ -50,3 +46,25 @@ mybatis:
   #开启驼峰命名
   configuration:
     map-underscore-to-camel-case: true
+
+#Windows运行环境路径
+#myConfig位置：
+myConfigPath: E://MyProject/IDEA/ActualCombat/MyBlog/src/main/webapp/static/myConfig.setting
+#博客正文图片存储地址
+blogImageFilePath: E://MyProject/IDEA/ActualCombat/MyBlog/src/main/webapp/static/images/blogImage/
+#博客图片手动备份地址
+blogImageFilePath1: E://backup/backup1/myblog/blogImage/
+#博客图片自动备份地址
+blogImageFilePath2: E://backup/backup2/myblog/blogImage/
+#Lucene索引存储地址
+lucenePath: E://lucene/MyBlog
+#Lucene索引手动备份地址
+lucenePath1: E://backup/backup1/myblog/Lucene/MyBlog/
+#Lucene索引自动备份地址
+lucenePath2: E://backup/backup2/myblog/Lucene/MyBlog/
+#mysql手动备份地址
+mysqlPath1: E://backup/backup1/myblog/db_myblog.sql
+#mysql自动备份地址
+mysqlPath2: E://backup/backup2/myblog/db_myblog.sql
+#mysql密码
+mysqlPassword: 123456

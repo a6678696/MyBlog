@@ -2,6 +2,7 @@ package com.ledao.quartz;
 
 import com.ledao.util.BackupUtil;
 import com.ledao.util.CopyUtil;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -22,21 +23,41 @@ import java.util.Date;
 @EnableScheduling
 public class Backup {
 
+    @Value("${blogImageFilePath}")
+    private String blogImageFilePath;
+
+    @Value("${lucenePath}")
+    private String lucenePath;
+
+    @Value("${blogImageFilePath2}")
+    private String blogImageFilePath2;
+
+    @Value("${lucenePath2}")
+    private String lucenePath2;
+
+    @Value("${mysqlPath2}")
+    private String mysqlPath2;
+
+    @Value("${mysqlPassword}")
+    private String mysqlPassword;
+
     /**
-     * 每天晚上23点执行一次
+     * 每天12点执行一次
      */
-    @Scheduled(cron = "0 0 23 * * ?")
+    @Scheduled(cron = "0 0 12 * * ?")
     public void work() throws IOException {
-        File srcDir = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\images\\blogImage");
-        File destDir = new File("C:\\backup2\\myblog\\blogImage");
-        File srcDir2 = new File("C:\\lucene\\MyBlog");
-        File destDir2 = new File("C:\\backup2\\myblog\\Lucene\\MyBlog");
-        CopyUtil.copyImage(srcDir,destDir);
-        CopyUtil.copyLucene(srcDir2,destDir2);
-        new BackupUtil("root", "123456", "db_myblog", null, "utf8",
-                "C:\\backup2\\myblog\\db_myblog.sql").backup_run();
-        Date date = new Date();
+        File srcDir = new File(blogImageFilePath);
+        File destDir = new File(blogImageFilePath2);
+        File srcDir2 = new File(lucenePath);
+        File destDir2 = new File(lucenePath2);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(simpleDateFormat.format(date)+"自动备份成功！！");
+        Date date = new Date();
+        System.out.println(simpleDateFormat.format(date) + "--------------<<<<<<开始自动备份>>>>>>--------------");
+        CopyUtil.copyImage(srcDir, destDir);
+        CopyUtil.copyLucene(srcDir2, destDir2);
+        new BackupUtil("root", mysqlPassword, "db_myblog", null, "utf8",
+                mysqlPath2).backup_run();
+        Date date2 = new Date();
+        System.out.println(simpleDateFormat.format(date2) + "-------------->>>>>>自动备份成功<<<<<<--------------");
     }
 }

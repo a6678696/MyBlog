@@ -4,10 +4,12 @@ import cn.hutool.http.HtmlUtil;
 import com.ledao.entity.*;
 import com.ledao.service.*;
 import com.ledao.util.*;
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,6 +36,24 @@ import java.util.Map;
  */
 @Controller
 public class IndexController {
+
+    @Value("${blogImageFilePath}")
+    private String blogImageFilePath;
+
+    @Value("${lucenePath}")
+    private String lucenePath;
+
+    @Value("${blogImageFilePath1}")
+    private String blogImageFilePath1;
+
+    @Value("${lucenePath1}")
+    private String lucenePath1;
+
+    @Value("${mysqlPath1}")
+    private String mysqlPath1;
+
+    @Value("${mysqlPassword}")
+    private String mysqlPassword;
 
     @Resource
     private UserService userService;
@@ -134,8 +154,6 @@ public class IndexController {
         mav.addObject("myWebSitRunDays", interviewRecordService.getMyWebSitRunDays());
         mav.addObject("thisIp", request.getRemoteAddr());
         mav.addObject("interviewCount", interviewRecordService.getCount(null));
-        //用于判断是否是首页,是首页就显示公告
-        mav.addObject("isIndexFirst", 1);
         mav.addObject("menuBlogList", blogService.getMenuBlogList());
         mav.addObject("isHome", 1);
         mav.addObject("linkList", linkService.list(null));
@@ -414,17 +432,19 @@ public class IndexController {
     @RequestMapping("/backup")
     public Map<String, Object> backup() throws IOException {
         Map<String, Object> resultMap = new HashMap<>(16);
-        File srcDir = new File("C:\\Java\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22-windows-x64\\apache-tomcat-9.0.22\\webapps\\MyBlog\\static\\images\\blogImage");
-        File destDir = new File("C:\\backup\\myblog\\blogImage");
-        File srcDir2 = new File("C:\\lucene\\MyBlog");
-        File destDir2 = new File("C:\\backup\\myblog\\Lucene\\MyBlog");
+        File srcDir = new File(blogImageFilePath);
+        File destDir = new File(blogImageFilePath1);
+        File srcDir2 = new File(lucenePath);
+        File destDir2 = new File(lucenePath1);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+        System.out.println(simpleDateFormat.format(date) + "--------------<<<<<<开始手动备份>>>>>>--------------");
         CopyUtil.copyImage(srcDir, destDir);
         CopyUtil.copyLucene(srcDir2, destDir2);
-        new BackupUtil("root", "123456", "db_myblog", null, "utf8",
-                "C:\\backup\\myblog\\db_myblog.sql").backup_run();
-        Date date = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(simpleDateFormat.format(date) + "：数据库备份成功!!");
+        new BackupUtil("root", mysqlPassword, "db_myblog", null, "utf8",
+                mysqlPath1).backup_run();
+        Date date2 = new Date();
+        System.out.println(simpleDateFormat.format(date2) + "-------------->>>>>>手动备份成功<<<<<<--------------");
         resultMap.put("success", true);
         return resultMap;
     }
@@ -461,6 +481,12 @@ public class IndexController {
         return resultMap;
     }
 
+    /**
+     * 统计每日访问ip数
+     *
+     * @param days
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/countIpNumByDay")
     public Map<String, Object> countIpNumByDay(String days) {

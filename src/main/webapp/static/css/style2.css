@@ -39,42 +39,6 @@
     content: attr(data-num);
 }
 
-/*网站雪花特效*/
-@-webkit-keyframes snow {
-    0% {
-        background-position: 0 0, 0 0
-    }
-    100% {
-        background-position: 500px 500px, 1000px 500px
-    }
-}
-
-@keyframes snow {
-    0% {
-        background-position: 0 0, 0 0
-    }
-    100% {
-        background-position: 500px 500px, 1000px 500px
-    }
-}
-
-.container {
-    box-shadow: 0 0 4px 3px rgba(0, 0, 0, .05);
-}
-
-#snowMask {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: url(/static/images/snow1.png), url(/static/images/snow2.png);
-    -webkit-animation: 10s snow linear infinite;
-    animation: 10s snow linear infinite;
-    pointer-events: none;
-    z-index: 9999;
-}
-
 /*鼠标停在div上出现阴影*/
 .shadow {
     transition-duration: 1s; /*停留时间显示*/
@@ -83,7 +47,7 @@
 .shadow:hover {
     -webkit-box-shadow: #337ab7 0px 10px 10px;
     -moz-box-shadow: #337ab7 0px 10px 10px;
-    box-shadow: #337ab7 0px 10px 10px;
+    box-shadow: #337ab7 0px 3px 3px;
     background-color: #eaf6ff;
 }
 

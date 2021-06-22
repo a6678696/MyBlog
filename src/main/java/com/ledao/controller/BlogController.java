@@ -4,6 +4,7 @@ import com.ledao.entity.*;
 import com.ledao.lucene.BlogIndex;
 import com.ledao.service.*;
 import com.ledao.util.AddressUtil;
+import com.ledao.util.RedisUtil;
 import com.ledao.util.StringUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,10 +16,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author LeDao
@@ -52,16 +50,32 @@ public class BlogController {
     @RequestMapping("/{id}")
     public ModelAndView details(@PathVariable("id") Integer id, HttpServletRequest request, HttpSession session) throws IOException {
         ModelAndView mav = new ModelAndView();
-        Blog blog = blogService.findById(id);
+        Blog blog = null;
+        String key = "blog_" + id;
+        if (RedisUtil.existKey(key)) {
+            Blog blog1 = new Blog();
+            blog = (Blog) RedisUtil.jsonToEntity(RedisUtil.getKeyValue(key), blog1);
+        } else {
+            blog = blogService.findById(id);
+            RedisUtil.setKey(key, RedisUtil.entityToJson(blog));
+        }
         blog.setClick(blog.getClick() + 1);
         blog.setSetMenuBlogDate(null);
         blogService.update(blog);
         blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
-        List<BlogType> blogTypeList = blogTypeService.list(null);
-        for (BlogType blogType : blogTypeList) {
-            blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
+        //从Redis获取两个类别列表
+        List<String> redisBlogTypeList = RedisUtil.listRange("blogTypeList", 0L, -1L);
+        List<String> redisBlogCountList = RedisUtil.listRange("blogCountList", 0L, -1L);
+        List<BlogType> blogTypeList = new ArrayList<>();
+        List<Blog> blogCountList = new ArrayList<>();
+        for (String s : redisBlogTypeList) {
+            BlogType blogType22 = BlogType.jsonToEntity(s);
+            blogTypeList.add(blogType22);
         }
-        List<Blog> blogCountList = blogService.countList();
+        for (String s : redisBlogCountList) {
+            Blog blog22 = Blog.jsonToEntity(s);
+            blogCountList.add(blog22);
+        }
         Map<String, Object> map = new HashMap<>(16);
         map.put("blogTypeId", blog.getBlogTypeId());
         map.put("isMenuBlogKey", 1);
@@ -191,11 +205,19 @@ public class BlogController {
         if (StringUtil.isEmpty(page)) {
             page = "1";
         }
-        List<BlogType> blogTypeList = blogTypeService.list(null);
-        for (BlogType blogType : blogTypeList) {
-            blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
+        //从Redis获取两个类别列表
+        List<String> redisBlogTypeList = RedisUtil.listRange("blogTypeList", 0L, -1L);
+        List<String> redisBlogCountList = RedisUtil.listRange("blogCountList", 0L, -1L);
+        List<BlogType> blogTypeList = new ArrayList<>();
+        List<Blog> blogCountList = new ArrayList<>();
+        for (String s : redisBlogTypeList) {
+            BlogType blogType22 = BlogType.jsonToEntity(s);
+            blogTypeList.add(blogType22);
         }
-        List<Blog> blogCountList = blogService.countList();
+        for (String s : redisBlogCountList) {
+            Blog blog22 = Blog.jsonToEntity(s);
+            blogCountList.add(blog22);
+        }
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "搜索关键字'" + q + "'结果页面--LeDao博客系统");

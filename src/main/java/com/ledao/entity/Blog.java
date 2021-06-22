@@ -1,5 +1,7 @@
 package com.ledao.entity;
 
+import com.google.gson.Gson;
+
 import java.util.Date;
 
 /**
@@ -202,5 +204,11 @@ public class Blog {
 
     public void setSetMenuBlogDate(Date setMenuBlogDate) {
         this.setMenuBlogDate = setMenuBlogDate;
+    }
+
+    public static Blog jsonToEntity(String json) {
+        Gson gson = new Gson();
+        Blog blog = gson.fromJson(json, Blog.class);
+        return blog;
     }
 }

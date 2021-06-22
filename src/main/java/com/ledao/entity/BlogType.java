@@ -1,5 +1,7 @@
 package com.ledao.entity;
 
+import com.google.gson.Gson;
+
 /**
  * 博客类别实体类
  *
@@ -66,5 +68,11 @@ public class BlogType {
                 ", sortNum=" + sortNum +
                 ", blogNum=" + blogNum +
                 '}';
+    }
+
+    public static BlogType jsonToEntity(String json) {
+        Gson gson = new Gson();
+        BlogType blogType = gson.fromJson(json, BlogType.class);
+        return blogType;
     }
 }

@@ -21,10 +21,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 首页Controller
@@ -138,11 +135,19 @@ public class IndexController {
             blog.setSummary(HtmlUtil.unescape(blog.getSummary()));
             blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
         }
-        List<BlogType> blogTypeList = blogTypeService.list(null);
-        for (BlogType blogType : blogTypeList) {
-            blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
+        //从Redis获取两个类别列表
+        List<String> redisBlogTypeList = RedisUtil.listRange("blogTypeList", 0L, -1L);
+        List<String> redisBlogCountList = RedisUtil.listRange("blogCountList", 0L, -1L);
+        List<BlogType> blogTypeList = new ArrayList<>();
+        List<Blog> blogCountList = new ArrayList<>();
+        for (String s : redisBlogTypeList) {
+            BlogType blogType22 = BlogType.jsonToEntity(s);
+            blogTypeList.add(blogType22);
         }
-        List<Blog> blogCountList = blogService.countList();
+        for (String s : redisBlogCountList) {
+            Blog blog22 = Blog.jsonToEntity(s);
+            blogCountList.add(blog22);
+        }
         StringBuffer param = new StringBuffer();
         if (StringUtil.isNotEmpty(blogTypeId)) {
             param.append("&blogTypeId=" + blogTypeId);
@@ -243,11 +248,19 @@ public class IndexController {
             blog.setSummary(HtmlUtil.unescape(blog.getSummary()));
             blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
         }
-        List<BlogType> blogTypeList = blogTypeService.list(null);
-        for (BlogType blogType : blogTypeList) {
-            blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
+        //从Redis获取两个类别列表
+        List<String> redisBlogTypeList = RedisUtil.listRange("blogTypeList", 0L, -1L);
+        List<String> redisBlogCountList = RedisUtil.listRange("blogCountList", 0L, -1L);
+        List<BlogType> blogTypeList = new ArrayList<>();
+        List<Blog> blogCountList = new ArrayList<>();
+        for (String s : redisBlogTypeList) {
+            BlogType blogType22 = BlogType.jsonToEntity(s);
+            blogTypeList.add(blogType22);
         }
-        List<Blog> blogCountList = blogService.countList();
+        for (String s : redisBlogCountList) {
+            Blog blog22 = Blog.jsonToEntity(s);
+            blogCountList.add(blog22);
+        }
         //是第一页
         if ((page == 1 || page == null)) {
             //不是按类别和时间分类

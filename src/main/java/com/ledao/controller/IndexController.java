@@ -4,7 +4,6 @@ import cn.hutool.http.HtmlUtil;
 import com.ledao.entity.*;
 import com.ledao.service.*;
 import com.ledao.util.*;
-import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -85,7 +84,7 @@ public class IndexController {
      * @return
      */
     @RequestMapping("/")
-    public ModelAndView root(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr, HttpServletRequest request) throws IOException {
+    public ModelAndView root(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr, HttpServletRequest request, HttpSession session) throws IOException {
         ModelAndView mav = new ModelAndView();
         mav.addObject("mainPage", "page/indexFirst" + StringUtil.readSkin());
         InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "访问博客首页");
@@ -102,7 +101,9 @@ public class IndexController {
             mav.addObject("mainPage", "page/ipForBanned" + StringUtil.readSkin());
             mav.addObject("ipNow", request.getRemoteAddr());
         } else {
-            interviewRecordService.add(interviewRecord);
+            if (session.getAttribute("isMe") == null) {
+                interviewRecordService.add(interviewRecord);
+            }
         }
         Map<String, Object> map = new HashMap<>(16);
         if (page == null) {
@@ -179,7 +180,7 @@ public class IndexController {
      * @return
      */
     @RequestMapping("/index")
-    public ModelAndView root2(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr, HttpServletRequest request) throws IOException {
+    public ModelAndView root2(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "blogTypeId", required = false) String blogTypeId, @RequestParam(value = "releaseDateStr", required = false) String releaseDateStr, HttpServletRequest request, HttpSession session) throws IOException {
         ModelAndView mav = new ModelAndView();
         Map<String, Object> map = new HashMap<>(16);
         StringBuffer param = new StringBuffer();
@@ -188,7 +189,9 @@ public class IndexController {
             if (page == null) {
                 InterviewRecord interviewRecord2 = new InterviewRecord(request.getRemoteAddr(), "查看分类：" + blogTypeService.findById(Integer.valueOf(blogTypeId)).getName() + "(按博客类别分类)");
                 interviewRecord2.setTrueAddress(AddressUtil.getAddress2(interviewRecord2.getInterviewerIp()));
-                interviewRecordService.add(interviewRecord2);
+                if (session.getAttribute("isMe") == null) {
+                    interviewRecordService.add(interviewRecord2);
+                }
             }
             BlogType blogType = blogTypeService.findById(Integer.parseInt(blogTypeId));
             mav.addObject("title", "当前分类:" + blogType.getName() + "--LeDao的博客");
@@ -200,7 +203,9 @@ public class IndexController {
             if (page == null) {
                 InterviewRecord interviewRecord3 = new InterviewRecord(request.getRemoteAddr(), "查看分类：" + releaseDateStr + "(按日期分类)");
                 interviewRecord3.setTrueAddress(AddressUtil.getAddress2(interviewRecord3.getInterviewerIp()));
-                interviewRecordService.add(interviewRecord3);
+                if (session.getAttribute("isMe") == null) {
+                    interviewRecordService.add(interviewRecord3);
+                }
             }
             mav.addObject("title", "当前分类:" + releaseDateStr + "--LeDao的博客");
         } else if (StringUtil.isEmpty(releaseDateStr) && StringUtil.isEmpty(blogTypeId)) {
@@ -274,7 +279,9 @@ public class IndexController {
             if (page == 1 && StringUtil.isEmpty(blogTypeId) && StringUtil.isEmpty(releaseDateStr)) {
                 InterviewRecord interviewRecord4 = new InterviewRecord(request.getRemoteAddr(), "访问博客首页/index");
                 interviewRecord4.setTrueAddress(AddressUtil.getAddress2(interviewRecord4.getInterviewerIp()));
-                interviewRecordService.add(interviewRecord4);
+                if (session.getAttribute("isMe") == null) {
+                    interviewRecordService.add(interviewRecord4);
+                }
             }
         }
         mav.addObject("thisIpCount", interviewRecordService.getCountInterviewerInAppearNum(request.getRemoteAddr()));
@@ -290,7 +297,7 @@ public class IndexController {
      * @throws IOException
      */
     @RequestMapping("/show")
-    public ModelAndView show(HttpServletRequest request) throws IOException {
+    public ModelAndView show(HttpServletRequest request, HttpSession session) throws IOException {
         ModelAndView mav = new ModelAndView();
         Map<String, Object> map = new HashMap<>(16);
         List<Like> likeList = likeService.list(map);
@@ -302,7 +309,9 @@ public class IndexController {
         List<IpForBanned> ipForBannedList = ipForBannedService.list(map);
         InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "查看show");
         interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
-        interviewRecordService.add(interviewRecord);
+        if (session.getAttribute("isMe") == null) {
+            interviewRecordService.add(interviewRecord);
+        }
         map.put("start", 0);
         map.put("size", 50);
         List<InterviewRecord> interviewRecordList = interviewRecordService.list(map);
@@ -494,5 +503,32 @@ public class IndexController {
         List<CountIpNumByDay> countIpNumByDayList = interviewRecordService.countIpNumByDay(Integer.parseInt(days));
         resultMap.put("rows", countIpNumByDayList);
         return resultMap;
+    }
+
+    /**
+     * 统计每日访问ip数
+     *
+     * @param days
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/countInterviewNumByDay")
+    public Map<String, Object> countInterviewNumByDay(String days) {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        List<CountInterviewNumByDay> countInterviewNumByDayList = interviewRecordService.countInterviewNumByDay(Integer.parseInt(days));
+        resultMap.put("rows", countInterviewNumByDayList);
+        return resultMap;
+    }
+
+    /**
+     * 确定是站长访问网站
+     *
+     * @param session
+     * @return
+     */
+    @RequestMapping("/isMe6678696")
+    public String isMe6678696(HttpSession session) {
+        session.setAttribute("isMe", 1);
+        return "redirect:/";
     }
 }

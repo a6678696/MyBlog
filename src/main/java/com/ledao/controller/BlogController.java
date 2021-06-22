@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
@@ -49,7 +50,7 @@ public class BlogController {
     private BlogIndex blogIndex = new BlogIndex();
 
     @RequestMapping("/{id}")
-    public ModelAndView details(@PathVariable("id") Integer id, HttpServletRequest request) throws IOException {
+    public ModelAndView details(@PathVariable("id") Integer id, HttpServletRequest request, HttpSession session) throws IOException {
         ModelAndView mav = new ModelAndView();
         Blog blog = blogService.findById(id);
         blog.setClick(blog.getClick() + 1);
@@ -126,7 +127,9 @@ public class BlogController {
             mav.addObject("mainPage", "page/ipForBanned" + StringUtil.readSkin());
             mav.addObject("ipNow", request.getRemoteAddr());
         } else {
-            interviewRecordService.add(interviewRecord);
+            if (session.getAttribute("isMe") == null) {
+                interviewRecordService.add(interviewRecord);
+            }
         }
         return mav;
     }
@@ -161,7 +164,7 @@ public class BlogController {
      * @throws Exception
      */
     @RequestMapping("/q")
-    public ModelAndView search(@RequestParam(value = "q", required = false) String q, @RequestParam(value = "page", required = false) String page, HttpServletRequest request) throws Exception {
+    public ModelAndView search(@RequestParam(value = "q", required = false) String q, @RequestParam(value = "page", required = false) String page, HttpServletRequest request, HttpSession session) throws Exception {
         ModelAndView mav = new ModelAndView();
         mav.addObject("mainPage", "page/blogResult" + StringUtil.readSkin());
         int pageSize = 6;
@@ -180,7 +183,9 @@ public class BlogController {
                 mav.addObject("mainPage", "page/ipForBanned" + StringUtil.readSkin());
                 mav.addObject("ipNow", request.getRemoteAddr());
             } else {
-                interviewRecordService.add(interviewRecord);
+                if (session.getAttribute("isMe") == null) {
+                    interviewRecordService.add(interviewRecord);
+                }
             }
         }
         if (StringUtil.isEmpty(page)) {

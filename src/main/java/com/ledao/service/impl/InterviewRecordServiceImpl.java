@@ -1,5 +1,6 @@
 package com.ledao.service.impl;
 
+import com.ledao.entity.CountInterviewNumByDay;
 import com.ledao.entity.CountIpNumByDay;
 import com.ledao.entity.InterviewRecord;
 import com.ledao.mapper.InterviewRecordMapper;
@@ -107,5 +108,10 @@ public class InterviewRecordServiceImpl implements InterviewRecordService {
     @Override
     public List<CountIpNumByDay> countIpNumByDay(Integer days) {
         return interviewRecordMapper.countIpNumByDay(days);
+    }
+
+    @Override
+    public List<CountInterviewNumByDay> countInterviewNumByDay(Integer days) {
+        return interviewRecordMapper.countInterviewNumByDay(days);
     }
 }

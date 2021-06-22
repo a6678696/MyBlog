@@ -80,6 +80,7 @@
         function openIpForBannedAddDialog() {
             $("#dlg").dialog("open").dialog("setTitle", "添加被封禁ip");
             url = "/admin/ipForBanned/save";
+            $("#ip").get(0).focus();
         }
 
         function formatType(val, row) {

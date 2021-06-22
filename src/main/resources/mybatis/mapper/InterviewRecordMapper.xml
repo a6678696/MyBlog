@@ -127,6 +127,10 @@
     </select>
 
     <select id="countIpNumByDay" parameterType="integer" resultType="com.ledao.entity.CountIpNumByDay">
-        SELECT DATE(interviewDate) AS date,COUNT(distinct interviewerIp) AS num FROM t_interview_record t WHERE interviewDate BETWEEN ADDDATE(DATE(NOW()),-#{days}) AND ADDDATE(DATE(NOW()),1) GROUP BY DATE(interviewDate);
+        SELECT DATE(interviewDate) AS date,COUNT(distinct interviewerIp) AS num FROM t_interview_record t WHERE interviewDate BETWEEN ADDDATE(DATE(NOW()),-#{days}+1) AND ADDDATE(DATE(NOW()),1) GROUP BY DATE(interviewDate);
+    </select>
+
+    <select id="countInterviewNumByDay" parameterType="integer" resultType="com.ledao.entity.CountInterviewNumByDay">
+        SELECT DATE(t.`interviewDate`) AS DATE,COUNT(*) AS num FROM t_interview_record t WHERE t.`interviewDate` BETWEEN ADDDATE(DATE(NOW()),-#{days}+1) AND ADDDATE(DATE(NOW()),1) GROUP BY DATE(t.`interviewDate`);
     </select>
 </mapper>

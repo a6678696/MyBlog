@@ -13,7 +13,7 @@
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script type="text/javascript">
 
-        function countIpNumByDay() {
+        function countInterviewNumByDay() {
             var days = $("#days").val();
             if (days == null || days == '') {
                 $("#days").val(14);
@@ -25,7 +25,7 @@
                     type: 'line',
                     events: {
                         load: function (event) {
-                            $.post("/countIpNumByDay?days="+days, function (result) {
+                            $.post("/countInterviewNumByDay?days="+days, function (result) {
                                 var rows = result.rows;
                                 var xArr = new Array();
                                 var yArr = new Array();
@@ -42,7 +42,7 @@
                 },
                 //标题
                 title: {
-                    text: '每日访问ip个数（近'+days+'天，折线图）'
+                    text: '每日访问ip总数（近'+days+'天，折线图）'
                 },
                 //X轴的意义
                 xAxis: {
@@ -62,15 +62,15 @@
         }
 
         $(document).ready(function () {
-            countIpNumByDay();
+            countInterviewNumByDay();
         });
     </script>
 </head>
 <body style="margin: 10px">
-<div id="p" class="easyui-panel" title="每日访问ip个数" style="padding: 10px;width: 1150px">
+<div id="p" class="easyui-panel" title="每日访问ip总数" style="padding: 10px;width: 1150px">
     <div id="CountIpNumByDay"></div>
     <div style="text-align: center;background-color: #dbeef5">
-        输入天数&nbsp;:&nbsp;<input type="text" id="days" style="width: 166px;height: 28px" required="true" onkeydown="if(window.event.keyCode===13) countIpNumByDay()"/>&nbsp;<a href="javascript:countIpNumByDay()"
+        输入天数&nbsp;:&nbsp;<input type="text" id="days" style="width: 166px;height: 28px" required="true" onkeydown="if(window.event.keyCode===13) countInterviewNumByDay()"/>&nbsp;<a href="javascript:countInterviewNumByDay()"
                                                                    class="easyui-linkbutton" iconCls="icon-ok">确定</a>
     </div>
 </div>

@@ -1,5 +1,6 @@
 package com.ledao.service;
 
+import com.ledao.entity.CountInterviewNumByDay;
 import com.ledao.entity.CountIpNumByDay;
 import com.ledao.entity.InterviewRecord;
 
@@ -137,9 +138,18 @@ public interface InterviewRecordService {
     Date blogLastClickTime(String blogTitle);
 
     /**
-     * 获取近14天的每日访问ip个数
+     * 获取每日访问ip个数
      *
+     * @param days
      * @return
      */
     List<CountIpNumByDay> countIpNumByDay(Integer days);
+
+    /**
+     * 获取每日被访问总数
+     *
+     * @param days
+     * @return
+     */
+    List<CountInterviewNumByDay> countInterviewNumByDay(Integer days);
 }

@@ -504,6 +504,42 @@ public class IndexController {
     }
 
     /**
+     * 读取代码类型
+     *
+     * @return
+     * @throws IOException
+     */
+    @ResponseBody
+    @RequestMapping("/readCodeFamily")
+    public Map<String, Object> readCodeFamily() throws IOException {
+        String codeFamily = StringUtil.readCodeFamily();
+        Map<String, Object> resultMap = new HashMap<>(16);
+        resultMap.put("success", "true");
+        resultMap.put("codeFamily", codeFamily);
+        return resultMap;
+    }
+
+    /**
+     * 修改代码类型
+     *
+     * @param codeFamily
+     * @return
+     * @throws IOException
+     */
+    @ResponseBody
+    @RequestMapping("/changeCodeFamily")
+    public Map<String, Object> changeCodeFamily(String codeFamily,String password) throws IOException {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        if (password.equals("123456")) {
+            StringUtil.changeCodeFamily(codeFamily);
+            resultMap.put("success", true);
+        } else {
+            resultMap.put("success", false);
+        }
+        return resultMap;
+    }
+
+    /**
      * 统计每日访问ip数
      *
      * @param days

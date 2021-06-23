@@ -88,7 +88,7 @@ public class CommentController {
                     if (isSendMail.equals(sendMailStatus)) {
                         SimpleMailMessage mailMessage = new SimpleMailMessage();
                         mailMessage.setFrom("3519577180@qq.com");
-                        mailMessage.setTo("12030074@qq.com");
+                        mailMessage.setTo("1203007469@qq.com");
                         mailMessage.setSubject("LeDao的博客");
                         mailMessage.setText("有人给你评论了，内容为：" + content);
                         javaMailSender.send(mailMessage);

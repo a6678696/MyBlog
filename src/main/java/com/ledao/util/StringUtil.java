@@ -166,6 +166,29 @@ public class StringUtil {
         return setting.getStr("mysqldumpPath");
     }
 
+    /**
+     * 读取代码字体类型
+     *
+     * @return
+     * @throws IOException
+     */
+    public static String readCodeFamily() throws IOException {
+        Setting setting = new Setting(mySettingLocation);
+        return setting.getStr("codeFamily");
+    }
+
+    /**
+     * 修改代码字体类型
+     *
+     * @param data
+     * @throws IOException
+     */
+    public static void changeCodeFamily(String data) throws IOException {
+        Setting setting = new Setting(mySettingLocation);
+        setting.set("codeFamily", data);
+        setting.store(mySettingLocation);
+    }
+
     public static void main(String[] args) throws IOException {
         System.out.println(readSkin());
     }

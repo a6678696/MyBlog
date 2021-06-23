@@ -139,7 +139,15 @@
                 $(".imgsrc").attr("src", "/static/images/top2.png");
             });
             $("table").addClass("table table-striped table-hover");
-            $("pre").css("font-family", "SimHei");
+            $("pre code").css("font-size", "17px");
+            $.ajax({
+                url: "/readCodeFamily",
+                type: "post",
+                success: function (result) {
+                    var codeFamily = result.codeFamily;
+                    $("pre code").css("font-family", codeFamily);
+                },
+            });
             $("img").attr("alt", "请刷新本页面以查看图片，如果图片已失效请到对应博客的评论区下给我留言┭┮﹏┭┮");
             $('pre code').each(function (i, block) {
                 hljs.highlightBlock(block);

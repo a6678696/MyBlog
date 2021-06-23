@@ -28,17 +28,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fec843a-29ca-4ceb-a0fc-1724b3e235ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/util/RedisUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyBlog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MyBlog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/BlogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/CommentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/admin/BlogAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/admin/BlogAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/entity/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/entity/Blog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/entity/BlogType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/entity/BlogType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/util/StringUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/util/StringUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/writeBlog.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/writeBlog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/myConfig.setting" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/myConfig.setting" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +80,9 @@
     </expand>
     <select />
   </component>
+  <component name="EndpointsView">
+    <option name="showSidePanel" value="false" />
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="MyBlog" />
   </component>
@@ -108,6 +109,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="ac79f541-6c17-4739-b6e0-4b5c536fe87b" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" root0="FORCE_HIGHLIGHTING" />
@@ -151,7 +155,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/static/ckeditor" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -162,11 +166,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MyProject\IDEA\ActualCombat\MyBlog\src\main\webapp\static\ckeditor" />
       <recent name="E:\MyProject\IDEA\ActualCombat\MyBlog\src\main\webapp\static\jquery-easyui-1.7.0\themes\usericons" />
       <recent name="E:\MyProject\IDEA\ActualCombat\MyBlog\src\main\webapp\admin" />
       <recent name="E:\MyProject\IDEA\ActualCombat\MyBlog\src\main\webapp\static\images" />
       <recent name="E:\MyProject\IDEA\ActualCombat\MyBlog\src\main\webapp\static\images\blogImage" />
-      <recent name="E:\IdeaProjects\ActualCombat\MyBlog\src\main\webapp\static\jquery-easyui-1.7.0\themes\usericons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\idea workspase for Actual combat\MyBlog\src\main\webapp" />
@@ -267,17 +271,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -765,7 +758,11 @@
       <workItem from="1624269021858" duration="7663000" />
       <workItem from="1624321712855" duration="9292000" />
       <workItem from="1624334152585" duration="8693000" />
-      <workItem from="1624349017579" duration="4029000" />
+      <workItem from="1624349017579" duration="4122000" />
+      <workItem from="1624353158716" duration="1031000" />
+      <workItem from="1624354918332" duration="1147000" />
+      <workItem from="1624363688692" duration="7488000" />
+      <workItem from="1624427612804" duration="3635000" />
     </task>
     <task id="LOCAL-00001" summary="MyBlog">
       <created>1599655527421</created>
@@ -1096,7 +1093,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624332103744</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="LeDao的博客">
+      <created>1624353065757</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1624353065757</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

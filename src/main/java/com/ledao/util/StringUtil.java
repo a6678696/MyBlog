@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class StringUtil {
 
-    private static final String mySettingLocation = "E://MyProject/IDEA/ActualCombat/MyBlog/src/main/webapp/static/myConfig.setting";
+    private static final String MY_SETTING_LOCATION = "E://MyProject/IDEA/ActualCombat/MyBlog/src/main/webapp/static/myConfig.setting";
 
     /**
      * 判断是否是空
@@ -81,7 +81,7 @@ public class StringUtil {
      * @return
      */
     public static int readSkin() throws IOException {
-        Setting setting = new Setting(mySettingLocation);
+        Setting setting = new Setting(MY_SETTING_LOCATION);
         return setting.getInt("skin");
     }
 
@@ -92,9 +92,9 @@ public class StringUtil {
      * @throws IOException
      */
     public static void updateSkin(String skin) throws IOException {
-        Setting setting = new Setting(mySettingLocation);
+        Setting setting = new Setting(MY_SETTING_LOCATION);
         setting.set("skin", skin);
-        setting.store(mySettingLocation);
+        setting.store(MY_SETTING_LOCATION);
     }
 
     /**
@@ -104,7 +104,7 @@ public class StringUtil {
      * @throws IOException
      */
     public static String readSendMail() throws IOException {
-        Setting setting = new Setting(mySettingLocation);
+        Setting setting = new Setting(MY_SETTING_LOCATION);
         return setting.getStr("isSendMail");
     }
 
@@ -116,9 +116,9 @@ public class StringUtil {
      * @throws IOException
      */
     public static void changeSendMail(String data, HttpSession session) throws IOException {
-        Setting setting = new Setting(mySettingLocation);
+        Setting setting = new Setting(MY_SETTING_LOCATION);
         setting.set("isSendMail", data);
-        setting.store(mySettingLocation);
+        setting.store(MY_SETTING_LOCATION);
         session.setAttribute("sendMailStatus", StringUtil.readSendMail().equals("0") ? "未设置" : "已设置");
     }
 
@@ -129,7 +129,7 @@ public class StringUtil {
      * @throws IOException
      */
     public static String readCodeStyle() throws IOException {
-        Setting setting = new Setting(mySettingLocation);
+        Setting setting = new Setting(MY_SETTING_LOCATION);
         return setting.getStr("codeStyle");
     }
 
@@ -140,9 +140,9 @@ public class StringUtil {
      * @throws IOException
      */
     public static void changeCodeStyle(String data) throws IOException {
-        Setting setting = new Setting(mySettingLocation);
+        Setting setting = new Setting(MY_SETTING_LOCATION);
         setting.set("codeStyle", data);
-        setting.store(mySettingLocation);
+        setting.store(MY_SETTING_LOCATION);
     }
 
     /**
@@ -152,7 +152,7 @@ public class StringUtil {
      * @throws IOException
      */
     public static String readLucenePath() throws IOException {
-        Setting setting = new Setting(mySettingLocation);
+        Setting setting = new Setting(MY_SETTING_LOCATION);
         return setting.getStr("lucenePath");
     }
 
@@ -162,34 +162,34 @@ public class StringUtil {
      * @return
      */
     public static String readMysqldumpPath() {
-        Setting setting = new Setting(mySettingLocation);
+        Setting setting = new Setting(MY_SETTING_LOCATION);
         return setting.getStr("mysqldumpPath");
     }
 
     /**
-     * 读取代码字体类型
+     * 读取代码字体
      *
      * @return
      * @throws IOException
      */
     public static String readCodeFamily() throws IOException {
-        Setting setting = new Setting(mySettingLocation);
+        Setting setting = new Setting(MY_SETTING_LOCATION);
         return setting.getStr("codeFamily");
     }
 
     /**
-     * 修改代码字体类型
+     * 修改代码字体
      *
      * @param data
      * @throws IOException
      */
     public static void changeCodeFamily(String data) throws IOException {
-        Setting setting = new Setting(mySettingLocation);
+        Setting setting = new Setting(MY_SETTING_LOCATION);
         setting.set("codeFamily", data);
-        setting.store(mySettingLocation);
+        setting.store(MY_SETTING_LOCATION);
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(readSkin());
+
     }
 }

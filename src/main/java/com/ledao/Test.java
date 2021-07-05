@@ -1,5 +1,7 @@
 package com.ledao;
 
+import java.io.IOException;
+
 /**
  * @author LeDao
  * @company
@@ -7,7 +9,7 @@ package com.ledao;
  */
 public class Test {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
     }
 }

@@ -50,7 +50,7 @@ public class BlogController {
     @RequestMapping("/{id}")
     public ModelAndView details(@PathVariable("id") Integer id, HttpServletRequest request, HttpSession session) throws IOException {
         ModelAndView mav = new ModelAndView();
-        Blog blog = null;
+        Blog blog;
         String key = "blog_" + id;
         if (RedisUtil.existKey(key)) {
             Blog blog1 = new Blog();
@@ -59,7 +59,11 @@ public class BlogController {
             blog = blogService.findById(id);
             RedisUtil.setKey(key, RedisUtil.entityToJson(blog));
         }
-        blog.setClick(blog.getClick() + 1);
+        /*Blog blog = blogService.findById(id);*/
+        //不是本人查看博客详情时,阅读次数加1
+        if (session.getAttribute("isMe") == null) {
+            blog.setClick(blog.getClick() + 1);
+        }
         blog.setSetMenuBlogDate(null);
         blogService.update(blog);
         blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));

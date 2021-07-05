@@ -2,7 +2,7 @@ package com.ledao.conf;
 
 import com.ledao.entity.User;
 import com.ledao.service.UserService;
-import com.ledao.util.MyEncryption;
+import com.ledao.util.AscUtil;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .passwordEncoder(new BCryptPasswordEncoder())
                 .withUser("admin")
-                .password(new BCryptPasswordEncoder().encode(MyEncryption.jiemi(user.getPassword())))
+                .password(new BCryptPasswordEncoder().encode(AscUtil.decrypt(user.getPassword())))
                 .roles("ADMIN");
     }
 
@@ -51,8 +51,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().cors().disable().headers().disable()
                 .authorizeRequests()
                 // 配置不需要身份认证的请求地址
-                .antMatchers("/","/index","/download","/checkCodeIsSuccess", "/static/**", "/blog/**", "/drawImage").permitAll()
-                .antMatchers("/admin","/admin/**").hasRole("ADMIN")
+                .antMatchers("/","/index","/download","/checkCodeIsSuccess", "/static/**", "/blog/**", "/drawImage","/getFruitListJson","/getFruitJson").permitAll()
+                // 配置需要身份认证的请求地址
+                .antMatchers("/admin","/admin/**","/show","/changeSkin","/changeSendMail","/backup","/changeCodeStyle","/changeCodeFamily","/countIpNumByDay","/countInterviewNumByDay").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 // 指定登录请求地址

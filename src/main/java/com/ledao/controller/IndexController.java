@@ -1,6 +1,7 @@
 package com.ledao.controller;
 
 import cn.hutool.http.HtmlUtil;
+import com.google.gson.Gson;
 import com.ledao.entity.*;
 import com.ledao.service.*;
 import com.ledao.util.*;
@@ -10,6 +11,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -504,7 +506,7 @@ public class IndexController {
     }
 
     /**
-     * 读取代码类型
+     * 读取代码字体
      *
      * @return
      * @throws IOException
@@ -520,7 +522,7 @@ public class IndexController {
     }
 
     /**
-     * 修改代码类型
+     * 修改代码字体
      *
      * @param codeFamily
      * @return
@@ -528,9 +530,9 @@ public class IndexController {
      */
     @ResponseBody
     @RequestMapping("/changeCodeFamily")
-    public Map<String, Object> changeCodeFamily(String codeFamily,String password) throws IOException {
+    public Map<String, Object> changeCodeFamily(String codeFamily, String password) throws IOException {
         Map<String, Object> resultMap = new HashMap<>(16);
-        if (password.equals("123456")) {
+        if (password.equals(userService.findByUserName("modifyCodeFontFamilyPassword").getPassword())) {
             StringUtil.changeCodeFamily(codeFamily);
             resultMap.put("success", true);
         } else {
@@ -579,5 +581,57 @@ public class IndexController {
     public String isMe6678696(HttpSession session) {
         session.setAttribute("isMe", 1);
         return "redirect:/";
+    }
+
+    /**
+     * 获取水果列表json(在本系统中无应用)
+     *
+     * @return
+     */
+    @CrossOrigin
+    @ResponseBody
+    @RequestMapping("/getFruitListJson")
+    public Map<String, Object> getFruitListJson() {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        Fruit fruit1 = new Fruit(1, "苹果", 11);
+        Fruit fruit2 = new Fruit(2, "梨", 6);
+        Fruit fruit3 = new Fruit(3, "油桃", 8);
+        List<Fruit> fruitList = new ArrayList<>();
+        fruitList.add(fruit1);
+        fruitList.add(fruit2);
+        fruitList.add(fruit3);
+        resultMap.put("rows", fruitList);
+        return resultMap;
+    }
+
+    /**
+     * 获取水果对象(在本系统中无应用)
+     *
+     * @return
+     */
+    @CrossOrigin
+    @ResponseBody
+    @RequestMapping("/getFruitJson")
+    public String getFruitJson() {
+        Fruit fruit = new Fruit(1, "苹果", 3);
+        Gson gson = new Gson();
+        return gson.toJson(fruit);
+    }
+
+    /**
+     * 根据用户传入的值获取对应的水果对象(在本系统中无应用)
+     *
+     * @param id
+     * @param name
+     * @param num
+     * @return
+     */
+    @CrossOrigin
+    @ResponseBody
+    @RequestMapping("/getFruitJson2")
+    public String getFruitJson2(int id, String name, int num) {
+        Fruit fruit = new Fruit(id, name, num);
+        Gson gson = new Gson();
+        return gson.toJson(fruit);
     }
 }

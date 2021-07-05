@@ -5,6 +5,7 @@ import com.ledao.entity.BlogType;
 import com.ledao.entity.PageBean;
 import com.ledao.service.BlogService;
 import com.ledao.service.BlogTypeService;
+import com.ledao.util.RedisUtil;
 import com.ledao.util.StringUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,7 +65,7 @@ public class BlogTypeAdminController {
         map.put("size", pageBean.getPageSize());
         List<BlogType> blogTypeList = blogTypeService.list(map);
         for (BlogType type : blogTypeList) {
-            type.setBlogNum(Long.valueOf(blogService.findByBlogTypeId(type.getId()).size()));
+            type.setBlogNum((long) blogService.findByBlogTypeId(type.getId()).size());
         }
         Long total = blogTypeService.getCount(map);
         resultMap.put("rows", blogTypeList);
@@ -93,6 +94,8 @@ public class BlogTypeAdminController {
         } else {
             resultMap.put("success", false);
         }
+        //将两个类别列表添加到Redis
+        addRedis();
         return resultMap;
     }
 
@@ -116,6 +119,52 @@ public class BlogTypeAdminController {
         if (deleteKey>0) {
             resultMap.put("success", true);
         }
+        //将两个类别列表添加到Redis
+        addRedis();
         return resultMap;
+    }
+
+    private void addRedis() {
+        List<BlogType> blogTypeList = blogTypeService.list(null);
+        for (BlogType blogType : blogTypeList) {
+            blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
+        }
+        List<Blog> blogCountList = blogService.countList();
+        if (RedisUtil.existKey("blogTypeList")) {
+            //清空
+            Long length = RedisUtil.listLength("blogTypeList");
+            if (length > 0) {
+                for (int i = 0; i < length; i++) {
+                    RedisUtil.listRightPop("blogTypeList");
+                }
+            }
+            //添加
+            for (int i = 0; i < blogTypeList.size(); i++) {
+                RedisUtil.listRightPush("blogTypeList", RedisUtil.entityToJson(blogTypeList.get(i)));
+            }
+        } else {
+            //添加
+            for (int i = 0; i < blogTypeList.size(); i++) {
+                RedisUtil.listRightPush("blogTypeList", RedisUtil.entityToJson(blogTypeList.get(i)));
+            }
+        }
+        if (RedisUtil.existKey("blogCountList")) {
+            //清空
+            Long length = RedisUtil.listLength("blogCountList");
+            if (length > 0) {
+                for (int i = 0; i < length; i++) {
+                    RedisUtil.listRightPop("blogCountList");
+                }
+            }
+            //添加
+            for (int i = 0; i < blogCountList.size(); i++) {
+                RedisUtil.listRightPush("blogCountList", RedisUtil.entityToJson(blogCountList.get(i)));
+            }
+        } else {
+            //添加
+            for (int i = 0; i < blogCountList.size(); i++) {
+                RedisUtil.listRightPush("blogCountList", RedisUtil.entityToJson(blogCountList.get(i)));
+            }
+        }
     }
 }

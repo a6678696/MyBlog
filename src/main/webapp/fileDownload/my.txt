@@ -1,0 +1,2 @@
+Vue 要实现异步加载需要使用到 vue-resource 库。
+Vue.js 2.0 版本推荐使用 axios 来完成 ajax 请求。

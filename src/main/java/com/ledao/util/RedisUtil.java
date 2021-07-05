@@ -2,6 +2,8 @@ package com.ledao.util;
 
 import com.google.gson.Gson;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
 
 import java.util.List;
 
@@ -14,9 +16,44 @@ import java.util.List;
  */
 public class RedisUtil {
 
-    private static final String host = "192.168.0.153";
-    private static Integer port = 6379;
-    private static final String authPassword = "123456";
+    private static final String HOST = "192.168.0.153";
+    private static final Integer PORT = 6379;
+    private static final String AUTH_PASSWORD = "123456";
+
+    /**
+     * 获取Redis连接
+     *
+     * @return
+     */
+    private static JedisPool getRedisLink() {
+        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+        jedisPoolConfig.setMaxTotal(100);
+        jedisPoolConfig.setMaxIdle(10);
+        return new JedisPool(jedisPoolConfig, HOST, PORT);
+    }
+
+    /**
+     * 关闭Redis连接
+     *
+     * @param jedisPool
+     * @param jedis
+     */
+    private static void closeRedis(JedisPool jedisPool, Jedis jedis) {
+        jedis.close();
+        jedisPool.close();
+    }
+
+    /**
+     * 获取Jedis
+     *
+     * @param jedisPool
+     * @return
+     */
+    private static Jedis getJedis(JedisPool jedisPool) {
+        Jedis jedis = jedisPool.getResource();
+        jedis.auth(AUTH_PASSWORD);
+        return jedis;
+    }
 
     /**
      * Java实体转化为json
@@ -51,10 +88,10 @@ public class RedisUtil {
      * @return
      */
     public static boolean setKey(String key, String value) {
-        Jedis jedis = new Jedis(host, port);
-        jedis.auth(authPassword);
+        JedisPool jedisPool = getRedisLink();
+        Jedis jedis = getJedis(jedisPool);
         String result = jedis.set(key, value);
-        jedis.close();
+        closeRedis(jedisPool, jedis);
         return "OK".equals(result);
     }
 
@@ -65,10 +102,10 @@ public class RedisUtil {
      * @return
      */
     public static String getKeyValue(String key) {
-        Jedis jedis = new Jedis(host, port);
-        jedis.auth(authPassword);
+        JedisPool jedisPool = getRedisLink();
+        Jedis jedis = getJedis(jedisPool);
         String result = jedis.get(key);
-        jedis.close();
+        closeRedis(jedisPool, jedis);
         return result;
     }
 
@@ -79,10 +116,10 @@ public class RedisUtil {
      * @return
      */
     public static boolean existKey(String key) {
-        Jedis jedis = new Jedis(host, port);
-        jedis.auth(authPassword);
+        JedisPool jedisPool = getRedisLink();
+        Jedis jedis = getJedis(jedisPool);
         boolean result = jedis.exists(key);
-        jedis.close();
+        closeRedis(jedisPool, jedis);
         return result;
     }
 
@@ -93,8 +130,8 @@ public class RedisUtil {
      * @return
      */
     public static boolean delKey(String key) {
-        Jedis jedis = new Jedis(host, port);
-        jedis.auth(authPassword);
+        JedisPool jedisPool = getRedisLink();
+        Jedis jedis = getJedis(jedisPool);
         Long result;
         //key存在就删除
         if (existKey(key)) {
@@ -102,7 +139,7 @@ public class RedisUtil {
         } else {
             result = 0L;
         }
-        jedis.close();
+        closeRedis(jedisPool, jedis);
         return result > 0;
     }
 
@@ -114,10 +151,10 @@ public class RedisUtil {
      * @return
      */
     public static boolean listRightPush(String key, String value) {
-        Jedis jedis = new Jedis(host, port);
-        jedis.auth(authPassword);
+        JedisPool jedisPool = getRedisLink();
+        Jedis jedis = getJedis(jedisPool);
         Long result = jedis.rpush(key, value);
-        jedis.close();
+        closeRedis(jedisPool, jedis);
         return result > 0;
     }
 
@@ -128,10 +165,10 @@ public class RedisUtil {
      * @return
      */
     public static boolean listRightPop(String key) {
-        Jedis jedis = new Jedis(host, port);
-        jedis.auth(authPassword);
+        JedisPool jedisPool = getRedisLink();
+        Jedis jedis = getJedis(jedisPool);
         String result = jedis.rpop(key);
-        jedis.close();
+        closeRedis(jedisPool, jedis);
         return "OK".equals(result);
     }
 
@@ -142,10 +179,10 @@ public class RedisUtil {
      * @return
      */
     public static Long listLength(String key) {
-        Jedis jedis = new Jedis(host, port);
-        jedis.auth(authPassword);
+        JedisPool jedisPool = getRedisLink();
+        Jedis jedis = getJedis(jedisPool);
         Long result = jedis.llen(key);
-        jedis.close();
+        closeRedis(jedisPool, jedis);
         return result;
     }
 
@@ -158,10 +195,10 @@ public class RedisUtil {
      * @return
      */
     public static List<String> listRange(String key, Long start, Long end) {
-        Jedis jedis = new Jedis(host, port);
-        jedis.auth(authPassword);
+        JedisPool jedisPool = getRedisLink();
+        Jedis jedis = getJedis(jedisPool);
         List<String> resultList = jedis.lrange(key, start, end);
-        jedis.close();
+        closeRedis(jedisPool, jedis);
         return resultList;
     }
 }

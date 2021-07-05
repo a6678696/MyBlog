@@ -30,6 +30,12 @@ public class Fruit {
         this.num = num;
     }
 
+    public Fruit(Integer id, String name, Integer num) {
+        this.id = id;
+        this.name = name;
+        this.num = num;
+    }
+
     public Integer getId() {
         return id;
     }

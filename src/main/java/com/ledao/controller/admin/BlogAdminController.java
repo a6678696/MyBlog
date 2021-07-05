@@ -100,8 +100,6 @@ public class BlogAdminController {
             key = blogService.add(blog);
             List<Blog> blogList = blogService.list(null);
             blogIndex.addIndex(blogList.get(0));
-            //将两个类别列表添加到Redis
-            addRedis();
         } else {
             String summary = StripHT(blog.getContent());
             if (summary.length() >= maxStringLength) {
@@ -112,14 +110,14 @@ public class BlogAdminController {
             key = blogService.update(blog);
             blogIndex.updateIndex(blog);
             RedisUtil.delKey("blog_" + blog.getId());
-            //将两个类别列表添加到Redis
-            addRedis();
         }
         if (key > 0) {
             resultMap.put("success", true);
         } else {
             resultMap.put("success", false);
         }
+        //将两个类别列表添加到Redis
+        addRedis();
         return resultMap;
     }
 
@@ -145,14 +143,14 @@ public class BlogAdminController {
             commentService.deleteByBlogId(id);
             key = blogService.delete(id);
             RedisUtil.delKey("blog_" + id);
-            //将两个类别列表添加到Redis
-            addRedis();
         }
         if (key > 0) {
             resultMap.put("success", true);
         } else {
             resultMap.put("success", false);
         }
+        //将两个类别列表添加到Redis
+        addRedis();
         return resultMap;
     }
 

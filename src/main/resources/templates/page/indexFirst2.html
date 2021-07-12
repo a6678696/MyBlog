@@ -68,24 +68,6 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        <i class="fa fa-television"></i>&nbsp;网站信息
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    <div>
-                        <p id="tipForTime" style="color: #00B0E8;text-align: center"></p>
-                        <p>当前时间:&nbsp;<span id="time" style="color: grey"></span></p>
-                        <p>本站运行总天数:&nbsp;<span th:text="${myWebSitRunDays}" style="color: grey"></span></p>
-                        <p>访问本站的ip总数:&nbsp;<span th:text="${ipCount}" style="color: grey"></span></p>
-                        <p>本站被访问总次数:&nbsp;<span th:text="${interviewCount}" style="color: grey"></span></p>
-                        <p>你当前的ip地址为:&nbsp;<span th:text="${thisIp}" style="color: grey"></span></p>
-                        <p>你的ip访问本站总次数:&nbsp;<span th:text="${thisIpCount}" style="color: grey"></span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
                         <i class="fa fa-th-large"></i>&nbsp;按类别分类
                     </h3>
                 </div>
@@ -113,6 +95,22 @@
                               th:aria-label="${blogCount.releaseDateStr}"></a><span class="label label-primary"
                                                                                     th:text="${blogCount.blogCount}"></span>
                         </p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <i class="fa fa-television"></i>&nbsp;网站信息
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <p>本站运行总天数:&nbsp;<span th:text="${myWebSitRunDays}" style="color: grey"></span></p>
+                        <p>访问本站的ip总数:&nbsp;<span th:text="${ipCount}" style="color: grey"></span></p>
+                        <p>本站被访问总次数:&nbsp;<span th:text="${interviewCount}" style="color: grey"></span></p>
+                        <p>你当前的ip地址为:&nbsp;<span th:text="${thisIp}" style="color: grey"></span></p>
+                        <p>你的ip访问本站总次数:&nbsp;<span th:text="${thisIpCount}" style="color: grey"></span></p>
                     </div>
                 </div>
             </div>

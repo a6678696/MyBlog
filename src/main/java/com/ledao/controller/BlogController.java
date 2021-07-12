@@ -50,7 +50,7 @@ public class BlogController {
     @RequestMapping("/{id}")
     public ModelAndView details(@PathVariable("id") Integer id, HttpServletRequest request, HttpSession session) throws IOException {
         ModelAndView mav = new ModelAndView();
-        Blog blog;
+        /*Blog blog;
         String key = "blog_" + id;
         if (RedisUtil.existKey(key)) {
             Blog blog1 = new Blog();
@@ -58,14 +58,14 @@ public class BlogController {
         } else {
             blog = blogService.findById(id);
             RedisUtil.setKey(key, RedisUtil.entityToJson(blog));
-        }
-        /*Blog blog = blogService.findById(id);*/
+        }*/
+        Blog blog = blogService.findById(id);
         //不是本人查看博客详情时,阅读次数加1
         if (session.getAttribute("isMe") == null) {
             blog.setClick(blog.getClick() + 1);
+            blog.setSetMenuBlogDate(null);
+            blogService.update(blog);
         }
-        blog.setSetMenuBlogDate(null);
-        blogService.update(blog);
         blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
         //从Redis获取两个类别列表
         List<String> redisBlogTypeList = RedisUtil.listRange("blogTypeList", 0L, -1L);
@@ -79,6 +79,9 @@ public class BlogController {
         for (String s : redisBlogCountList) {
             Blog blog22 = Blog.jsonToEntity(s);
             blogCountList.add(blog22);
+        }
+        for (int i = 0; i < blogCountList.size(); i++) {
+            blogCountList.get(i).setColor(blogTypeList.get(i).getColor());
         }
         Map<String, Object> map = new HashMap<>(16);
         map.put("blogTypeId", blog.getBlogTypeId());
@@ -130,6 +133,7 @@ public class BlogController {
         mav.addObject("mainPage", "page/blogDetails" + StringUtil.readSkin());
         mav.addObject("mainPageKey", "#b");
         mav.addObject("previousAndNextBlogCode", getPreviousAndNextBlogCode(blogService.getPreviousBlog(id), blogService.getNextBlog(id)));
+        mav.addObject("previousAndNextBlogCode4", getPreviousAndNextBlogCode4(blogService.getPreviousBlog(id), blogService.getNextBlog(id)));
         mav.setViewName("index" + StringUtil.readSkin());
         InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "查看博客：" + blog.getTitle());
         interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
@@ -175,6 +179,28 @@ public class BlogController {
     }
 
     /**
+     * 获取上一篇博客和下一篇博客代码
+     *
+     * @param previousBlog
+     * @param nextBlog
+     * @return
+     */
+    private static StringBuilder getPreviousAndNextBlogCode4(Blog previousBlog, Blog nextBlog) {
+        StringBuilder code = new StringBuilder();
+        if (previousBlog != null) {
+            code.append("<a href='/blog/" + previousBlog.getId() + "' style='float: left;text-decoration: none' data-position='top center' data-tooltip='点击查看上一篇博客：" + previousBlog.getTitle() + "'>&nbsp;<i class='fa fa-arrow-circle-left'></i>&nbsp;上一篇：" + previousBlog.getTitle() + "</a>");
+        } else {
+            code.append("<a style='float: left;text-decoration: none;color:red' class='btn-primary a13'>&nbsp;<i class='fa fa-arrow-circle-left'></i>&nbsp;上一篇：没有上一篇了</a>");
+        }
+        if (nextBlog != null) {
+            code.append("<a href='/blog/" + nextBlog.getId() + "' style='float: right;text-decoration: none' data-position='top center' data-tooltip='点击查看下一篇博客：" + nextBlog.getTitle() + "'>下一篇：" + nextBlog.getTitle() + "&nbsp;<i class='fa fa-arrow-circle-right'></i>&nbsp;</a>");
+        } else {
+            code.append("<a style='float: right;text-decoration: none;color:red' class='btn-primary a14'>下一篇：没有下一篇了&nbsp;<i class='fa fa-arrow-circle-right'></i>&nbsp;</a>");
+        }
+        return code;
+    }
+
+    /**
      * 根据关键字查询相关博客信息
      *
      * @param q 查询条件
@@ -185,7 +211,7 @@ public class BlogController {
     public ModelAndView search(@RequestParam(value = "q", required = false) String q, @RequestParam(value = "page", required = false) String page, HttpServletRequest request, HttpSession session) throws Exception {
         ModelAndView mav = new ModelAndView();
         mav.addObject("mainPage", "page/blogResult" + StringUtil.readSkin());
-        int pageSize = 6;
+        int pageSize = 8;
         if (page == null) {
             InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "搜索了博客：" + q);
             interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
@@ -222,6 +248,9 @@ public class BlogController {
             Blog blog22 = Blog.jsonToEntity(s);
             blogCountList.add(blog22);
         }
+        for (int i = 0; i < blogCountList.size(); i++) {
+            blogCountList.get(i).setColor(blogTypeList.get(i).getColor());
+        }
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "搜索关键字'" + q + "'结果页面--LeDao博客系统");
@@ -243,6 +272,8 @@ public class BlogController {
             mav.addObject("pageCode", this.genUpAndDownPageCode2(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
         } else if (3 == StringUtil.readSkin()) {
             mav.addObject("pageCode", this.genUpAndDownPageCode3(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
+        }else if (4 == StringUtil.readSkin()) {
+            mav.addObject("pageCode", this.genUpAndDownPageCode4(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
         }
         mav.addObject("q", q);
         mav.addObject("menuBlogList", blogService.getMenuBlogList());
@@ -333,6 +364,37 @@ public class BlogController {
                 pageCode.append("<li class='page-item'><a href='" + projectContext + "/blog/q?page=" + (page + 1) + "&q=" + q + "' style='text-decoration: none;margin-left: 2px'  class='page-link'>></a></li>");
             } else {
                 pageCode.append("<li class='page-item'><a style='text-decoration: none;margin-left: 2px' class='page-link'>></a></li>");
+            }
+        }
+        return pageCode.toString();
+    }
+
+    /**
+     * 获取上一页，下一页代码
+     *
+     * @param page           当前页
+     * @param totalNum       总记录数
+     * @param q              查询条件
+     * @param pageSize       每页记录数
+     * @param projectContext url地址
+     * @return
+     */
+    private String genUpAndDownPageCode4(Integer page, Integer totalNum, String q, Integer pageSize, String projectContext) {
+        //数据总页数
+        long totalPage = totalNum % pageSize == 0 ? totalNum / pageSize : totalNum / pageSize + 1;
+        StringBuffer pageCode = new StringBuffer();
+        if (totalPage == 0) {
+            return null;
+        } else {
+            if (page > 1) {
+                pageCode.append("<a href='" + projectContext + "/blog/q?page=" + (page - 1) + "&q=" + q + "' style='text-decoration: none' class='com'><button type='button' class='ui primary button small'>上一页</button></a>");
+            } else {
+                pageCode.append("<a style='text-decoration: none' class='com'><button type='button' class='ui primary button small'>上一页</button></a>");
+            }
+            if (page < totalPage) {
+                pageCode.append("<a href='" + projectContext + "/blog/q?page=" + (page + 1) + "&q=" + q + "' style='text-decoration: none;margin-left: 2px' class='com'><button type='button' class='ui primary button small'>下一页</button></a>");
+            } else {
+                pageCode.append("<a style='text-decoration: none;margin-left: 2px' class='com'><button type='button' class='ui primary button small'>下一页</button></a>");
             }
         }
         return pageCode.toString();

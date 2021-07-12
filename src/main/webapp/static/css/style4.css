@@ -1,0 +1,72 @@
+/*博客列表图片略缩图放大*/
+.div111 {
+    width: 388px;
+    height: 108px;
+    margin: 50px auto;
+    overflow: hidden;
+}
+
+.div111 img {
+    cursor: pointer;
+    transition: all 0.6s;
+}
+
+.div111 img:hover {
+    transform: scale(1.06);
+}
+
+/*鼠标停在div上出现阴影*/
+.shadow {
+    transition-duration: 1s; /*停留时间显示*/
+}
+
+.shadow:hover {
+    -webkit-box-shadow: #337ab7 0px 10px 10px;
+    -moz-box-shadow: #337ab7 0px 10px 10px;
+    box-shadow: #337ab7 0px 3px 3px;
+    background-color: #eaf6ff;
+}
+
+.hljsln {
+    position: relative;
+    display: block;
+    padding-left: 3em !important;
+}
+
+.hljsln .ln-bg {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 2.2em;
+    height: 100%;
+    border-right: 1px solid #555;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.hljsln .ln-num {
+    position: relative;
+    display: inline-block;
+    height: 1em;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.hljsln .ln-num::before {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    margin-right: 1em;
+    color: #777;
+    font-style: normal;
+    font-weight: normal;
+    content: attr(data-num);
+}
+.hoverChangeColorRed:hover{
+    color: red;
+}

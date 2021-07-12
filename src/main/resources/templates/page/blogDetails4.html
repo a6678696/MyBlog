@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="b">
+    <div class="ui grid" style="margin-top: 1px">
+        <div class="twelve wide column">
+            <h4 class="ui top attached block header">
+                <i class="fa fa-eye"></i>&nbsp;博客详情 <span>（点击图片可查看原图）</span>
+            </h4>
+            <div class="ui bottom attached segment orange">
+                <h3 th:text="${blog.title}" style="text-align: center;font-size: 20px"></h3>
+                <p style="color: gray;text-align: center"><span
+                        th:text="' 发布日期: '+${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}+' '"></span> |
+                    <span th:text="' 阅读次数: '+${blog.click}+' '"></span> | 点赞数: <span
+                            th:text="${blog.likeNum}"></span> | 所属类别:
+                    <a th:href="${'/index?blogTypeId='+blog.blogType.id}" style="color: grey"
+                       class="status-icon hint--top" th:aria-label="${'查看分类：'+blog.blogType.name}"><span
+                            th:text="${blog.blogType.name}"></span></a></p>
+                <span th:utext="${blog.content}" style="line-height: 22px"></span>
+                <p style="text-align: right;color: grey" th:if="${blogLastClickTime!=null}">
+                    本文上一次被查看时间&nbsp;:&nbsp;<span
+                        th:text="${#dates.format(blogLastClickTime,'yyyy-MM-dd HH:mm:ss')}"></span></p>
+                <p style="text-align: center"><img th:src="@{/static/images/end.png}" id="img3" style="height: 55px"
+                                                   alt=""></p>
+                <hr>
+                <span th:utext="${previousAndNextBlogCode4}"></span>
+                <p style="color: white">1</p>
+            </div>
+            <h4 class="ui top attached block header">
+                <i class="fa fa-comments-o"></i>&nbsp;评论信息<span style="float: right">***评论审核通过后方可在下方显示***</span>
+            </h4>
+            <div class="ui bottom attached segment orange">
+                <form class="ui reply form">
+                    <div class="field">
+                        <input type="text" id="commentBlogId" hidden="hidden" th:value="${blog.id}">
+                        <textarea rows="4" id="commentContent" name="content"
+                                  placeholder="请输入评论内容..."></textarea>
+                    </div>
+                    <a href="javascript:submitComment()">
+                        <button type="button" class="ui primary button">
+                            提交
+                        </button>
+                    </a>
+                </form>
+                <hr style="height:5px;border:none;border-top:2px dotted #1296db;" th:if="${commentList.size()>0}">
+                <div class="ui minimal comments" th:if="${commentList.size()>0}">
+                    <div th:each="comment:${commentList}">
+                        <div class="comment">
+                            <a class="avatar">
+                                <img class="img4" th:src="@{'/static/images/userImage/'+${comment.imageName}}">
+                            </a>
+                            <div class="content">
+                                <a class="author">评论人IP地址: <span th:text="${comment.ip}"></span></a>
+                                <div class="metadata">
+                                    <span class="date"
+                                          th:text="${#dates.format(comment.date,'yyyy-MM-dd HH:mm:ss')}"></span>
+                                </div>
+                                <div class="text">
+                                    <p style="color: blue" th:text="${comment.content}"></p>
+                                </div>
+                            </div>
+                            <div class="comments" th:if="${comment.reply!=null&&comment.reply!=''}">
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img class="img4" th:src="@{/static/images/userImage/me.png}">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author" style="color: grey">站长回复</a>
+                                        <div class="text">
+                                            <span style="color: green" th:text="${comment.reply}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="four wide column">
+            <h4 class="ui top attached block header">
+                <i class="fa fa-leaf"></i>&nbsp;博客推荐
+            </h4>
+            <div class="orange ui bottom attached segment">
+                <p th:each="recommendBlog:${recommendBlogList}" th:if="${recommendBlogStat.count<=10}"><a class="ui blue circular label" th:href="${'/blog/'+recommendBlog.id}" th:data-tooltip="${'查看博客：'+recommendBlog.title}"
+                                                                                                          data-position="left center" th:text="${recommendBlogStat.index+1}"></a><a
+                        th:href="${'/blog/'+recommendBlog.id}"
+                        style="font-size: 15px" class="hoverChangeColorRed"
+                        th:data-tooltip="${'查看博客：'+recommendBlog.title}"
+                        data-position="left center" th:text="${#strings.abbreviate(recommendBlog.title,18)}"></a>
+            </div>
+            <h4 class="ui top attached block header">
+                <i class="fa fa-th-large"></i>&nbsp;按类别分类
+            </h4>
+            <div class="orange ui bottom attached segment">
+                <p th:each="blogType:${blogTypeList}"><a th:href="${'/index?blogTypeId='+blogType.id}"
+                                                         style="font-size: 15px" class="hoverChangeColorRed"
+                                                         th:data-tooltip="${'查看分类：'+blogType.name}"
+                                                         data-position="left center" th:text="${blogType.name}"></a><a
+                        th:class="${'ui '+blogType.color+' small label'}" th:text="${blogType.blogNum}"></a></p>
+            </div>
+            <h4 class="ui top attached block header">
+                <i class="fa fa-calendar"></i>&nbsp;按时间分类
+            </h4>
+            <div class="orange ui bottom attached segment">
+                <p th:each="blogCount:${blogCountList}"><a
+                        th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}" href="" style="font-size: 15px"
+                        class="hoverChangeColorRed"
+                        th:data-tooltip="${'查看分类：'+blogCount.releaseDateStr}"
+                        data-position="left center"
+                        th:text="${blogCount.releaseDateStr}"></a><a
+                        th:class="${'ui '+blogCount.color+' small label'}" th:text="${blogCount.blogCount}"></a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="h">
+    <img id="img1" th:src="@{/static/images/logo2.png}" height="66"/>
+    <iframe style="width: 400px;height: 60px;float: right" frameborder="0" scrolling="no" hspace="0"
+            src="https://i.tianqi.com/?c=code&a=getcode&id=35&site=34&icon=1"></iframe>
+    <div class="ui menu pointing" style="margin-top: -3px">
+        <a class="item active" style="font-size: 16px;color: #097dd2" th:if="${isHome!=null}">
+            首页
+        </a>
+        <a href="/" class="item" style="font-size: 16px;color: gray" th:if="${isHome==null}">
+            首页
+        </a>
+        <div th:each="menuBlog:${menuBlogList}">
+            <a class="item active" style="font-size: 16px;color: #097dd2" th:if="${menuBlogId == menuBlog.getId()}" th:text="${menuBlog.title}">
+            </a>
+            <a th:href="'/blog/'+${menuBlog.getId()}" class="item" style="font-size: 16px;color: gray"
+               th:if="${menuBlogId != menuBlog.getId()}" th:text="${menuBlog.title}">
+            </a>
+        </div>
+        <div class="right menu">
+            <div class="item">
+                <div class="ui action input">
+                    <form method="post" action="/blog/q">
+                        <div class="ui action input">
+                            <input id="q" name="q" required="required" th:value="${q}" type="text" placeholder="输入关键词...">
+                            <button class="ui icon button blue" type="submit">
+                                <i class="search icon"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="b">
+    <div class="ui grid" style="margin-top: 1px">
+        <div class="twelve wide column">
+            <h4 class="ui top attached block header">
+                <i class="fa fa-list"></i>&nbsp;博客列表
+            </h4>
+            <div class="ui bottom attached segment orange">
+                <div th:each="blog:${blogList}">
+                    <div th:class="${''+blog.blogType.color+' ui segment shadow'}" style="margin-top: 10px">
+                        <a th:class="${'ui '+blog.blogType.color+' ribbon label'}" style="font-size: 14px"
+                           th:text="${blog.blogType.name}" th:href="${'/index?blogTypeId='+blog.blogType.id}"></a>
+                        <h3><a th:data-tooltip="${'点击查看博客：'+blog.title}" th:href="'/blog/'+${blog.getId()}"
+                               data-position="top center" th:text="${blog.title}" class="hoverChangeColorRed"></a>
+                        </h3>
+                        <p style="color: gray">发布日期: <span
+                                th:text="${#dates.format(blog.releaseDate,'yyyy-MM-dd HH:mm:ss')}"></span> | 阅读次数: <span
+                                th:text="${blog.click}"></span> | 作者: LeDao</p>
+                        <a th:href="'/blog/'+${blog.getId()}" class="div111"><img class="ui left floated image indexFirstImage"
+                                                                                  width="222"
+                                                                                  th:src="@{${blog.imageName}}"
+                                                                                  th:if="${blog.imageName!=null}"></a>
+                        <p style="line-height: 25px;font-size: 15px"
+                           th:text="${#strings.abbreviate(blog.summary,600)}"></p>
+                        <div style="clear: both">
+                            <br>
+                            <a th:href="'/blog/'+${blog.getId()}" style="color: white">
+                                <button th:class="${'ui '+blog.blogType.color+' button small'}">查看详情</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;margin-top: 10px">
+                    <p th:utext="${pageCode}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="four wide column">
+            <h4 class="ui top attached block header">
+                <i class="fa fa-th-large"></i>&nbsp;按类别分类
+            </h4>
+            <div class="orange ui bottom attached segment">
+                <p th:each="blogType:${blogTypeList}"><a th:href="${'/index?blogTypeId='+blogType.id}"
+                                                         style="font-size: 15px" class="hoverChangeColorRed"
+                                                         th:data-tooltip="${'查看分类：'+blogType.name}"
+                                                         data-position="left center" th:text="${blogType.name}"></a><a
+                        th:class="${'ui '+blogType.color+' small label'}" th:text="${blogType.blogNum}"></a></p>
+            </div>
+            <h4 class="ui top attached block header">
+                <i class="fa fa-calendar"></i>&nbsp;按时间分类
+            </h4>
+            <div class="orange ui bottom attached segment">
+                <p th:each="blogCount:${blogCountList}"><a
+                        th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}" href="" style="font-size: 15px"
+                        th:data-tooltip="${'查看分类：'+blogCount.releaseDateStr}"
+                        data-position="left center" class="hoverChangeColorRed"
+                        th:text="${blogCount.releaseDateStr}"></a><a
+                        th:class="${'ui '+blogCount.color+' small label'}" th:text="${blogCount.blogCount}"></a></p>
+            </div>
+            <h4 class="ui top attached block header">
+                <i class="fa fa-television"></i>&nbsp;网站信息
+            </h4>
+            <div class="orange ui bottom attached segment">
+                <div>
+                    <p style="font-size: 15px"><a class="ui red circular label">1</a>本站运行总天数:&nbsp;<span th:text="${myWebSitRunDays}" style="color: grey"></span></p>
+                    <p style="font-size: 15px"><a class="ui orange circular label">2</a>访问本站的ip总数:&nbsp;<span th:text="${ipCount}" style="color: grey"></span></p>
+                    <p style="font-size: 15px"><a class="ui blue circular label">3</a>本站被访问总次数:&nbsp;<span th:text="${interviewCount}" style="color: grey"></span></p>
+                    <p style="font-size: 15px"><a class="ui yellow circular label">4</a>你当前的ip地址为:&nbsp;<span th:text="${thisIp}" style="color: grey"></span></p>
+                    <p style="font-size: 15px"><a class="ui pink circular label">5</a>你的ip访问本站总次数:&nbsp;<span th:text="${thisIpCount}" style="color: grey"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h4 class="ui top attached block header">
+        <i class="fa fa-send"></i>&nbsp;友情链接
+    </h4>
+    <div class="orange ui bottom attached segment">
+        <span th:each="link:${linkList}">
+                        <a th:href="${link.url}" target="_blank" style="text-decoration: none;margin-left: 6px"
+                           th:data-tooltip="${link.name}"
+                           data-position="top center" th:text="${link.name}"></a>
+                    </span>
+    </div>
+</div>
+</body>
+</html>

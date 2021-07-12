@@ -77,6 +77,10 @@ public class Blog {
      * 设置成为导航条文章的时间
      */
     private Date setMenuBlogDate;
+    /**
+     * 颜色
+     */
+    private String color;
 
     public Integer getId() {
         return id;
@@ -204,6 +208,14 @@ public class Blog {
 
     public void setSetMenuBlogDate(Date setMenuBlogDate) {
         this.setMenuBlogDate = setMenuBlogDate;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public static Blog jsonToEntity(String json) {

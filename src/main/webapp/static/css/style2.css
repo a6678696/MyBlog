@@ -68,19 +68,7 @@
     transform: scale(1.05);
 }
 
-/*鼠标悬停提示框(点赞博客)*/
-#mytitle {
-    position: absolute;
-    color: #ffffff;
-    max-width: 160px;
-    font-size: 14px;
-    padding: 4px;
-    background: rgba(40, 40, 40, 0.8);
-    border: solid 1px #e9f7f6;
-    border-radius: 5px;
-}
-
-/*右侧菜单鼠标悬停链接变色和变大*/
+/*右侧菜单鼠标悬停链接变色*/
 a.test:hover {
     color: red;
 }
@@ -94,88 +82,6 @@ a.blogTitleTest:hover {
 a.ahead:hover {
     color: red;
 }
-
-/*文字闪烁*/
-.box1 {
-    color: red;
-    animation: changeshadow 6s ease-in infinite;
-    -webkit-animation: changeshadow 6s linear infinite;
-    -moz-animation: changeshadow 6s linear infinite;
-    -ms-animation: changeshadow 6s linear infinite;
-    -o-animation: changeshadow 6s linear infinite;
-}
-
-@keyframes changeshadow {
-    0% {
-        text-shadow: 0 0 4px red
-    }
-    50% {
-        text-shadow: 0 0 40px red
-    }
-    100% {
-        text-shadow: 0 0 4px red
-    }
-}
-
-@-webkit-keyframes changeshadow {
-    0% {
-        text-shadow: 0 0 4px red
-    }
-    50% {
-        text-shadow: 0 0 40px red
-    }
-    100% {
-        text-shadow: 0 0 4px red
-    }
-}
-
-@-moz-keyframes changeshadow {
-    0% {
-        text-shadow: 0 0 4px red
-    }
-    50% {
-        text-shadow: 0 0 40px red
-    }
-    100% {
-        text-shadow: 0 0 4px red
-    }
-}
-
-@-ms-keyframes changeshadow {
-    0% {
-        text-shadow: 0 0 4px red
-    }
-    50% {
-        text-shadow: 0 0 40px red
-    }
-    100% {
-        text-shadow: 0 0 4px red
-    }
-}
-
-@-o-keyframes changeshadow {
-    0% {
-        text-shadow: 0 0 4px red
-    }
-    50% {
-        text-shadow: 0 0 40px red
-    }
-    100% {
-        text-shadow: 0 0 4px red
-    }
-}
-
-/*鼠标移入文字向右移动*/
-/*#div1 {
-    -webkit-transition: margin-left .8s;
-    -moz-transition: margin-left .8s;
-    -o-transition: margin-left .8s;
-
-}
-
-#div1:hover {
-    margin-left: 6px;
-}*/
 
 /*博客详情标题*/
 .title3 {

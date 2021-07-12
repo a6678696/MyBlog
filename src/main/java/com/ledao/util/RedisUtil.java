@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class RedisUtil {
 
-    private static final String HOST = "192.168.0.153";
+    private static final String HOST = "192.168.0.117";
     private static final Integer PORT = 6379;
     private static final String AUTH_PASSWORD = "123456";
 

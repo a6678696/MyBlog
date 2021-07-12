@@ -150,6 +150,9 @@ public class IndexController {
             Blog blog22 = Blog.jsonToEntity(s);
             blogCountList.add(blog22);
         }
+        for (int i = 0; i < blogCountList.size(); i++) {
+            blogCountList.get(i).setColor(blogTypeList.get(i).getColor());
+        }
         StringBuffer param = new StringBuffer();
         if (StringUtil.isNotEmpty(blogTypeId)) {
             param.append("&blogTypeId=" + blogTypeId);
@@ -175,6 +178,8 @@ public class IndexController {
             mav.addObject("pageCode", PageUtil.genPagination2("/index", total, page, pageSize, param.toString()));
         } else if (3 == StringUtil.readSkin()) {
             mav.addObject("pageCode", PageUtil.genPagination3("/index", total, page, pageSize, param.toString()));
+        } else if (4 == StringUtil.readSkin()) {
+            mav.addObject("pageCode", PageUtil.genPagination4("/index", total, page, pageSize, param.toString()));
         }
         mav.addObject("mainPageKey", "#b");
         mav.setViewName("index" + StringUtil.readSkin());
@@ -263,6 +268,9 @@ public class IndexController {
             Blog blog22 = Blog.jsonToEntity(s);
             blogCountList.add(blog22);
         }
+        for (int i = 0; i < blogCountList.size(); i++) {
+            blogCountList.get(i).setColor(blogTypeList.get(i).getColor());
+        }
         //是第一页
         if ((page == 1 || page == null)) {
             //不是按类别和时间分类
@@ -285,6 +293,8 @@ public class IndexController {
             mav.addObject("pageCode", PageUtil.genPagination2("/index", total, page, pageSize, param.toString()));
         } else if (3 == StringUtil.readSkin()) {
             mav.addObject("pageCode", PageUtil.genPagination3("/index", total, page, pageSize, param.toString()));
+        } else if (4 == StringUtil.readSkin()) {
+            mav.addObject("pageCode", PageUtil.genPagination4("/index", total, page, pageSize, param.toString()));
         }
         mav.addObject("mainPage", "page/indexFirst" + StringUtil.readSkin());
         if (ipForBannedService.findByIp(request.getRemoteAddr()) != null) {
@@ -400,7 +410,7 @@ public class IndexController {
     @RequestMapping("/changeSkin")
     public Map<String, Object> changeSkin(String skin) throws IOException {
         Map<String, Object> resultMap = new HashMap<>(16);
-        if (!skin.equals("1") && !skin.equals("2") && !skin.equals("3")) {
+        if (!skin.equals("1") && !skin.equals("2") && !skin.equals("3")&& !skin.equals("4")) {
             skin = "2";
         }
         StringUtil.updateSkin(skin);

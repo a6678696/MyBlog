@@ -24,6 +24,10 @@ public class BlogType {
      */
     private Integer sortNum;
     /**
+     * 颜色
+     */
+    private String color;
+    /**
      * 该类别的博客数量
      */
     private Long blogNum;
@@ -60,12 +64,21 @@ public class BlogType {
         this.blogNum = blogNum;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
         return "BlogType{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", sortNum=" + sortNum +
+                ", color='" + color + '\'' +
                 ", blogNum=" + blogNum +
                 '}';
     }

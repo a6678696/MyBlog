@@ -145,4 +145,55 @@ public class PageUtil {
             return pageCode.toString();
         }
     }
+
+    /**
+     * 生成分页代码
+     *
+     * @param targetUrl   目标地址
+     * @param totalNum    总记录数
+     * @param currentPage 当前页
+     * @param pageSize    每页大小
+     * @return
+     */
+    public static String genPagination4(String targetUrl, long totalNum, int currentPage, int pageSize, String param) {
+        //当前页前后页的显示数量
+        int pageTotal = 2;
+        long totalPage = totalNum % pageSize == 0 ? totalNum / pageSize : totalNum / pageSize + 1;
+        if (totalPage == 0) {
+            return "未查询到数据";
+        } else {
+            StringBuffer pageCode = new StringBuffer();
+            if (currentPage == 1) {
+                pageCode.append("<a><div class='ui primary basic button'>首页</div></a>");
+            } else {
+                pageCode.append("<a href='" + targetUrl + "?page=1" + param + "'><div class='ui primary basic button'>首页</div></a>");
+            }
+            if (currentPage > 1) {
+                pageCode.append("<a href='" + targetUrl + "?page=" + (currentPage - 1) + param + "'><div class='ui primary basic button'>«</div></a>");
+            } else {
+                pageCode.append("<a><div class='ui primary basic button'>«</div></a>");
+            }
+            for (int i = currentPage - pageTotal; i <= currentPage + pageTotal; i++) {
+                if (i < 1 || i > totalPage) {
+                    continue;
+                }
+                if (i == currentPage) {
+                    pageCode.append("<a><div class='ui button primary '>" + i + "</div></a>");
+                } else {
+                    pageCode.append("<a href='" + targetUrl + "?page=" + i + param + "'><div class='ui primary basic button'>" + i + "</div></a>");
+                }
+            }
+            if (currentPage < totalPage) {
+                pageCode.append("<a href='" + targetUrl + "?page=" + (currentPage + 1) + param + "'><div class='ui primary basic button'>»</div></a>");
+            } else {
+                pageCode.append("<a><div class='ui primary basic button'>»</div></a>");
+            }
+            if (currentPage == totalPage) {
+                pageCode.append("<a><div class='ui primary basic button'>尾页</div></a>");
+            } else {
+                pageCode.append("<a href='" + targetUrl + "?page=" + totalPage + param + "'><div class='ui primary basic button'>尾页</div></a>");
+            }
+            return pageCode.toString();
+        }
+    }
 }

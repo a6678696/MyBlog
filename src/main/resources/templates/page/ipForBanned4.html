@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="b">
+    <div class="ui grid" style="margin-top: 1px">
+        <div class="sixteen wide column">
+            <h4 class="ui top attached block header">
+                <i class="fa fa-window-close-o"></i>&nbsp;错误信息
+            </h4>
+            <div class="ui bottom attached segment">
+                <h3 style="color: red" th:if="${ipNow!=null}">你的ip地址为：<span style="color: #0c9076" th:text="${ipNow}"></span></h3>
+                <h3 style="color: red">看到此页面，说明你的ip被封禁了，被封禁原因：</h3>
+                <h3 style="color: red">①你的ip短时间内高频率访问本站，被系统自动封禁</h3>
+                <h3 style="color: red">②站长手动封禁</h3>
+                <h3 style="color: blue">解决办法：</h3>
+                <h3 style="color: blue">①更换你的ip地址</h3>
+                <h3 style="color: blue">②给我发邮件去后台解除封禁（给我发送第一行文本的ip地址，绿色字体部分），邮箱地址：3519577180@qq.com</h3>
+            </div>
+        </div>
+    </div>
+    <h4 class="ui top attached block header">
+        <i class="fa fa-send"></i>&nbsp;友情链接
+    </h4>
+    <div class="orange ui bottom attached segment">
+        <span th:each="link:${linkList}">
+                        <a th:href="${link.url}" target="_blank" style="text-decoration: none;margin-left: 6px"
+                           th:data-tooltip="${link.name}"
+                           data-position="top center" th:text="${link.name}"></a>
+                    </span>
+    </div>
+</div>
+</body>
+</html>

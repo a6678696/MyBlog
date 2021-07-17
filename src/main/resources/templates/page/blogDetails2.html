@@ -14,11 +14,11 @@
                     <h3 class="panel-title">
                         <i class="fa fa-eye"></i>&nbsp;博客详情 <span>（点击图片可查看原图）</span>
                         <a id="like1" href="javascript:like()" th:if="${blog.isLike==null}" class="status-icon hint--top" aria-label="点赞这篇博客" style="float: right;color: red">
-                            <button>
+                            <button id="likeButton" data-toggle="modal" data-target="#myModal">
                                 <i id="i1" class="fa fa-thumbs-o-up"></i>
                             </button>
                         </a>
-                        <a href="#" th:if="${blog.isLike==1}" class="status-icon  hint--top" aria-label="你已经点赞过这篇博客" style="float: right;color: blue">
+                        <a th:if="${blog.isLike==1}" class="status-icon  hint--top" aria-label="你已经点赞过这篇博客" style="float: right;color: blue">
                             <button>
                                 <i class="fa fa-thumbs-up"></i>
                             </button>
@@ -56,7 +56,7 @@
                                       placeholder="请输入评论内容..."></textarea>
                             <input type="text" id="commentBlogId" hidden="hidden" th:value="${blog.id}">
                             <a href="javascript:submitComment()">
-                                <button type="button" class="btn btn-primary btn11" style="margin-top: 8px;">立即提交
+                                <button type="button" class="btn btn-primary btn11" style="margin-top: 8px;" data-toggle="modal" data-target="#myModal">立即提交
                                 </button>
                             </a>
                         </fieldset>
@@ -92,9 +92,9 @@
                 </div>
                 <div class="panel-body">
                     <div th:each="recommendBlog:${recommendBlogList}" th:if="${recommendBlogStat.count<=10}">
-                        <p><a th:href="${'/blog/'+recommendBlog.id}" th:title="${recommendBlog.title}"
+                        <p><a th:href="${'/blog/'+recommendBlog.id}"
                               th:text="${#strings.abbreviate(recommendBlog.title,18)}" style="text-decoration: none"
-                              class="test status-icon  hint--top" th:aria-label="${recommendBlog.title}"></a></p>
+                              class="test status-icon  hint--left" th:aria-label="${'查看博客：'+recommendBlog.title}"></a></p>
                     </div>
                 </div>
             </div>
@@ -107,8 +107,8 @@
                 <div class="panel-body">
                     <div th:each="blogType:${blogTypeList}">
                         <p><a th:href="${'/index?blogTypeId='+blogType.id}"
-                              th:text="${blogType.name}" style="text-decoration: none" th:aria-label="${blogType.name}"
-                              class="test status-icon  hint--top"></a><span class="label label-primary" th:text="${blogType.blogNum}"></span>
+                              th:text="${blogType.name}" style="text-decoration: none" th:aria-label="${'查看分类：'+blogType.name}"
+                              class="test status-icon  hint--left"></a><span class="label label-primary" th:text="${blogType.blogNum}"></span>
                         </p>
                     </div>
                 </div>
@@ -122,14 +122,36 @@
                 <div class="panel-body">
                     <div th:each="blogCount:${blogCountList}">
                         <p><a th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}"
-                              th:text="${blogCount.releaseDateStr}" th:aria-label="${blogCount.releaseDateStr}"
-                              style="text-decoration: none" class="test status-icon  hint--top"></a><span class="label label-primary"
+                              th:text="${blogCount.releaseDateStr}" th:aria-label="${'查看分类：'+blogCount.releaseDateStr}"
+                              style="text-decoration: none" class="test status-icon  hint--left"></a><span class="label label-primary"
                                                                                    th:text="${blogCount.blogCount}"></span>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        来自 <span style="color: red">LeDao的博客</span> 的提示
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <strong id="blogDetailsModal" style="color: blue;font-size: 16px"></strong>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">关闭
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
     </div>
 </div>
 

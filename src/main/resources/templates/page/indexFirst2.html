@@ -23,7 +23,7 @@
                                 <div>
                                     <div id="div1">
                                         <a id="div1" th:href="'/blog/'+${blog.getId()}" style="text-decoration: none"
-                                           class="blogTitleTest status-icon  hint--top" th:aria-label="${blog.title}">
+                                           class="blogTitleTest status-icon  hint--top" th:aria-label="'查看博客：'+${blog.title}">
                                             <h4
                                                     th:text="${blog.title}"></h4></a>
                                     </div>
@@ -74,8 +74,8 @@
                 <div class="panel-body">
                     <div th:each="blogType:${blogTypeList}">
                         <p><a th:href="${'/index?blogTypeId='+blogType.id}"
-                              th:text="${blogType.name}" style="text-decoration: none" th:aria-label="${blogType.name}"
-                              class="test status-icon  hint--top"></a><span class="label label-primary"
+                              th:text="${blogType.name}" style="text-decoration: none" th:aria-label="${'查看分类：'+blogType.name}"
+                              class="test status-icon hint--left"></a><span class="label label-primary"
                                                                             th:text="${blogType.blogNum}"></span>
                         </p>
                     </div>
@@ -91,8 +91,8 @@
                     <div th:each="blogCount:${blogCountList}">
                         <p><a th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}"
                               th:text="${blogCount.releaseDateStr}"
-                              style="text-decoration: none" class="test status-icon  hint--top"
-                              th:aria-label="${blogCount.releaseDateStr}"></a><span class="label label-primary"
+                              style="text-decoration: none" class="test status-icon  hint--left"
+                              th:aria-label="${'查看分类：'+blogCount.releaseDateStr}"></a><span class="label label-primary"
                                                                                     th:text="${blogCount.blogCount}"></span>
                         </p>
                     </div>

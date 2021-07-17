@@ -2,16 +2,16 @@ function submitComment() {
     var content = $("#commentContent").val();
     var blogId = $("#commentBlogId").val();
     if (content == null || content == '') {
-        alert("请输入评论内容!!");
+        $("#blogDetailsModal").text("请输入评论内容!!");
         return false;
     }
     $.post("/comment/add", {content: content, blogId: blogId},
         function (result) {
             if (result.success) {
-                alert("评论成功,审核通过后方可在下方显示!!");
+                $("#blogDetailsModal").text("评论成功,审核通过后方可在下方显示!!");
                 $("#commentContent").val("");
             } else {
-                alert(result.errorInfo);
+                $("#blogDetailsModal").text(result.errorInfo);
             }
         }
     );
@@ -23,9 +23,11 @@ function like() {
     $.post("/like/add", {blogId: blogId},
         function (result) {
             if (result.success) {
-                alert("点赞成功!!");
+                $("#blogDetailsModal").text("点赞成功!!");
                 $("#like1").removeAttr("href");
                 $("#like1").attr("href", "#");
+                $("#likeButton").removeAttr("data-toggle");
+                $("#likeButton").removeAttr("data-target");
                 $("#like1").removeAttr("aria-label");
                 $("#like1").attr("aria-label", "你已经点赞过这篇博客");
                 $("#like1").removeAttr("style");
@@ -33,7 +35,7 @@ function like() {
                 $("#i1").removeAttr("class");
                 $("#i1").attr("class", "fa fa-thumbs-up");
             } else {
-                alert("点赞失败!!");
+                $("#blogDetailsModal").text("点赞失败!!");
             }
         }
     );
@@ -87,7 +89,7 @@ $(document).ready(function () {
     $(".imgdiv").mouseout(function () {
         $(".imgsrc").attr("src", "/static/images/top2.png");
     });
-    $("table").addClass("table table-striped table-hover");
+    $("table").addClass("table table-striped table-hover table-bordered");
     $("pre code").css("font-size", "17px");
     $.ajax({
         url: "/readCodeFamily",

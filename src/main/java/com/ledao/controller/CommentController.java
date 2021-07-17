@@ -68,7 +68,7 @@ public class CommentController {
         //已经评论了5次
         if (commentService.getTodayCommentCount(comment.getIp()) >= maxCommentCount) {
             resultMap.put("success", false);
-            resultMap.put("errorInfo", "你今天已经评论了5次" + "\n" + "每天最多评论5次，每日0点重置");
+            resultMap.put("errorInfo", "你今天已经评论了5次" + "，" + "每天最多评论5次，每日0点重置");
         } else {
             //5分钟内评论了一次
             if (commentService.getLastFiveMinutesCommentCount(comment.getIp()) > 0) {
@@ -76,7 +76,7 @@ public class CommentController {
                 map.put("ip", comment.getIp());
                 List<Comment> commentList = commentService.list(map);
                 resultMap.put("success", false);
-                resultMap.put("errorInfo", "5分钟内只能评论一次" + "\n" + "上一次评论时间为：" + DateUtil.dateFormat(commentList.get(0).getDate()));
+                resultMap.put("errorInfo", "5分钟内只能评论一次" + "，" + "上一次评论时间为：" + DateUtil.dateFormat(commentList.get(0).getDate()));
             } else {
                 Integer key = commentService.add(comment);
                 //成功评论
@@ -87,8 +87,8 @@ public class CommentController {
                     String isSendMail = "1";
                     if (isSendMail.equals(sendMailStatus)) {
                         SimpleMailMessage mailMessage = new SimpleMailMessage();
-                        mailMessage.setFrom("@qq.com");
-                        mailMessage.setTo("@qq.com");
+                        mailMessage.setFrom("3519577180@qq.com");
+                        mailMessage.setTo("1203007469@qq.com");
                         mailMessage.setSubject("LeDao的博客");
                         mailMessage.setText("有人给你评论了，内容为：" + content);
                         javaMailSender.send(mailMessage);

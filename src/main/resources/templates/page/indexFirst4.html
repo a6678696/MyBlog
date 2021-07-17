@@ -84,7 +84,7 @@
     <div class="orange ui bottom attached segment">
         <span th:each="link:${linkList}">
                         <a th:href="${link.url}" target="_blank" style="text-decoration: none;margin-left: 6px"
-                           th:data-tooltip="${link.name}"
+                           th:data-tooltip="${link.name}" class="hoverChangeColorRed"
                            data-position="top center" th:text="${link.name}"></a>
                     </span>
     </div>

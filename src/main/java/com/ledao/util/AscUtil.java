@@ -8,10 +8,10 @@ package com.ledao.util;
 public class AscUtil {
 
     /**
-     * 用户名解密
+     * 解密
      *
      * @param ssoToken 字符串
-     * @return String 返回加密字符串
+     * @return String 返回解密字符串
      */
     public static String decrypt(String ssoToken) {
         try {
@@ -30,7 +30,7 @@ public class AscUtil {
     }
 
     /**
-     * 用户名加密
+     * 加密
      *
      * @param ssoToken 字符串
      * @return String 返回加密字符串

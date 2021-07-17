@@ -1789,14 +1789,14 @@ kbd kbd {
     box-shadow: none
 }
 
-pre code {
+/*pre code {
     padding: 0;
     font-size: inherit;
     color: inherit;
     white-space: pre-wrap;
     background-color: transparent;
     border-radius: 0
-}
+}*/
 
 .pre-scrollable {
     max-height: 340px;

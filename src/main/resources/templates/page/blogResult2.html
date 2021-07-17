@@ -55,8 +55,8 @@
                 <div class="panel-body">
                     <div th:each="blogType:${blogTypeList}">
                         <p><a th:href="${'/index?blogTypeId='+blogType.id}"
-                              th:text="${blogType.name}" style="text-decoration: none" th:aria-label="${blogType.name}"
-                              class="test status-icon  hint--top"></a><span class="label label-primary"
+                              th:text="${blogType.name}" style="text-decoration: none" th:aria-label="${'查看分类：'+blogType.name}"
+                              class="test status-icon  hint--left"></a><span class="label label-primary"
                                                                             th:text="${blogType.blogNum}"></span></p>
                     </div>
                 </div>
@@ -70,8 +70,8 @@
                 <div class="panel-body">
                     <div th:each="blogCount:${blogCountList}">
                         <p><a th:href="${'/index?releaseDateStr='+blogCount.releaseDateStr}"
-                              th:text="${blogCount.releaseDateStr}" th:aria-label="${blogCount.releaseDateStr}"
-                              style="text-decoration: none" class="test status-icon  hint--top"></a><span
+                              th:text="${blogCount.releaseDateStr}" th:aria-label="${'查看分类：'+blogCount.releaseDateStr}"
+                              style="text-decoration: none" class="test status-icon  hint--left"></a><span
                                 class="label label-primary" th:text="${blogCount.blogCount}"></span></p>
                     </div>
                 </div>

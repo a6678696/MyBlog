@@ -1,0 +1,9 @@
+.hljs-button{
+    font-size: 11px;
+    color: #0b0b0b;
+}
+
+.hljs-button:hover{
+    color: white;
+    background-color: #6eb9f1;
+}

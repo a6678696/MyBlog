@@ -17,18 +17,18 @@
     <link rel="stylesheet" th:href="@{/static/css/magnific-popup.css}">
     <link rel="stylesheet" th:href="@{/static/css/style3.css}">
     <link rel="stylesheet" th:href="@{/static/css/responsive.css}">
-    <link rel="stylesheet" href="http://cdn.zoutl.cn/static/css/highlight/highlight.line-numbers.css">
-    <link rel="stylesheet" href="http://cdn.zoutl.cn/static/css/highlight/highlightjs-copy-button.css">
+    <link rel="stylesheet" href="/static/css/highlight.line-numbers.css">
+    <link rel="stylesheet" href="/static/css/highlightjs-copy-button.css">
     <!--代码高亮样式-->
     <link rel="stylesheet"
           th:href="@{'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/'+${codeStyle==null?'androidstudio':codeStyle}+'.min.css'}">
-    <!--行号js文件-->
-    <script src="http://cdn.zoutl.cn/static/js/highlight/highlight.line-numbers.js"></script>
     <!--代码高亮js文件-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <!--行号js文件-->
+    <script src="/static/js/highlight.line-numbers.js"></script>
     <!--代码复制-->
-    <script src="http://cdn.zoutl.cn/static/js/highlight/highlightjs-copy-button.js"></script>
-    <script src="http://cdn.zoutl.cn/static/js/highlight/highlightjs-copy-button.min.js"></script>
+    <script src="/static/js/highlightjs-copy-button.js"></script>
+    <script src="/static/js/highlightjs-copy-button.min.js"></script>
     <!--初始化-->
     <script>
         hljs.initHighlightingOnLoad();//代码高亮

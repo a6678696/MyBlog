@@ -28,145 +28,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fec843a-29ca-4ceb-a0fc-1724b3e235ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ledao/entity/Tobacco.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/tobaccoPage2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/tobaccoPage4.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/js/highlightjs-copy-button.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/js/highlightjs-copy-button.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/highlight.line-numbers.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/highlightjs-copy-button.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyBlog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MyBlog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/BlogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/head4.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/common/head4.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index3.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index4.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page/blogDetails4.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page/blogDetails4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/ckeditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/ckeditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/dialogs/codesnippet.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/icons/codesnippet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/icons/hidpi/codesnippet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/ar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/az.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/bg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/cs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/da.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/de-ch.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/de.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/el.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/en-au.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/en-gb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/eo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/es-mx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/es.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/et.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/eu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/fa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/fi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/fr-ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/fr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/gl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/he.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/hr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/hu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/id.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/it.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/ja.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/km.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/ko.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/ku.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/lt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/lv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/nb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/nl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/no.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/oc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/pl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/pt-br.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/pt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/ro.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/ru.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/sk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/sl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/sq.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/sr-latn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/sr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/sv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/th.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/tr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/tt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/ug.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/uk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/vi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/zh-cn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lang/zh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/CHANGES.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/README.ru.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/arta.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/ascetic.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-dune.dark.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-dune.light.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-forest.dark.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-forest.light.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-heath.dark.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-heath.light.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-lakeside.dark.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-lakeside.light.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-seaside.dark.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-seaside.light.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/brown_paper.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/brown_papersq.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/dark.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/docco.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/far.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/foundation.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/github.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/googlecode.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/idea.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/ir_black.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/magula.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/mono-blue.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/monokai.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/obsidian.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/paraiso.dark.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/paraiso.light.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/pojoaque.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/pojoaque.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/railscasts.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/rainbow.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/solarized_dark.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/solarized_light.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/sunburst.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night-blue.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night-bright.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night-eighties.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/vs.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/xcode.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/lib/highlight/styles/zenburn.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/ckeditor/plugins/codesnippet/samples/codesnippet.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/style2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/style2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/style3.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/style3.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/style4.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/style4.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/my.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/my.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/my4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/my4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/myConfig.setting" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/myConfig.setting" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,8 +94,8 @@
         <option value="Interface" />
         <option value="JavaScript File" />
         <option value="Class" />
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -386,13 +256,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -975,14 +847,8 @@
       <workItem from="1626806618742" duration="158000" />
       <workItem from="1626806793876" duration="1528000" />
       <workItem from="1626832782341" duration="92000" />
-      <workItem from="1626921228486" duration="3641000" />
-    </task>
-    <task id="LOCAL-00004" summary="LeDao的博客">
-      <created>1599755895513</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1599755895514</updated>
+      <workItem from="1626921228486" duration="6096000" />
+      <workItem from="1626930602092" duration="1341000" />
     </task>
     <task id="LOCAL-00005" summary="LeDao的博客">
       <created>1599844204862</created>
@@ -1320,7 +1186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626499464587</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="LeDao的博客">
+      <created>1626925195894</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1626925195894</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

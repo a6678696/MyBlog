@@ -2,16 +2,48 @@ function submitComment() {
     var content = $("#commentContent").val();
     var blogId = $("#commentBlogId").val();
     if (content == null || content == '') {
-        alert("请输入评论内容!!");
+        $('.ui.modal')
+            .modal('show')
+        ;
+        $("#blogDetailsModal").text("请输入评论内容!!");
         return false;
     }
     $.post("/comment/add", {content: content, blogId: blogId},
         function (result) {
             if (result.success) {
-                alert("评论成功,审核通过后方可在下方显示!!");
+                $('.ui.modal')
+                    .modal('show')
+                ;
+                $("#blogDetailsModal").text("评论成功,审核通过后方可在下方显示!!");
                 $("#commentContent").val("");
             } else {
-                alert(result.errorInfo);
+                $('.ui.modal')
+                    .modal('show')
+                ;
+                $("#blogDetailsModal").text(result.errorInfo);
+            }
+        }
+    );
+}
+
+function getResult() {
+    var content = $("#resultContent").val();
+    if (content == null || content == '') {
+        alert("请输入网页源代码!!");
+        return false;
+    }
+    if (content.indexOf("<title>新商盟</title>") == -1) {
+        $("#resultContent").val("");
+        alert("你的输入不正确,请输入完整的网页源代码!!");
+        return false;
+    }
+    $.post("/getResult", {str: content},
+        function (result) {
+            if (result.success) {
+                $("#resultContent").val(result.result);
+            } else {
+                alert("你的输入错误,请输入完整的源代码!!");
+                $("#resultContent").val();
             }
         }
     );

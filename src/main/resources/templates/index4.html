@@ -4,19 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${title}"></title>
-    <link rel="stylesheet" th:href="@{/static/Semantic-UI-CSS-master/semantic.min.css}">
+    <link rel="short icon" th:href="@{/static/images/favicon.ico}">
     <link rel="stylesheet" th:href="@{/static/css/style4.css}">
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
-    <link rel="short icon" th:href="@{/static/images/favicon.ico}">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="http://cdn.zoutl.cn/static/css/highlight/highlight.line-numbers.css">
+    <link rel="stylesheet" href="http://cdn.zoutl.cn/static/css/highlight/highlightjs-copy-button.css">
+    <script th:src="@{/static/js/my4.js}"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/semantic-ui/2.4.1/semantic.min.js"></script>
     <link rel="stylesheet"
           th:href="@{'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/'+${codeStyle==null?'androidstudio':codeStyle}+'.min.css'}">
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script th:src="@{/static/Semantic-UI-CSS-master/semantic.min.js}"></script>
-    <script th:src="@{/static/js/my4.js}"></script>
-    <script th:src="@{/static/js/highlight.line-numbers.js}"></script>
+    <script src="http://cdn.zoutl.cn/static/js/highlight/highlight.line-numbers.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script src="http://cdn.zoutl.cn/static/js/highlight/highlightjs-copy-button.js"></script>
+    <script src="http://cdn.zoutl.cn/static/js/highlight/highlightjs-copy-button.min.js"></script>
     <script>hljs.initHighlightingOnLoad();
-    hljsln.initLineNumbersOnLoad();</script>
+    hljsln.initLineNumbersOnLoad();
+    hljs.initCopyButtonOnLoad();
+    </script>
 </head>
 <body>
 <a href="#gotop" class="imgdiv">

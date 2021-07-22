@@ -6,19 +6,25 @@
     <title th:text="${title}"></title>
     <link rel="stylesheet" th:href="@{/static/css/my.css}">
     <link rel="stylesheet" th:href="@{/static/css/hint.css}">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" th:href="@{/static/css/style2.css}">
     <link rel="short icon" th:href="@{/static/images/favicon.ico}">
-    <link rel="stylesheet"
-          th:href="@{'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/'+${codeStyle==null?'androidstudio':codeStyle}+'.min.css'}">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="http://cdn.zoutl.cn/static/css/highlight/highlight.line-numbers.css">
+    <link rel="stylesheet" href="http://cdn.zoutl.cn/static/css/highlight/highlightjs-copy-button.css">
+    <script th:src="@{/static/js/my.js}"></script>
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script th:src="@{/static/js/my.js}"></script>
-    <script th:src="@{/static/js/highlight.line-numbers.js}"></script>
+    <link rel="stylesheet"
+          th:href="@{'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/'+${codeStyle==null?'androidstudio':codeStyle}+'.min.css'}">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script src="http://cdn.zoutl.cn/static/js/highlight/highlight.line-numbers.js"></script>
+    <script src="http://cdn.zoutl.cn/static/js/highlight/highlightjs-copy-button.js"></script>
+    <script src="http://cdn.zoutl.cn/static/js/highlight/highlightjs-copy-button.min.js"></script>
     <script>hljs.initHighlightingOnLoad();
-    hljsln.initLineNumbersOnLoad();</script>
+    hljsln.initLineNumbersOnLoad();
+    hljs.initCopyButtonOnLoad();
+    </script>
 </head>
 <body style="background-color: #b9d5e7">
 <a class="imgdiv" href="#gotop">

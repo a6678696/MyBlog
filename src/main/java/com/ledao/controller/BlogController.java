@@ -132,8 +132,19 @@ public class BlogController {
         mav.addObject("title", blog.getTitle() + "--LeDao的博客");
         mav.addObject("mainPage", "page/blogDetails" + StringUtil.readSkin());
         mav.addObject("mainPageKey", "#b");
-        mav.addObject("previousAndNextBlogCode", getPreviousAndNextBlogCode(blogService.getPreviousBlog(id), blogService.getNextBlog(id)));
-        mav.addObject("previousAndNextBlogCode4", getPreviousAndNextBlogCode4(blogService.getPreviousBlog(id), blogService.getNextBlog(id)));
+        switch (StringUtil.readSkin()) {
+            case 2:
+            case 3:
+                //皮肤2和3使用
+                mav.addObject("previousAndNextBlogCode", getPreviousAndNextBlogCode(blogService.getPreviousBlog(id), blogService.getNextBlog(id)));
+                break;
+            case 4:
+                //皮肤4使用
+                mav.addObject("previousAndNextBlogCode4", getPreviousAndNextBlogCode4(blogService.getPreviousBlog(id), blogService.getNextBlog(id)));
+                break;
+            default:
+                break;
+        }
         mav.setViewName("index" + StringUtil.readSkin());
         InterviewRecord interviewRecord = new InterviewRecord(request.getRemoteAddr(), "查看博客：" + blog.getTitle());
         interviewRecord.setTrueAddress(AddressUtil.getAddress2(interviewRecord.getInterviewerIp()));
@@ -266,14 +277,21 @@ public class BlogController {
         //算出第一页到当前页的总记录条数
         Integer toIndex = blogList.size() >= Integer.parseInt(page) * pageSize ? Integer.parseInt(page) * pageSize : blogList.size();
         mav.addObject("blogList", blogList.subList((Integer.parseInt(page) - 1) * pageSize, toIndex));
-        if (1 == StringUtil.readSkin()) {
-            mav.addObject("pageCode", this.genUpAndDownPageCode(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
-        } else if (2 == StringUtil.readSkin()) {
-            mav.addObject("pageCode", this.genUpAndDownPageCode2(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
-        } else if (3 == StringUtil.readSkin()) {
-            mav.addObject("pageCode", this.genUpAndDownPageCode3(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
-        }else if (4 == StringUtil.readSkin()) {
-            mav.addObject("pageCode", this.genUpAndDownPageCode4(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
+        switch (StringUtil.readSkin()) {
+            case 1:
+                mav.addObject("pageCode", this.genUpAndDownPageCode(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
+                break;
+            case 2:
+                mav.addObject("pageCode", this.genUpAndDownPageCode2(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
+                break;
+            case 3:
+                mav.addObject("pageCode", this.genUpAndDownPageCode3(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
+                break;
+            case 4:
+                mav.addObject("pageCode", this.genUpAndDownPageCode4(Integer.parseInt(page), blogList.size(), q, pageSize, request.getServletContext().getContextPath()));
+                break;
+            default:
+                break;
         }
         mav.addObject("q", q);
         mav.addObject("menuBlogList", blogService.getMenuBlogList());

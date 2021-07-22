@@ -6,6 +6,8 @@
 CKEDITOR.editorConfig = function (config) {
     // Define changes to default configuration here. For example:
     // config.language = 'fr';
+    //设置宽度
+    config.width=966;
     //编辑器颜色
     config.uiColor = '#daeef5';
     //上传图片路径

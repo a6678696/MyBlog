@@ -17,6 +17,29 @@ function submitComment() {
     );
 }
 
+function getResult() {
+    var content = $("#resultContent").val();
+    if (content == null || content == '') {
+        alert("请输入网页源代码!!");
+        return false;
+    }
+    if (content.indexOf("<title>新商盟</title>") == -1) {
+        $("#resultContent").val("");
+        alert("你的输入不正确,请输入完整的网页源代码!!");
+        return false;
+    }
+    $.post("/getResult", {str: content},
+        function (result) {
+            if (result.success) {
+                $("#resultContent").val(result.result);
+            } else {
+                alert("你的输入错误,请输入完整的源代码!!");
+                $("#resultContent").val();
+            }
+        }
+    );
+}
+
 //用户点赞博客
 function like() {
     var blogId = $("#commentBlogId").val();
@@ -90,7 +113,6 @@ $(document).ready(function () {
         $(".imgsrc").attr("src", "/static/images/top2.png");
     });
     $("table").addClass("table table-striped table-hover table-bordered");
-    $("pre code").css("font-size", "17px");
     $.ajax({
         url: "/readCodeFamily",
         type: "post",
@@ -103,9 +125,6 @@ $(document).ready(function () {
     $('pre code').each(function (i, block) {
         hljs.highlightBlock(block);
     });
-    $("p span strong").css("background", "#337ab7");
-    $("p span strong").css("color", "white");
-    $("p span strong").css("font-size", "16px");
 });
 
 //图片放大

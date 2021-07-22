@@ -47,7 +47,7 @@
                         </button>
                     </a>
                 </form>
-                <hr style="height:5px;border:none;border-top:2px dotted #1296db;" th:if="${commentList.size()>0}">
+                <hr style="height:5px;border:none;border-top:2px dotted #1296db;margin-top: 20px" th:if="${commentList.size()>0}">
                 <div class="ui minimal comments" th:if="${commentList.size()>0}">
                     <div th:each="comment:${commentList}">
                         <div class="comment">
@@ -55,24 +55,21 @@
                                 <img class="img4" th:src="@{'/static/images/userImage/'+${comment.imageName}}">
                             </a>
                             <div class="content">
-                                <a class="author">评论人IP地址: <span th:text="${comment.ip}"></span></a>
-                                <div class="metadata">
-                                    <span class="date"
-                                          th:text="${#dates.format(comment.date,'yyyy-MM-dd HH:mm:ss')}"></span>
-                                </div>
+                                <a class="author">评论人IP地址: <span th:text="${comment.ip}"></span></a>&nbsp;&nbsp;
+                                <a class="author">评论时间: <span th:text="${#dates.format(comment.date,'yyyy-MM-dd HH:mm:ss')}"></span></a>
                                 <div class="text">
-                                    <p style="color: blue" th:text="${comment.content}"></p>
+                                    <p style="color: blue;font-size: 16px" th:text="${comment.content}"></p>
                                 </div>
                             </div>
                             <div class="comments" th:if="${comment.reply!=null&&comment.reply!=''}">
-                                <div class="comment">
+                                <div class="comment" style="margin-left: 25px">
                                     <a class="avatar">
                                         <img class="img4" th:src="@{/static/images/userImage/me.png}">
                                     </a>
                                     <div class="content">
                                         <a class="author" style="color: grey">站长回复</a>
                                         <div class="text">
-                                            <span style="color: green" th:text="${comment.reply}"></span>
+                                            <span style="color: green;font-size: 16px" th:text="${comment.reply}"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -116,6 +113,15 @@
                         th:text="${blogCount.releaseDateStr}"></a><a
                         th:class="${'ui '+blogCount.color+' small label'}" th:text="${blogCount.blogCount}"></a></p>
             </div>
+        </div>
+    </div>
+    <div class="ui modal">
+        <div class="header">来自 <span style="color: red">LeDao的博客</span> 的提示</div>
+        <div class="content">
+            <strong id="blogDetailsModal" style="font-size: 16px;color: blue"></strong>
+        </div>
+        <div class="actions">
+            <div class="ui cancel button red">关闭</div>
         </div>
     </div>
 </div>

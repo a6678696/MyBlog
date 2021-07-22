@@ -1,7 +1,7 @@
 []
-skin = 2
+skin = 4
 isSendMail = 0
-codeStyle = androidstudio
+codeStyle = agate
 codeFamily = consolas
 lucenePath = E://lucene/MyBlog
 mysqldumpPath = D://Java/mysql_5.6.24_winx64/mysql-5.6.24-winx64/bin/mysqldump

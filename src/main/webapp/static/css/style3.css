@@ -3591,3 +3591,76 @@ ul {
 .footer-area .copyright-area p span {
   color: #ff1d5b;
 }
+
+a {
+  color: #00B0E8;
+}
+
+/*改变上一篇和下一篇博客代码样式*/
+a.a11:hover {
+  background-color: #0c9c6e;
+}
+
+a.a12:hover {
+  background-color: #0c9c6e;
+}
+
+a.a13:hover {
+  background-color: red;
+}
+
+a.a14:hover {
+  background-color: red;
+}
+
+/*鼠标悬停提示框(点赞博客)*/
+#mytitle {
+  position: absolute;
+  color: #ffffff;
+  max-width: 160px;
+  font-size: 14px;
+  padding: 4px;
+  background: rgba(40, 40, 40, 0.8);
+  border: solid 1px #e9f7f6;
+  border-radius: 5px;
+}
+
+/*博客列表图片略缩图放大*/
+#div111 {
+  width: 388px;
+  height: 108px;
+  margin: 50px auto;
+  overflow: hidden;
+}
+
+#div111 img {
+  cursor: pointer;
+  transition: all 0.6s;
+}
+
+#div111 img:hover {
+  transform: scale(1.05);
+}
+
+/*鼠标停在div上出现阴影*/
+.shadow {
+  transition-duration: 1s; /*停留时间显示*/
+}
+
+.shadow:hover {
+  background-color: #f5e5ea;
+}
+
+blockquote {
+  background-color: #e9f3f6;
+  border-left: 0.6em solid #6caef5;
+  margin: 1.0em 0 1.0em;
+  padding: 1em 1em 1em 1em;
+  position: relative;
+  color: black;
+  font-size: 17px;
+}
+
+pre code{
+  font-size: 17px;
+}

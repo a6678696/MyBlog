@@ -1,6 +1,7 @@
 package com.ledao.controller;
 
 import cn.hutool.http.HtmlUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.ledao.entity.*;
 import com.ledao.service.*;
@@ -24,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 首页Controller
@@ -172,14 +174,21 @@ public class IndexController {
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
         mav.addObject("title", "LeDao的博客");
-        if (1 == StringUtil.readSkin()) {
-            mav.addObject("pageCode", PageUtil.genPagination1("/index", total, page, pageSize, param.toString()));
-        } else if (2 == StringUtil.readSkin()) {
-            mav.addObject("pageCode", PageUtil.genPagination2("/index", total, page, pageSize, param.toString()));
-        } else if (3 == StringUtil.readSkin()) {
-            mav.addObject("pageCode", PageUtil.genPagination3("/index", total, page, pageSize, param.toString()));
-        } else if (4 == StringUtil.readSkin()) {
-            mav.addObject("pageCode", PageUtil.genPagination4("/index", total, page, pageSize, param.toString()));
+        switch (StringUtil.readSkin()) {
+            case 1:
+                mav.addObject("pageCode", PageUtil.genPagination1("/index", total, page, pageSize, param.toString()));
+                break;
+            case 2:
+                mav.addObject("pageCode", PageUtil.genPagination2("/index", total, page, pageSize, param.toString()));
+                break;
+            case 3:
+                mav.addObject("pageCode", PageUtil.genPagination3("/index", total, page, pageSize, param.toString()));
+                break;
+            case 4:
+                mav.addObject("pageCode", PageUtil.genPagination4("/index", total, page, pageSize, param.toString()));
+                break;
+            default:
+                break;
         }
         mav.addObject("mainPageKey", "#b");
         mav.setViewName("index" + StringUtil.readSkin());
@@ -287,14 +296,21 @@ public class IndexController {
         mav.addObject("blogList", blogList);
         mav.addObject("blogTypeList", blogTypeList);
         mav.addObject("blogCountList", blogCountList);
-        if (1 == StringUtil.readSkin()) {
-            mav.addObject("pageCode", PageUtil.genPagination1("/index", total, page, pageSize, param.toString()));
-        } else if (2 == StringUtil.readSkin()) {
-            mav.addObject("pageCode", PageUtil.genPagination2("/index", total, page, pageSize, param.toString()));
-        } else if (3 == StringUtil.readSkin()) {
-            mav.addObject("pageCode", PageUtil.genPagination3("/index", total, page, pageSize, param.toString()));
-        } else if (4 == StringUtil.readSkin()) {
-            mav.addObject("pageCode", PageUtil.genPagination4("/index", total, page, pageSize, param.toString()));
+        switch (StringUtil.readSkin()) {
+            case 1:
+                mav.addObject("pageCode", PageUtil.genPagination1("/index", total, page, pageSize, param.toString()));
+                break;
+            case 2:
+                mav.addObject("pageCode", PageUtil.genPagination2("/index", total, page, pageSize, param.toString()));
+                break;
+            case 3:
+                mav.addObject("pageCode", PageUtil.genPagination3("/index", total, page, pageSize, param.toString()));
+                break;
+            case 4:
+                mav.addObject("pageCode", PageUtil.genPagination4("/index", total, page, pageSize, param.toString()));
+                break;
+            default:
+                break;
         }
         mav.addObject("mainPage", "page/indexFirst" + StringUtil.readSkin());
         if (ipForBannedService.findByIp(request.getRemoteAddr()) != null) {
@@ -410,7 +426,7 @@ public class IndexController {
     @RequestMapping("/changeSkin")
     public Map<String, Object> changeSkin(String skin) throws IOException {
         Map<String, Object> resultMap = new HashMap<>(16);
-        if (!skin.equals("1") && !skin.equals("2") && !skin.equals("3")&& !skin.equals("4")) {
+        if (!skin.equals("1") && !skin.equals("2") && !skin.equals("3") && !skin.equals("4")) {
             skin = "2";
         }
         StringUtil.updateSkin(skin);
@@ -643,5 +659,39 @@ public class IndexController {
         Fruit fruit = new Fruit(id, name, num);
         Gson gson = new Gson();
         return gson.toJson(fruit);
+    }
+
+    @RequestMapping("/toTobaccoPage")
+    public ModelAndView toTobaccoPage() throws IOException {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("title", "买烟--LeDao的博客");
+        mav.addObject("mainPage", "tobaccoPage" + StringUtil.readSkin());
+        mav.addObject("mainPageKey", "#b");
+        mav.setViewName("index" + StringUtil.readSkin());
+        return mav;
+    }
+
+    @ResponseBody
+    @RequestMapping("/getResult")
+    public Map<String, Object> getResult(String str) {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        String successInfo = "true";
+        int begin = str.indexOf("var cartlistJson =");
+        int last = str.indexOf(";\n" +
+                "var fromPage = \"\";");
+        str = str.substring(begin + "var cartlistJson =".length(), last);
+        List<Tobacco> tobaccoList = JSONObject.parseArray(str, Tobacco.class);
+        tobaccoList = tobaccoList.stream().sorted(Comparator.comparing(Tobacco::getPrice)).collect(Collectors.toList());
+        StringBuilder sb = new StringBuilder();
+        int total = 0;
+        for (Tobacco tobacco : tobaccoList) {
+            sb.append(tobacco.getCgt_name() + "------- " + tobacco.getReq_qty() + " 条\n");
+            total += tobacco.getReq_qty();
+        }
+        sb.append("\n一共 " + total + " 条");
+        String result = sb.toString();
+        resultMap.put("result", result);
+        resultMap.put("success", successInfo);
+        return resultMap;
     }
 }

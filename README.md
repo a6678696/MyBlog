@@ -20,4 +20,4 @@ GitHub地址：https://github.com/a6678696/MyBlog
 
 ### 图片展示
 
-项目图片展示查看博客：https://blog.zoutl.cn/23.html
+项目图片展示查看博客：https://blog.zoutl.cn/12.html

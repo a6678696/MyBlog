@@ -28,15 +28,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fec843a-29ca-4ceb-a0fc-1724b3e235ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/highlight.line-numbers.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/highlightjs-copy-button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o.fdt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o.fdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o.fnm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o.nvd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o.nvm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o.si" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o_Lucene50_0.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o_Lucene50_0.pos" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o_Lucene50_0.tim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o_Lucene50_0.tip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6p.cfe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6p.cfs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6p.si" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6q.cfe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6q.cfs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6q.si" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6r.cfe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6r.cfs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6r.si" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6s.cfe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6s.cfs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6s.si" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_b.cfe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_b.cfs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_b.si" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/segments_65" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/segments_n" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/write.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index4.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,9 +105,6 @@
   <component name="EndpointsView">
     <option name="showSidePanel" value="false" />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="MyBlog" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -122,6 +141,9 @@
     <option name="FILTER_INFO" value="true" />
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -166,11 +188,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MyProject\IDEA\ActualCombat\MyBlog" />
       <recent name="E:\MyProject\IDEA\ActualCombat\MyBlog\src\main\webapp\static\ckeditor\plugins" />
       <recent name="E:\MyProject\IDEA\ActualCombat\MyBlog\src\main\webapp\static\js" />
       <recent name="E:\MyProject\IDEA\ActualCombat\MyBlog\src\main\resources\templates" />
       <recent name="E:\MyProject\IDEA\ActualCombat\MyBlog\src\main\resources\templates\page" />
-      <recent name="E:\MyProject\IDEA\ActualCombat\MyBlog\src\main\resources\templates\common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\MyProject\IDEA\ActualCombat\MyBlog\src\main\resources\templates" />
@@ -204,6 +226,19 @@
     </treeState>
   </component>
   <component name="RunManager" selected="Spring Boot.MyblogApplication">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AscUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ledao.util.AscUtil" />
       <module name="MyBlog" />
@@ -252,19 +287,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -849,6 +871,7 @@
       <workItem from="1626832782341" duration="92000" />
       <workItem from="1626921228486" duration="6096000" />
       <workItem from="1626930602092" duration="1341000" />
+      <workItem from="1649812731264" duration="1425000" />
     </task>
     <task id="LOCAL-00005" summary="LeDao的博客">
       <created>1599844204862</created>
@@ -1249,7 +1272,6 @@
         <entry key="1" value="TOOL_WINDOW" />
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

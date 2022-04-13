@@ -4,6 +4,7 @@ import cn.hutool.http.HtmlUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.ledao.entity.*;
+import com.ledao.lucene.BlogIndex;
 import com.ledao.service.*;
 import com.ledao.util.*;
 import org.jsoup.Jsoup;
@@ -693,5 +694,14 @@ public class IndexController {
         resultMap.put("result", result);
         resultMap.put("success", successInfo);
         return resultMap;
+    }
+
+    @RequestMapping("/addIndex")
+    public void addIndex() throws Exception {
+        List<Blog> blogList = blogService.list(null);
+        BlogIndex blogIndex = new BlogIndex();
+        for (Blog blog : blogList) {
+            blogIndex.addIndex(blog);
+        }
     }
 }

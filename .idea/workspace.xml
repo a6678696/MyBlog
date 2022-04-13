@@ -27,39 +27,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6fec843a-29ca-4ceb-a0fc-1724b3e235ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o.fdt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o.fdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o.fnm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o.nvd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o.nvm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o.si" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o_Lucene50_0.doc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o_Lucene50_0.pos" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o_Lucene50_0.tim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6o_Lucene50_0.tip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6p.cfe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6p.cfs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6p.si" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6q.cfe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6q.cfs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6q.si" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6r.cfe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6r.cfs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6r.si" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6s.cfe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6s.cfs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_6s.si" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_b.cfe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_b.cfs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/_b.si" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/segments_65" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/segments_n" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lucene/MyBlog/write.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ledao/controller/IndexController.java" afterDir="false" />
-    </list>
+    <list default="true" id="6fec843a-29ca-4ceb-a0fc-1724b3e235ce" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -871,21 +839,7 @@
       <workItem from="1626832782341" duration="92000" />
       <workItem from="1626921228486" duration="6096000" />
       <workItem from="1626930602092" duration="1341000" />
-      <workItem from="1649812731264" duration="1425000" />
-    </task>
-    <task id="LOCAL-00005" summary="LeDao的博客">
-      <created>1599844204862</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1599844204862</updated>
-    </task>
-    <task id="LOCAL-00006" summary="LeDao的博客">
-      <created>1600013370749</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1600013370749</updated>
+      <workItem from="1649812731264" duration="2191000" />
     </task>
     <task id="LOCAL-00007" summary="LeDao的博客">
       <created>1600360322134</created>
@@ -1216,7 +1170,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626925195894</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="LeDao的博客">
+      <created>1649814189253</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1649814189253</updated>
+    </task>
+    <task id="LOCAL-00055" summary="LeDao的博客">
+      <created>1649814264049</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1649814264049</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

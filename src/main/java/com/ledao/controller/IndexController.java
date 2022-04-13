@@ -696,6 +696,11 @@ public class IndexController {
         return resultMap;
     }
 
+    /**
+     * 添加lucene索引
+     *
+     * @throws Exception
+     */
     @RequestMapping("/addIndex")
     public void addIndex() throws Exception {
         List<Blog> blogList = blogService.list(null);

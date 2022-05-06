@@ -27,9 +27,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6fec843a-29ca-4ceb-a0fc-1724b3e235ce" name="Default Changelist" comment="">
+    <list default="true" id="6fec843a-29ca-4ceb-a0fc-1724b3e235ce" name="Default Changelist" comment="LeDao的博客">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/myConfig.setting" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/myConfig.setting" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +94,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -135,28 +139,19 @@
     <option name="showMembers" value="true" />
     <option name="sortByType" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../gitworkspace/MyBlog" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.24252874" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="settings.editor.splitter.proportion" value="0.3058104" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/MyProject/IDEA/ActualCombat/MyBlog",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "inlay.hints",
+    "spring.configuration.checksum": "722bd36509ab6c9baa812941ed00746c"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\MyProject\IDEA\ActualCombat\MyBlog" />
@@ -294,11 +289,10 @@
       </method>
     </configuration>
     <configuration name="MyblogApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="MyBlog" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ledao.MyblogApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -842,21 +836,14 @@
       <workItem from="1626832782341" duration="92000" />
       <workItem from="1626921228486" duration="6096000" />
       <workItem from="1626930602092" duration="1341000" />
-      <workItem from="1649812731264" duration="6514000" />
-    </task>
-    <task id="LOCAL-00009" summary="LeDao的博客">
-      <created>1602261269098</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1602261269098</updated>
-    </task>
-    <task id="LOCAL-00010" summary="LeDao的博客">
-      <created>1602334712226</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1602334712226</updated>
+      <workItem from="1649812731264" duration="6829000" />
+      <workItem from="1649833233816" duration="14000" />
+      <workItem from="1650078560583" duration="7922000" />
+      <workItem from="1651031034271" duration="1385000" />
+      <workItem from="1651672266979" duration="246000" />
+      <workItem from="1651681819362" duration="603000" />
+      <workItem from="1651747582289" duration="22000" />
+      <workItem from="1651841192591" duration="5533000" />
     </task>
     <task id="LOCAL-00011" summary="LeDao的博客">
       <created>1602334823031</created>
@@ -1187,7 +1174,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649817338144</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="LeDao的博客">
+      <created>1649819894019</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1649819894019</updated>
+    </task>
+    <task id="LOCAL-00059" summary="修复了Redis缓存被删除后首页两个类别列表为空的BUG">
+      <created>1651850461915</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1651850461915</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1248,7 +1249,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="MyBlog" />
     <MESSAGE value="LeDao的博客" />
-    <option name="LAST_COMMIT_MESSAGE" value="LeDao的博客" />
+    <MESSAGE value="修复了Redis缓存被删除后首页两个类别列表为空的BUG" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复了Redis缓存被删除后首页两个类别列表为空的BUG" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

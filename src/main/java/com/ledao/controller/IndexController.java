@@ -140,6 +140,9 @@ public class IndexController {
             blog.setSummary(HtmlUtil.unescape(blog.getSummary()));
             blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
         }
+        if (!(RedisUtil.existKey("blogTypeList")&&RedisUtil.existKey("blogCountList"))) {
+            addRedis();
+        }
         //从Redis获取两个类别列表
         List<String> redisBlogTypeList = RedisUtil.listRange("blogTypeList", 0L, -1L);
         List<String> redisBlogCountList = RedisUtil.listRange("blogCountList", 0L, -1L);
@@ -265,6 +268,9 @@ public class IndexController {
             blog.setSummary(HtmlUtil.unescape(blog.getSummary()));
             blog.setBlogType(blogTypeService.findById(blog.getBlogTypeId()));
         }
+        if (!(RedisUtil.existKey("blogTypeList")&&RedisUtil.existKey("blogCountList"))) {
+            addRedis();
+        }
         //从Redis获取两个类别列表
         List<String> redisBlogTypeList = RedisUtil.listRange("blogTypeList", 0L, -1L);
         List<String> redisBlogCountList = RedisUtil.listRange("blogCountList", 0L, -1L);
@@ -330,6 +336,50 @@ public class IndexController {
         mav.addObject("mainPageKey", "#b");
         mav.setViewName("index" + StringUtil.readSkin());
         return mav;
+    }
+
+    private void addRedis() {
+        List<BlogType> blogTypeList = blogTypeService.list(null);
+        for (BlogType blogType : blogTypeList) {
+            blogType.setBlogNum(blogTypeService.getBlogNumThisType(blogType.getId()));
+        }
+        List<Blog> blogCountList = blogService.countList();
+        if (RedisUtil.existKey("blogTypeList")) {
+            //清空
+            Long length = RedisUtil.listLength("blogTypeList");
+            if (length > 0) {
+                for (int i = 0; i < length; i++) {
+                    RedisUtil.listRightPop("blogTypeList");
+                }
+            }
+            //添加
+            for (int i = 0; i < blogTypeList.size(); i++) {
+                RedisUtil.listRightPush("blogTypeList", RedisUtil.entityToJson(blogTypeList.get(i)));
+            }
+        } else {
+            //添加
+            for (int i = 0; i < blogTypeList.size(); i++) {
+                RedisUtil.listRightPush("blogTypeList", RedisUtil.entityToJson(blogTypeList.get(i)));
+            }
+        }
+        if (RedisUtil.existKey("blogCountList")) {
+            //清空
+            Long length = RedisUtil.listLength("blogCountList");
+            if (length > 0) {
+                for (int i = 0; i < length; i++) {
+                    RedisUtil.listRightPop("blogCountList");
+                }
+            }
+            //添加
+            for (int i = 0; i < blogCountList.size(); i++) {
+                RedisUtil.listRightPush("blogCountList", RedisUtil.entityToJson(blogCountList.get(i)));
+            }
+        } else {
+            //添加
+            for (int i = 0; i < blogCountList.size(); i++) {
+                RedisUtil.listRightPush("blogCountList", RedisUtil.entityToJson(blogCountList.get(i)));
+            }
+        }
     }
 
     /**

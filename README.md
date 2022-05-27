@@ -1,4 +1,4 @@
-## 有问题请到[Issues](https://github.com/a6678696/MyBlog/issues)下留言，如果本项目对你有帮助，就请你Star一下吧!!项目详情查看博客：https://blog.zoutl.cn/12.html
+## 有问题请到[Issues](https://github.com/a6678696/MyBlog/issues)下留言，如果本项目对你有帮助，就请你Star一下吧！！项目详情查看博客：https://blog.zoutl.cn/12.html
 
 ### clone本项目的git命令
 
